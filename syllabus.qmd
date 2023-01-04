@@ -2,24 +2,27 @@
 title: "<i class='bi bi-shield-lock'></i> Syllabus"
 ---
 
+::: {.callout-important}
+This information applies to the second half of Term 2. For first half content, see Canvas
+:::
+
 ## Course info
 
-**Instructor**:\
-Daniel J. McDonald\
+**Co-Instructors**:\
+Lang Wu (Jan 9 – Feb 28), Daniel McDonald (Mar 2 – Apr 13)\
 Office: Earth Sciences Building 3106\
 Website: <https://dajmcdon.github.io/>\
 Email: [daniel\@stat.ubc.ca](mailto:daniel@stat.ubc.ca){.email}
 
 **Office hours**:\
-Mon 15:00 - 16:00 as necessary\
-I'm happy to arrange additional time. Just message me on Slack.
+I'm happy to arrange time as needed. Just message me on Slack.
 
 **Course webpage**:\
 WWW: <https://stat550-2021.github.io/>\
 Github Org: <https://github.com/stat550-2021/>
 
 **Lectures**:\
-Tue/Thu 14:30 - 16:00, ESB 4192 (on Zoom for now, link on Canvas)
+Tue/Thu 14:30 - 16:00, ESB 4192
 
 ## Course content
 
@@ -36,31 +39,19 @@ This graduate-level course is designed to serve two overlapping purposes: (1) he
 
 ## Assessment opportunities
 
--   2 Group Case Studies (20 total)
--   2 Individual Case Study Reviews (10 total)
--   2 Group Case Study Revisions (10 total)
--   1 Individual Final project (15 points)
--   1 individual presentation (15 points)
--   In-class exercises (15 points)
--   Professionalism (15 points)
-
-### Case Studies
-
-These are the major component of the course and count for 55% of the total mark. Throughout the course I will present 6 cases based on my on collaborative research. We will then brainstorm approaches to solving the case together as a class. In small groups, you will propose a solution and begin implementation. You will peer evaluate each others proposals and implementation. Finally your group will complete the implementation and address the peer-evaluations.
-
-The first two case studies will be done in groups, the third will be done individually without revisions or evaluation.
+-   1 individual project, per half-term (30%)
+-   1 individual presentation, delivered in either half (20%)
+-   Homework in groups, per half-term (30%)
+-   Class participation and discussion (20%)
 
 ### Presentation
 
-Each student will give a 20-minute presentation on a consulting topic with slides.
+Each student will give a 20-minute presentation on a consulting topic with slides. This will only happen once during the term. Some did it during the first half.
 
-### In-class exercises
 
-There will be a number of in-class exercises for practice on various statistical or computational issues. Submission will be via Github.
+### Participation and discussion (professionalism)
 
-### Professionalism
-
-Excellent professionalism means going above and beyond in terms of in-class participation and contributions on the discussion board. Regularly responding to fellow students is a step toward the excellence. Failing to participate in class, regularly skipping class, leaving your project teams out to dry, will result in reduced scores. This should also be rare.
+Excellent professionalism means going above and beyond in terms of in-class participation and contributions on the discussion board. Regularly responding to fellow students is a step toward the excellence. Failing to participate in class, regularly skipping class, leaving your homework team out to dry, will result in reduced scores. This should also be rare.
 
 This is a required graduate course and a prerequisite for your degree. Failing to support your classmates or take this course seriously will be dealt with harshly. A rubric for this component is linked below.
 

@@ -2,39 +2,31 @@
 title: "<i class='bi bi-calendar3'></i> Schedule"
 ---
 
-#### Term 2 runs 10 January to 7 April. No class from 21 February to 25 February.
 
-#### All dates subject to change
+::: {.callout-note}
+Term 2 runs 9 January to 7 April. No class from 20 February to 24 February.
+
+Schedule prior to Reading Week available on Canvas
+:::
+
+::: {.callout-warning}
+All dates subject to change
+:::
 
 | Date | Topic | Deadline |
 |---|---|---|
-| 11 January | Introduction | |
-| 13 January | Github | |
-| 18 January | Case 1 | |
-| 20 January | More Case 1 | |
-| 25 January | Writing | |
-| 27 January | Case 2 | |
-| 1 February | Giving presentations | |
-| 3 February | Staying organized | |
-| 8 February | Case 3 | |
-| 10 February | Unit tests | HW 1 Due |
-| 15 February | Case 4 | |
-| 17 February | Missingness | HW 1 Peer Eval Due |
-| 1 March | ASDa (Biljana, Zoom) | |
-| 3 March | Case 5 (Prerna) | HW 1 Revision Due (4 March) |
-| 8 March | Case 6 (Ira) | |
-| 10 March | Presentations | HW 2 Due |
-| 15 March | Presentations | |
-| 17 March | overflow... | HW 2 Peer Eval Due |
-| 22 March | Presentations | |
-| 24 March | Guest lecture (Nikolas) | HW 2 Revision Due |
-| 29 March | Presentations | |
-| 31 March | Guest lecture (Jens) | |
-| 5 April | Presentations | |
-| 7 April | Parallel computing | Project Due |
-{: .table .table-striped}
+| 2 March | Case 5  | HW 1 Revision Due (4 March) |
+| 7 March | Case 6  | |
+| 9 March | Presentations | HW 2 Due |
+| 14 March | Presentations | |
+| 16 March | overflow... | HW 2 Peer Eval Due |
+| 21 March | Presentations | |
+| 23 March | Guest lecture  | HW 2 Revision Due |
+| 28 March | Presentations | |
+| 30 March | Guest lecture  | |
+| 4 April | Presentations | |
+| 6 April | Parallel computing | Project Due |
+
 
 ## Guest lecturers
 
--
--
