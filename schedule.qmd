@@ -25,22 +25,6 @@ knitr::kable(tib)
 
 <!--
 
-| Date | Topic | Deadline |
-|---|---|---|
-| 2 March | Syllabus, version control, HW1  | HW1 out |
-| 7 March | HW1 discussion, Project discussion | |
-| 9 March | Client presentation | HW2 out |
-| 14 March | Organization  | HW1v1 Due |
-| 16 March | Giving talks, HW2 discussion  |  |
-| 21 March | Unit testing  | HW1v1.1 Due |
-| 23 March | How to read   | HW2v1 Due   |
-| 28 March | Advanced regression tests  | HW1v2 Due |
-| 30 March | Regularization and model selection | HW2v1.1 Due, Pv1 Due |
-| 4 April | Additional client meeting, overflow | HW2v2 Due  |
-| 6 April | Presentations | Pv1.1 Due  |
-| 11 April | Presentations | |
-| 13 April | Parallel computing | Pv2 Due |
-
 
 ## Guest lecturers
 
