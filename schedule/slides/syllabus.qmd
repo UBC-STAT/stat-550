@@ -1,15 +1,16 @@
 ---
-title: "Introduction and Second half pivot"
+lecture: "Introduction and Second half pivot"
 format: revealjs
+metadata-files: 
+  - _metadata.yml
 ---
+
+{{< include _titleslide.qmd >}}
 
 
 
 ## About me
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
 
 ::::{.columns}
 :::{.column width="50%"}

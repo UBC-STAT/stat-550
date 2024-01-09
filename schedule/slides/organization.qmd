@@ -1,15 +1,17 @@
 ---
-title: "Organization"
+lecture: "Organization"
 format: revealjs
+metadata-files: 
+  - _metadata.yml
 ---
+
+{{< include _titleslide.qmd >}}
+
 
 ## I urge you to consult:
 
 [Karl Broman's Notes](https://kbroman.org/Tools4RR/assets/lectures/06_org_eda_withnotes.pdf)
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
 
 # Before I forget, BACK UP YOUR STUFF!!
 

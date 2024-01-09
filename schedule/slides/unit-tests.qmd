@@ -1,10 +1,11 @@
 ---
-title: "Unit tests"
+lecture: "Unit tests"
 format: revealjs
-knitr: 
-  opts_chunk: 
-    cache: true
+metadata-files: 
+  - _metadata.yml
 ---
+
+{{< include _titleslide.qmd >}}
 
 ## I urge you to consult:
 
@@ -13,9 +14,6 @@ knitr:
 Thank you Alex and Chris for the heavy lifting.
 
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
 
 ## Bugs happen. All. The. Time.
 

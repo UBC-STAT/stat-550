@@ -1,16 +1,15 @@
 ---
-title: "Giving presentations"
+lecture: "Giving presentations"
 format: revealjs
-knitr: 
-  opts_chunk: 
-    cache: true
+metadata-files: 
+  - _metadata.yml
 ---
+
+{{< include _titleslide.qmd >}}
+
 
 ## Structure
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
 
 1. Strategy (applies to papers too)
 
@@ -242,23 +241,29 @@ Defaults are almost always terrible.
 ## Graphics
 
 ```{r colours2, echo=FALSE, dev="png", fig.width=16, fig.height=8, fig.align='center'}
-g <- ggplot(diamonds, aes(cut,price, fill=color)) + 
+g <- ggplot(diamonds, aes(cut, price, fill = color)) + 
   geom_col() +
   theme_bw(24) + 
-  ylab("price (USD)") +
-  scale_y_continuous(labels = scales::label_number_si(),
-                     expand = expansion(c(0,.05)))
-g + scale_fill_viridis_d(guide = guide_legend(nrow=1)) +
-  theme(legend.position = "bottom", 
-        legend.key.width = unit(2, "cm"))
+  ylab("price (millions USD)") +
+  scale_y_continuous(
+    labels = scales::label_number(scale = 1e-6),
+    expand = expansion(c(0,.05))
+  )
+g + scale_fill_viridis_d(guide = guide_legend(nrow = 1)) +
+  theme(
+    legend.position = "bottom", 
+    legend.key.width = unit(2, "cm")
+  )
 ```
 
 ## Again
 
 ```{r colours3, echo=FALSE, dev="png", fig.width=16, fig.height=7, fig.align='center'}
 g + scale_fill_brewer(palette = "Set1") +
-  theme(legend.key.width = unit(2, "cm"),
-        legend.key.height = unit(2, "cm"))
+  theme(
+    legend.key.width = unit(2, "cm"),
+    legend.key.height = unit(2, "cm")
+  )
 ```
 
 ::: {.callout-tip}

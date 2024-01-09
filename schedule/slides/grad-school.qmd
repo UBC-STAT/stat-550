@@ -1,10 +1,11 @@
 ---
-title: "Skills for graduate students"
+lecture: "Skills for graduate students"
 format: revealjs
-knitr: 
-  opts_chunk: 
-    cache: true
+metadata-files: 
+  - _metadata.yml
 ---
+
+{{< include _titleslide.qmd >}}
 
 ## Something happens in graduate school
 
@@ -25,10 +26,6 @@ knitr:
 
 
 ## Side discussion on "Reading for research"
-
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
 
 
 * You should "read" regularly: set aside an 2-3 hours every week

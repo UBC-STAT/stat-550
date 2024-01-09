@@ -1,14 +1,13 @@
 ---
-title: "Time series, a whirlwind"
+lecture: "Time series, a whirlwind"
 format: revealjs
-knitr: 
-  opts_chunk: 
-    cache: true
+metadata-files: 
+  - _metadata.yml
 ---
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
+{{< include _titleslide.qmd >}}
+
+
 
 ## The general linear process
 
@@ -28,21 +27,23 @@ $$y_i = \sum_{j=-\infty}^0 a_{i+j} \epsilon_j$$
 
 ```{r, echo=TRUE}
 n <- 1000
-set.seed(12345)
 nseq <- 5
-generate_ar <- function(id, n, b) {
+generate_ar <- function(n, b) {
   y <- double(n)
   y[1] <- rnorm(1)
   for (i in 2:n) y[i] <- b * y[i - 1] + rnorm(1)
-  tibble(time = 1:n, y = y, id = id)
+  tibble(time = 1:n, y = y)
 }
-stationary <- map_dfr(1:nseq, ~ generate_ar(.x, n = n, b = .99))
-non_stationary <- map_dfr(1:nseq, ~ generate_ar(.x, n = n, b = 1.01))
+stationary <- map(1:nseq, ~ generate_ar(n, .99)) |> list_rbind(names_to = "id")
+non_stationary <- map(1:nseq, ~ generate_ar(n, 1.01)) |> 
+  list_rbind(names_to = "id")
 ```
 
 ```{r, echo = FALSE, fig.align='center', fig.width=12}
-bind_rows(stationary = stationary, 
-          non_stationary = non_stationary, .id = "type") %>%
+bind_rows(
+  stationary = stationary,
+  non_stationary = non_stationary, .id = "type"
+) %>%
   mutate(replicate = as.factor(id)) %>%
   ggplot(aes(time, y, color = replicate)) +
   geom_line() +
@@ -156,8 +157,10 @@ This is "Seasonal Decomposition of Time Series by Loess"
 ```{r, echo = TRUE, fig.align='center', fig.width=10, fig.height=4}
 sts <- StructTS(AirPassengers)
 bc <- stl(AirPassengers, "periodic") # use sin/cos to represent the seasonal
-tibble(time = seq(as.Date("1949-01-01"), as.Date("1960-12-31"), by = "month"),
-       AP = AirPassengers, StrucTS = fitted(sts)[,1], STL = rowSums(bc$time.series[,1:2])) %>%
+tibble(
+  time = seq(as.Date("1949-01-01"), as.Date("1960-12-31"), by = "month"),
+  AP = AirPassengers, StrucTS = fitted(sts)[, 1], STL = rowSums(bc$time.series[, 1:2])
+) %>%
   pivot_longer(-time) %>%
   ggplot(aes(time, value, color = name)) +
   geom_line() +
@@ -310,8 +313,8 @@ $$
 ```{r kalman-filter, echo=TRUE}
 kalman <- function(y, m0, P0, A, Q, H, R) {
   n <- length(y)
-  m <- double(n+1)
-  P <- double(n+1)
+  m <- double(n + 1)
+  P <- double(n + 1)
   m[1] <- m0
   P[1] <- P0
   for (k in seq(n)) {
@@ -320,15 +323,15 @@ kalman <- function(y, m0, P0, A, Q, H, R) {
     v <- y[k] - H * mm
     S <- H * Pm * H + R
     K <- Pm * H / S
-    m[k+1] <- mm + K * v
-    P[k+1] <- Pm - K * S * K
+    m[k + 1] <- mm + K * v
+    P[k + 1] <- Pm - K * S * K
   }
   tibble(t = 1:n, m = m[-1], P = P[-1])
 }
 
-set.seed(2022-06-01)
+set.seed(2022 - 06 - 01)
 x <- double(100)
-for (k in 2:100) x[k] = x[k - 1] + rnorm(1)
+for (k in 2:100) x[k] <- x[k - 1] + rnorm(1)
 y <- x + rnorm(100, sd = 1)
 kf <- kalman(y, 0, 5, 1, 1, 1, 1)
 ```
@@ -347,8 +350,9 @@ ggplot(bind_cols(kf, x = x, y = y), aes(t)) +
   scale_color_manual(
     name = "",
     breaks = c("kf_mean", "x", "y"),
-    values = c(kf_mean = primary, x = tertiary, y = secondary)) +
-  theme(legend.position = "bottom", axis.title=element_blank())
+    values = c(kf_mean = primary, x = tertiary, y = secondary)
+  ) +
+  theme(legend.position = "bottom", axis.title = element_blank())
 ```
 
 :::
@@ -401,21 +405,24 @@ x_k | y_1,\ldots,y_T &= N(m^s_k, P_k^s)
 ```{r kalman-smoothing, echo = TRUE}
 library(FKF)
 filt <- fkf(
-  a0 = 0, P0 = matrix(5), dt = matrix(0), ct = matrix(0), 
-  Tt = matrix(1), Zt = matrix(1), HHt = matrix(1), GGt = matrix(1), 
-  yt = matrix(y, ncol = length(y)))
+  a0 = 0, P0 = matrix(5), dt = matrix(0), ct = matrix(0),
+  Tt = matrix(1), Zt = matrix(1), HHt = matrix(1), GGt = matrix(1),
+  yt = matrix(y, ncol = length(y))
+)
 smo <- fks(filt)
 ```
 
 ```{r plot-smooth, fig.height=4, fig.align='center'}
 tibble(time = seq_along(x), x = x, filter = c(filt$att), smooth = c(smo$ahatt)) %>%
   pivot_longer(-time) %>%
-  ggplot(aes(time, value, color = name)) + 
+  ggplot(aes(time, value, color = name)) +
   geom_line(linewidth = 2) +
   theme_bw(base_size = 24) +
   scale_color_viridis_d() +
-  theme(legend.position = "bottom", axis.title = element_blank(), 
-        legend.title = element_blank())
+  theme(
+    legend.position = "bottom", axis.title = element_blank(),
+    legend.title = element_blank()
+  )
 ```
 
 
@@ -441,13 +448,13 @@ These all give [approximations to the filtering distribution]{.secondary}
 * Need to **evaluate** the observation distribution (`dobs`)
 
 ```{r bootstrap-filter, echo = TRUE}
-boot_filter <- 
+boot_filter <-
   function(y, B = 1000, rtrans, dobs, a0 = 0, P0 = 1, perturb = function(x) x) {
     n <- length(y)
     filter_est <- matrix(0, n, B)
     predict_est <- matrix(0, n, B)
     init <- rnorm(B, a0, P0)
-    filter_est[1, ] = init
+    filter_est[1, ] <- init
     for (i in seq(n)) {
       raw_w <- dobs(y[i], filter_est[i, ])
       w <- raw_w / sum(raw_w)

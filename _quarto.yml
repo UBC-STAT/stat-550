@@ -6,6 +6,7 @@ project:
     - syllabus.qmd
     - schedule/index.qmd
     - schedule/handouts/*.qmd
+    - schedule/slides/*.qmd
 
 execute:
   freeze: auto
