@@ -2,7 +2,7 @@
 title: Recommended books
 ---
 
-:::{.callout-note}
+::: .callout-note
 These are [Prof. Harry Joe's](https://www.stat.ubc.ca/users/harry-joe) suggestions for resources on different statistical topics that students might not be exposed to before Stat 550/551.
 :::
 

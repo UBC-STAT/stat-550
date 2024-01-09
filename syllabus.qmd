@@ -3,59 +3,21 @@ title: "<i class='bi bi-shield-lock'></i> Syllabus"
 ---
 
 ::: {.callout-important}
-This information applies to the second half of Term 2. For first half content, see Canvas
+See Canvas for the full syllabus.
 :::
 
 ## Course info
 
 **Co-Instructors**:\
-Lang Wu (Jan 9 – Feb 28), Daniel McDonald (Mar 2 – Apr 13)\
-Office: Earth Sciences Building 3106\
-Website: <https://dajmcdon.github.io/>\
-Email: [daniel\@stat.ubc.ca](mailto:daniel@stat.ubc.ca){.email}
+Lang Wu and Daniel McDonald
 
 **Office hours**:\
-I'm happy to arrange time as needed. Just message me on Slack.
+I'm happy to arrange time as needed. 
 
-**Course webpage**:\
-WWW: <https://stat550-2021.github.io/>\
-Github Org: <https://github.com/stat550-2021/>
 
 **Lectures**:\
-Tue/Thu 14:30 - 16:00, ESB 4192
+Tue/Thu 14:30 - 16:00
 
-## Course content
-
-This graduate-level course is designed to serve two overlapping purposes: (1) help students prepare for the Consulting Practicum Course (STAT 551) and/or work with [ASDa](https://asda.stat.ubc.ca) and (2) give students appropriate professional skills for research, thesis writing, other projects. The major goals are to
-
-1.  Read, understand, explain academic statistical concepts to non-statisticians
-2.  Give high-quality presentations
-3.  Learn how to convert subject-matter questions into statistical ones.
-4.  Communicate statistical conclusions carefully and rigorously, in writing and presentations
-5.  Use reasonable statistical workflows
-6.  Conduct quality computer experiments
-7.  Use version control effectively
-8.  Write verifiable, reproducible code
-
-## Assessment opportunities
-
--   1 individual project, per half-term (30%)
--   1 individual presentation, delivered in either half (20%)
--   Homework in groups, per half-term (30%)
--   Class participation and discussion (20%)
-
-### Presentation
-
-Each student will give a 20-minute presentation on a consulting topic with slides. This will only happen once during the term. Some did it during the first half.
-
-
-### Participation and discussion (professionalism)
-
-Excellent professionalism means going above and beyond in terms of in-class participation and contributions on the discussion board. Regularly responding to fellow students is a step toward the excellence. Failing to participate in class, regularly skipping class, leaving your homework team out to dry, will result in reduced scores. This should also be rare.
-
-This is a required graduate course and a prerequisite for your degree. Failing to support your classmates or take this course seriously will be dealt with harshly. A rubric for this component is linked below.
-
--   [Professionalism rubric]()
 
 ## Important considerations
 

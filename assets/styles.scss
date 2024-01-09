@@ -1,6 +1,9 @@
 /*-- scss:defaults --*/
+/* @import 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,b,i'*/
+
 $primary: #2c365e;
 $secondary: #e98a15;
+$navbar-bg: $primary;
 $navbar-fg: rgb(255,255,255,.9);
 $footer-fg: white;
 
@@ -28,6 +31,34 @@ li {
     color: lighten($secondary, 20%);
   }
 }
+
+table {
+  a {
+    color: $secondary;
+  }
+  a:hover {
+    color: lighten($secondary, 20%);
+  }
+}
+
+li {
+  a {
+    color: $secondary;
+  }
+  a:hover {
+    color: lighten($secondary, 20%);
+  }
+}
+
+dl {
+  a {
+    color: $secondary;
+  }
+  a:hover {
+    color: lighten($secondary, 20%);
+  }
+}
+
 
 h1,
 h2,
