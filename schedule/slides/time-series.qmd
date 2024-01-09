@@ -35,7 +35,7 @@ generate_ar <- function(n, b) {
   tibble(time = 1:n, y = y)
 }
 stationary <- map(1:nseq, ~ generate_ar(n, .99)) |> list_rbind(names_to = "id")
-non_stationary <- map(1:nseq, ~ generate_ar(n, 1.01)) |> 
+non_stationary <- map(1:nseq, ~ generate_ar(n, 1.01)) |>
   list_rbind(names_to = "id")
 ```
 
@@ -48,7 +48,7 @@ bind_rows(
   ggplot(aes(time, y, color = replicate)) +
   geom_line() +
   theme_bw(base_size = 24) +
-  facet_wrap(~ type, scales = "free_y") +
+  facet_wrap(~type, scales = "free_y") +
   scale_color_viridis_d() +
   theme(legend.position = "bottom")
 ```
@@ -159,9 +159,11 @@ sts <- StructTS(AirPassengers)
 bc <- stl(AirPassengers, "periodic") # use sin/cos to represent the seasonal
 tibble(
   time = seq(as.Date("1949-01-01"), as.Date("1960-12-31"), by = "month"),
-  AP = AirPassengers, StrucTS = fitted(sts)[, 1], STL = rowSums(bc$time.series[, 1:2])
-) %>%
-  pivot_longer(-time) %>%
+  AP = AirPassengers, 
+  StrucTS = fitted(sts)[, 1], 
+  STL = rowSums(bc$time.series[, 1:2])
+) |>
+  pivot_longer(-time) |>
   ggplot(aes(time, value, color = name)) +
   geom_line() +
   theme_bw(base_size = 24) +
