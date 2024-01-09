@@ -1,4 +1,5 @@
 _site/
+*_files/
 *.DS_Store
 
 # History files
