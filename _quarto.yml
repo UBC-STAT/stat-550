@@ -1,5 +1,17 @@
 project:
   type: website
+  lib-dir: site_libs
+  render:
+    - index.qmd
+    - syllabus.qmd
+    - schedule/index.qmd
+    - schedule/handouts/*.qmd
+    - schedule/slides/*.qmd
+
+execute:
+  freeze: auto
+
+editor: source
 
 website:
   title: "UBC Stat550"
@@ -12,20 +24,15 @@ website:
     right:
       - text: Syllabus
         url: syllabus.qmd
-      - text: Schedule
-        url: schedule.qmd
-      - text: Lectures
-        url: https://ubc-stat.github.io/stat-550-lectures/
-      - text: Presentations
-        url: presentations.qmd
+      - text: Slides
+        url: schedule/index.qmd
       - text: Github
-        url: https://github.com/stat550-2022
+        url: https://github.com/ubc-stat/stat-550/
         icon: github
 
 
 format:
   html:
     theme: [cosmo, assets/styles.scss]
-    css: styles.css
     toc: true
 
