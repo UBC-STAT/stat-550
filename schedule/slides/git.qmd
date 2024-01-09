@@ -1,13 +1,14 @@
 ---
-title: "Version control"
+lecture: "Version control"
 format: revealjs
+metadata-files: 
+  - _metadata.yml
 ---
 
-## Why version control?
+{{< include _titleslide.qmd >}}
 
-```{r setup, include=FALSE}
-source("qmd-config.R")
-```
+
+## Why version control?
 
 
 
