@@ -372,3 +372,16 @@ Jeff Bezos banned Powerpoint from Amazon presentations
 * Record yourself once to see if you do anything extraneous
 
 ### Have fun.
+
+## Some code
+
+```{r}
+#| eval: false
+x <- 1:5
+z <- rnorm(100)
+library(dplyr)
+mtcars |>
+  mutate(mpg = mpg + 1) |>
+  group_by(cyl) |>
+  summarise(mean_mpg = mean(mpg), sd_mpg = sd(mpg)) 
+```
