@@ -1,7 +1,7 @@
 [
   {
-    "objectID": "schedule/slides/unit-tests.html#meta-lecture",
-    "href": "schedule/slides/unit-tests.html#meta-lecture",
+    "objectID": "schedule/slides/unit-tests.html#section",
+    "href": "schedule/slides/unit-tests.html#section",
     "title": "UBC Stat550",
     "section": "Unit tests",
     "text": "Unit tests\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
@@ -91,8 +91,8 @@
     "text": "Test-driven development\nTest Driven Development (TDD) uses a short development cycle for each new feature or component:\n\nWrite tests that specify the component’s desired behavior.\nThe tests will initially fail because the component does not yet exist.\nCreate the minimal implementation that passes the test.\nRefactor the code to meet design standards, running the tests with each change to ensure correctness."
   },
   {
-    "objectID": "schedule/slides/unit-tests.html#section",
-    "href": "schedule/slides/unit-tests.html#section",
+    "objectID": "schedule/slides/unit-tests.html#section-1",
+    "href": "schedule/slides/unit-tests.html#section-1",
     "title": "UBC Stat550",
     "section": "",
     "text": "Why work this way?\n\nWriting the tests may help you realize\n\nwhat arguments the function must take,\n\nwhat other data it needs,\n\nand what kinds of errors it needs to handle.\n\nThe tests define a specific plan for what the function must do.\nYou will catch bugs at the beginning instead of at the end (or never).\nTesting is part of design, instead of a lame afterthought you dread doing."
@@ -151,11 +151,11 @@
     "href": "schedule/slides/unit-tests.html#deliverables-2-r-scripts",
     "title": "UBC Stat550",
     "section": "Deliverables, 2 R scripts",
-    "text": "Deliverables, 2 R scripts\n\nA function that evaluates the log likelihood. (think about sufficiency, ignorable constants)\nA function that evaluates the gradient of the log likelihood.\nA function that does the optimization.\n\nShould take in data, the log likelihood and the gradient.\nUse the loglikelihood to determine convergence.\nPass in any other necessary parameters with reasonable defaults.\n\nA collection of tests that make sure your functions work.\n\n\\[\n\\begin{aligned}\nL(\\lambda; y_1,\\ldots,y_n) &= \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}\\\\\nx &\\leftarrow x + \\gamma f'(x)\n\\end{aligned}\n\\]\n\n\nUBC Stat 550 - 2024"
+    "text": "Deliverables, 2 R scripts\n\nA function that evaluates the log likelihood. (think about sufficiency, ignorable constants)\nA function that evaluates the gradient of the log likelihood.\nA function that does the optimization.\n\nShould take in data, the log likelihood and the gradient.\nUse the loglikelihood to determine convergence.\nPass in any other necessary parameters with reasonable defaults.\n\nA collection of tests that make sure your functions work.\n\n\\[\n\\begin{aligned}\nL(\\lambda; y_1,\\ldots,y_n) &= \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}\\\\\nx &\\leftarrow x + \\gamma f'(x)\n\\end{aligned}\n\\]\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/syllabus.html#meta-lecture",
-    "href": "schedule/slides/syllabus.html#meta-lecture",
+    "objectID": "schedule/slides/syllabus.html#section",
+    "href": "schedule/slides/syllabus.html#section",
     "title": "UBC Stat550",
     "section": "Introduction and Second half pivot",
     "text": "Introduction and Second half pivot\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
@@ -221,410 +221,158 @@
     "href": "schedule/slides/syllabus.html#getting-setup",
     "title": "UBC Stat550",
     "section": "Getting setup",
-    "text": "Getting setup\n\nAdd to Slack Channel: https://ubc-stat.slack.com/archives/C04QUDNJG9X\nGithub account: https://github.com/\nAdd to the Github Org — tell me your account\nRStudio synchronization\n\n\n\nUBC Stat 550 - 2024"
+    "text": "Getting setup\n\nAdd to Slack Channel: https://ubc-stat.slack.com/archives/C04QUDNJG9X\nGithub account: https://github.com/\nAdd to the Github Org — tell me your account\nRStudio synchronization\n\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/organization.html#meta-lecture",
-    "href": "schedule/slides/organization.html#meta-lecture",
+    "objectID": "schedule/slides/pca-intro.html#section",
+    "href": "schedule/slides/pca-intro.html#section",
     "title": "UBC Stat550",
-    "section": "Organization",
-    "text": "Organization\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Principal components analysis",
+    "text": "Principal components analysis\nStat 550\nDaniel J. McDonald\nLast modified – 30 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
-    "objectID": "schedule/slides/organization.html#i-urge-you-to-consult",
-    "href": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "objectID": "schedule/slides/pca-intro.html#representation-learning",
+    "href": "schedule/slides/pca-intro.html#representation-learning",
     "title": "UBC Stat550",
-    "section": "I urge you to consult:",
-    "text": "I urge you to consult:\nKarl Broman’s Notes"
+    "section": "Representation learning",
+    "text": "Representation learning\nRepresentation learning is the idea that performance of ML methods is highly dependent on the choice of representation\nFor this reason, much of ML is geared towards transforming the data into the relevant features and then using these as inputs\nThis idea is as old as statistics itself, really,\nHowever, the idea is constantly revisited in a variety of fields and contexts\nCommonly, these learned representations capture low-level information like overall shapes\nIt is possible to quantify this intuition for PCA at least\n\n\nGoal\n\nTransform \\(\\mathbf{X}\\in \\R^{n\\times p}\\) into \\(\\mathbf{Z} \\in \\R^{n \\times ?}\\)\n\n\n?-dimension can be bigger (feature creation) or smaller (dimension reduction) than \\(p\\)"
   },
   {
-    "objectID": "schedule/slides/organization.html#organizing-your-stuff",
-    "href": "schedule/slides/organization.html#organizing-your-stuff",
+    "objectID": "schedule/slides/pca-intro.html#pca",
+    "href": "schedule/slides/pca-intro.html#pca",
     "title": "UBC Stat550",
-    "section": "Organizing your stuff",
-    "text": "Organizing your stuff\n\n\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── FKF\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── ghclass\n│   └── spatio-temporal-exp-fam\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n│   ├── Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website\n\nInside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\n\n\nSeparate raw / processed data\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
+    "section": "PCA",
+    "text": "PCA\nPrincipal components analysis (PCA) is a dimension reduction technique\nIt solves various equivalent optimization problems\n(Maximize variance, minimize \\(\\ell_2\\) distortions, find closest subspace of a given rank, \\(\\ldots\\))\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]"
   },
   {
-    "objectID": "schedule/slides/organization.html#basic-principles",
-    "href": "schedule/slides/organization.html#basic-principles",
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
     "title": "UBC Stat550",
-    "section": "Basic principles",
-    "text": "Basic principles\n\nDevelop your own system\nPut everything in a common directory\nBe consistent – directory structure; names\nSeparate raw from processed data\nSeparate code from data\nIt should be obvious what code created what files, and what the dependencies are.\nNo hand-editing of data files\nDon’t use spaces in file names\nUse relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/blah\nThe {here} package in R is great for this"
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nSuppose we have predictors \\(\\x_1\\) and \\(\\x_2\\) (columns / features / measurements)\n\nWe more faithfully preserve the structure of this data by keeping \\(\\x_1\\) and setting \\(\\x_2\\) to zero than the opposite"
   },
   {
-    "objectID": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
-    "href": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
     "title": "UBC Stat550",
-    "section": "Problem: Coordinating with collaborators",
-    "text": "Problem: Coordinating with collaborators\n\nWhere to put data that multiple people will work with?\nWhere to put intermediate/processed data?\nWhere to indicate the code that created those processed data files?\nHow to divvy up tasks and know who did what?\nNeed to agree on directory structure and file naming conventions\n\nGitHub is (I think) the ideal solution, but not always feasible."
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nAn important feature of the previous example is that \\(\\x_1\\) and \\(\\x_2\\) aren’t correlated\nWhat if they are?\n\nWe lose a lot of structure by setting either \\(\\x_1\\) or \\(\\x_2\\) to zero"
   },
   {
-    "objectID": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
-    "href": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
     "title": "UBC Stat550",
-    "section": "Problem: Collaborators who don’t use GitHub",
-    "text": "Problem: Collaborators who don’t use GitHub\n\nUse GitHub yourself\nCopy files to/from some shared space\n\nIdeally, in an automated way (Dropbox, S3 Bucket)\nAvoid Word at all costs. Google Docs if needed.\nWord and Git do not mix\nLast resort: Word file in Dropbox. Everything else nicely organized on your end. Rmd file with similar structure to Manuscript that does the analysis.\n\nCommit their changes.\n\n\nOverleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it."
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nThe only difference is the first is a rotation of the second"
   },
   {
-    "objectID": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
-    "href": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
+    "objectID": "schedule/slides/pca-intro.html#pca-1",
+    "href": "schedule/slides/pca-intro.html#pca-1",
     "title": "UBC Stat550",
-    "section": "Using Rmarkdown/Quarto for most things",
-    "text": "Using Rmarkdown/Quarto for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
+    "section": "PCA",
+    "text": "PCA\nIf we knew how to rotate our data, then we could more easily retain the structure.\nPCA gives us exactly this rotation\n\nCenter (+scale?) the data matrix \\(\\X\\)\nCompute the SVD of \\(\\X = \\U\\D \\V^\\top\\) (always exists)\nReturn \\(\\U_M\\D_M\\), where \\(\\D_M\\) is the largest \\(M\\) singular values of \\(\\X\\)"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-basics",
-    "href": "schedule/slides/organization.html#the-basics",
+    "objectID": "schedule/slides/pca-intro.html#pca-2",
+    "href": "schedule/slides/pca-intro.html#pca-2",
     "title": "UBC Stat550",
-    "section": "The basics",
-    "text": "The basics\n1.\nI do all class documents in Rmarkdown/Quarto. Notes, slides, etc. Organized in Github repos:\n├── github-org\n│  ├── admm-cd\n│  ├── class-management\n│  ├── convexity-exercises\n...\n│  └── useful-materials\n├── instructor-private\n│  ├── README.md\n│  └── brief-summary\n└── student-public\n    ├── README.md\n    ├── docs\n    └── lecture-slides"
+    "section": "PCA",
+    "text": "PCA\n\n\nCode\ns &lt;- svd(X)\ntib &lt;- rbind(X, s$u %*% diag(s$d), s$u %*% diag(c(s$d[1], 0)))\ntib &lt;- tibble(\n  x1 = tib[, 1], x2 = tib[, 2],\n  name = rep(1:3, each = 20)\n)\nplotter &lt;- function(set = 1, main = \"original\") {\n  tib |&gt;\n    filter(name == set) |&gt;\n    ggplot(aes(x1, x2)) +\n    geom_point(colour = blue) +\n    coord_cartesian(c(-2, 2), c(-2, 2)) +\n    theme(legend.title = element_blank(), legend.position = \"bottom\") +\n    ggtitle(main)\n}\ncowplot::plot_grid(\n  plotter() + labs(x = bquote(x[1]), y = bquote(x[2])),\n  plotter(2, \"rotated\") +\n    labs(x = bquote((UD)[1] == (XV)[1]), y = bquote((UD)[2] == (XV)[2])),\n  plotter(3, \"rotated+projected\") +\n    labs(x = bquote(U[1] ~ D[1] == (XV)[1]), y = bquote(U[2] ~ D[2] %==% 0)),\n  nrow = 1, axis = \"tb\"\n)"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-basics-1",
-    "href": "schedule/slides/organization.html#the-basics-1",
+    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
+    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
     "title": "UBC Stat550",
-    "section": "The basics",
-    "text": "The basics\n2.\nWhen working out new code for a project, I use a combination of R package (as I get close to completion) and Rmarkdown.\n\nMany stat journals require reproducible, documented code. An R package is great for this.\nRmarkdown alone lets me document as I go.\n\n3.\nMy students are required to give me reports in Rmarkdown or Google docs (for practice)."
+    "section": "PCA on some pop music data",
+    "text": "PCA on some pop music data\n\n\nCode\nmusic &lt;- Stat406::popmusic_train\nX &lt;- music |&gt; select(danceability:energy, loudness, speechiness:valence)\npca &lt;- prcomp(X, scale = TRUE) ## DON'T USE princomp()\nmusic\n\n\n# A tibble: 1,269 × 15\n   artist      danceability energy   key loudness  mode speechiness acousticness\n   &lt;fct&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;\n 1 Taylor Swi…        0.781  0.357     0   -16.4      1      0.912       0.717  \n 2 Taylor Swi…        0.627  0.266     9   -15.4      1      0.929       0.796  \n 3 Taylor Swi…        0.516  0.917    11    -3.19     0      0.0827      0.0139 \n 4 Taylor Swi…        0.629  0.757     1    -8.37     0      0.0512      0.00384\n 5 Taylor Swi…        0.686  0.705     9   -10.8      1      0.249       0.832  \n 6 Taylor Swi…        0.522  0.691     2    -4.82     1      0.0307      0.00609\n 7 Taylor Swi…        0.31   0.374     6    -8.46     1      0.0275      0.761  \n 8 Taylor Swi…        0.705  0.621     2    -8.09     1      0.0334      0.101  \n 9 Taylor Swi…        0.553  0.604     1    -5.30     0      0.0258      0.202  \n10 Taylor Swi…        0.419  0.908     9    -5.16     1      0.0651      0.00048\n# ℹ 1,259 more rows\n# ℹ 7 more variables: instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,\n#   tempo &lt;dbl&gt;, time_signature &lt;int&gt;, duration_ms &lt;int&gt;, explicit &lt;lgl&gt;"
   },
   {
-    "objectID": "schedule/slides/organization.html#for-professional-presentations",
-    "href": "schedule/slides/organization.html#for-professional-presentations",
+    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
+    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
     "title": "UBC Stat550",
-    "section": "For professional presentations",
-    "text": "For professional presentations\nI use Rmarkdown + Beamer: Now I use Rmd + Xaringan (see dajmcdon/talk-template)\n---\ntitle: \"Statistical approaches to epidemic forecasting\"\nauthor: \"Daniel J. McDonald\"\ndate: \"10 February 2023\"\noutput:\n  xaringan::moon_reader:\n    css: [src/xaringan-themer.css, src/slides-style.css]\n    nature:\n      beforeInit: [\"src/macros.js\", \"https://platform.twitter.com/widgets.js\"]\n      highlightStyle: github\n      highlightLines: true\n      ratio: 16:9\n      slideNumber: true\n      countIncrementalSlides: true\n    seal: false\n---"
+    "section": "PCA on some pop music data",
+    "text": "PCA on some pop music data\n\n15 dimensions to 2\ncoloured by artist\n\n\n\nCode\nproj_pca &lt;- predict(pca)[,1:2] |&gt;\n  as_tibble() |&gt;\n  mutate(artist = music$artist)\n#| fig-width: 8\n#| fig-height: 3\ng1 &lt;- ggplot(proj_pca, aes(PC1, PC2, color = artist)) +\n  geom_point() +\n  theme(legend.position = \"none\") +\n  scale_color_viridis_d()\ng2 &lt;- ggplot(\n  tibble(var_explained = pca$sdev^2 / sum(pca$sdev^2), M = 1:ncol(X)),\n  aes(M, var_explained)\n) +\n  geom_point(color = orange) +\n  scale_x_continuous(breaks = 1:10) +\n  geom_segment(aes(xend = M, yend = 0), color = blue)\ncowplot::plot_grid(g1, g2)"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
-    "href": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
+    "objectID": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
+    "href": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
     "title": "UBC Stat550",
-    "section": "The old presentation (when I was in Grad School)",
-    "text": "The old presentation (when I was in Grad School)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nEtc, etc.\n\nNow:\nCode and Text live in one file. I just recompile."
+    "section": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)",
+    "text": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)\n\n\nCode\npca$rotation[, 1:2] |&gt;\n  as_tibble() |&gt;\n  set_names(c(\"Weight 1\", \"Weight 2\")) |&gt;\n  mutate(feature = names(X)) |&gt;\n  pivot_longer(-feature) |&gt;\n  ggplot(aes(value, feature, fill = feature)) +\n  facet_wrap(~name) +\n  geom_col() +\n  theme(legend.position = \"none\", axis.title = element_blank()) +\n  scale_fill_brewer(palette = \"Dark2\") +\n  geom_vline(xintercept = 0)"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-old-manuscript",
-    "href": "schedule/slides/organization.html#the-old-manuscript",
+    "objectID": "schedule/slides/pca-intro.html#matrix-decompositions",
+    "href": "schedule/slides/pca-intro.html#matrix-decompositions",
     "title": "UBC Stat550",
-    "section": "The old manuscript",
-    "text": "The old manuscript\nSimilar to the old presentation.\nNow:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed\n\n\nUBC Stat 550 - 2024"
+    "section": "Matrix decompositions",
+    "text": "Matrix decompositions\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]\nThis is expressed via the SVD: \\(\\X  = \\U\\D\\V^{\\top}\\).\n\n\n\n\n\n\nImportant\n\n\nWe assume throughout that we have centered the data\n\n\n\nThen our new features are\n\\[\\mathbf{Z} = \\X \\V = \\U\\D\\]"
   },
   {
-    "objectID": "schedule/slides/git.html#meta-lecture",
-    "href": "schedule/slides/git.html#meta-lecture",
+    "objectID": "schedule/slides/pca-intro.html#short-svd-aside",
+    "href": "schedule/slides/pca-intro.html#short-svd-aside",
     "title": "UBC Stat550",
-    "section": "Version control",
-    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Short SVD aside",
+    "text": "Short SVD aside\n\nAny \\(n\\times p\\) matrix can be decomposed into \\(\\mathbf{UDV}^\\top\\).\nThis is a computational procedure, like inverting a matrix, svd()\nThese have properties:\n\n\n\\(\\mathbf{U}^\\top \\mathbf{U} = \\mathbf{I}_n\\)\n\\(\\mathbf{V}^\\top \\mathbf{V} = \\mathbf{I}_p\\)\n\\(\\mathbf{D}\\) is diagonal (0 off the diagonal)\n\nMany methods for dimension reduction use the SVD of some matrix."
   },
   {
-    "objectID": "schedule/slides/git.html#why-version-control",
-    "href": "schedule/slides/git.html#why-version-control",
+    "objectID": "schedule/slides/pca-intro.html#why",
+    "href": "schedule/slides/pca-intro.html#why",
     "title": "UBC Stat550",
-    "section": "Why version control?",
-    "text": "Why version control?\n\n\n\n\n\n\nMuch of this lecture is borrowed/stolen from Colin Rundel and Karl Broman"
+    "section": "Why?",
+    "text": "Why?\n\nGiven \\(\\X\\), find a projection \\(\\mathbf{P}\\) onto \\(\\R^M\\) with \\(M \\leq p\\) that minimizes the reconstruction error \\[\n\\begin{aligned}\n\\min_{\\mathbf{P}} &\\,\\, \\lVert \\mathbf{X} - \\mathbf{X}\\mathbf{P} \\rVert^2_F \\,\\,\\, \\textrm{(sum all the elements)}\\\\\n\\textrm{subject to} &\\,\\, \\textrm{rank}(\\mathbf{P}) = M,\\, \\mathbf{P} = \\mathbf{P}^T,\\, \\mathbf{P} = \\mathbf{P}^2\n\\end{aligned}\n\\] The conditions ensure that \\(\\mathbf{P}\\) is a projection matrix onto \\(M\\) dimensions.\nMaximize the variance explained by an orthogonal transformation \\(\\mathbf{A} \\in \\R^{p\\times M}\\) \\[\n\\begin{aligned}\n\\max_{\\mathbf{A}} &\\,\\, \\textrm{trace}\\left(\\frac{1}{n}\\mathbf{A}^\\top \\X^\\top \\X \\mathbf{A}\\right)\\\\\n\\textrm{subject to} &\\,\\, \\mathbf{A}^\\top\\mathbf{A} = \\mathbf{I}_M\n\\end{aligned}\n\\]\n\n\nIn case one, the minimizer is \\(\\mathbf{P} = \\mathbf{V}_M\\mathbf{V}_M^\\top\\)\nIn case two, the maximizer is \\(\\mathbf{A} = \\mathbf{V}_M\\)."
   },
   {
-    "objectID": "schedule/slides/git.html#why-version-control-1",
-    "href": "schedule/slides/git.html#why-version-control-1",
+    "objectID": "schedule/slides/pca-intro.html#code-output-to-look-at",
+    "href": "schedule/slides/pca-intro.html#code-output-to-look-at",
     "title": "UBC Stat550",
-    "section": "Why version control?",
-    "text": "Why version control?\n\nSimple formal system for tracking all changes to a project\nTime machine for your projects\n\nTrack blame and/or praise\nRemove the fear of breaking things\n\nLearning curve is steep, but when you need it you REALLY need it\n\n\n\n\nWords of wisdom\n\n\nYour closest collaborator is you six months ago, but you don’t reply to emails.\n– Paul Wilson"
+    "section": "Code output to look at",
+    "text": "Code output to look at\n\npca &lt;- prcomp(X) # never use `princomp()`\npredict(pca)[,1:2] # the 2D embedding\npca$x[,1:2] # also the 2D embedding\npca$rotation[,1:2] # the weights\npca$sdev^2 / sum(pca$sdev^2) # % variance explained\n\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/git.html#why-git",
-    "href": "schedule/slides/git.html#why-git",
+    "objectID": "schedule/slides/grad-school.html#section",
+    "href": "schedule/slides/grad-school.html#section",
     "title": "UBC Stat550",
-    "section": "Why Git",
-    "text": "Why Git\n\n\n\nYou could use something like Box or Dropbox\nThese are poor-man’s version control\nGit is much more appropriate\nIt works with large groups\nIt’s very fast\nIt’s much better at fixing mistakes\nTech companies use it (so it’s in your interest to have some experience)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis will hurt, but what doesn’t kill you, makes you stronger."
+    "section": "Skills for graduate students",
+    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
-    "objectID": "schedule/slides/git.html#overview",
-    "href": "schedule/slides/git.html#overview",
+    "objectID": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
+    "href": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
     "title": "UBC Stat550",
-    "section": "Overview",
-    "text": "Overview\n\ngit is a command line program that lives on your machine\nIf you want to track changes in a directory, you type git init\nThis creates a (hidden) directory called .git\nThe .git directory contains a history of all changes made to “versioned” files\nThis top directory is referred to as a “repository” or “repo”\nhttp://github.com is a service that hosts a repo remotely and has other features: issues, project boards, pull requests, renders .ipynb & .md\nSome IDEs (pycharm, RStudio, VScode) have built in git\ngit/GitHub is broad and complicated. Here, just what you need"
+    "section": "Something happens in graduate school",
+    "text": "Something happens in graduate school\n\nAs undergrads, you took lots of classes\nYou didn’t care that much about all of them\nSure, you wanted good grades, but you may not have always wanted to really learn the material\nAnd you probably didn’t try to go in depth beyond the requirements\n\n\n\nThat has to change in grad school\nEven if you don’t want a to be a professor, to get a PhD, to do an MSc thesis.\nThis is the material that you have decided you will use for the rest of your life\n\n\n\n\nIf you disagree, then we should talk"
   },
   {
-    "objectID": "schedule/slides/git.html#aside-on-built-in-command-line",
-    "href": "schedule/slides/git.html#aside-on-built-in-command-line",
+    "objectID": "schedule/slides/grad-school.html#side-discussion-on-reading-for-research",
+    "href": "schedule/slides/grad-school.html#side-discussion-on-reading-for-research",
     "title": "UBC Stat550",
-    "section": "Aside on “Built-in” & “Command line”",
-    "text": "Aside on “Built-in” & “Command line”\n\n\n\n\n\n\nTip\n\n\nFirst things first, RStudio and the Terminal\n\n\n\n\nCommand line is the “old” type of computing. You type commands at a prompt and the computer “does stuff”.\nYou may not have seen where this is. RStudio has one built in called “Terminal”\nThe Mac System version is also called “Terminal”. If you have a Linux machine, this should all be familiar.\nWindows is not great at this.\nTo get the most out of Git, you have to use the command line."
+    "section": "Side discussion on “Reading for research”",
+    "text": "Side discussion on “Reading for research”\n\nYou should “read” regularly: set aside an 2-3 hours every week\nStay up-to-date on recent research, determine what you find interesting\nWhat do people care about? What does it take to write journal articles?"
   },
   {
-    "objectID": "schedule/slides/git.html#typical-workflow",
-    "href": "schedule/slides/git.html#typical-workflow",
+    "objectID": "schedule/slides/grad-school.html#what-is-read",
+    "href": "schedule/slides/grad-school.html#what-is-read",
     "title": "UBC Stat550",
-    "section": "Typical workflow",
-    "text": "Typical workflow\n\nDownload a repo from Github\n\ngit clone https://github.com/stat550-2021/lecture-slides.git\n\nCreate a branch\n\ngit branch &lt;branchname&gt;\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\ngit add &lt;name/of/tracked/file&gt;\n\nCommit your changes\n\ngit commit -m \"Some explanatory message\"\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to Github\n\ngit push\ngit push -u origin &lt;branchname&gt;"
+    "section": "What is “read”?",
+    "text": "What is “read”?\n\nStart with titles, then abstracts, then intro+conclusion\nEach is a filter to determine how far to go\nPass 3 filters, read the paper (should take about ~30 minutes)\nDon’t get bogged down in notation, proofs\nOrganize your documents somehow, make notes in the margins, etc\nAfter you read it, you should be able to tell me what they show, why it’s important, why it’s novel\nIf you can, figure out how they show something. This is hard."
   },
   {
-    "objectID": "schedule/slides/git.html#what-should-be-tracked",
-    "href": "schedule/slides/git.html#what-should-be-tracked",
+    "objectID": "schedule/slides/grad-school.html#how-to-find-and-organize-papers",
+    "href": "schedule/slides/grad-school.html#how-to-find-and-organize-papers",
     "title": "UBC Stat550",
-    "section": "What should be tracked?",
-    "text": "What should be tracked?\n\nDefinitely\ncode, markdown documentation, tex files, bash scripts/makefiles, …\n\nPossibly\nlogs, jupyter notebooks, images (that won’t change), …\n\nQuestionable\nprocessed data, static pdfs, …\n\nDefinitely not\nfull data, continually updated pdfs, other things compiled from source code, …"
+    "section": "How to find and organize papers",
+    "text": "How to find and organize papers\n\narXiv, AOS, JASA, JCGS have RSS feeds, email lists etc\nFind a statistician you like who filters\nFollow reading groups\nConference proceedings\nBecome an IMS member, SSC member (ASA costs money:( )\nBibDesk, Zotero"
   },
   {
-    "objectID": "schedule/slides/git.html#what-things-to-track",
-    "href": "schedule/slides/git.html#what-things-to-track",
+    "objectID": "schedule/slides/grad-school.html#ideal-outcome",
+    "href": "schedule/slides/grad-school.html#ideal-outcome",
     "title": "UBC Stat550",
-    "section": "What things to track",
-    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# User-specific files\n.Ruserdata\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n\nShortcut to track everything (use carefully):\n\ngit add ."
+    "section": "Ideal outcome",
+    "text": "Ideal outcome\n\nIf you need to learn something, you can teach yourself\nKnow how to find the basics on the internet\nKnow how to go in depth with real sources\nCollect a set of resources that you can turn to regularly\nIf you need to read a book, you can\nIf you need to pick up a new coding language, you can\n\n\n\n\n\n\n\n\nWhat this doesn’t mean\n\n\nYou are not expected to have all the answers at the tips of your fingers.\n\n\n\nBut you should get progressively good at finding them.\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/git.html#rules",
-    "href": "schedule/slides/git.html#rules",
-    "title": "UBC Stat550",
-    "section": "Rules",
-    "text": "Rules\n\nEach team has their own repo\nMake a PR against main to submit\nPeer evaluations are done via PR review (also send to Estella)\nYOU must make at least 5 commits (fewer will lead to deductions)\nI review your work and merge the PR\n\nProject submissions are done similarly."
-  },
-  {
-    "objectID": "schedule/slides/git.html#whats-a-pr",
-    "href": "schedule/slides/git.html#whats-a-pr",
-    "title": "UBC Stat550",
-    "section": "What’s a PR?",
-    "text": "What’s a PR?\n\nThis exists on Github (not git)\nDemonstration"
-  },
-  {
-    "objectID": "schedule/slides/git.html#some-things-to-be-aware-of",
-    "href": "schedule/slides/git.html#some-things-to-be-aware-of",
-    "title": "UBC Stat550",
-    "section": "Some things to be aware of",
-    "text": "Some things to be aware of\n\nmaster vs main\nIf you think you did something wrong, stop and ask for help\nThere are guardrails in place. But those won’t stop a bulldozer.\nThe hardest part is the initial setup. Then, this should all be rinse-and-repeat.\nThis book is great: Happy Git with R\n\nSee Chapter 6 if you have install problems.\nSee Chapter 10 for credential caching (avoid typing a password all the time)\nSee Chapter 13 if RStudio can’t find git"
-  },
-  {
-    "objectID": "schedule/slides/git.html#the-maindevelopbranch-workflow",
-    "href": "schedule/slides/git.html#the-maindevelopbranch-workflow",
-    "title": "UBC Stat550",
-    "section": "The main/develop/branch workflow",
-    "text": "The main/develop/branch workflow\n\nWhen working on your own\n\nDon’t NEED branches (but you should use them, really)\nI make a branch if I want to try a modification without breaking what I have.\n\nWhen working on a large team with production grade software\n\nmain is protected, released version of software (maybe renamed to release)\ndevelop contains things not yet on main, but thoroughly tested\nOn a schedule (once a week, once a month) develop gets merged to main\nYou work on a feature branch off develop to build your new feature\nYou do a PR against develop. Supervisors review your contributions\n\n\n\nI and many DS/CS/Stat faculty use this workflow with my lab."
-  },
-  {
-    "objectID": "schedule/slides/git.html#protection",
-    "href": "schedule/slides/git.html#protection",
-    "title": "UBC Stat550",
-    "section": "Protection",
-    "text": "Protection\n\nTypical for your PR to trigger tests to make sure you don’t break things\nTypical for team members or supervisors to review your PR for compliance\n\n\n\n\n\n\n\nTip\n\n\nI suggest you adopt the “production” version for your Team Assignments"
-  },
-  {
-    "objectID": "schedule/slides/git.html#guardrails",
-    "href": "schedule/slides/git.html#guardrails",
-    "title": "UBC Stat550",
-    "section": "Guardrails",
-    "text": "Guardrails\n\nThe .github directory contains interactions with GitHub\n\nActions: On push / PR / other GitHub does something on their server (builds a website, runs tests on code)\nPR templates: Little admonitions when you open a PR\nBranch protection: prevent you from doing stuff\n\nIn this course, I protect main so that you can’t push there\n\n\n\n\n\n\n\nWarning\n\n\nIf you try to push to main, it will give an error like\nremote: error: GH006: Protected branch update failed for refs/heads/main.\nThe fix is: make a new branch, then push that."
-  },
-  {
-    "objectID": "schedule/slides/git.html#operations-in-rstudio",
-    "href": "schedule/slides/git.html#operations-in-rstudio",
-    "title": "UBC Stat550",
-    "section": "Operations in Rstudio",
-    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\n\n\n\n\n\n\nCovers:\n\n\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\n\n\nCommand line versions (of the same)\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;"
-  },
-  {
-    "objectID": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
-    "href": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
-    "title": "UBC Stat550",
-    "section": "Other useful stuff (but command line only)",
-    "text": "Other useful stuff (but command line only)\n\n\nInitializing\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\nStaging\ngit add name/of/file # stage 1 file\ngit add . # stage all\nCommitting\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \nPushing\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n\nBranching\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\nCheck the status\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs"
-  },
-  {
-    "objectID": "schedule/slides/git.html#conflicts",
-    "href": "schedule/slides/git.html#conflicts",
-    "title": "UBC Stat550",
-    "section": "Conflicts",
-    "text": "Conflicts\n\nSometimes you merge things and “conflicts” happen.\nMeaning that changes on one branch would overwrite changes on a different branch.\n\n\n\n\nThey look like this:\n\nHere are lines that are either unchanged from\nthe common ancestor, or cleanly resolved \nbecause only one side changed.\n\nBut below we have some troubles\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; yours:sample.txt\nConflict resolution is hard;\nlet's go shopping.\n=======\nGit makes conflict resolution easy.\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs:sample.txt\n\nAnd here is another line that is cleanly \nresolved or unmodified.\n\nYou get to decide, do you want to keep\n\nYour changes (above ======)\nTheir changes (below ======)\nBoth.\nNeither.\n\nBut always delete the &lt;&lt;&lt;&lt;&lt;, ======, and &gt;&gt;&gt;&gt;&gt; lines.\nOnce you’re satisfied, committing resolves the conflict."
-  },
-  {
-    "objectID": "schedule/slides/git.html#some-other-pointers",
-    "href": "schedule/slides/git.html#some-other-pointers",
-    "title": "UBC Stat550",
-    "section": "Some other pointers",
-    "text": "Some other pointers\n\nCommits have long names: 32b252c854c45d2f8dfda1076078eae8d5d7c81f\n\nIf you want to use it, you need “enough to be unique”: 32b25\n\nOnline help uses directed graphs in ways different from statistics:\n\nIn stats, arrows point from cause to effect, forward in time\nIn git docs, it’s reversed, they point to the thing on which they depend\n\n\nCheat sheet\nhttps://training.github.com/downloads/github-git-cheat-sheet.pdf"
-  },
-  {
-    "objectID": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
-    "href": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
-    "title": "UBC Stat550",
-    "section": "How to undo in 3 scenarios",
-    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\n\nIn RStudio, select the file and click   then select  Revert…\n\n# grab the previously committed version\ngit checkout -- README.md \n2. Staged but not committed\n\nIn RStudio, uncheck the box by the file, then use the method above.\n\n# unstage\ngit reset HEAD README.md\ngit checkout -- README.md\n\n3. Committed\n\nNot easy to do in RStudio…\n\n# check the log to see where you made the chg, \ngit log\n# go one step before that (eg to 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n\n# alternatively\n# if it happens to also be on another branch\ngit checkout otherbranch -- README.md"
-  },
-  {
-    "objectID": "schedule/slides/git.html#recovering-from-things",
-    "href": "schedule/slides/git.html#recovering-from-things",
-    "title": "UBC Stat550",
-    "section": "Recovering from things",
-    "text": "Recovering from things\n\nAccidentally did work on main, Tried to Push but got refused\n\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\ngit checkout main\ngit branch -d badbranch\n\nAnything more complicated, either post to Slack or LMGTFY"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#meta-lecture",
-    "href": "schedule/slides/bootstrap.html#meta-lecture",
-    "title": "UBC Stat550",
-    "section": "The bootstrap",
-    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#in-statistics",
-    "href": "schedule/slides/bootstrap.html#in-statistics",
-    "title": "UBC Stat550",
-    "section": "In statistics…",
-    "text": "In statistics…\nThe “bootstrap” works. And well.\nIt’s good for “second-level” analysis.\n\n“First-level” analyses are things like \\(\\hat\\beta\\), \\(\\hat y\\), an estimator of the center (a median), etc.\n“Second-level” are things like \\(\\Var{\\hat\\beta}\\), a confidence interval for \\(\\hat y\\), or a median, etc.\n\nYou usually get these “second-level” properties from “the sampling distribution of an estimator”\n\nBut what if you don’t know the sampling distribution? Or you’re skeptical of the CLT argument?"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#refresher-on-sampling-distributions",
-    "href": "schedule/slides/bootstrap.html#refresher-on-sampling-distributions",
-    "title": "UBC Stat550",
-    "section": "Refresher on sampling distributions",
-    "text": "Refresher on sampling distributions\n\nIf \\(X_i\\) are iid Normal \\((0,\\sigma^2)\\), then \\(\\Var{\\bar{X}} = \\sigma^2 / n\\).\nIf \\(X_i\\) are iid and \\(n\\) is big, then \\(\\Var{\\bar{X}} \\approx \\Var{X_1} / n\\).\nIf \\(X_i\\) are iid Binomial \\((m, p)\\), then \\(\\Var{\\bar{X}} = mp(1-p) / n\\)"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#example-of-unknown-sampling-distribution",
-    "href": "schedule/slides/bootstrap.html#example-of-unknown-sampling-distribution",
-    "title": "UBC Stat550",
-    "section": "Example of unknown sampling distribution",
-    "text": "Example of unknown sampling distribution\nI estimate a LDA on some data.\nI get a new \\(x_0\\) and produce \\(\\hat{Pr}(y_0 =1 \\given x_0)\\).\nCan I get a 95% confidence interval for \\(Pr(y_0=1 \\given x_0)\\)?\n\nThe bootstrap gives this to you."
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#procedure",
-    "href": "schedule/slides/bootstrap.html#procedure",
-    "title": "UBC Stat550",
-    "section": "Procedure",
-    "text": "Procedure\n\nResample your training data w/ replacement.\nCalculate a LDA on this sample.\nProduce a new prediction, call it \\(\\widehat{Pr}_b(y_0 =1 \\given x_0)\\).\nRepeat 1-3 \\(b = 1,\\ldots,B\\) times.\nCI: \\(\\left[2\\widehat{Pr}(y_0 =1 \\given x_0) - \\widehat{F}_{boot}(1-\\alpha/2),\\ 2\\widehat{Pr}(y_0 =1 \\given x_0) - \\widehat{F}_{boot}(\\alpha/2)\\right]\\)\n\n\\(\\hat{F}\\) is the “empirical” distribution of the bootstraps."
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#very-basic-example",
-    "href": "schedule/slides/bootstrap.html#very-basic-example",
-    "title": "UBC Stat550",
-    "section": "Very basic example",
-    "text": "Very basic example\n\nLet \\(X_i\\sim Exponential(1/5)\\). The pdf is \\(f(x) = \\frac{1}{5}e^{-x/5}\\)\nI know if I estimate the mean with \\(\\bar{X}\\), then by the CLT (if \\(n\\) is big),\n\n\\[\\frac{\\sqrt{n}(\\bar{X}-E[X])}{s} \\approx N(0, 1).\\]\n\nThis gives me a 95% confidence interval like \\[\\bar{X} \\pm 2 \\frac{s}{\\sqrt{n}}\\]\nBut I don’t want to estimate the mean, I want to estimate the median."
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#now-what",
-    "href": "schedule/slides/bootstrap.html#now-what",
-    "title": "UBC Stat550",
-    "section": "Now what",
-    "text": "Now what\n\nI give you a sample of size 500, you give me the sample median.\nHow do you get a CI?\nYou can use the bootstrap!\n\n\nset.seed(2022-11-01)\nx &lt;- rexp(n, 1 / 5)\n(med &lt;- median(x)) # sample median\n\n[1] 3.669627\n\nB &lt;- 100\nalpha &lt;- 0.05\nbootMed &lt;- function() median(sample(x, replace = TRUE)) # resample, and get the median\nFhat &lt;- replicate(B, bootMed()) # repeat B times, \"empirical distribution\"\nCI &lt;- 2 * med - quantile(Fhat, probs = c(1 - alpha / 2, alpha / 2))"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#slightly-harder-example",
-    "href": "schedule/slides/bootstrap.html#slightly-harder-example",
-    "title": "UBC Stat550",
-    "section": "Slightly harder example",
-    "text": "Slightly harder example\n\n\n\nggplot(fatcats, aes(Bwt, Hwt)) + \n  geom_point(color = \"darkblue\") + \n  xlab(\"Cat body weight (Kg)\") + \n  theme_bw(base_size = 18) +\n  ylab(\"Cat heart weight (g)\")\n\n\n\n\n\n\n\n\n\n\ncats.lm &lt;- lm(Hwt ~ 0 + Bwt, data = fatcats)\nsummary(cats.lm)\n\n\nCall:\nlm(formula = Hwt ~ 0 + Bwt, data = fatcats)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.9293 -1.0460 -0.1407  0.8298 16.2536 \n\nCoefficients:\n    Estimate Std. Error t value Pr(&gt;|t|)    \nBwt  3.81895    0.07678   49.74   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.549 on 143 degrees of freedom\nMultiple R-squared:  0.9454,    Adjusted R-squared:  0.945 \nF-statistic:  2474 on 1 and 143 DF,  p-value: &lt; 2.2e-16\n\nconfint(cats.lm)\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#when-we-fit-models-we-examine-diagnostics",
-    "href": "schedule/slides/bootstrap.html#when-we-fit-models-we-examine-diagnostics",
-    "title": "UBC Stat550",
-    "section": "When we fit models, we examine diagnostics",
-    "text": "When we fit models, we examine diagnostics\n\n\n\nqqnorm(residuals(cats.lm))\nqqline(residuals(cats.lm))\n\n\n\n\n\n\n\n\nThe tails are too fat, I don’t believe that CI…\n\nWe bootstrap\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\nfor (b in 1:B) {\n  samp &lt;- sample(1:nrow(fatcats), replace = TRUE)\n  newcats &lt;- fatcats[samp, ] # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # Bootstrap CI\n  quantile(bhats, probs = c(1 - alpha / 2, alpha / 2))\n\n   97.5%     2.5% \n3.654977 3.955927 \n\nconfint(cats.lm) # Original CI\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#an-alternative",
-    "href": "schedule/slides/bootstrap.html#an-alternative",
-    "title": "UBC Stat550",
-    "section": "An alternative",
-    "text": "An alternative\n\nSo far, I didn’t use any information about the data-generating process.\nWe’ve done the non-parametric bootstrap\nThis is easiest, and most common for most cases.\n\n\nBut there’s another version\n\nYou could try a “parametric bootstrap”\nThis assumes knowledge about the DGP"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#same-data",
-    "href": "schedule/slides/bootstrap.html#same-data",
-    "title": "UBC Stat550",
-    "section": "Same data",
-    "text": "Same data\n\n\nNon-parametric bootstrap\nSame as before\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\nfor (b in 1:B) {\n  samp &lt;- sample(1:nrow(fatcats), replace = TRUE)\n  newcats &lt;- fatcats[samp, ] # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # NP Bootstrap CI\n  quantile(bhats, probs = c(1-alpha/2, alpha/2))\n\n   97.5%     2.5% \n3.673559 3.970251 \n\nconfint(cats.lm) # Original CI\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073\n\n\n\nParametric bootstrap\n\nAssume that the linear model is TRUE.\nThen, \\(\\texttt{Hwt}_i = \\widehat{\\beta}\\times \\texttt{Bwt}_i + \\widehat{e}_i\\), \\(\\widehat{e}_i \\approx \\epsilon_i\\)\nThe \\(\\epsilon_i\\) is random \\(\\longrightarrow\\) just resample \\(\\widehat{e}_i\\).\n\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\ncats.lm &lt;- lm(Hwt ~ 0 + Bwt, data = fatcats)\nnewcats &lt;- fatcats\nfor (b in 1:B) {\n  samp &lt;- sample(residuals(cats.lm), replace = TRUE)\n  newcats$Hwt &lt;- predict(cats.lm) + samp # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # Parametric Bootstrap CI\n  quantile(bhats, probs = c(1 - alpha/2, alpha/2))\n\n   97.5%     2.5% \n3.665531 3.961896"
-  },
-  {
-    "objectID": "schedule/slides/bootstrap.html#bootstrap-error-sources",
-    "href": "schedule/slides/bootstrap.html#bootstrap-error-sources",
-    "title": "UBC Stat550",
-    "section": "Bootstrap error sources",
-    "text": "Bootstrap error sources\nSimulation error:\nusing only \\(B\\) samples to estimate \\(F\\) with \\(\\hat{F}\\).\nStatistical error:\nour data depended on a sample from the population. We don’t have the whole population so we make an error by using a sample\n(Note: this part is what always happens with data, and what the science of statistics analyzes.)\nSpecification error:\nIf we use the parametric bootstrap, and our model is wrong, then we are overconfident.\n\n\nUBC Stat 550 - 2024"
-  },
-  {
-    "objectID": "schedule/handouts/reference-books.html",
-    "href": "schedule/handouts/reference-books.html",
-    "title": "Recommended books",
-    "section": "",
-    "text": "These are Prof. Harry Joe’s suggestions for resources on different statistical topics that students might not be exposed to before Stat 550/551.\n\nThe student can also learn about the topic and not just about how an R function works.\nBooks with R in the title are generally not good for learning the theory.\nA book reference with theory and good examples is better than a URL.\n\n\nANOVA for different experimental designs (includes random effects, unbalanced).\n\nStatistical Analysis of Designed Experiments, A C. Tamhane (2009), Wiley.\n\nLogistic regression and diagnostics.\n\nApplied Logistic Regression, 2nd ed, Hosmer and Lemeshow (2000), Wiley.\n\nSurvival or time-to-event data.\n\nStatistical Models and Methods for Lifetime Data, 2nd ed, J.F. Lawless (2003), Wiley.\n\nTime series including multivariate.\n\nTime Series Analysis, Univariate and multivariate methods, 2nd ed., W.W.S. Wei (1990), Addison.\n\nFactor models as part of multivariate statistics.\n\nApplied Multivariate Statistical Analysis, 5th ed, Johnson and Wichern (2002), Prentice Hall (not e-available).\n\nSEM = Structural equation models.\n\nLinear Causal Modeling with Structural Equations, S.A. Mulaik (2009), Chapman&Hall/CRC.\n\nMeta-analysis.\n\nMeta-Analysis of Controlled Clinical Trials, A. Whitehead (2002), Wiley.\n\nNumerical maximum likelihood.\n\nNonlinear Parameter Optimization Using R Tools, J.C. Nash (2014), Wiley.\n\nItem response, validity and reliability of instruments for abstract attributes.\n\nTest Theory: A Unified Treatment, R.D. McDonald (1999), Routledge.\n\nSample size calculation. e.g. non-central t, non-central F etc.,. and general approach.\n\nHaven’t found a good reference with general theory and how to use these distributions in a worked out examples in R.\n\nModification of standard procedures to have clustered data that cannot be considered as iid: easier for estimation, tricky for hypothesis testing.\n\n\n\nJackknife, bootstrap and resampling (tools for preceding item)."
-  },
-  {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": " Syllabus",
-    "section": "",
-    "text": "Important\n\n\n\nSee Canvas for the full syllabus."
-  },
-  {
-    "objectID": "syllabus.html#course-info",
-    "href": "syllabus.html#course-info",
-    "title": " Syllabus",
-    "section": "Course info",
-    "text": "Course info\nCo-Instructors:\nLang Wu and Daniel McDonald\nOffice hours:\nI’m happy to arrange time as needed.\nLectures:\nTue/Thu 14:30 - 16:00"
-  },
-  {
-    "objectID": "syllabus.html#important-considerations",
-    "href": "syllabus.html#important-considerations",
-    "title": " Syllabus",
-    "section": "Important considerations",
-    "text": "Important considerations\n\nUniversity policies\nUBC provides resources to support student learning and to maintain healthy lifestyles but recognizes that sometimes crises arise and so there are additional resources to access including those for survivors of sexual violence. UBC values respect for the person and ideas of all members of the academic community. Harassment and discrimination are not tolerated nor is suppression of academic freedom. UBC provides appropriate accommodation for students with disabilities and for religious, spiritual and cultural observances. UBC values academic honesty and students are expected to acknowledge the ideas generated by others and to uphold the highest academic standards in all of their actions. Details of the policies and how to access support are available here.\n\n\nAcademic honesty and standards\nUBC Vancouver Statement\nAcademic honesty is essential to the continued functioning of the University of British Columbia as an institution of higher learning and research. All UBC students are expected to behave as honest and responsible members of an academic community. Breach of those expectations or failure to follow the appropriate policies, principles, rules, and guidelines of the University with respect to academic honesty may result in disciplinary action.\nFor the full statement, please see the 2020/21 Vancouver Academic Calendar\n\n\nAcademic Concessions\nThese are handled according to UBC policy. Please see\n\nUBC student services\nUBC Vancouver Academic Calendar\nFaculty of Science Concessions\n\n\n\nTake care of yourself\nCourse work at this level can be intense, and I encourage you to take care of yourself. Do your best to maintain a healthy lifestyle this semester by eating well, exercising, avoiding drugs and alcohol, getting enough sleep and taking some time to relax. This will help you achieve your goals and cope with stress. I struggle with these issues too, and I try hard to set aside time for things that make me happy (cooking, playing/listening to music, exercise, going for walks).\nAll of us benefit from support during times of struggle. If you are having any problems or concerns, do not hesitate to speak with me. There are also many resources available on campus that can provide help and support. Asking for support sooner rather than later is almost always a good idea.\nIf you or anyone you know experiences any academic stress, difficult life events, or feelings like anxiety or depression, I strongly encourage you to seek support. UBC Counseling Services is here to help: call 604 822 3811 or visit their website. Consider also reaching out to a friend, faculty member, or family member you trust to help get you the support you need."
-  },
-  {
-    "objectID": "index.html#course-goals",
-    "href": "index.html#course-goals",
-    "title": "UBC Stat550",
-    "section": "Course goals",
-    "text": "Course goals\nThis graduate-level course is designed to serve two overlapping purposes: (1) help students prepare for the Consulting Practicum Course (STAT 551) and/or work with ASDa and (2) give students appropriate professional skills for research, thesis writing, other projects. The major goals are to\n\nRead, understand, explain academic statistical concepts to non-statisticians\nGive high-quality presentations\nLearn how to convert subject-matter questions into statistical ones.\nCommunicate statistical conclusions carefully and rigorously, in writing and presentations\nUse reasonable statistical workflows\nConduct quality computer experiments\nUse version control effectively\nWrite verifiable, reproducible code\n\nClass time will contain some lectures and some guest lectures as well as student presentations and workshops."
-  },
-  {
-    "objectID": "schedule/index.html",
-    "href": "schedule/index.html",
-    "title": " Lecture slides and handouts",
-    "section": "",
-    "text": "Term 2 runs 8 January to 13 April."
-  },
-  {
-    "objectID": "schedule/index.html#lecture-slides",
-    "href": "schedule/index.html#lecture-slides",
-    "title": " Lecture slides and handouts",
-    "section": "Lecture slides",
-    "text": "Lecture slides\n\nBootstrap\nCluster computing\nGit and GitHub\nSkills for graduate students\nTips for organization\nGiving presentations\nTime series\nUnit tests"
-  },
-  {
-    "objectID": "schedule/index.html#handouts",
-    "href": "schedule/index.html#handouts",
-    "title": " Lecture slides and handouts",
-    "section": "Handouts",
-    "text": "Handouts\n\nRecommended books and sources\nFormatting consulting reports"
-  },
-  {
-    "objectID": "schedule/handouts/report-formatting.html",
-    "href": "schedule/handouts/report-formatting.html",
-    "title": "Formatting consulting reports",
-    "section": "",
-    "text": "Note\n\n\n\nThis advice comes from Prof. Harry Joe."
-  },
-  {
-    "objectID": "schedule/handouts/report-formatting.html#client-report-format",
-    "href": "schedule/handouts/report-formatting.html#client-report-format",
-    "title": "Formatting consulting reports",
-    "section": "Client Report Format",
-    "text": "Client Report Format\nThe itemized list given below should work for most reports. The report should be as short as possible with only relevant material; avoid digression and do not mention ideas that were considered but discarded.\nPerhaps start with an outline (bulleted list) of take-home messages (conclusions, statistical advice); then an outline or bulleted list of items needed to support the take-home messages. If the ordering of sections is as given below, write an outline for each section and then convert to paragraphs. This should help to avoid tangential sentences (material not needed to support the statistical advice).\nThe format and most guidelines below are also good for term project reports, presentations, and research articles/reports.\nReports for regular clients: 4 to 6 pages; an appendix of several additional pages (e.g. sample R code) could be added if relevant."
-  },
-  {
-    "objectID": "schedule/handouts/report-formatting.html#ordering-of-sections-of-report.",
-    "href": "schedule/handouts/report-formatting.html#ordering-of-sections-of-report.",
-    "title": "Formatting consulting reports",
-    "section": "Ordering of sections of report.",
-    "text": "Ordering of sections of report.\n\nSuggested Outline\n\nAbstract or executive summary with the “big picture” (motivation) and the most important advice (results).\nIntroduction. Clearly state the scientific objective(s) of the study.\nData description and collection. Provide the important details on the nature of the data and how they were collected. Statistical issues or questions. State the statistical questions the client wants answered (or should want to have answered).\nProposed statistical methods and results.\n\nDescriptive tools: Suggest appropriate tables and figures for summarizing the data; include example figures relevant to the project (use simulated data if you have to)\nAnalytical techniques: Avoid using formulas to the maximal extent possible (supply relevant references instead); explain ideas along with an example and perhaps sample output relevant to the project\nAny statistically significant result should be supported with appropriate graphs or tables.\n\nConclusion. Summarize your recommendations.\nFurther reading. Include references that you know are at the level your client will understand.\nAppendix. If the client wants formulas and computer code, this is the best place to put it\n\n\n\nAdditional advice\n\nDon’t put lengthy computer code or output in the body of your report. If you want to provide some details on how to carry out the analysis you are recommending, put this in the appendix. Ideally, this would be in the software the client plans to use.\nDon’t refer the client to references for explanations or examples without having given your own.\nDo communicate clearly. Avoiding formulas and using relevant examples and figures to back up your explanations are probably the best way to ensure your client will understand your advice.\nDo not use too many digits in your report. Typically numerical output of statistical software requires truncation of the number of decimal places.\nThe captions of graphs and tables should be self-contained enough so that the meaning is clear without reading the body of the report.\nUnits of all variables should be included in summaries etc."
-  },
-  {
-    "objectID": "schedule/handouts/report-formatting.html#suggestions-for-consulting-reports-for-non-statisticians",
-    "href": "schedule/handouts/report-formatting.html#suggestions-for-consulting-reports-for-non-statisticians",
-    "title": "Formatting consulting reports",
-    "section": "Suggestions for Consulting Reports for Non-Statisticians",
-    "text": "Suggestions for Consulting Reports for Non-Statisticians\n\nOverall style\n\nReport should be written to your client, so must use language your client can understand. Use plain English and avoid statistical technical terms, such as “generalized linear model” (better would be binary regression or count regression or ordinal regression depending on the response type) and “hierarchical model”.\nReport should focus on motivation, explanation and interpretation. Your client needs to understand (conceptually) the nature of the analyses you are suggesting/presenting, and it is most important to convey clearly what interpretations are possible based on your suggested analyses.\nSections should be organized to discuss simpler approaches first and more complicated approaches later, using the discussion of the simpler approaches to build up to the more complicated approaches. For example, for regression, could start with one predictor before multiple predictors.\nReport should not include verbatim copy of computer output (for example, R markdown is inappropriate except possibly in the appendix).\nReport should include only essential tables and figures (not everything that you produced from your code). Include only what is needed to support the advice/conclusions.\nNever say that an assumption or hypothesis has been verified. You can say that an assumption of statistical procedure can be assessed with some graphical method.\nIf assumptions about a statistical procedure are included, be precise in stating them without using notation. For example, for the paired-t procedure, saying “the data are assumed to be normally distributed” is imprecise; the precise assumption is that “differences of .. and .. are assumed to be normally distributed”\n\n\n\nAnalysis Strategies\n\nAlways carry out detailed exploratory analyses before any formal analyses.\nAvoid over-reliance on hypothesis testing; estimation via confidence intervals or out-of-sample assessment of prediction ability are much more informative.\nBe careful with pseudo-replication.\nFor statistical methodology, it is better to understand methods based on statistical theory from your previous courses. Avoid use of a search engine for a methodology to solve a problem. It is not acceptable to only provide R (or SAS/python) functions/code as advice for a client. Anything software must be backed up with brief explanations of the methodology in non-technical language. Because there are errors and unclear documentation in many R functions (including non-standard uses of lm(), glm(), anova() etc), when you are using an R function for the first time, please verify most of the output via direct coding of a few lines of R code. Note that output of maximum likelihood estimation can be verified via nlm() (nonlinear minimization function), with input of the negative log-likelihood.\nFor reference of statistical methodology to a client, provide a book reference rather than a web site.\nIf you plan to continue to do research in MSc or PhD program, you will be better prepared if you come up with your own ideas for statistical methods for different data situations and write your own code. That is, if you can develop and code existing methods on your own, this is a step to developing and coding new methods in original statistical research.\n\n\n\nInterpretation of Results\n\nBe very careful when discussing statistical inference based on observational data, when there is no randomization or sampling basis for carrying out the inference. To what population does the inference apply? Keep in mind that your inference is entirely model-based in such situations.\nYour summary section should include a frank and careful discussion of any concerns you may have about your recommended approaches to the client’s problem.\n\n\n\nProofreading and notation\n\nGeneral: Proofread your report very carefully for clarity of wording, optimal organization, and grammatical errors before you submit it for review. Use a spellchecker to check for spelling errors.\nAvoid abbreviations in text. If an abbreviation is needed, show the full term before the first occurrence of the abbreviation.\nIn this course, the word ‘data’ should be considered as plural for grammatical considerations. (The singular form in Latin is ‘datum’).\nIf necessary, information will be posted on correct use of mathematical notation without overloading symbols and abusing notation for functions and random variables."
-  },
-  {
-    "objectID": "schedule/slides/cluster-computing.html#meta-lecture",
-    "href": "schedule/slides/cluster-computing.html#meta-lecture",
+    "objectID": "schedule/slides/cluster-computing.html#section",
+    "href": "schedule/slides/cluster-computing.html#section",
     "title": "UBC Stat550",
     "section": "Cluster computing (at UBC)",
     "text": "Cluster computing (at UBC)\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
@@ -781,56 +529,413 @@
     "href": "schedule/slides/cluster-computing.html#example-2-predicting-future-covid-cases-1",
     "title": "UBC Stat550",
     "section": "Example 2: Predicting future COVID cases",
-    "text": "Example 2: Predicting future COVID cases\n\nfcasters &lt;- list.files(here::here(\"code\", \"forecasters\"))\nfor (fcaster in fcasters) source(here::here(\"code\", \"forecasters\", fcaster))\nregistry_path &lt;- here::here(\"data\", \"forecast-experiments\")\nsource(here::here(\"code\", \"common-pars.R\"))\n\n# Setup the data ----------------------------------------------------\nreg &lt;- makeExperimentRegistry(\n  registry_path,\n  packages = c(\"tidyverse\", \"covidcast\"),\n  source = c(here::here(\"code\", \"forecasters\", fcasters), here::here(\"code\", \"common-pars.R\"))\n)\n\ngrab_data &lt;- function(data, job, forecast_date, ...) {\n  dat &lt;- covidcast_signals(\n    data_sources, signals, as_of = forecast_date, \n    geo_type = geo_type, start_day = \"2020-04-15\") %&gt;% \n    aggregate_signals(format = \"wide\") \n  names(dat)[3:5] &lt;- c(\"value\", \"num\", \"covariate\") # assumes 2 signals\n  dat %&gt;% \n    filter(!(geo_value %in% drop_geos)) %&gt;% \n    group_by(geo_value) %&gt;% \n    arrange(time_value)\n}\naddProblem(\"covidcast_proper\", fun = grab_data, cache = TRUE)\n\n# Algorithm wrappers -----------------------------------------------------\nbaseline &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, value) %&gt;% \n    group_modify(prob_baseline, ...)\n}\nar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    group_modify(prob_ar, ...)\n}\nqar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    group_modify(quant_ar, ...)\n}\ngam &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;%\n    group_modify(safe_prob_gam_ar, ...)\n}\nar_cov &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    group_modify(prob_ar_cov, ...)\n}\njoint &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    joint_ar(...)\n}\ncorrected_ar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, num) %&gt;% \n    rename(value = num) %&gt;% \n    corrections_single_signal(cparams) %&gt;% \n    group_modify(prob_ar, ...)\n}\n\naddAlgorithm(\"baseline\", baseline)\naddAlgorithm(\"ar\", ar)\naddAlgorithm(\"qar\", qar)\naddAlgorithm(\"gam\", gam)\naddAlgorithm(\"ar_cov\", ar_cov)\naddAlgorithm(\"joint_ar\", joint)\naddAlgorithm(\"corrections\", corrected_ar)\n\n# Experimental design -----------------------------------------------------\nproblem_design &lt;- list(covidcast_proper = data.frame(forecast_date = forecast_dates))\nalgorithm_design &lt;- list(\n  baseline = CJ(train_window = train_windows, min_train_window = min(train_windows), ahead = aheads),\n  ar = CJ(\n    train_window = train_windows, min_train_window = min(train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  qar = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads\n  ),\n  gam = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads, df = gam_df\n  ),\n  ar_cov = CJ(\n    train_window = train_windows, min_train_window = min(train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  joint_ar = CJ(\n    train_window = joint_train_windows, min_train_window = min(joint_train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  corrections = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads\n  )\n)\n\naddExperiments(problem_design, algorithm_design)\nids &lt;- unwrap(getJobPars()) %&gt;% \n  select(job.id, forecast_date) %&gt;% \n  mutate(chunk = as.integer(as.factor(forecast_date))) %&gt;% \n  select(-forecast_date)\n\n## ~13000 jobs, we don't want to submit that many since they run fast\n## Chunk them into groups by forecast_date (to download once for the group)\n## Results in 68 chunks\n\nsubmitJobs(ids, resources = list(ncpus = 1, walltime = \"4:00:00\", memory = \"16G\"))\n\n\n\nUBC Stat 550 - 2024"
+    "text": "Example 2: Predicting future COVID cases\n\nfcasters &lt;- list.files(here::here(\"code\", \"forecasters\"))\nfor (fcaster in fcasters) source(here::here(\"code\", \"forecasters\", fcaster))\nregistry_path &lt;- here::here(\"data\", \"forecast-experiments\")\nsource(here::here(\"code\", \"common-pars.R\"))\n\n# Setup the data ----------------------------------------------------\nreg &lt;- makeExperimentRegistry(\n  registry_path,\n  packages = c(\"tidyverse\", \"covidcast\"),\n  source = c(here::here(\"code\", \"forecasters\", fcasters), here::here(\"code\", \"common-pars.R\"))\n)\n\ngrab_data &lt;- function(data, job, forecast_date, ...) {\n  dat &lt;- covidcast_signals(\n    data_sources, signals, as_of = forecast_date, \n    geo_type = geo_type, start_day = \"2020-04-15\") %&gt;% \n    aggregate_signals(format = \"wide\") \n  names(dat)[3:5] &lt;- c(\"value\", \"num\", \"covariate\") # assumes 2 signals\n  dat %&gt;% \n    filter(!(geo_value %in% drop_geos)) %&gt;% \n    group_by(geo_value) %&gt;% \n    arrange(time_value)\n}\naddProblem(\"covidcast_proper\", fun = grab_data, cache = TRUE)\n\n# Algorithm wrappers -----------------------------------------------------\nbaseline &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, value) %&gt;% \n    group_modify(prob_baseline, ...)\n}\nar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    group_modify(prob_ar, ...)\n}\nqar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    group_modify(quant_ar, ...)\n}\ngam &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;%\n    group_modify(safe_prob_gam_ar, ...)\n}\nar_cov &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    group_modify(prob_ar_cov, ...)\n}\njoint &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, value) %&gt;% \n    joint_ar(...)\n}\ncorrected_ar &lt;- function(data, job, instance, ...) {\n  instance %&gt;% \n    dplyr::select(geo_value, time_value, num) %&gt;% \n    rename(value = num) %&gt;% \n    corrections_single_signal(cparams) %&gt;% \n    group_modify(prob_ar, ...)\n}\n\naddAlgorithm(\"baseline\", baseline)\naddAlgorithm(\"ar\", ar)\naddAlgorithm(\"qar\", qar)\naddAlgorithm(\"gam\", gam)\naddAlgorithm(\"ar_cov\", ar_cov)\naddAlgorithm(\"joint_ar\", joint)\naddAlgorithm(\"corrections\", corrected_ar)\n\n# Experimental design -----------------------------------------------------\nproblem_design &lt;- list(covidcast_proper = data.frame(forecast_date = forecast_dates))\nalgorithm_design &lt;- list(\n  baseline = CJ(train_window = train_windows, min_train_window = min(train_windows), ahead = aheads),\n  ar = CJ(\n    train_window = train_windows, min_train_window = min(train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  qar = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads\n  ),\n  gam = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads, df = gam_df\n  ),\n  ar_cov = CJ(\n    train_window = train_windows, min_train_window = min(train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  joint_ar = CJ(\n    train_window = joint_train_windows, min_train_window = min(joint_train_windows), \n    lags = lags_list, ahead = aheads\n  ),\n  corrections = CJ(\n    train_window = train_windows, min_train_window = min(train_windows),\n    lags = lags_list, ahead = aheads\n  )\n)\n\naddExperiments(problem_design, algorithm_design)\nids &lt;- unwrap(getJobPars()) %&gt;% \n  select(job.id, forecast_date) %&gt;% \n  mutate(chunk = as.integer(as.factor(forecast_date))) %&gt;% \n  select(-forecast_date)\n\n## ~13000 jobs, we don't want to submit that many since they run fast\n## Chunk them into groups by forecast_date (to download once for the group)\n## Results in 68 chunks\n\nsubmitJobs(ids, resources = list(ncpus = 1, walltime = \"4:00:00\", memory = \"16G\"))\n\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/grad-school.html#meta-lecture",
-    "href": "schedule/slides/grad-school.html#meta-lecture",
+    "objectID": "schedule/handouts/report-formatting.html",
+    "href": "schedule/handouts/report-formatting.html",
+    "title": "Formatting consulting reports",
+    "section": "",
+    "text": "Note\n\n\n\nThis advice comes from Prof. Harry Joe."
+  },
+  {
+    "objectID": "schedule/handouts/report-formatting.html#client-report-format",
+    "href": "schedule/handouts/report-formatting.html#client-report-format",
+    "title": "Formatting consulting reports",
+    "section": "Client Report Format",
+    "text": "Client Report Format\nThe itemized list given below should work for most reports. The report should be as short as possible with only relevant material; avoid digression and do not mention ideas that were considered but discarded.\nPerhaps start with an outline (bulleted list) of take-home messages (conclusions, statistical advice); then an outline or bulleted list of items needed to support the take-home messages. If the ordering of sections is as given below, write an outline for each section and then convert to paragraphs. This should help to avoid tangential sentences (material not needed to support the statistical advice).\nThe format and most guidelines below are also good for term project reports, presentations, and research articles/reports.\nReports for regular clients: 4 to 6 pages; an appendix of several additional pages (e.g. sample R code) could be added if relevant."
+  },
+  {
+    "objectID": "schedule/handouts/report-formatting.html#ordering-of-sections-of-report.",
+    "href": "schedule/handouts/report-formatting.html#ordering-of-sections-of-report.",
+    "title": "Formatting consulting reports",
+    "section": "Ordering of sections of report.",
+    "text": "Ordering of sections of report.\n\nSuggested Outline\n\nAbstract or executive summary with the “big picture” (motivation) and the most important advice (results).\nIntroduction. Clearly state the scientific objective(s) of the study.\nData description and collection. Provide the important details on the nature of the data and how they were collected. Statistical issues or questions. State the statistical questions the client wants answered (or should want to have answered).\nProposed statistical methods and results.\n\nDescriptive tools: Suggest appropriate tables and figures for summarizing the data; include example figures relevant to the project (use simulated data if you have to)\nAnalytical techniques: Avoid using formulas to the maximal extent possible (supply relevant references instead); explain ideas along with an example and perhaps sample output relevant to the project\nAny statistically significant result should be supported with appropriate graphs or tables.\n\nConclusion. Summarize your recommendations.\nFurther reading. Include references that you know are at the level your client will understand.\nAppendix. If the client wants formulas and computer code, this is the best place to put it\n\n\n\nAdditional advice\n\nDon’t put lengthy computer code or output in the body of your report. If you want to provide some details on how to carry out the analysis you are recommending, put this in the appendix. Ideally, this would be in the software the client plans to use.\nDon’t refer the client to references for explanations or examples without having given your own.\nDo communicate clearly. Avoiding formulas and using relevant examples and figures to back up your explanations are probably the best way to ensure your client will understand your advice.\nDo not use too many digits in your report. Typically numerical output of statistical software requires truncation of the number of decimal places.\nThe captions of graphs and tables should be self-contained enough so that the meaning is clear without reading the body of the report.\nUnits of all variables should be included in summaries etc."
+  },
+  {
+    "objectID": "schedule/handouts/report-formatting.html#suggestions-for-consulting-reports-for-non-statisticians",
+    "href": "schedule/handouts/report-formatting.html#suggestions-for-consulting-reports-for-non-statisticians",
+    "title": "Formatting consulting reports",
+    "section": "Suggestions for Consulting Reports for Non-Statisticians",
+    "text": "Suggestions for Consulting Reports for Non-Statisticians\n\nOverall style\n\nReport should be written to your client, so must use language your client can understand. Use plain English and avoid statistical technical terms, such as “generalized linear model” (better would be binary regression or count regression or ordinal regression depending on the response type) and “hierarchical model”.\nReport should focus on motivation, explanation and interpretation. Your client needs to understand (conceptually) the nature of the analyses you are suggesting/presenting, and it is most important to convey clearly what interpretations are possible based on your suggested analyses.\nSections should be organized to discuss simpler approaches first and more complicated approaches later, using the discussion of the simpler approaches to build up to the more complicated approaches. For example, for regression, could start with one predictor before multiple predictors.\nReport should not include verbatim copy of computer output (for example, R markdown is inappropriate except possibly in the appendix).\nReport should include only essential tables and figures (not everything that you produced from your code). Include only what is needed to support the advice/conclusions.\nNever say that an assumption or hypothesis has been verified. You can say that an assumption of statistical procedure can be assessed with some graphical method.\nIf assumptions about a statistical procedure are included, be precise in stating them without using notation. For example, for the paired-t procedure, saying “the data are assumed to be normally distributed” is imprecise; the precise assumption is that “differences of .. and .. are assumed to be normally distributed”\n\n\n\nAnalysis Strategies\n\nAlways carry out detailed exploratory analyses before any formal analyses.\nAvoid over-reliance on hypothesis testing; estimation via confidence intervals or out-of-sample assessment of prediction ability are much more informative.\nBe careful with pseudo-replication.\nFor statistical methodology, it is better to understand methods based on statistical theory from your previous courses. Avoid use of a search engine for a methodology to solve a problem. It is not acceptable to only provide R (or SAS/python) functions/code as advice for a client. Anything software must be backed up with brief explanations of the methodology in non-technical language. Because there are errors and unclear documentation in many R functions (including non-standard uses of lm(), glm(), anova() etc), when you are using an R function for the first time, please verify most of the output via direct coding of a few lines of R code. Note that output of maximum likelihood estimation can be verified via nlm() (nonlinear minimization function), with input of the negative log-likelihood.\nFor reference of statistical methodology to a client, provide a book reference rather than a web site.\nIf you plan to continue to do research in MSc or PhD program, you will be better prepared if you come up with your own ideas for statistical methods for different data situations and write your own code. That is, if you can develop and code existing methods on your own, this is a step to developing and coding new methods in original statistical research.\n\n\n\nInterpretation of Results\n\nBe very careful when discussing statistical inference based on observational data, when there is no randomization or sampling basis for carrying out the inference. To what population does the inference apply? Keep in mind that your inference is entirely model-based in such situations.\nYour summary section should include a frank and careful discussion of any concerns you may have about your recommended approaches to the client’s problem.\n\n\n\nProofreading and notation\n\nGeneral: Proofread your report very carefully for clarity of wording, optimal organization, and grammatical errors before you submit it for review. Use a spellchecker to check for spelling errors.\nAvoid abbreviations in text. If an abbreviation is needed, show the full term before the first occurrence of the abbreviation.\nIn this course, the word ‘data’ should be considered as plural for grammatical considerations. (The singular form in Latin is ‘datum’).\nIf necessary, information will be posted on correct use of mathematical notation without overloading symbols and abusing notation for functions and random variables."
+  },
+  {
+    "objectID": "schedule/index.html",
+    "href": "schedule/index.html",
+    "title": " Lecture slides and handouts",
+    "section": "",
+    "text": "Term 2 runs 8 January to 13 April."
+  },
+  {
+    "objectID": "schedule/index.html#lecture-slides",
+    "href": "schedule/index.html#lecture-slides",
+    "title": " Lecture slides and handouts",
+    "section": "Lecture slides",
+    "text": "Lecture slides\n\nBootstrap\nCluster computing\nGit and GitHub\nSkills for graduate students\nTips for organization\nGiving presentations\nTime series\nUnit tests"
+  },
+  {
+    "objectID": "schedule/index.html#handouts",
+    "href": "schedule/index.html#handouts",
+    "title": " Lecture slides and handouts",
+    "section": "Handouts",
+    "text": "Handouts\n\nRecommended books and sources\nFormatting consulting reports"
+  },
+  {
+    "objectID": "index.html#course-goals",
+    "href": "index.html#course-goals",
     "title": "UBC Stat550",
-    "section": "Skills for graduate students",
-    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Course goals",
+    "text": "Course goals\nThis graduate-level course is designed to serve two overlapping purposes: (1) help students prepare for the Consulting Practicum Course (STAT 551) and/or work with ASDa and (2) give students appropriate professional skills for research, thesis writing, other projects. The major goals are to\n\nRead, understand, explain academic statistical concepts to non-statisticians\nGive high-quality presentations\nLearn how to convert subject-matter questions into statistical ones.\nCommunicate statistical conclusions carefully and rigorously, in writing and presentations\nUse reasonable statistical workflows\nConduct quality computer experiments\nUse version control effectively\nWrite verifiable, reproducible code\n\nClass time will contain some lectures and some guest lectures as well as student presentations and workshops."
   },
   {
-    "objectID": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
-    "href": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": " Syllabus",
+    "section": "",
+    "text": "Important\n\n\n\nSee Canvas for the full syllabus."
+  },
+  {
+    "objectID": "syllabus.html#course-info",
+    "href": "syllabus.html#course-info",
+    "title": " Syllabus",
+    "section": "Course info",
+    "text": "Course info\nCo-Instructors:\nLang Wu and Daniel McDonald\nOffice hours:\nI’m happy to arrange time as needed.\nLectures:\nTue/Thu 14:30 - 16:00"
+  },
+  {
+    "objectID": "syllabus.html#important-considerations",
+    "href": "syllabus.html#important-considerations",
+    "title": " Syllabus",
+    "section": "Important considerations",
+    "text": "Important considerations\n\nUniversity policies\nUBC provides resources to support student learning and to maintain healthy lifestyles but recognizes that sometimes crises arise and so there are additional resources to access including those for survivors of sexual violence. UBC values respect for the person and ideas of all members of the academic community. Harassment and discrimination are not tolerated nor is suppression of academic freedom. UBC provides appropriate accommodation for students with disabilities and for religious, spiritual and cultural observances. UBC values academic honesty and students are expected to acknowledge the ideas generated by others and to uphold the highest academic standards in all of their actions. Details of the policies and how to access support are available here.\n\n\nAcademic honesty and standards\nUBC Vancouver Statement\nAcademic honesty is essential to the continued functioning of the University of British Columbia as an institution of higher learning and research. All UBC students are expected to behave as honest and responsible members of an academic community. Breach of those expectations or failure to follow the appropriate policies, principles, rules, and guidelines of the University with respect to academic honesty may result in disciplinary action.\nFor the full statement, please see the 2020/21 Vancouver Academic Calendar\n\n\nAcademic Concessions\nThese are handled according to UBC policy. Please see\n\nUBC student services\nUBC Vancouver Academic Calendar\nFaculty of Science Concessions\n\n\n\nTake care of yourself\nCourse work at this level can be intense, and I encourage you to take care of yourself. Do your best to maintain a healthy lifestyle this semester by eating well, exercising, avoiding drugs and alcohol, getting enough sleep and taking some time to relax. This will help you achieve your goals and cope with stress. I struggle with these issues too, and I try hard to set aside time for things that make me happy (cooking, playing/listening to music, exercise, going for walks).\nAll of us benefit from support during times of struggle. If you are having any problems or concerns, do not hesitate to speak with me. There are also many resources available on campus that can provide help and support. Asking for support sooner rather than later is almost always a good idea.\nIf you or anyone you know experiences any academic stress, difficult life events, or feelings like anxiety or depression, I strongly encourage you to seek support. UBC Counseling Services is here to help: call 604 822 3811 or visit their website. Consider also reaching out to a friend, faculty member, or family member you trust to help get you the support you need."
+  },
+  {
+    "objectID": "schedule/handouts/reference-books.html",
+    "href": "schedule/handouts/reference-books.html",
+    "title": "Recommended books",
+    "section": "",
+    "text": "These are Prof. Harry Joe’s suggestions for resources on different statistical topics that students might not be exposed to before Stat 550/551.\n\nThe student can also learn about the topic and not just about how an R function works.\nBooks with R in the title are generally not good for learning the theory.\nA book reference with theory and good examples is better than a URL.\n\n\nANOVA for different experimental designs (includes random effects, unbalanced).\n\nStatistical Analysis of Designed Experiments, A C. Tamhane (2009), Wiley.\n\nLogistic regression and diagnostics.\n\nApplied Logistic Regression, 2nd ed, Hosmer and Lemeshow (2000), Wiley.\n\nSurvival or time-to-event data.\n\nStatistical Models and Methods for Lifetime Data, 2nd ed, J.F. Lawless (2003), Wiley.\n\nTime series including multivariate.\n\nTime Series Analysis, Univariate and multivariate methods, 2nd ed., W.W.S. Wei (1990), Addison.\n\nFactor models as part of multivariate statistics.\n\nApplied Multivariate Statistical Analysis, 5th ed, Johnson and Wichern (2002), Prentice Hall (not e-available).\n\nSEM = Structural equation models.\n\nLinear Causal Modeling with Structural Equations, S.A. Mulaik (2009), Chapman&Hall/CRC.\n\nMeta-analysis.\n\nMeta-Analysis of Controlled Clinical Trials, A. Whitehead (2002), Wiley.\n\nNumerical maximum likelihood.\n\nNonlinear Parameter Optimization Using R Tools, J.C. Nash (2014), Wiley.\n\nItem response, validity and reliability of instruments for abstract attributes.\n\nTest Theory: A Unified Treatment, R.D. McDonald (1999), Routledge.\n\nSample size calculation. e.g. non-central t, non-central F etc.,. and general approach.\n\nHaven’t found a good reference with general theory and how to use these distributions in a worked out examples in R.\n\nModification of standard procedures to have clustered data that cannot be considered as iid: easier for estimation, tricky for hypothesis testing.\n\n\n\nJackknife, bootstrap and resampling (tools for preceding item)."
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#section",
+    "href": "schedule/slides/bootstrap.html#section",
     "title": "UBC Stat550",
-    "section": "Something happens in graduate school",
-    "text": "Something happens in graduate school\n\nAs undergrads, you took lots of classes\nYou didn’t care that much about all of them\nSure, you wanted good grades, but you may not have always wanted to really learn the material\nAnd you probably didn’t try to go in depth beyond the requirements\n\n\n\nThat has to change in grad school\nEven if you don’t want a to be a professor, to get a PhD, to do an MSc thesis.\nThis is the material that you have decided you will use for the rest of your life\n\n\n\n\nIf you disagree, then we should talk"
+    "section": "The bootstrap",
+    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 30 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
-    "objectID": "schedule/slides/grad-school.html#side-discussion-on-reading-for-research",
-    "href": "schedule/slides/grad-school.html#side-discussion-on-reading-for-research",
+    "objectID": "schedule/slides/bootstrap.html#in-statistics",
+    "href": "schedule/slides/bootstrap.html#in-statistics",
     "title": "UBC Stat550",
-    "section": "Side discussion on “Reading for research”",
-    "text": "Side discussion on “Reading for research”\n\nYou should “read” regularly: set aside an 2-3 hours every week\nStay up-to-date on recent research, determine what you find interesting\nWhat do people care about? What does it take to write journal articles?"
+    "section": "In statistics…",
+    "text": "In statistics…\nThe “bootstrap” works. And well.\nIt’s good for “second-level” analysis.\n\n“First-level” analyses are things like \\(\\hat\\beta\\), \\(\\hat y\\), an estimator of the center (a median), etc.\n“Second-level” are things like \\(\\Var{\\hat\\beta}\\), a confidence interval for \\(\\hat y\\), or a median, etc.\n\nYou usually get these “second-level” properties from “the sampling distribution of an estimator”\n\nBut what if you don’t know the sampling distribution? Or you’re skeptical of the CLT argument?"
   },
   {
-    "objectID": "schedule/slides/grad-school.html#what-is-read",
-    "href": "schedule/slides/grad-school.html#what-is-read",
+    "objectID": "schedule/slides/bootstrap.html#refresher-on-sampling-distributions",
+    "href": "schedule/slides/bootstrap.html#refresher-on-sampling-distributions",
     "title": "UBC Stat550",
-    "section": "What is “read”?",
-    "text": "What is “read”?\n\nStart with titles, then abstracts, then intro+conclusion\nEach is a filter to determine how far to go\nPass 3 filters, read the paper (should take about ~30 minutes)\nDon’t get bogged down in notation, proofs\nOrganize your documents somehow, make notes in the margins, etc\nAfter you read it, you should be able to tell me what they show, why it’s important, why it’s novel\nIf you can, figure out how they show something. This is hard."
+    "section": "Refresher on sampling distributions",
+    "text": "Refresher on sampling distributions\n\nIf \\(X_i\\) are iid Normal \\((0,\\sigma^2)\\), then \\(\\Var{\\bar{X}} = \\sigma^2 / n\\).\nIf \\(X_i\\) are iid and \\(n\\) is big, then \\(\\Var{\\bar{X}} \\approx \\Var{X_1} / n\\).\nIf \\(X_i\\) are iid Binomial \\((m, p)\\), then \\(\\Var{\\bar{X}} = mp(1-p) / n\\)"
   },
   {
-    "objectID": "schedule/slides/grad-school.html#how-to-find-and-organize-papers",
-    "href": "schedule/slides/grad-school.html#how-to-find-and-organize-papers",
+    "objectID": "schedule/slides/bootstrap.html#example-of-unknown-sampling-distribution",
+    "href": "schedule/slides/bootstrap.html#example-of-unknown-sampling-distribution",
     "title": "UBC Stat550",
-    "section": "How to find and organize papers",
-    "text": "How to find and organize papers\n\narXiv, AOS, JASA, JCGS have RSS feeds, email lists etc\nFind a statistician you like who filters\nFollow reading groups\nConference proceedings\nBecome an IMS member, SSC member (ASA costs money:( )\nBibDesk, Zotero"
+    "section": "Example of unknown sampling distribution",
+    "text": "Example of unknown sampling distribution\nI estimate a LDA on some data.\nI get a new \\(x_0\\) and produce \\(\\hat{Pr}(y_0 =1 \\given x_0)\\).\nCan I get a 95% confidence interval for \\(Pr(y_0=1 \\given x_0)\\)?\n\nThe bootstrap gives this to you."
   },
   {
-    "objectID": "schedule/slides/grad-school.html#ideal-outcome",
-    "href": "schedule/slides/grad-school.html#ideal-outcome",
+    "objectID": "schedule/slides/bootstrap.html#procedure",
+    "href": "schedule/slides/bootstrap.html#procedure",
     "title": "UBC Stat550",
-    "section": "Ideal outcome",
-    "text": "Ideal outcome\n\nIf you need to learn something, you can teach yourself\nKnow how to find the basics on the internet\nKnow how to go in depth with real sources\nCollect a set of resources that you can turn to regularly\nIf you need to read a book, you can\nIf you need to pick up a new coding language, you can\n\n\n\n\n\n\n\n\nWhat this doesn’t mean\n\n\nYou are not expected to have all the answers at the tips of your fingers.\n\n\n\nBut you should get progressively good at finding them.\n\n\nUBC Stat 550 - 2024"
+    "section": "Procedure",
+    "text": "Procedure\n\nResample your training data w/ replacement.\nCalculate a LDA on this sample.\nProduce a new prediction, call it \\(\\widehat{Pr}_b(y_0 =1 \\given x_0)\\).\nRepeat 1-3 \\(b = 1,\\ldots,B\\) times.\nCI: \\(\\left[2\\widehat{Pr}(y_0 =1 \\given x_0) - \\widehat{F}_{boot}(1-\\alpha/2),\\ 2\\widehat{Pr}(y_0 =1 \\given x_0) - \\widehat{F}_{boot}(\\alpha/2)\\right]\\)\n\n\\(\\hat{F}\\) is the “empirical” distribution of the bootstraps."
   },
   {
-    "objectID": "schedule/slides/presentations.html#meta-lecture",
-    "href": "schedule/slides/presentations.html#meta-lecture",
+    "objectID": "schedule/slides/bootstrap.html#very-basic-example",
+    "href": "schedule/slides/bootstrap.html#very-basic-example",
+    "title": "UBC Stat550",
+    "section": "Very basic example",
+    "text": "Very basic example\n\nLet \\(X_i\\sim Exponential(1/5)\\). The pdf is \\(f(x) = \\frac{1}{5}e^{-x/5}\\)\nI know if I estimate the mean with \\(\\bar{X}\\), then by the CLT (if \\(n\\) is big),\n\n\\[\\frac{\\sqrt{n}(\\bar{X}-E[X])}{s} \\approx N(0, 1).\\]\n\nThis gives me a 95% confidence interval like \\[\\bar{X} \\pm 2 \\frac{s}{\\sqrt{n}}\\]\nBut I don’t want to estimate the mean, I want to estimate the median."
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#now-what",
+    "href": "schedule/slides/bootstrap.html#now-what",
+    "title": "UBC Stat550",
+    "section": "Now what",
+    "text": "Now what\n\nI give you a sample of size 500, you give me the sample median.\nHow do you get a CI?\nYou can use the bootstrap!\n\n\nset.seed(2022-11-01)\nx &lt;- rexp(n, 1 / 5)\n(med &lt;- median(x)) # sample median\n\n[1] 3.669627\n\nB &lt;- 100\nalpha &lt;- 0.05\nbootMed &lt;- function() median(sample(x, replace = TRUE)) # resample, and get the median\nFhat &lt;- replicate(B, bootMed()) # repeat B times, \"empirical distribution\"\nCI &lt;- 2 * med - quantile(Fhat, probs = c(1 - alpha / 2, alpha / 2))"
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#slightly-harder-example",
+    "href": "schedule/slides/bootstrap.html#slightly-harder-example",
+    "title": "UBC Stat550",
+    "section": "Slightly harder example",
+    "text": "Slightly harder example\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCall:\nlm(formula = Hwt ~ 0 + Bwt, data = fatcats)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.9293 -1.0460 -0.1407  0.8298 16.2536 \n\nCoefficients:\n    Estimate Std. Error t value Pr(&gt;|t|)    \nBwt  3.81895    0.07678   49.74   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.549 on 143 degrees of freedom\nMultiple R-squared:  0.9454,    Adjusted R-squared:  0.945 \nF-statistic:  2474 on 1 and 143 DF,  p-value: &lt; 2.2e-16\n\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073"
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#when-we-fit-models-we-examine-diagnostics",
+    "href": "schedule/slides/bootstrap.html#when-we-fit-models-we-examine-diagnostics",
+    "title": "UBC Stat550",
+    "section": "When we fit models, we examine diagnostics",
+    "text": "When we fit models, we examine diagnostics\n\n\n\n\n\n\n\n\n\n\n\nThe tails are too fat, I don’t believe that CI…\n\nWe bootstrap\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\nfor (b in 1:B) {\n  samp &lt;- sample(1:nrow(fatcats), replace = TRUE)\n  newcats &lt;- fatcats[samp, ] # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # Bootstrap CI\n  quantile(bhats, probs = c(1 - alpha / 2, alpha / 2))\n\n   97.5%     2.5% \n3.654977 3.955927 \n\nconfint(cats.lm) # Original CI\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073"
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#an-alternative",
+    "href": "schedule/slides/bootstrap.html#an-alternative",
+    "title": "UBC Stat550",
+    "section": "An alternative",
+    "text": "An alternative\n\nSo far, I didn’t use any information about the data-generating process.\nWe’ve done the non-parametric bootstrap\nThis is easiest, and most common for most cases.\n\n\nBut there’s another version\n\nYou could try a “parametric bootstrap”\nThis assumes knowledge about the DGP"
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#same-data",
+    "href": "schedule/slides/bootstrap.html#same-data",
+    "title": "UBC Stat550",
+    "section": "Same data",
+    "text": "Same data\n\n\nNon-parametric bootstrap\nSame as before\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\nfor (b in 1:B) {\n  samp &lt;- sample(1:nrow(fatcats), replace = TRUE)\n  newcats &lt;- fatcats[samp, ] # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # NP Bootstrap CI\n  quantile(bhats, probs = c(1-alpha/2, alpha/2))\n\n   97.5%     2.5% \n3.673559 3.970251 \n\nconfint(cats.lm) # Original CI\n\n       2.5 %  97.5 %\nBwt 3.667178 3.97073\n\n\n\nParametric bootstrap\n\nAssume that the linear model is TRUE.\nThen, \\(\\texttt{Hwt}_i = \\widehat{\\beta}\\times \\texttt{Bwt}_i + \\widehat{e}_i\\), \\(\\widehat{e}_i \\approx \\epsilon_i\\)\nThe \\(\\epsilon_i\\) is random \\(\\longrightarrow\\) just resample \\(\\widehat{e}_i\\).\n\n\nB &lt;- 500\nbhats &lt;- double(B)\nalpha &lt;- .05\ncats.lm &lt;- lm(Hwt ~ 0 + Bwt, data = fatcats)\nnewcats &lt;- fatcats\nfor (b in 1:B) {\n  samp &lt;- sample(residuals(cats.lm), replace = TRUE)\n  newcats$Hwt &lt;- predict(cats.lm) + samp # new data\n  bhats[b] &lt;- coef(lm(Hwt ~ 0 + Bwt, data = newcats)) \n}\n\n2 * coef(cats.lm) - # Parametric Bootstrap CI\n  quantile(bhats, probs = c(1 - alpha/2, alpha/2))\n\n   97.5%     2.5% \n3.665531 3.961896"
+  },
+  {
+    "objectID": "schedule/slides/bootstrap.html#bootstrap-error-sources",
+    "href": "schedule/slides/bootstrap.html#bootstrap-error-sources",
+    "title": "UBC Stat550",
+    "section": "Bootstrap error sources",
+    "text": "Bootstrap error sources\nSimulation error:\nusing only \\(B\\) samples to estimate \\(F\\) with \\(\\hat{F}\\).\nStatistical error:\nour data depended on a sample from the population. We don’t have the whole population so we make an error by using a sample\n(Note: this part is what always happens with data, and what the science of statistics analyzes.)\nSpecification error:\nIf we use the parametric bootstrap, and our model is wrong, then we are overconfident.\n\n\n\nUBC Stat 550 - 2024"
+  },
+  {
+    "objectID": "schedule/slides/git.html#section",
+    "href": "schedule/slides/git.html#section",
+    "title": "UBC Stat550",
+    "section": "Version control",
+    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/git.html#why-version-control",
+    "href": "schedule/slides/git.html#why-version-control",
+    "title": "UBC Stat550",
+    "section": "Why version control?",
+    "text": "Why version control?\n\n\n\n\n\n\nMuch of this lecture is borrowed/stolen from Colin Rundel and Karl Broman"
+  },
+  {
+    "objectID": "schedule/slides/git.html#why-version-control-1",
+    "href": "schedule/slides/git.html#why-version-control-1",
+    "title": "UBC Stat550",
+    "section": "Why version control?",
+    "text": "Why version control?\n\nSimple formal system for tracking all changes to a project\nTime machine for your projects\n\nTrack blame and/or praise\nRemove the fear of breaking things\n\nLearning curve is steep, but when you need it you REALLY need it\n\n\n\n\nWords of wisdom\n\n\nYour closest collaborator is you six months ago, but you don’t reply to emails.\n– Paul Wilson"
+  },
+  {
+    "objectID": "schedule/slides/git.html#why-git",
+    "href": "schedule/slides/git.html#why-git",
+    "title": "UBC Stat550",
+    "section": "Why Git",
+    "text": "Why Git\n\n\n\nYou could use something like Box or Dropbox\nThese are poor-man’s version control\nGit is much more appropriate\nIt works with large groups\nIt’s very fast\nIt’s much better at fixing mistakes\nTech companies use it (so it’s in your interest to have some experience)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis will hurt, but what doesn’t kill you, makes you stronger."
+  },
+  {
+    "objectID": "schedule/slides/git.html#overview",
+    "href": "schedule/slides/git.html#overview",
+    "title": "UBC Stat550",
+    "section": "Overview",
+    "text": "Overview\n\ngit is a command line program that lives on your machine\nIf you want to track changes in a directory, you type git init\nThis creates a (hidden) directory called .git\nThe .git directory contains a history of all changes made to “versioned” files\nThis top directory is referred to as a “repository” or “repo”\nhttp://github.com is a service that hosts a repo remotely and has other features: issues, project boards, pull requests, renders .ipynb & .md\nSome IDEs (pycharm, RStudio, VScode) have built in git\ngit/GitHub is broad and complicated. Here, just what you need"
+  },
+  {
+    "objectID": "schedule/slides/git.html#aside-on-built-in-command-line",
+    "href": "schedule/slides/git.html#aside-on-built-in-command-line",
+    "title": "UBC Stat550",
+    "section": "Aside on “Built-in” & “Command line”",
+    "text": "Aside on “Built-in” & “Command line”\n\n\n\n\n\n\nTip\n\n\nFirst things first, RStudio and the Terminal\n\n\n\n\nCommand line is the “old” type of computing. You type commands at a prompt and the computer “does stuff”.\nYou may not have seen where this is. RStudio has one built in called “Terminal”\nThe Mac System version is also called “Terminal”. If you have a Linux machine, this should all be familiar.\nWindows is not great at this.\nTo get the most out of Git, you have to use the command line."
+  },
+  {
+    "objectID": "schedule/slides/git.html#typical-workflow",
+    "href": "schedule/slides/git.html#typical-workflow",
+    "title": "UBC Stat550",
+    "section": "Typical workflow",
+    "text": "Typical workflow\n\nDownload a repo from Github\n\n```{bash}\ngit clone https://github.com/stat550-2021/lecture-slides.git\n```\n\nCreate a branch\n\n```{bash}\ngit branch &lt;branchname&gt;\n```\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\n```{bash}\ngit add &lt;name/of/tracked/file&gt;\n```\n\nCommit your changes\n\n```{bash}\ngit commit -m \"Some explanatory message\"\n```\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to Github\n\n```{bash}\ngit push\ngit push -u origin &lt;branchname&gt;\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#what-should-be-tracked",
+    "href": "schedule/slides/git.html#what-should-be-tracked",
+    "title": "UBC Stat550",
+    "section": "What should be tracked?",
+    "text": "What should be tracked?\n\nDefinitely\ncode, markdown documentation, tex files, bash scripts/makefiles, …\n\nPossibly\nlogs, jupyter notebooks, images (that won’t change), …\n\nQuestionable\nprocessed data, static pdfs, …\n\nDefinitely not\nfull data, continually updated pdfs, other things compiled from source code, …"
+  },
+  {
+    "objectID": "schedule/slides/git.html#what-things-to-track",
+    "href": "schedule/slides/git.html#what-things-to-track",
+    "title": "UBC Stat550",
+    "section": "What things to track",
+    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n```{bash}\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# User-specific files\n.Ruserdata\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n```\n\nShortcut to track everything (use carefully):\n\n```{bash}\ngit add .\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#rules",
+    "href": "schedule/slides/git.html#rules",
+    "title": "UBC Stat550",
+    "section": "Rules",
+    "text": "Rules\n\nEach team has their own repo\nMake a PR against main to submit\nPeer evaluations are done via PR review (also send to Estella)\nYOU must make at least 5 commits (fewer will lead to deductions)\nI review your work and merge the PR\n\nProject submissions are done similarly."
+  },
+  {
+    "objectID": "schedule/slides/git.html#whats-a-pr",
+    "href": "schedule/slides/git.html#whats-a-pr",
+    "title": "UBC Stat550",
+    "section": "What’s a PR?",
+    "text": "What’s a PR?\n\nThis exists on Github (not git)\nDemonstration"
+  },
+  {
+    "objectID": "schedule/slides/git.html#some-things-to-be-aware-of",
+    "href": "schedule/slides/git.html#some-things-to-be-aware-of",
+    "title": "UBC Stat550",
+    "section": "Some things to be aware of",
+    "text": "Some things to be aware of\n\nmaster vs main\nIf you think you did something wrong, stop and ask for help\nThere are guardrails in place. But those won’t stop a bulldozer.\nThe hardest part is the initial setup. Then, this should all be rinse-and-repeat.\nThis book is great: Happy Git with R\n\nSee Chapter 6 if you have install problems.\nSee Chapter 10 for credential caching (avoid typing a password all the time)\nSee Chapter 13 if RStudio can’t find git"
+  },
+  {
+    "objectID": "schedule/slides/git.html#the-maindevelopbranch-workflow",
+    "href": "schedule/slides/git.html#the-maindevelopbranch-workflow",
+    "title": "UBC Stat550",
+    "section": "The main/develop/branch workflow",
+    "text": "The main/develop/branch workflow\n\nWhen working on your own\n\nDon’t NEED branches (but you should use them, really)\nI make a branch if I want to try a modification without breaking what I have.\n\nWhen working on a large team with production grade software\n\nmain is protected, released version of software (maybe renamed to release)\ndevelop contains things not yet on main, but thoroughly tested\nOn a schedule (once a week, once a month) develop gets merged to main\nYou work on a feature branch off develop to build your new feature\nYou do a PR against develop. Supervisors review your contributions\n\n\n\nI and many DS/CS/Stat faculty use this workflow with my lab."
+  },
+  {
+    "objectID": "schedule/slides/git.html#protection",
+    "href": "schedule/slides/git.html#protection",
+    "title": "UBC Stat550",
+    "section": "Protection",
+    "text": "Protection\n\nTypical for your PR to trigger tests to make sure you don’t break things\nTypical for team members or supervisors to review your PR for compliance\n\n\n\n\n\n\n\nTip\n\n\nI suggest you adopt the “production” version for your Team Assignments"
+  },
+  {
+    "objectID": "schedule/slides/git.html#guardrails",
+    "href": "schedule/slides/git.html#guardrails",
+    "title": "UBC Stat550",
+    "section": "Guardrails",
+    "text": "Guardrails\n\nThe .github directory contains interactions with GitHub\n\nActions: On push / PR / other GitHub does something on their server (builds a website, runs tests on code)\nPR templates: Little admonitions when you open a PR\nBranch protection: prevent you from doing stuff\n\nIn this course, I protect main so that you can’t push there\n\n\n\n\n\n\n\nWarning\n\n\nIf you try to push to main, it will give an error like\n```{bash}\nremote: error: GH006: Protected branch update failed for refs/heads/main.\n```\nThe fix is: make a new branch, then push that."
+  },
+  {
+    "objectID": "schedule/slides/git.html#operations-in-rstudio",
+    "href": "schedule/slides/git.html#operations-in-rstudio",
+    "title": "UBC Stat550",
+    "section": "Operations in Rstudio",
+    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\n\n\n\n\n\n\nCovers:\n\n\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\n\n\nCommand line versions (of the same)\n```{bash}\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
+    "href": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
+    "title": "UBC Stat550",
+    "section": "Other useful stuff (but command line only)",
+    "text": "Other useful stuff (but command line only)\n\n\nInitializing\n```{bash}\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\n```\nStaging\n```{bash}\ngit add name/of/file # stage 1 file\ngit add . # stage all\n```\nCommitting\n```{bash}\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \n```\nPushing\n```{bash}\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n```\n\nBranching\n```{bash}\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\n```\nCheck the status\n```{bash}\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#conflicts",
+    "href": "schedule/slides/git.html#conflicts",
+    "title": "UBC Stat550",
+    "section": "Conflicts",
+    "text": "Conflicts\n\nSometimes you merge things and “conflicts” happen.\nMeaning that changes on one branch would overwrite changes on a different branch.\n\n\n\n\nThey look like this:\n\nHere are lines that are either unchanged from\nthe common ancestor, or cleanly resolved \nbecause only one side changed.\n\nBut below we have some troubles\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; yours:sample.txt\nConflict resolution is hard;\nlet's go shopping.\n=======\nGit makes conflict resolution easy.\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs:sample.txt\n\nAnd here is another line that is cleanly \nresolved or unmodified.\n\nYou get to decide, do you want to keep\n\nYour changes (above ======)\nTheir changes (below ======)\nBoth.\nNeither.\n\nBut always delete the &lt;&lt;&lt;&lt;&lt;, ======, and &gt;&gt;&gt;&gt;&gt; lines.\nOnce you’re satisfied, committing resolves the conflict."
+  },
+  {
+    "objectID": "schedule/slides/git.html#some-other-pointers",
+    "href": "schedule/slides/git.html#some-other-pointers",
+    "title": "UBC Stat550",
+    "section": "Some other pointers",
+    "text": "Some other pointers\n\nCommits have long names: 32b252c854c45d2f8dfda1076078eae8d5d7c81f\n\nIf you want to use it, you need “enough to be unique”: 32b25\n\nOnline help uses directed graphs in ways different from statistics:\n\nIn stats, arrows point from cause to effect, forward in time\nIn git docs, it’s reversed, they point to the thing on which they depend\n\n\nCheat sheet\nhttps://training.github.com/downloads/github-git-cheat-sheet.pdf"
+  },
+  {
+    "objectID": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
+    "href": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
+    "title": "UBC Stat550",
+    "section": "How to undo in 3 scenarios",
+    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\n\nIn RStudio, select the file and click   then select  Revert…\n\n```{bash}\n# grab the previously committed version\ngit checkout -- README.md \n```\n2. Staged but not committed\n\nIn RStudio, uncheck the box by the file, then use the method above.\n\n```{bash}\n# unstage\ngit reset HEAD README.md\ngit checkout -- README.md\n```\n\n3. Committed\n\nNot easy to do in RStudio…\n\n```{bash}\n# check the log to see where you made the chg, \ngit log\n# go one step before that (eg to 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n```\n\n```{bash}\n# alternatively\n# if it happens to also be on another branch\ngit checkout otherbranch -- README.md\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#recovering-from-things",
+    "href": "schedule/slides/git.html#recovering-from-things",
+    "title": "UBC Stat550",
+    "section": "Recovering from things",
+    "text": "Recovering from things\n\nAccidentally did work on main, Tried to Push but got refused\n\n```{bash}\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n```\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\n```{bash}\ngit checkout main\ngit branch -d badbranch\n```\n\nAnything more complicated, either post to Slack or LMGTFY"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#section",
+    "href": "schedule/slides/organization.html#section",
+    "title": "UBC Stat550",
+    "section": "Organization",
+    "text": "Organization\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "href": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "title": "UBC Stat550",
+    "section": "I urge you to consult:",
+    "text": "I urge you to consult:\nKarl Broman’s Notes"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#organizing-your-stuff",
+    "href": "schedule/slides/organization.html#organizing-your-stuff",
+    "title": "UBC Stat550",
+    "section": "Organizing your stuff",
+    "text": "Organizing your stuff\n\n\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── FKF\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── ghclass\n│   └── spatio-temporal-exp-fam\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n│   ├── Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website\n\nInside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\n\n\nSeparate raw / processed data\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#basic-principles",
+    "href": "schedule/slides/organization.html#basic-principles",
+    "title": "UBC Stat550",
+    "section": "Basic principles",
+    "text": "Basic principles\n\nDevelop your own system\nPut everything in a common directory\nBe consistent – directory structure; names\nSeparate raw from processed data\nSeparate code from data\nIt should be obvious what code created what files, and what the dependencies are.\nNo hand-editing of data files\nDon’t use spaces in file names\nUse relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/blah\nThe {here} package in R is great for this"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "href": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "title": "UBC Stat550",
+    "section": "Problem: Coordinating with collaborators",
+    "text": "Problem: Coordinating with collaborators\n\nWhere to put data that multiple people will work with?\nWhere to put intermediate/processed data?\nWhere to indicate the code that created those processed data files?\nHow to divvy up tasks and know who did what?\nNeed to agree on directory structure and file naming conventions\n\nGitHub is (I think) the ideal solution, but not always feasible."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "href": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "title": "UBC Stat550",
+    "section": "Problem: Collaborators who don’t use GitHub",
+    "text": "Problem: Collaborators who don’t use GitHub\n\nUse GitHub yourself\nCopy files to/from some shared space\n\nIdeally, in an automated way (Dropbox, S3 Bucket)\nAvoid Word at all costs. Google Docs if needed.\nWord and Git do not mix\nLast resort: Word file in Dropbox. Everything else nicely organized on your end. Rmd file with similar structure to Manuscript that does the analysis.\n\nCommit their changes.\n\n\nOverleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
+    "href": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
+    "title": "UBC Stat550",
+    "section": "Using Rmarkdown/Quarto for most things",
+    "text": "Using Rmarkdown/Quarto for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-basics",
+    "href": "schedule/slides/organization.html#the-basics",
+    "title": "UBC Stat550",
+    "section": "The basics",
+    "text": "The basics\n1.\nI do all class documents in Rmarkdown/Quarto. Notes, slides, etc. Organized in Github repos:\n├── github-org\n│  ├── admm-cd\n│  ├── class-management\n│  ├── convexity-exercises\n...\n│  └── useful-materials\n├── instructor-private\n│  ├── README.md\n│  └── brief-summary\n└── student-public\n    ├── README.md\n    ├── docs\n    └── lecture-slides"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-basics-1",
+    "href": "schedule/slides/organization.html#the-basics-1",
+    "title": "UBC Stat550",
+    "section": "The basics",
+    "text": "The basics\n2.\nWhen working out new code for a project, I use a combination of R package (as I get close to completion) and Rmarkdown.\n\nMany stat journals require reproducible, documented code. An R package is great for this.\nRmarkdown alone lets me document as I go.\n\n3.\nMy students are required to give me reports in Rmarkdown or Google docs (for practice)."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#for-professional-presentations",
+    "href": "schedule/slides/organization.html#for-professional-presentations",
+    "title": "UBC Stat550",
+    "section": "For professional presentations",
+    "text": "For professional presentations\nI use Rmarkdown + Beamer: Now I use Rmd + Xaringan (see dajmcdon/talk-template)\n```{yaml}\n---\ntitle: \"Statistical approaches to epidemic forecasting\"\nauthor: \"Daniel J. McDonald\"\ndate: \"10 February 2023\"\noutput:\n  xaringan::moon_reader:\n    css: [src/xaringan-themer.css, src/slides-style.css]\n    nature:\n      beforeInit: [\"src/macros.js\", \"https://platform.twitter.com/widgets.js\"]\n      highlightStyle: github\n      highlightLines: true\n      ratio: 16:9\n      slideNumber: true\n      countIncrementalSlides: true\n    seal: false\n---\n```"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
+    "href": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
+    "title": "UBC Stat550",
+    "section": "The old presentation (when I was in Grad School)",
+    "text": "The old presentation (when I was in Grad School)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nEtc, etc.\n\nNow:\nCode and Text live in one file. I just recompile."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-old-manuscript",
+    "href": "schedule/slides/organization.html#the-old-manuscript",
+    "title": "UBC Stat550",
+    "section": "The old manuscript",
+    "text": "The old manuscript\nSimilar to the old presentation.\nNow:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed\n\n\n\nUBC Stat 550 - 2024"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#section",
+    "href": "schedule/slides/presentations.html#section",
     "title": "UBC Stat550",
     "section": "Giving presentations",
-    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 30 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/presentations.html#structure",
@@ -854,6 +959,13 @@
     "text": "Audience\n\nThink about who you are talking to\n\nStatisticians?\nStudents?\nPotential employer?\nPeople with PhD’s but in other disciplines?\nYour grandma?\n\nRegardless of the audience, I think of dividing the talk roughly in 3rds."
   },
   {
+    "objectID": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
+    "href": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
+    "title": "UBC Stat550",
+    "section": "(Your audience for your in-class talk)",
+    "text": "(Your audience for your in-class talk)\n\n2/3 of the time, the client.\nYou’re teaching them this topic.\nThink “someone who took 1 or 2 classes in statistics”\n1/3 of the time, your classmates.\nWhat are the details they need to know that they don’t know?\nThink carefully how to structure for that breakdown."
+  },
+  {
     "objectID": "schedule/slides/presentations.html#content",
     "href": "schedule/slides/presentations.html#content",
     "title": "UBC Stat550",
@@ -865,7 +977,14 @@
     "href": "schedule/slides/presentations.html#story-structure",
     "title": "UBC Stat550",
     "section": "Story structure",
-    "text": "Story structure\n\n\n\n\n\n\nWhat I often see…\n\n\nOnce upon a time, a young MSc student went into the woods of theory and found some trees. First they looked at one tree, it was oak. Then the looked at the next tree, it was maple. Then they wondered if trees could talk. After three months of wandering, they saw a house…\n\n\n\n\n\n\n\n\n\n\nThe attention grabber\n\n\nAxe-wielding woodsman saves student from wolf attack!\n\n\n\n\n\n\n(Enough details to give the headline.)\nHeadline result.\nHow do we know the result is real. What are the details of computation, inference, methodology.\nDemonstration with empirics."
+    "text": "Story structure\n\n\n\n\n\n\nWhat I often see…\n\n\nOnce upon a time, a young MSc student went into the woods of theory and found some trees.\nFirst they looked at one tree, it was oak.\nThen the looked at the next tree, it was maple.\nThen they wondered if trees could talk.\nAfter three months of wandering, they saw a house…\n\n\n\n\n\n\n\n\n\n\nThe attention grabber\n\n\nAxe-wielding woodsman saves student from wolf attack!"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#better-structure",
+    "href": "schedule/slides/presentations.html#better-structure",
+    "title": "UBC Stat550",
+    "section": "Better structure",
+    "text": "Better structure\n\n(Enough details to give the headline.)\nHeadline result.\nHow do we know the result is real. What are the details of computation, inference, methodology.\nDemonstration with empirics."
   },
   {
     "objectID": "schedule/slides/presentations.html#you-should-consider",
@@ -879,14 +998,14 @@
     "href": "schedule/slides/presentations.html#the-ideal-map",
     "title": "UBC Stat550",
     "section": "The ideal map",
-    "text": "The ideal map\nMap out what you’ve done.\n\nWhat did you find?\nWhat are the implications? Why does audience care?\nHow do we do it?\n\n\nAvoid wandering in the wilderness:\n\nFirst we did this;\nBut that didn’t work, so we tried …\nBut then we added …\nFinally we got to the beach …\nAnd the water was nice …\n\nYou left your audience somewhere in the wilderness."
+    "text": "The ideal map\nMap out what you’ve done.\n\nWhat did you find?\nWhat are the implications?\nWhy does audience care?\nHow do we do it?\n\n\nAvoid wandering in the wilderness:\n\nFirst we did this;\nBut that didn’t work, so we tried …\nBut then we added …\nFinally we got to the beach …\nAnd the water was nice …"
   },
   {
     "objectID": "schedule/slides/presentations.html#words",
     "href": "schedule/slides/presentations.html#words",
     "title": "UBC Stat550",
     "section": "Words",
-    "text": "Words\n\n\nToo many words on a slide is bad\n\nBullet points\nToo densely concentrated are bad\nAre bad\nAre hard to focus on\n\n\nEmpty space is your friend\n\nLorem markdownum et moras et ponendi odores, neu magna per! Tyria meo iungitur videt, frigore terras rogis Anienis poteram, dant. His vallem arma corpore vident nunc nivibus avus, dea. Spatium luce certa cupiunt, lina. Amabam opem, Iovis fecundaque et parum.\nConplecti videndo altum et hunc Iovi fronte maris, cur Aiax, iam fata morsibus, et. Aede virum annis audit modo: meus ramis videri: nec quod insidiisque Aonio tenuem, AI. Trames Iason: nocent hortatus lacteus praebita paternos petit, Paridis aptus prius ut origo furiisque. Mercibus sis nullo aliudve Amathunta sufficit ululatibus, praevalidusque segnis et Dryopen."
+    "text": "Words\n\n\nToo many words on a slide is bad\n\nBullet points\nToo densely concentrated are bad\nAre bad\nAre hard to focus on\n\n\nEmpty space is your friend\n\nLorem markdownum et moras et ponendi odores, neu magna per! Tyria meo iungitur videt, frigore terras rogis Anienis poteram, dant. His vallem arma corpore vident nunc nivibus avus, dea. Spatium luce certa cupiunt, lina. Amabam opem, Iovis fecundaque et parum.\nAede virum annis audit modo: meus ramis videri: nec quod insidiisque Aonio tenuem, AI. Trames Iason: nocent hortatus lacteus praebita paternos petit, Paridis aptus prius ut origo furiisque. Mercibus sis nullo aliudve Amathunta sufficit ululatibus, praevalidusque segnis et Dryopen."
   },
   {
     "objectID": "schedule/slides/presentations.html#images",
@@ -935,7 +1054,7 @@
     "href": "schedule/slides/presentations.html#jargon",
     "title": "UBC Stat550",
     "section": "Jargon",
-    "text": "Jargon\n\nBe wary of acronyms (MLE, BLUP, RKHS)\nAgain, think of your audience. MLE is fine for any statistician.\nOthers need definitions in words and written on the slide\nSame for math notation \\(\\bar{X},\\ \\mu,\\ \\sigma,\\ \\mathbf{UDV}^\\top\\)\nAnd for applied work e.g. SNP"
+    "text": "Jargon\n\nBe wary of acronyms (MLE, BLUP, RKHS)\nAgain, think of your audience. MLE is fine for any statistician.\nOthers need definitions in words and written on the slide\nSame for math notation \\(\\bar{X},\\ \\mu,\\ \\sigma,\\ \\mathbf{UDV}^\\top\\)\nAnd for applied work e.g. SNP\nBest Linear Unbiased Predictor"
   },
   {
     "objectID": "schedule/slides/presentations.html#things-i-hate",
@@ -949,7 +1068,28 @@
     "href": "schedule/slides/presentations.html#never-use-tables-of-numbers",
     "title": "UBC Stat550",
     "section": "Never use tables of numbers",
-    "text": "Never use tables of numbers\n\nEconomists do this all the time for inexplicable reasons\nI rarely put these in papers either\nIf I’m not going to talk about it, it doesn’t go on the slide\nThere’s no way I’m going to read off the number, certainly not to 4 decimal places\nUse a graph\n\n\n\n\nA graph with 3 dots should be a table of 3 numbers.\nBut why do you have only 3 numbers?\nAny table can be a better graph.\n\n\n\n\n\n\n\nAsk yourself:\n\n\nIs this the best way to display the data? Have I summarized too much?"
+    "text": "Never use tables of numbers\n\nEconomists do this all the time for inexplicable reasons\nI rarely put these in papers either\nIf I’m not going to talk about it, it doesn’t go on the slide\nThere’s no way I’m going to read off the number, certainly not to 4 decimal places\nUse a graph"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#use-graphs-but",
+    "href": "schedule/slides/presentations.html#use-graphs-but",
+    "title": "UBC Stat550",
+    "section": "Use graphs, but",
+    "text": "Use graphs, but\n\nA graph with 3 dots should be a table of 3 numbers.\nBut why do you have only 3 numbers?\nAny table can be a better graph.\n\n\n\n\n\n\n\nAsk yourself:\n\n\nIs this the best way to display the data? Have I summarized too much?"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results",
+    "href": "schedule/slides/presentations.html#example-made-up-simulation-results",
+    "title": "UBC Stat550",
+    "section": "Example: Made up simulation results",
+    "text": "Example: Made up simulation results\nRan 50 simulations."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
+    "href": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
+    "title": "UBC Stat550",
+    "section": "Example: Made up simulation results",
+    "text": "Example: Made up simulation results\nRan 50 simulations."
   },
   {
     "objectID": "schedule/slides/presentations.html#things-you-should-do",
@@ -970,11 +1110,25 @@
     "href": "schedule/slides/presentations.html#closing-suggestions",
     "title": "UBC Stat550",
     "section": "Closing suggestions",
-    "text": "Closing suggestions\nSlow down\n\nGet a bottle of water before the talk. Drink it to pause on (pre-planned) key slides.\nThis will help you relax. It will also give the audience a few seconds to get the hard stuff into their head.\n\nCut back\n\nMost of your slides probably have too many words.\nAnd too much “filler” –&gt; Kill the filler\n\nTry to move\n\nIt’s good to move physically, engage the audience\nTry to make eye contact with the whole room\nRecord yourself once to see if you do anything extraneous\n\nHave fun.\n\n\nUBC Stat 550 - 2024"
+    "text": "Closing suggestions\n1. Slow down\n\nGet a bottle of water before the talk.\nDrink it to pause on (pre-planned) key slides.\nThis will help you relax.\nIt will also give the audience a few seconds to get the hard stuff into their head.\n\n2. Cut back\n\nMost of your slides probably have too many words.\nAnd too much “filler” –&gt; Kill the filler"
   },
   {
-    "objectID": "schedule/slides/time-series.html#meta-lecture",
-    "href": "schedule/slides/time-series.html#meta-lecture",
+    "objectID": "schedule/slides/presentations.html#closing-suggestions-1",
+    "href": "schedule/slides/presentations.html#closing-suggestions-1",
+    "title": "UBC Stat550",
+    "section": "Closing suggestions",
+    "text": "Closing suggestions\n3. Try to move\n\nIt’s good to move physically, engage the audience\nTry to make eye contact with the whole room\nRecord yourself once to see if you do anything extraneous\n\n4. Have fun."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-talks",
+    "href": "schedule/slides/presentations.html#example-talks",
+    "title": "UBC Stat550",
+    "section": "Example talks:",
+    "text": "Example talks:\n\nTeaching PCA\nShort research talk about Latent Infections\n\n\n\n\nUBC Stat 550 - 2024"
+  },
+  {
+    "objectID": "schedule/slides/time-series.html#section",
+    "href": "schedule/slides/time-series.html#section",
     "title": "UBC Stat550",
     "section": "Time series, a whirlwind",
     "text": "Time series, a whirlwind\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
@@ -1138,6 +1292,6 @@
     "href": "schedule/slides/time-series.html#the-bootstrap-filter",
     "title": "UBC Stat550",
     "section": "The bootstrap filter",
-    "text": "The bootstrap filter\n\nNeed to simulate from the transition distribution (rtrans)\nNeed to evaluate the observation distribution (dobs)\n\n\nboot_filter &lt;-\n  function(y, B = 1000, rtrans, dobs, a0 = 0, P0 = 1, perturb = function(x) x) {\n    n &lt;- length(y)\n    filter_est &lt;- matrix(0, n, B)\n    predict_est &lt;- matrix(0, n, B)\n    init &lt;- rnorm(B, a0, P0)\n    filter_est[1, ] &lt;- init\n    for (i in seq(n)) {\n      raw_w &lt;- dobs(y[i], filter_est[i, ])\n      w &lt;- raw_w / sum(raw_w)\n      selection &lt;- sample.int(B, replace = TRUE, prob = w)\n      filter_est[i, ] &lt;- perturb(filter_est[i, selection])\n      predict_est[i, ] &lt;- rtrans(filter_est[i, ])\n      if (i &lt; n) filter_est[i + 1, ] &lt;- predict_est[i, ]\n    }\n    list(filt = filter_est, pred = predict_est)\n  }\n\n\n\nUBC Stat 550 - 2024"
+    "text": "The bootstrap filter\n\nNeed to simulate from the transition distribution (rtrans)\nNeed to evaluate the observation distribution (dobs)\n\n\nboot_filter &lt;-\n  function(y, B = 1000, rtrans, dobs, a0 = 0, P0 = 1, perturb = function(x) x) {\n    n &lt;- length(y)\n    filter_est &lt;- matrix(0, n, B)\n    predict_est &lt;- matrix(0, n, B)\n    init &lt;- rnorm(B, a0, P0)\n    filter_est[1, ] &lt;- init\n    for (i in seq(n)) {\n      raw_w &lt;- dobs(y[i], filter_est[i, ])\n      w &lt;- raw_w / sum(raw_w)\n      selection &lt;- sample.int(B, replace = TRUE, prob = w)\n      filter_est[i, ] &lt;- perturb(filter_est[i, selection])\n      predict_est[i, ] &lt;- rtrans(filter_est[i, ])\n      if (i &lt; n) filter_est[i + 1, ] &lt;- predict_est[i, ]\n    }\n    list(filt = filter_est, pred = predict_est)\n  }\n\n\n\n\nUBC Stat 550 - 2024"
   }
 ]

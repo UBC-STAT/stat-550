@@ -8,10 +8,10 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Daniel J. McDonald">
-  <title>UBC Stat550 – time-series</title>
+  <title>UBC Stat550</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -393,7 +394,7 @@
     <div class="slides">
 
 
-<section id="meta-lecture" class="slide level2 large" data-background-image="img/consult.jpeg" data-background-opacity="0.3">
+<section id="section" class="slide level2 large" data-background-image="img/consult.jpeg" data-background-opacity="0.3">
 <h2>Time series, a whirlwind</h2>
 <p><span class="secondary">Stat 550</span></p>
 <p><span class="secondary">Daniel J. McDonald</span></p>
@@ -442,20 +443,20 @@
 <section id="chasing-stationarity" class="slide level2">
 <h2>Chasing stationarity</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>nseq <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>generate_ar <span class="ot">&lt;-</span> <span class="cf">function</span>(n, b) {</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  y <span class="ot">&lt;-</span> <span class="fu">double</span>(n)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  y[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) y[i] <span class="ot">&lt;-</span> b <span class="sc">*</span> y[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">tibble</span>(<span class="at">time =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">y =</span> y)</span>
-<span id="cb1-8"><a href="#cb1-8"></a>}</span>
-<span id="cb1-9"><a href="#cb1-9"></a>stationary <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>nseq, <span class="sc">~</span> <span class="fu">generate_ar</span>(n, .<span class="dv">99</span>)) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"id"</span>)</span>
-<span id="cb1-10"><a href="#cb1-10"></a>non_stationary <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>nseq, <span class="sc">~</span> <span class="fu">generate_ar</span>(n, <span class="fl">1.01</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-2"><a></a>nseq <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a></a>generate_ar <span class="ot">&lt;-</span> <span class="cf">function</span>(n, b) {</span>
+<span id="cb1-4"><a></a>  y <span class="ot">&lt;-</span> <span class="fu">double</span>(n)</span>
+<span id="cb1-5"><a></a>  y[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb1-6"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) y[i] <span class="ot">&lt;-</span> b <span class="sc">*</span> y[i <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb1-7"><a></a>  <span class="fu">tibble</span>(<span class="at">time =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">y =</span> y)</span>
+<span id="cb1-8"><a></a>}</span>
+<span id="cb1-9"><a></a>stationary <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>nseq, <span class="sc">~</span> <span class="fu">generate_ar</span>(n, .<span class="dv">99</span>)) <span class="sc">|&gt;</span> <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"id"</span>)</span>
+<span id="cb1-10"><a></a>non_stationary <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span>nseq, <span class="sc">~</span> <span class="fu">generate_ar</span>(n, <span class="fl">1.01</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-11"><a></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-<img data-src="time-series_files/figure-revealjs/unnamed-chunk-2-1.svg" class="r-stretch quarto-figure-center"></section>
+<img data-src="time-series_files/figure-revealjs/unnamed-chunk-2-1.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="uses-of-stationarity" class="slide level2">
 <h2>Uses of stationarity</h2>
 <ul>
@@ -476,10 +477,10 @@
 </ul>
 <p>Easy to estimate the <code>a</code>’s given a realization.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>y <span class="ot">&lt;-</span> <span class="fu">arima.sim</span>(<span class="fu">list</span>(<span class="at">ar =</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="sc">-</span>.<span class="dv">1</span>)), <span class="at">n =</span> <span class="dv">1000</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>Y <span class="ot">&lt;-</span> y[<span class="dv">3</span><span class="sc">:</span><span class="dv">1000</span>]</span>
-<span id="cb2-3"><a href="#cb2-3"></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">lag1 =</span> y[<span class="dv">2</span><span class="sc">:</span><span class="dv">999</span>], <span class="at">lag2 =</span> y[<span class="dv">1</span><span class="sc">:</span><span class="dv">998</span>])</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">summary</span>(<span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">arima.sim</span>(<span class="fu">list</span>(<span class="at">ar =</span> <span class="fu">c</span>(.<span class="dv">7</span>, <span class="sc">-</span>.<span class="dv">1</span>)), <span class="at">n =</span> <span class="dv">1000</span>)</span>
+<span id="cb2-2"><a></a>Y <span class="ot">&lt;-</span> y[<span class="dv">3</span><span class="sc">:</span><span class="dv">1000</span>]</span>
+<span id="cb2-3"><a></a>X <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">lag1 =</span> y[<span class="dv">2</span><span class="sc">:</span><span class="dv">999</span>], <span class="at">lag2 =</span> y[<span class="dv">1</span><span class="sc">:</span><span class="dv">998</span>])</span>
+<span id="cb2-4"><a></a><span class="fu">summary</span>(<span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -513,7 +514,7 @@ F-statistic:   344 on 2 and 996 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>The correct way is</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">arima</span>(y, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">include.mean =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">arima</span>(y, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">include.mean =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -541,8 +542,8 @@ sigma^2 estimated as 0.9765:  log likelihood = -1407.34,  aic = 2820.67</code></
 <li>Can’t write this easily as a <code>lm()</code></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>y <span class="ot">&lt;-</span> <span class="fu">arima.sim</span>(<span class="fu">list</span>(<span class="at">ma =</span> <span class="fu">c</span>(.<span class="dv">9</span>, .<span class="dv">6</span>, .<span class="dv">1</span>)), <span class="at">n =</span> <span class="dv">1000</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">arima</span>(y, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="at">include.mean =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>y <span class="ot">&lt;-</span> <span class="fu">arima.sim</span>(<span class="fu">list</span>(<span class="at">ma =</span> <span class="fu">c</span>(.<span class="dv">9</span>, .<span class="dv">6</span>, .<span class="dv">1</span>)), <span class="at">n =</span> <span class="dv">1000</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">arima</span>(y, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>), <span class="at">include.mean =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -598,23 +599,23 @@ y_i = T_i + S_i + W_i
 <section id="quick-example" class="slide level2">
 <h2>Quick example</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>sts <span class="ot">&lt;-</span> <span class="fu">StructTS</span>(AirPassengers)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>bc <span class="ot">&lt;-</span> <span class="fu">stl</span>(AirPassengers, <span class="st">"periodic"</span>) <span class="co"># use sin/cos to represent the seasonal</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">tibble</span>(</span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"1949-01-01"</span>), <span class="fu">as.Date</span>(<span class="st">"1960-12-31"</span>), <span class="at">by =</span> <span class="st">"month"</span>),</span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="at">AP =</span> AirPassengers, </span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="at">StrucTS =</span> <span class="fu">fitted</span>(sts)[, <span class="dv">1</span>], </span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="at">STL =</span> <span class="fu">rowSums</span>(bc<span class="sc">$</span>time.series[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
-<span id="cb8-8"><a href="#cb8-8"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>time) <span class="sc">|&gt;</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, value, <span class="at">color =</span> name)) <span class="sc">+</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">name =</span> <span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>sts <span class="ot">&lt;-</span> <span class="fu">StructTS</span>(AirPassengers)</span>
+<span id="cb8-2"><a></a>bc <span class="ot">&lt;-</span> <span class="fu">stl</span>(AirPassengers, <span class="st">"periodic"</span>) <span class="co"># use sin/cos to represent the seasonal</span></span>
+<span id="cb8-3"><a></a><span class="fu">tibble</span>(</span>
+<span id="cb8-4"><a></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"1949-01-01"</span>), <span class="fu">as.Date</span>(<span class="st">"1960-12-31"</span>), <span class="at">by =</span> <span class="st">"month"</span>),</span>
+<span id="cb8-5"><a></a>  <span class="at">AP =</span> AirPassengers, </span>
+<span id="cb8-6"><a></a>  <span class="at">StrucTS =</span> <span class="fu">fitted</span>(sts)[, <span class="dv">1</span>], </span>
+<span id="cb8-7"><a></a>  <span class="at">STL =</span> <span class="fu">rowSums</span>(bc<span class="sc">$</span>time.series[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb8-8"><a></a>) <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>time) <span class="sc">|&gt;</span></span>
+<span id="cb8-10"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, value, <span class="at">color =</span> name)) <span class="sc">+</span></span>
+<span id="cb8-11"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb8-13"><a></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">name =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb8-14"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="time-series_files/figure-revealjs/unnamed-chunk-6-1.svg" class="r-stretch quarto-figure-center"></section>
+<img data-src="time-series_files/figure-revealjs/unnamed-chunk-6-1.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="generic-state-space-model" class="slide level2">
 <h2>Generic state space model</h2>
 <div class="columns">
@@ -719,48 +720,48 @@ P_k &amp;= P^-_k - K_k S_k K_k^\mathsf{T}
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>kalman <span class="ot">&lt;-</span> <span class="cf">function</span>(y, m0, P0, A, Q, H, R) {</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>  m <span class="ot">&lt;-</span> <span class="fu">double</span>(n <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>  P <span class="ot">&lt;-</span> <span class="fu">double</span>(n <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>  m[<span class="dv">1</span>] <span class="ot">&lt;-</span> m0</span>
-<span id="cb9-6"><a href="#cb9-6"></a>  P[<span class="dv">1</span>] <span class="ot">&lt;-</span> P0</span>
-<span id="cb9-7"><a href="#cb9-7"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">seq</span>(n)) {</span>
-<span id="cb9-8"><a href="#cb9-8"></a>    mm <span class="ot">&lt;-</span> A <span class="sc">*</span> m[k]</span>
-<span id="cb9-9"><a href="#cb9-9"></a>    Pm <span class="ot">&lt;-</span> A <span class="sc">*</span> P[k] <span class="sc">*</span> A <span class="sc">+</span> Q</span>
-<span id="cb9-10"><a href="#cb9-10"></a>    v <span class="ot">&lt;-</span> y[k] <span class="sc">-</span> H <span class="sc">*</span> mm</span>
-<span id="cb9-11"><a href="#cb9-11"></a>    S <span class="ot">&lt;-</span> H <span class="sc">*</span> Pm <span class="sc">*</span> H <span class="sc">+</span> R</span>
-<span id="cb9-12"><a href="#cb9-12"></a>    K <span class="ot">&lt;-</span> Pm <span class="sc">*</span> H <span class="sc">/</span> S</span>
-<span id="cb9-13"><a href="#cb9-13"></a>    m[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> mm <span class="sc">+</span> K <span class="sc">*</span> v</span>
-<span id="cb9-14"><a href="#cb9-14"></a>    P[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> Pm <span class="sc">-</span> K <span class="sc">*</span> S <span class="sc">*</span> K</span>
-<span id="cb9-15"><a href="#cb9-15"></a>  }</span>
-<span id="cb9-16"><a href="#cb9-16"></a>  <span class="fu">tibble</span>(<span class="at">t =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">m =</span> m[<span class="sc">-</span><span class="dv">1</span>], <span class="at">P =</span> P[<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb9-17"><a href="#cb9-17"></a>}</span>
-<span id="cb9-18"><a href="#cb9-18"></a></span>
-<span id="cb9-19"><a href="#cb9-19"></a><span class="fu">set.seed</span>(<span class="dv">2022</span> <span class="sc">-</span> <span class="dv">06</span> <span class="sc">-</span> <span class="dv">01</span>)</span>
-<span id="cb9-20"><a href="#cb9-20"></a>x <span class="ot">&lt;-</span> <span class="fu">double</span>(<span class="dv">100</span>)</span>
-<span id="cb9-21"><a href="#cb9-21"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">100</span>) x[k] <span class="ot">&lt;-</span> x[k <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
-<span id="cb9-22"><a href="#cb9-22"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb9-23"><a href="#cb9-23"></a>kf <span class="ot">&lt;-</span> <span class="fu">kalman</span>(y, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>kalman <span class="ot">&lt;-</span> <span class="cf">function</span>(y, m0, P0, A, Q, H, R) {</span>
+<span id="cb9-2"><a></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb9-3"><a></a>  m <span class="ot">&lt;-</span> <span class="fu">double</span>(n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-4"><a></a>  P <span class="ot">&lt;-</span> <span class="fu">double</span>(n <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-5"><a></a>  m[<span class="dv">1</span>] <span class="ot">&lt;-</span> m0</span>
+<span id="cb9-6"><a></a>  P[<span class="dv">1</span>] <span class="ot">&lt;-</span> P0</span>
+<span id="cb9-7"><a></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">seq</span>(n)) {</span>
+<span id="cb9-8"><a></a>    mm <span class="ot">&lt;-</span> A <span class="sc">*</span> m[k]</span>
+<span id="cb9-9"><a></a>    Pm <span class="ot">&lt;-</span> A <span class="sc">*</span> P[k] <span class="sc">*</span> A <span class="sc">+</span> Q</span>
+<span id="cb9-10"><a></a>    v <span class="ot">&lt;-</span> y[k] <span class="sc">-</span> H <span class="sc">*</span> mm</span>
+<span id="cb9-11"><a></a>    S <span class="ot">&lt;-</span> H <span class="sc">*</span> Pm <span class="sc">*</span> H <span class="sc">+</span> R</span>
+<span id="cb9-12"><a></a>    K <span class="ot">&lt;-</span> Pm <span class="sc">*</span> H <span class="sc">/</span> S</span>
+<span id="cb9-13"><a></a>    m[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> mm <span class="sc">+</span> K <span class="sc">*</span> v</span>
+<span id="cb9-14"><a></a>    P[k <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> Pm <span class="sc">-</span> K <span class="sc">*</span> S <span class="sc">*</span> K</span>
+<span id="cb9-15"><a></a>  }</span>
+<span id="cb9-16"><a></a>  <span class="fu">tibble</span>(<span class="at">t =</span> <span class="dv">1</span><span class="sc">:</span>n, <span class="at">m =</span> m[<span class="sc">-</span><span class="dv">1</span>], <span class="at">P =</span> P[<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb9-17"><a></a>}</span>
+<span id="cb9-18"><a></a></span>
+<span id="cb9-19"><a></a><span class="fu">set.seed</span>(<span class="dv">2022</span> <span class="sc">-</span> <span class="dv">06</span> <span class="sc">-</span> <span class="dv">01</span>)</span>
+<span id="cb9-20"><a></a>x <span class="ot">&lt;-</span> <span class="fu">double</span>(<span class="dv">100</span>)</span>
+<span id="cb9-21"><a></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">100</span>) x[k] <span class="ot">&lt;-</span> x[k <span class="sc">-</span> <span class="dv">1</span>] <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">1</span>)</span>
+<span id="cb9-22"><a></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb9-23"><a></a>kf <span class="ot">&lt;-</span> <span class="fu">kalman</span>(y, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(<span class="fu">bind_cols</span>(kf, <span class="at">x =</span> x, <span class="at">y =</span> y), <span class="fu">aes</span>(t)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymax =</span> m <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> P, <span class="at">ymin =</span> m <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> P), <span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> m, <span class="at">color =</span> <span class="st">"kf_mean"</span>), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x, <span class="at">color =</span> <span class="st">"x"</span>), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">color =</span> <span class="st">"y"</span>), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb10-8"><a href="#cb10-8"></a>    <span class="at">name =</span> <span class="st">""</span>,</span>
-<span id="cb10-9"><a href="#cb10-9"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"kf_mean"</span>, <span class="st">"x"</span>, <span class="st">"y"</span>),</span>
-<span id="cb10-10"><a href="#cb10-10"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">kf_mean =</span> primary, <span class="at">x =</span> tertiary, <span class="at">y =</span> secondary)</span>
-<span id="cb10-11"><a href="#cb10-11"></a>  ) <span class="sc">+</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(<span class="fu">bind_cols</span>(kf, <span class="at">x =</span> x, <span class="at">y =</span> y), <span class="fu">aes</span>(t)) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymax =</span> m <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> P, <span class="at">ymin =</span> m <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> P), <span class="at">alpha =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> m, <span class="at">color =</span> <span class="st">"kf_mean"</span>), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> x, <span class="at">color =</span> <span class="st">"x"</span>), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> y, <span class="at">color =</span> <span class="st">"y"</span>), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb10-8"><a></a>    <span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb10-9"><a></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="st">"kf_mean"</span>, <span class="st">"x"</span>, <span class="st">"y"</span>),</span>
+<span id="cb10-10"><a></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="at">kf_mean =</span> primary, <span class="at">x =</span> tertiary, <span class="at">y =</span> secondary)</span>
+<span id="cb10-11"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-12"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="time-series_files/figure-revealjs/plot-it-1.svg"></p>
+<p><img data-src="time-series_files/figure-revealjs/plot-it-1.svg" class="quarto-figure quarto-figure-center"></p>
 </figure>
 </div>
 </div>
@@ -806,28 +807,28 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
 <li>Same data, different code (using a package)</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(FKF)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>filt <span class="ot">&lt;-</span> <span class="fu">fkf</span>(</span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">a0 =</span> <span class="dv">0</span>, <span class="at">P0 =</span> <span class="fu">matrix</span>(<span class="dv">5</span>), <span class="at">dt =</span> <span class="fu">matrix</span>(<span class="dv">0</span>), <span class="at">ct =</span> <span class="fu">matrix</span>(<span class="dv">0</span>),</span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="at">Tt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">Zt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">HHt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">GGt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>),</span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="at">yt =</span> <span class="fu">matrix</span>(y, <span class="at">ncol =</span> <span class="fu">length</span>(y))</span>
-<span id="cb11-6"><a href="#cb11-6"></a>)</span>
-<span id="cb11-7"><a href="#cb11-7"></a>smo <span class="ot">&lt;-</span> <span class="fu">fks</span>(filt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(FKF)</span>
+<span id="cb11-2"><a></a>filt <span class="ot">&lt;-</span> <span class="fu">fkf</span>(</span>
+<span id="cb11-3"><a></a>  <span class="at">a0 =</span> <span class="dv">0</span>, <span class="at">P0 =</span> <span class="fu">matrix</span>(<span class="dv">5</span>), <span class="at">dt =</span> <span class="fu">matrix</span>(<span class="dv">0</span>), <span class="at">ct =</span> <span class="fu">matrix</span>(<span class="dv">0</span>),</span>
+<span id="cb11-4"><a></a>  <span class="at">Tt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">Zt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">HHt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>), <span class="at">GGt =</span> <span class="fu">matrix</span>(<span class="dv">1</span>),</span>
+<span id="cb11-5"><a></a>  <span class="at">yt =</span> <span class="fu">matrix</span>(y, <span class="at">ncol =</span> <span class="fu">length</span>(y))</span>
+<span id="cb11-6"><a></a>)</span>
+<span id="cb11-7"><a></a>smo <span class="ot">&lt;-</span> <span class="fu">fks</span>(filt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">tibble</span>(<span class="at">time =</span> <span class="fu">seq_along</span>(x), <span class="at">x =</span> x, <span class="at">filter =</span> <span class="fu">c</span>(filt<span class="sc">$</span>att), <span class="at">smooth =</span> <span class="fu">c</span>(smo<span class="sc">$</span>ahatt)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>time) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, value, <span class="at">color =</span> name)) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">theme</span>(</span>
-<span id="cb12-8"><a href="#cb12-8"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb12-9"><a href="#cb12-9"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>()</span>
-<span id="cb12-10"><a href="#cb12-10"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">tibble</span>(<span class="at">time =</span> <span class="fu">seq_along</span>(x), <span class="at">x =</span> x, <span class="at">filter =</span> <span class="fu">c</span>(filt<span class="sc">$</span>att), <span class="at">smooth =</span> <span class="fu">c</span>(smo<span class="sc">$</span>ahatt)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>time) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, value, <span class="at">color =</span> name)) <span class="sc">+</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">24</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb12-7"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-8"><a></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span>, <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb12-9"><a></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb12-10"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="time-series_files/figure-revealjs/plot-smooth-1.svg" class="r-stretch quarto-figure-center"></section>
+<img data-src="time-series_files/figure-revealjs/plot-smooth-1.svg" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="what-about-non-linear-andor-non-gaussian" class="slide level2">
 <h2>What about non-linear and/or non-Gaussian</h2>
 <p><span class="math display">\[\begin{aligned} x_k &amp;\sim p(x_k | x_{k-1}) \\ y_k &amp;\sim p(y_k | x_k)\end{aligned}\]</span></p>
@@ -848,27 +849,29 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
 <li>Need to <strong>evaluate</strong> the observation distribution (<code>dobs</code>)</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>boot_filter <span class="ot">&lt;-</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="cf">function</span>(y, <span class="at">B =</span> <span class="dv">1000</span>, rtrans, dobs, <span class="at">a0 =</span> <span class="dv">0</span>, <span class="at">P0 =</span> <span class="dv">1</span>, <span class="at">perturb =</span> <span class="cf">function</span>(x) x) {</span>
-<span id="cb13-3"><a href="#cb13-3"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>    filter_est <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, B)</span>
-<span id="cb13-5"><a href="#cb13-5"></a>    predict_est <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, B)</span>
-<span id="cb13-6"><a href="#cb13-6"></a>    init <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B, a0, P0)</span>
-<span id="cb13-7"><a href="#cb13-7"></a>    filter_est[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> init</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(n)) {</span>
-<span id="cb13-9"><a href="#cb13-9"></a>      raw_w <span class="ot">&lt;-</span> <span class="fu">dobs</span>(y[i], filter_est[i, ])</span>
-<span id="cb13-10"><a href="#cb13-10"></a>      w <span class="ot">&lt;-</span> raw_w <span class="sc">/</span> <span class="fu">sum</span>(raw_w)</span>
-<span id="cb13-11"><a href="#cb13-11"></a>      selection <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(B, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> w)</span>
-<span id="cb13-12"><a href="#cb13-12"></a>      filter_est[i, ] <span class="ot">&lt;-</span> <span class="fu">perturb</span>(filter_est[i, selection])</span>
-<span id="cb13-13"><a href="#cb13-13"></a>      predict_est[i, ] <span class="ot">&lt;-</span> <span class="fu">rtrans</span>(filter_est[i, ])</span>
-<span id="cb13-14"><a href="#cb13-14"></a>      <span class="cf">if</span> (i <span class="sc">&lt;</span> n) filter_est[i <span class="sc">+</span> <span class="dv">1</span>, ] <span class="ot">&lt;-</span> predict_est[i, ]</span>
-<span id="cb13-15"><a href="#cb13-15"></a>    }</span>
-<span id="cb13-16"><a href="#cb13-16"></a>    <span class="fu">list</span>(<span class="at">filt =</span> filter_est, <span class="at">pred =</span> predict_est)</span>
-<span id="cb13-17"><a href="#cb13-17"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>boot_filter <span class="ot">&lt;-</span></span>
+<span id="cb13-2"><a></a>  <span class="cf">function</span>(y, <span class="at">B =</span> <span class="dv">1000</span>, rtrans, dobs, <span class="at">a0 =</span> <span class="dv">0</span>, <span class="at">P0 =</span> <span class="dv">1</span>, <span class="at">perturb =</span> <span class="cf">function</span>(x) x) {</span>
+<span id="cb13-3"><a></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(y)</span>
+<span id="cb13-4"><a></a>    filter_est <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, B)</span>
+<span id="cb13-5"><a></a>    predict_est <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n, B)</span>
+<span id="cb13-6"><a></a>    init <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(B, a0, P0)</span>
+<span id="cb13-7"><a></a>    filter_est[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> init</span>
+<span id="cb13-8"><a></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(n)) {</span>
+<span id="cb13-9"><a></a>      raw_w <span class="ot">&lt;-</span> <span class="fu">dobs</span>(y[i], filter_est[i, ])</span>
+<span id="cb13-10"><a></a>      w <span class="ot">&lt;-</span> raw_w <span class="sc">/</span> <span class="fu">sum</span>(raw_w)</span>
+<span id="cb13-11"><a></a>      selection <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(B, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> w)</span>
+<span id="cb13-12"><a></a>      filter_est[i, ] <span class="ot">&lt;-</span> <span class="fu">perturb</span>(filter_est[i, selection])</span>
+<span id="cb13-13"><a></a>      predict_est[i, ] <span class="ot">&lt;-</span> <span class="fu">rtrans</span>(filter_est[i, ])</span>
+<span id="cb13-14"><a></a>      <span class="cf">if</span> (i <span class="sc">&lt;</span> n) filter_est[i <span class="sc">+</span> <span class="dv">1</span>, ] <span class="ot">&lt;-</span> predict_est[i, ]</span>
+<span id="cb13-15"><a></a>    }</span>
+<span id="cb13-16"><a></a>    <span class="fu">list</span>(<span class="at">filt =</span> filter_est, <span class="at">pred =</span> predict_est)</span>
+<span id="cb13-17"><a></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>UBC Stat 550 - 2024</p>
+</div>
 </div>
 </section>
     </div>
@@ -898,7 +901,6 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1198,10 +1200,29 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/UBC-STAT\.github\.io\/stat-550\/");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+              // target, if specified
+              link.setAttribute("target", "_blank");
+              if (link.getAttribute("rel") === null) {
+                link.setAttribute("rel", "noopener");
+              }
+              // default icon
+              link.classList.add("external");
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1211,8 +1232,17 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1266,22 +1296,6 @@ x_k | y_1,\ldots,y_T &amp;= N(m^s_k, P_k^s)
           });
         }
       }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var filterRegex = new RegExp("https:\/\/github\.com\/UBC-STAT\/stat-550");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-              // target, if specified
-              link.setAttribute("target", "_blank");
-              // default icon
-              link.classList.add("external");
-          }
-        }
     });
     </script>
     
