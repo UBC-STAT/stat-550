@@ -28,14 +28,14 @@ knitr::kable(tib)
 
 ## Lecture slides
 
-* [Bootstrap](slides/bootstrap.qmd)
-* [Cluster computing](slides/cluster-computing.qmd)
-* [Git and GitHub](slides/git.qmd)
-* [Skills for graduate students](slides/grad-school.qmd)
-* [Tips for organization](slides/organization.qmd)
 * [Giving presentations](slides/presentations.qmd)
-* [Time series](slides/time-series.qmd)
+* [Git and GitHub](slides/git.qmd)
+* [Tips for organization](slides/organization.qmd)
 * [Unit tests](slides/unit-tests.qmd)
+* [Bootstrap](slides/bootstrap.qmd)
+* [Time series](slides/time-series.qmd)
+* [Cluster computing](slides/cluster-computing.qmd)
+* [Skills for graduate students](slides/grad-school.qmd)
 
 ## Handouts
 

@@ -360,9 +360,10 @@ g <- ggplot(tib, aes(method, mean, colour = method)) +
   geom_point() +
   scale_colour_viridis_d(option = "F", begin = .2, end = .8) +
   scale_y_continuous(labels = scales::percent, expand = expansion(0)) +
-  coord_cartesian(ylim = c(0, .3)) +
+  coord_cartesian(ylim = c(0, .4)) +
   ylab("Error") +
-  xlab("Method")
+  theme(legend.position = "none") +
+  xlab("")
 g
 ```
 
@@ -373,6 +374,26 @@ Ran 50 simulations.
 ```{r}
 #| echo: false
 g + geom_linerange(aes(ymax = mean + sd, ymin = pmax(mean - sd, 0)))
+```
+
+## Example: Made up simulation results
+
+Ran 50 simulations.
+
+```{r}
+#| echo: false
+tib <- tib |>
+  rowwise() |>
+  mutate(samples = list(rnorm(50, mean, sd))) |>
+  unnest(samples)
+ggplot(tib, aes(method, samples, fill = method)) +
+  geom_boxplot(alpha = .66, notch = TRUE) +
+  scale_fill_viridis_d(option = "F", begin = .2, end = .8) +
+  scale_y_continuous(labels = scales::percent, expand = expansion(0)) +
+  coord_cartesian(ylim = c(0, .4)) +
+  ylab("Error") +
+  theme(legend.position = "none") +
+  xlab("")
 ```
 
 
