@@ -3,7 +3,7 @@
 
 ## {background-image="img/consult.jpeg" background-opacity="0.3"}
 
-[{{< meta lecture >}}]{.slide-title}
+{{< meta lecture >}}
 
 
 [Stat 550]{.secondary}
