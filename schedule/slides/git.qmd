@@ -11,11 +11,10 @@ metadata-files:
 ## Why version control?
 
 
+![](http://www.phdcomics.com/comics/archive/phd101212s.gif){fig-align="center"}
 
-![](http://www.phdcomics.com/comics/archive/phd101212s.gif){fig-align="center" height="60%"}
 
-
-* Much of this lecture is borrowed/stolen from Colin Rundel and Karl Broman
+[Much of this lecture is based on material from Colin Rundel and Karl Broman]{.smallest}
 
 
 ## Why version control?
@@ -37,25 +36,25 @@ Your closest collaborator is you six months ago, but you don’t reply to emails
 
 ## Why Git
 
-:::: {.columns}
-::: {.column width="60%"}
+::: flex
+::: w-60
 * You could use something like Box or Dropbox
 * These are poor-man's version control
 * Git is much more appropriate
 * It works with large groups
 * It's very fast
-* It's much better at fixing mistakes
+* It's [much]{.secondary} better at fixing mistakes
 * Tech companies use it (so it's in your interest to have some experience)
 :::
 
-::: {.column width="40%"}
+::: w-40
 ![](https://imgs.xkcd.com/comics/git.png){fig-align="center"}
 :::
-::::
+:::
 
 . . .
 
-::: {.callout-important}
+::: {.callout-important appearance="simple"}
 This will hurt, but what doesn't kill you, makes you stronger.
 :::
 
@@ -70,7 +69,7 @@ This will hurt, but what doesn't kill you, makes you stronger.
 * Some IDEs (pycharm, RStudio, VScode) have built in `git`
 * `git`/GitHub is broad and complicated. Here, just what you [need]{.secondary}
 
-## Aside on "Built-in" & "Command line"
+## Aside on "Built-in" & "Command line" {background-color="#97D4E9"}
 
 :::{.callout-tip}
 First things first, RStudio and the Terminal
@@ -88,7 +87,7 @@ First things first, RStudio and the Terminal
 * To get the most out of Git, you have to use the command line.
 
 
-## Typical workflow
+## Typical workflow {.smaller}
 
 
 1. Download a repo from Github
@@ -111,7 +110,7 @@ git commit -m "Some explanatory message"
 
 **Repeat 3--5 as needed. Once you're satisfied**
 
-* Push to Github
+* Push to GitHub
 ```{{bash}}
 git push
 git push -u origin <branchname>
@@ -126,23 +125,25 @@ git push -u origin <branchname>
 
 <br>
 
-#### Definitely
-code, markdown documentation, tex files, bash scripts/makefiles, ...
+Definitely
+: code, markdown documentation, tex files, bash scripts/makefiles, ...
 
 <br>
 
-#### Possibly
-logs, jupyter notebooks, images (that won’t change), ...
+Possibly
+: logs, jupyter notebooks, images (that won’t change), ...
 
 <br>
 
-#### Questionable
-processed data, static pdfs, ...
+Questionable
+: processed data, static pdfs, ...
 
 <br>
 
-#### Definitely not
-full data, continually updated pdfs, other things compiled from source code, ...
+Definitely not
+: full data, continually updated pdfs, other things compiled from source code, ...
+
+
 
 ## What things to track
 
@@ -158,9 +159,6 @@ full data, continually updated pdfs, other things compiled from source code, ...
 # Session Data files
 .RData
 
-# User-specific files
-.Ruserdata
-
 # Compiled junk
 *.o
 *.so
@@ -173,37 +171,27 @@ full data, continually updated pdfs, other things compiled from source code, ...
 git add .
 ```
 
-## Rules
-
-* Each team has their own repo
-* Make a PR against `main` to submit
-* Peer evaluations are done via PR review (also send to Estella)
-* YOU must make at [least 5 commits]{.secondary} (fewer will lead to deductions)
-* I review your work and merge the PR
-
-Project submissions are done similarly.
 
 ## What's a PR?
 
-* This exists on Github (not git)
+* This exists on GitHub (not git)
 * Demonstration
 
 
 ::: {.r-stack}
-![](gfx/pr1.png){.fragment height="50%"}
+![](gfx/pr1.png){.fragment height="550"}
 
-![](gfx/pr2.png){.fragment height="50%"}
+![](gfx/pr2.png){.fragment height="550"}
 :::
 
 ## Some things to be aware of
 
 * `master` vs `main`
 * If you think you did something wrong, stop and ask for help
-* There are guardrails in place. But those won't stop a bulldozer.
 * The hardest part is the initial setup. Then, this should all be rinse-and-repeat.
 * This book is great: [Happy Git with R](https://happygitwithr.com)
     1. See Chapter 6 if you have install problems.
-    1. See Chapter 10 for credential caching (avoid typing a password all the time)
+    1. See Chapter 9 for credential caching (avoid typing a password all the time)
     1. See Chapter 13 if RStudio can't find `git`
     
 ## The `main/develop/branch` workflow
@@ -231,41 +219,14 @@ I and many DS/CS/Stat faculty use this workflow with my lab.
 * Typical for team members or supervisors to review your PR for compliance
 
 ::: {.callout-tip}
-I suggest you adopt the "production" version for your Team Assignments
+I suggest (require?) you adopt the "production" version for your HW 2
 :::
 
-## Guardrails
-
-* The `.github` directory contains interactions with GitHub
-
-    1. Actions: On push / PR / other GitHub does something on their server (builds a website, runs tests on code)
-    1. PR templates: Little admonitions when you open a PR
-    1. Branch protection: prevent you from doing stuff
-    
-* In this course, I protect `main` so that you can't push there
-
-::: {.callout-warning}
-If you try to push to `main`, it will give an error like
-```{{bash}}
-remote: error: GH006: Protected branch update failed for refs/heads/main.
-```
-
-The fix is: make a new branch, then push that.
-:::
-
----
-
-* I also use a PR template. It gives you some instructions that you should follow
-
-
-::: {.callout-important}
-Read the PR template!!
-:::
 
 ## Operations in Rstudio 
 
-:::: {.columns}
-::: {.column width="50%"}
+::: flex
+::: w-50
 
 1. Stage
 1. Commit
@@ -274,17 +235,18 @@ Read the PR template!!
 1. Create a branch
 
 
-::: {.callout-note}
-## Covers:
+
+[Covers:]{.secondary}
+
 * Everything to do your HW / Project if you're careful
 * Plus most other things you "want to do"
+
 :::
-:::
 
-::: {.column width="50%"}
+::: w-50
 
 
-#### Command line versions (of the same)
+Command line versions (of the same)
 
 ```{{bash}}
 git add <name/of/file>
@@ -299,13 +261,14 @@ git checkout -b <name/of/branch>
 ```
 
 :::
-::::
+:::
 
-## Other useful stuff (but command line only)
 
-:::: {.columns}
-::: {.column width="50%"}
-#### Initializing
+## Other useful stuff (but command line only) {.smaller}
+
+::: flex
+::: w-50
+Initializing
 ```{{bash}}
 git config user.name --global "Daniel J. McDonald"
 git config user.email --global "daniel@stat.ubc.ca"
@@ -314,13 +277,13 @@ git config core.editor --global nano
 ```
 
 
-#### Staging
+Staging
 ```{{bash}}
 git add name/of/file # stage 1 file
 git add . # stage all
 ```
 
-#### Committing
+Committing
 ```{{bash}}
 # stage/commit simultaneously
 git commit -am "message" 
@@ -329,7 +292,7 @@ git commit -am "message"
 git commit 
 ```
 
-#### Pushing
+Pushing
 ```{{bash}}
 # If branchname doesn't exist
 # on remote, create it and push
@@ -337,8 +300,8 @@ git push -u origin branchname
 ```
 :::
 
-::: {.column width="50%"}
-#### Branching
+::: w-50
+Branching
 ```{{bash}}
 # switch to branchname, error if uncommitted changes
 git checkout branchname 
@@ -360,14 +323,39 @@ git checkout branch2 -- name/of/file
 git branch -v # list all branches
 ```
 
-#### Check the status
+Check the status
 ```{{bash}}
 git status
 git remote -v # list remotes
 git log # show recent commits, msgs
 ```
 :::
-::::
+:::
+
+## Commit messages {.smaller}
+
+::: {.callout-tip appearance="simple"}
+1. Write meaningful messages. Not `fixed stuff` or `oops? maybe done?`
+1. These appear in the log and help you determine what you've done.
+1. Think _imperative mood_: "add cross validation to simulation"
+1. Best to have each commit "do one thing"
+:::
+
+[Conventions:]{.secondary} (see [here](https://www.conventionalcommits.org/en/v1.0.0/) for details)
+
+* feat: – a new feature is introduced with the changes
+* fix: – a bug fix has occurred
+* chore: – changes that do not relate to a fix or feature (e.g., updating dependencies)
+* refactor: – refactored code that neither fixes a bug nor adds a feature
+* docs: – updates to documentation such as a the README or other markdown files
+* style: – changes that do not affect the function of the code
+* test – including new or correcting previous tests
+* perf – performance improvements
+* ci – continuous integration related
+
+```{{bash}}
+git commit -m "feat: add cross validation to simulation, closes #251"
+```
 
 ## Conflicts
 
@@ -375,15 +363,15 @@ git log # show recent commits, msgs
 
 * Meaning that changes on one branch would overwrite changes on a different branch.
 
-:::: {.columns}
-::: {.column width="50%"}
+::: flex
+::: w-50
 
-* They look like this:
+[They look like this:]{.secondary}
 
 ```
-Here are lines that are either unchanged from
-the common ancestor, or cleanly resolved 
-because only one side changed.
+Here are lines that are either unchanged
+from the common ancestor, or cleanly
+resolved because only one side changed.
 
 But below we have some troubles
 <<<<<<< yours:sample.txt
@@ -399,21 +387,21 @@ resolved or unmodified.
 
 :::
 
-::: {.column width="50%"}
+::: w-50
 
-You get to decide, do you want to keep
+[You decide what to keep]{.secondary}
 
 1. Your changes (above `======`)
 2. Their changes (below `======`)
 3. Both.
 4. Neither.
 
-But always delete the `<<<<<`, `======`, and `>>>>>` lines.
+Always delete the `<<<<<`, `======`, and `>>>>>` lines.
 
-Once you're satisfied, committing resolves the conflict.
+Once you're satisfied, commit to resolve the conflict.
 
 :::
-::::
+:::
 
 ## Some other pointers
 
@@ -435,35 +423,37 @@ Once you're satisfied, committing resolves the conflict.
 * Suppose we're concerned about a file named `README.md`
 * Often, `git status` will give some of these as suggestions
 
-:::: {.columns}
-::: {.column width="50%"}
-### 1. Saved but not staged
+::: flex
+::: w-50
 
-* In RStudio, select the file and click `r fontawesome::fa("gear", fill="blue")` `r fontawesome::fa("caret-down")` then select `r fontawesome::fa("arrow-rotate-left", fill="red")` Revert...
+[1. Saved but not staged]{.secondary}
+
+In RStudio, select the file and click `r fontawesome::fa("gear", fill="blue")` `r fontawesome::fa("caret-down")` then select `r fontawesome::fa("arrow-rotate-left", fill="red")` Revert...
 ```{{bash}}
-# grab the previously committed version
+# grab the old committed version
 git checkout -- README.md 
 ```
 
-### 2. Staged but not committed
+[2. Staged but not committed]{.secondary}
 
-* In RStudio, uncheck the box by the file, then use the method above.
+In RStudio, uncheck the box by the file, then use the method above.
 ```{{bash}}
-# unstage
+# first unstage, then same as 1
 git reset HEAD README.md
 git checkout -- README.md
 ```
 :::
 
-::: {.column width="50%"}
+::: w-50
 
-### 3. Committed
+[3. Committed]{.secondary}
 
-* Not easy to do in RStudio...
+Not easy to do in RStudio...
 ```{{bash}}
-# check the log to see where you made the chg, 
+# check the log to find the chg 
 git log
-# go one step before that (eg to 32b252)
+# go one step before that 
+# (e.g., to commit 32b252)
 # and grab that earlier version
 git checkout 32b252 -- README.md
 ```
@@ -471,16 +461,16 @@ git checkout 32b252 -- README.md
 <br>
 
 ```{{bash}}
-# alternatively
-# if it happens to also be on another branch
+# alternatively, if it happens
+# to also be on another branch
 git checkout otherbranch -- README.md
 ```
 :::
-::::
+:::
 
 ## Recovering from things
 
-1. Accidentally did work on main, Tried to Push but got refused
+1. Accidentally did work on main,
 ```{{bash}}
 # make a new branch with everything, but stay on main
 git branch newbranch
@@ -500,4 +490,20 @@ git branch -d badbranch
 3. Anything more complicated, either post to Slack or LMGTFY
 
 
+## Rules for HW 2
+
+* Each team has their own repo
+* Make a PR against `main` to submit
+* Tag me and all the assigned reviewers
+* Peer evaluations are done via PR review (also send to Estella)
+* YOU must make at [least 5 commits]{.secondary} (fewer will lead to deductions)
+* I review your work and merge the PR
+
+::: {.callout-important}
+☠️☠️ Read all the instructions in the repo! ☠️☠️
+:::
+
+
 # Practice time...
+
+[dajmcdon/sugary-beverages](https://github.com/dajmcdon/sugary-beverages)
