@@ -44,10 +44,15 @@ Item response, validity and reliability of instruments for abstract attributes.
 : _Test Theory: A Unified Treatment_, R.D. McDonald (1999), Routledge.
 
 Sample size calculation. e.g. non-central t, non-central F etc.,. and general approach. 
-: Haven't found a good reference with general theory and how to use these distributions in a worked out examples in R. 
-
-Modification of standard procedures to have clustered data that cannot be considered as iid: easier for estimation, tricky for hypothesis testing.
+: _Statistical power analysis : a simple and general model for traditional and modern hypothesis tests_, 4th edition. Kevin R. Murphy, Brett Myors, Allen Wolach (2014), Routledge.
 : 
+: This book covers many cases. However the principle of sample size calculation can be shown better in a few pages based on examples that show the derivation of the distribution of the test statistic under a point null hypothesis and under a point alternative hypothesis.
 
-Jackknife, bootstrap and resampling (tools for preceding item).
+Survey sampling
+: _Sampling Design and Analysis_, Second Edition. Sharon L. Lohr, CRC 2019. 
+: Especially Chapter 8 Nonresponse; Section 8.3 Callbacks and Two-Phase Sampling.
 : 
+: [_TRC Market Research, Non-Response Bias In Survey Sampling._](https://www.greenbook.org/marketing-research/non-response-bias)
+
+Machine learning procedures
+: [_Elements of Statistical Learning_](https://hastie.su.domains/ElemStatLearn/), 2nd edition. Hastie, Tibshirani, and Friedman (2009), Springer.
