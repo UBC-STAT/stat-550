@@ -398,7 +398,7 @@
 <h2>Version control</h2>
 <p><span class="secondary">Stat 550</span></p>
 <p><span class="secondary">Daniel J. McDonald</span></p>
-<p>Last modified – 09 January 2024</p>
+<p>Last modified – 01 February 2024</p>
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -426,14 +426,8 @@
 </section>
 <section id="why-version-control" class="slide level2">
 <h2>Why version control?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="http://www.phdcomics.com/comics/archive/phd101212s.gif" class="quarto-figure quarto-figure-center" style="height:60.0%"></p>
-</figure>
-</div>
-<ul>
-<li>Much of this lecture is borrowed/stolen from Colin Rundel and Karl Broman</li>
-</ul>
+
+<img data-src="http://www.phdcomics.com/comics/archive/phd101212s.gif" class="quarto-figure quarto-figure-center r-stretch"><p><span class="smallest">Much of this lecture is based on material from Colin Rundel and Karl Broman</span></p>
 </section>
 <section id="why-version-control-1" class="slide level2">
 <h2>Why version control?</h2>
@@ -460,18 +454,19 @@
 </section>
 <section id="why-git" class="slide level2">
 <h2>Why Git</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
+<div class="flex">
+<div class="w-60">
 <ul>
 <li>You could use something like Box or Dropbox</li>
 <li>These are poor-man’s version control</li>
 <li>Git is much more appropriate</li>
 <li>It works with large groups</li>
 <li>It’s very fast</li>
-<li>It’s much better at fixing mistakes</li>
+<li>It’s <span class="secondary">much</span> better at fixing mistakes</li>
 <li>Tech companies use it (so it’s in your interest to have some experience)</li>
 </ul>
-</div><div class="column" style="width:40%;">
+</div>
+<div class="w-40">
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="https://imgs.xkcd.com/comics/git.png" class="quarto-figure quarto-figure-center"></p>
@@ -480,13 +475,10 @@
 </div>
 </div>
 <div class="fragment">
-<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout callout-important callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
 <p>This will hurt, but what doesn’t kill you, makes you stronger.</p>
@@ -508,7 +500,7 @@
 <li><code>git</code>/GitHub is broad and complicated. Here, just what you <span class="secondary">need</span></li>
 </ul>
 </section>
-<section id="aside-on-built-in-command-line" class="slide level2">
+<section id="aside-on-built-in-command-line" class="slide level2" data-background-color="#97D4E9">
 <h2>Aside on “Built-in” &amp; “Command line”</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -531,7 +523,7 @@
 <li><p>To get the most out of Git, you have to use the command line.</p></li>
 </ul>
 </section>
-<section id="typical-workflow" class="slide level2">
+<section id="typical-workflow" class="slide level2 smaller">
 <h2>Typical workflow</h2>
 <ol type="1">
 <li>Download a repo from Github</li>
@@ -560,7 +552,7 @@
 <span id="cb4-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Repeat 3–5 as needed. Once you’re satisfied</strong></p>
 <ul>
-<li>Push to Github</li>
+<li>Push to GitHub</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a></a><span class="in">```{bash}</span></span>
 <span id="cb5-2"><a></a><span class="in">git push</span></span>
@@ -574,17 +566,33 @@
 <section id="what-should-be-tracked" class="slide level2">
 <h2>What should be tracked?</h2>
 <p><br></p>
-<h4 id="definitely">Definitely</h4>
-<p>code, markdown documentation, tex files, bash scripts/makefiles, …</p>
+<dl>
+<dt>Definitely</dt>
+<dd>
+code, markdown documentation, tex files, bash scripts/makefiles, …
+</dd>
+</dl>
 <p><br></p>
-<h4 id="possibly">Possibly</h4>
-<p>logs, jupyter notebooks, images (that won’t change), …</p>
+<dl>
+<dt>Possibly</dt>
+<dd>
+logs, jupyter notebooks, images (that won’t change), …
+</dd>
+</dl>
 <p><br></p>
-<h4 id="questionable">Questionable</h4>
-<p>processed data, static pdfs, …</p>
+<dl>
+<dt>Questionable</dt>
+<dd>
+processed data, static pdfs, …
+</dd>
+</dl>
 <p><br></p>
-<h4 id="definitely-not">Definitely not</h4>
-<p>full data, continually updated pdfs, other things compiled from source code, …</p>
+<dl>
+<dt>Definitely not</dt>
+<dd>
+full data, continually updated pdfs, other things compiled from source code, …
+</dd>
+</dl>
 </section>
 <section id="what-things-to-track" class="slide level2">
 <h2>What things to track</h2>
@@ -600,14 +608,11 @@
 <span id="cb6-6"><a></a><span class="in"># Session Data files</span></span>
 <span id="cb6-7"><a></a><span class="in">.RData</span></span>
 <span id="cb6-8"><a></a></span>
-<span id="cb6-9"><a></a><span class="in"># User-specific files</span></span>
-<span id="cb6-10"><a></a><span class="in">.Ruserdata</span></span>
-<span id="cb6-11"><a></a></span>
-<span id="cb6-12"><a></a><span class="in"># Compiled junk</span></span>
-<span id="cb6-13"><a></a><span class="in">*.o</span></span>
-<span id="cb6-14"><a></a><span class="in">*.so</span></span>
-<span id="cb6-15"><a></a><span class="in">*.DS_Store</span></span>
-<span id="cb6-16"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a></a><span class="in"># Compiled junk</span></span>
+<span id="cb6-10"><a></a><span class="in">*.o</span></span>
+<span id="cb6-11"><a></a><span class="in">*.so</span></span>
+<span id="cb6-12"><a></a><span class="in">*.DS_Store</span></span>
+<span id="cb6-13"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Shortcut to track everything (use carefully):</li>
 </ul>
@@ -615,26 +620,15 @@
 <span id="cb7-2"><a></a><span class="in">git add .</span></span>
 <span id="cb7-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="rules" class="slide level2">
-<h2>Rules</h2>
-<ul>
-<li>Each team has their own repo</li>
-<li>Make a PR against <code>main</code> to submit</li>
-<li>Peer evaluations are done via PR review (also send to Estella)</li>
-<li>YOU must make at <span class="secondary">least 5 commits</span> (fewer will lead to deductions)</li>
-<li>I review your work and merge the PR</li>
-</ul>
-<p>Project submissions are done similarly.</p>
-</section>
 <section id="whats-a-pr" class="slide level2">
 <h2>What’s a PR?</h2>
 <ul>
-<li>This exists on Github (not git)</li>
+<li>This exists on GitHub (not git)</li>
 <li>Demonstration</li>
 </ul>
 <div class="r-stack">
-<p><img data-src="gfx/pr1.png" class="fragment" style="height:50.0%"></p>
-<p><img data-src="gfx/pr2.png" class="fragment" style="height:50.0%"></p>
+<p><img data-src="gfx/pr1.png" class="fragment" height="550"></p>
+<p><img data-src="gfx/pr2.png" class="fragment" height="550"></p>
 </div>
 </section>
 <section id="some-things-to-be-aware-of" class="slide level2">
@@ -642,12 +636,11 @@
 <ul>
 <li><code>master</code> vs <code>main</code></li>
 <li>If you think you did something wrong, stop and ask for help</li>
-<li>There are guardrails in place. But those won’t stop a bulldozer.</li>
 <li>The hardest part is the initial setup. Then, this should all be rinse-and-repeat.</li>
 <li>This book is great: <a href="https://happygitwithr.com">Happy Git with R</a>
 <ol type="1">
 <li>See Chapter 6 if you have install problems.</li>
-<li>See Chapter 10 for credential caching (avoid typing a password all the time)</li>
+<li>See Chapter 9 for credential caching (avoid typing a password all the time)</li>
 <li>See Chapter 13 if RStudio can’t find <code>git</code></li>
 </ol></li>
 </ul>
@@ -688,63 +681,15 @@
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>I suggest you adopt the “production” version for your Team Assignments</p>
-</div>
-</div>
-</div>
-</section>
-<section id="guardrails" class="slide level2">
-<h2>Guardrails</h2>
-<ul>
-<li><p>The <code>.github</code> directory contains interactions with GitHub</p>
-<ol type="1">
-<li>Actions: On push / PR / other GitHub does something on their server (builds a website, runs tests on code)</li>
-<li>PR templates: Little admonitions when you open a PR</li>
-<li>Branch protection: prevent you from doing stuff</li>
-</ol></li>
-<li><p>In this course, I protect <code>main</code> so that you can’t push there</p></li>
-</ul>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-<p>If you try to push to <code>main</code>, it will give an error like</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb8-2"><a></a><span class="in">remote: error: GH006: Protected branch update failed for refs/heads/main.</span></span>
-<span id="cb8-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The fix is: make a new branch, then push that.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<ul>
-<li>I also use a PR template. It gives you some instructions that you should follow</li>
-</ul>
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
-<p>Read the PR template!!</p>
+<p>I suggest (require?) you adopt the “production” version for your HW 2</p>
 </div>
 </div>
 </div>
 </section>
 <section id="operations-in-rstudio" class="slide level2">
 <h2>Operations in Rstudio</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<div class="flex">
+<div class="w-50">
 <ol type="1">
 <li>Stage</li>
 <li>Commit</li>
@@ -752,98 +697,122 @@
 <li>Pull</li>
 <li>Create a branch</li>
 </ol>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Covers:</strong></p>
-</div>
-<div class="callout-content">
+<p><span class="secondary">Covers:</span></p>
 <ul>
 <li>Everything to do your HW / Project if you’re careful</li>
 <li>Plus most other things you “want to do”</li>
 </ul>
 </div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<h4 id="command-line-versions-of-the-same">Command line versions (of the same)</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb9-2"><a></a><span class="in">git add &lt;name/of/file&gt;</span></span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="in">git commit -m "some useful message"</span></span>
-<span id="cb9-5"><a></a></span>
-<span id="cb9-6"><a></a><span class="in">git push</span></span>
-<span id="cb9-7"><a></a></span>
-<span id="cb9-8"><a></a><span class="in">git pull</span></span>
-<span id="cb9-9"><a></a></span>
-<span id="cb9-10"><a></a><span class="in">git checkout -b &lt;name/of/branch&gt;</span></span>
-<span id="cb9-11"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="w-50">
+<p>Command line versions (of the same)</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a></a><span class="in">```{bash}</span></span>
+<span id="cb8-2"><a></a><span class="in">git add &lt;name/of/file&gt;</span></span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="in">git commit -m "some useful message"</span></span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="in">git push</span></span>
+<span id="cb8-7"><a></a></span>
+<span id="cb8-8"><a></a><span class="in">git pull</span></span>
+<span id="cb8-9"><a></a></span>
+<span id="cb8-10"><a></a><span class="in">git checkout -b &lt;name/of/branch&gt;</span></span>
+<span id="cb8-11"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="other-useful-stuff-but-command-line-only" class="slide level2">
+<section id="other-useful-stuff-but-command-line-only" class="slide level2 smaller">
 <h2>Other useful stuff (but command line only)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h4 id="initializing">Initializing</h4>
+<div class="flex">
+<div class="w-50">
+<p>Initializing</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a></a><span class="in">```{bash}</span></span>
+<span id="cb9-2"><a></a><span class="in">git config user.name --global "Daniel J. McDonald"</span></span>
+<span id="cb9-3"><a></a><span class="in">git config user.email --global "daniel@stat.ubc.ca"</span></span>
+<span id="cb9-4"><a></a><span class="in">git config core.editor --global nano </span></span>
+<span id="cb9-5"><a></a><span class="in"># or emacs or ... (default is vim)</span></span>
+<span id="cb9-6"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Staging</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb10-2"><a></a><span class="in">git config user.name --global "Daniel J. McDonald"</span></span>
-<span id="cb10-3"><a></a><span class="in">git config user.email --global "daniel@stat.ubc.ca"</span></span>
-<span id="cb10-4"><a></a><span class="in">git config core.editor --global nano </span></span>
-<span id="cb10-5"><a></a><span class="in"># or emacs or ... (default is vim)</span></span>
-<span id="cb10-6"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h4 id="staging">Staging</h4>
+<span id="cb10-2"><a></a><span class="in">git add name/of/file # stage 1 file</span></span>
+<span id="cb10-3"><a></a><span class="in">git add . # stage all</span></span>
+<span id="cb10-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Committing</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb11-2"><a></a><span class="in">git add name/of/file # stage 1 file</span></span>
-<span id="cb11-3"><a></a><span class="in">git add . # stage all</span></span>
-<span id="cb11-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h4 id="committing">Committing</h4>
+<span id="cb11-2"><a></a><span class="in"># stage/commit simultaneously</span></span>
+<span id="cb11-3"><a></a><span class="in">git commit -am "message" </span></span>
+<span id="cb11-4"><a></a></span>
+<span id="cb11-5"><a></a><span class="in"># open editor to write long commit message</span></span>
+<span id="cb11-6"><a></a><span class="in">git commit </span></span>
+<span id="cb11-7"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pushing</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb12-2"><a></a><span class="in"># stage/commit simultaneously</span></span>
-<span id="cb12-3"><a></a><span class="in">git commit -am "message" </span></span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a><span class="in"># open editor to write long commit message</span></span>
-<span id="cb12-6"><a></a><span class="in">git commit </span></span>
-<span id="cb12-7"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h4 id="pushing">Pushing</h4>
+<span id="cb12-2"><a></a><span class="in"># If branchname doesn't exist</span></span>
+<span id="cb12-3"><a></a><span class="in"># on remote, create it and push</span></span>
+<span id="cb12-4"><a></a><span class="in">git push -u origin branchname</span></span>
+<span id="cb12-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="w-50">
+<p>Branching</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb13-2"><a></a><span class="in"># If branchname doesn't exist</span></span>
-<span id="cb13-3"><a></a><span class="in"># on remote, create it and push</span></span>
-<span id="cb13-4"><a></a><span class="in">git push -u origin branchname</span></span>
-<span id="cb13-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:50%;">
-<h4 id="branching">Branching</h4>
+<span id="cb13-2"><a></a><span class="in"># switch to branchname, error if uncommitted changes</span></span>
+<span id="cb13-3"><a></a><span class="in">git checkout branchname </span></span>
+<span id="cb13-4"><a></a><span class="in"># switch to a previous commit</span></span>
+<span id="cb13-5"><a></a><span class="in">git checkout aec356</span></span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a><span class="in"># create a new branch</span></span>
+<span id="cb13-8"><a></a><span class="in">git branch newbranchname</span></span>
+<span id="cb13-9"><a></a><span class="in"># create a new branch and check it out</span></span>
+<span id="cb13-10"><a></a><span class="in">git checkout -b newbranchname</span></span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a><span class="in"># merge changes in branch2 onto branch1</span></span>
+<span id="cb13-13"><a></a><span class="in">git checkout branch1</span></span>
+<span id="cb13-14"><a></a><span class="in">git merge branch2</span></span>
+<span id="cb13-15"><a></a></span>
+<span id="cb13-16"><a></a><span class="in"># grab a file from branch2 and put it on current</span></span>
+<span id="cb13-17"><a></a><span class="in">git checkout branch2 -- name/of/file</span></span>
+<span id="cb13-18"><a></a></span>
+<span id="cb13-19"><a></a><span class="in">git branch -v # list all branches</span></span>
+<span id="cb13-20"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check the status</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb14-2"><a></a><span class="in"># switch to branchname, error if uncommitted changes</span></span>
-<span id="cb14-3"><a></a><span class="in">git checkout branchname </span></span>
-<span id="cb14-4"><a></a><span class="in"># switch to a previous commit</span></span>
-<span id="cb14-5"><a></a><span class="in">git checkout aec356</span></span>
-<span id="cb14-6"><a></a></span>
-<span id="cb14-7"><a></a><span class="in"># create a new branch</span></span>
-<span id="cb14-8"><a></a><span class="in">git branch newbranchname</span></span>
-<span id="cb14-9"><a></a><span class="in"># create a new branch and check it out</span></span>
-<span id="cb14-10"><a></a><span class="in">git checkout -b newbranchname</span></span>
-<span id="cb14-11"><a></a></span>
-<span id="cb14-12"><a></a><span class="in"># merge changes in branch2 onto branch1</span></span>
-<span id="cb14-13"><a></a><span class="in">git checkout branch1</span></span>
-<span id="cb14-14"><a></a><span class="in">git merge branch2</span></span>
-<span id="cb14-15"><a></a></span>
-<span id="cb14-16"><a></a><span class="in"># grab a file from branch2 and put it on current</span></span>
-<span id="cb14-17"><a></a><span class="in">git checkout branch2 -- name/of/file</span></span>
-<span id="cb14-18"><a></a></span>
-<span id="cb14-19"><a></a><span class="in">git branch -v # list all branches</span></span>
-<span id="cb14-20"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h4 id="check-the-status">Check the status</h4>
+<span id="cb14-2"><a></a><span class="in">git status</span></span>
+<span id="cb14-3"><a></a><span class="in">git remote -v # list remotes</span></span>
+<span id="cb14-4"><a></a><span class="in">git log # show recent commits, msgs</span></span>
+<span id="cb14-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="commit-messages" class="slide level2 smaller">
+<h2>Commit messages</h2>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<ol type="1">
+<li>Write meaningful messages. Not <code>fixed stuff</code> or <code>oops? maybe done?</code></li>
+<li>These appear in the log and help you determine what you’ve done.</li>
+<li>Think <em>imperative mood</em>: “add cross validation to simulation”</li>
+<li>Best to have each commit “do one thing”</li>
+</ol>
+</div>
+</div>
+</div>
+<p><span class="secondary">Conventions:</span> (see <a href="https://www.conventionalcommits.org/en/v1.0.0/">here</a> for details)</p>
+<ul>
+<li>feat: – a new feature is introduced with the changes</li>
+<li>fix: – a bug fix has occurred</li>
+<li>chore: – changes that do not relate to a fix or feature (e.g., updating dependencies)</li>
+<li>refactor: – refactored code that neither fixes a bug nor adds a feature</li>
+<li>docs: – updates to documentation such as a the README or other markdown files</li>
+<li>style: – changes that do not affect the function of the code</li>
+<li>test – including new or correcting previous tests</li>
+<li>perf – performance improvements</li>
+<li>ci – continuous integration related</li>
+</ul>
 <div class="sourceCode" id="cb15"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb15-2"><a></a><span class="in">git status</span></span>
-<span id="cb15-3"><a></a><span class="in">git remote -v # list remotes</span></span>
-<span id="cb15-4"><a></a><span class="in">git log # show recent commits, msgs</span></span>
-<span id="cb15-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<span id="cb15-2"><a></a><span class="in">git commit -m "feat: add cross validation to simulation, closes #251"</span></span>
+<span id="cb15-3"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="conflicts" class="slide level2">
 <h2>Conflicts</h2>
@@ -851,14 +820,12 @@
 <li><p>Sometimes you merge things and “conflicts” happen.</p></li>
 <li><p>Meaning that changes on one branch would overwrite changes on a different branch.</p></li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>They look like this:</li>
-</ul>
-<pre><code>Here are lines that are either unchanged from
-the common ancestor, or cleanly resolved 
-because only one side changed.
+<div class="flex">
+<div class="w-50">
+<p><span class="secondary">They look like this:</span></p>
+<pre><code>Here are lines that are either unchanged
+from the common ancestor, or cleanly
+resolved because only one side changed.
 
 But below we have some troubles
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; yours:sample.txt
@@ -870,16 +837,17 @@ Git makes conflict resolution easy.
 
 And here is another line that is cleanly 
 resolved or unmodified.</code></pre>
-</div><div class="column" style="width:50%;">
-<p>You get to decide, do you want to keep</p>
+</div>
+<div class="w-50">
+<p><span class="secondary">You decide what to keep</span></p>
 <ol type="1">
 <li>Your changes (above <code>======</code>)</li>
 <li>Their changes (below <code>======</code>)</li>
 <li>Both.</li>
 <li>Neither.</li>
 </ol>
-<p>But always delete the <code>&lt;&lt;&lt;&lt;&lt;</code>, <code>======</code>, and <code>&gt;&gt;&gt;&gt;&gt;</code> lines.</p>
-<p>Once you’re satisfied, committing resolves the conflict.</p>
+<p>Always delete the <code>&lt;&lt;&lt;&lt;&lt;</code>, <code>======</code>, and <code>&gt;&gt;&gt;&gt;&gt;</code> lines.</p>
+<p>Once you’re satisfied, commit to resolve the conflict.</p>
 </div>
 </div>
 </section>
@@ -905,41 +873,37 @@ resolved or unmodified.</code></pre>
 <li>Suppose we’re concerned about a file named <code>README.md</code></li>
 <li>Often, <code>git status</code> will give some of these as suggestions</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="saved-but-not-staged">1. Saved but not staged</h3>
-<ul>
-<li>In RStudio, select the file and click <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"></path></svg> <svg aria-hidden="true" role="img" viewbox="0 0 320 512" style="height:1em;width:0.62em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"></path></svg> then select <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M125.7 160H176c17.7 0 32 14.3 32 32s-14.3 32-32 32H48c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32s32 14.3 32 32v51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path></svg> Revert…</li>
-</ul>
+<div class="flex">
+<div class="w-50">
+<p><span class="secondary">1. Saved but not staged</span></p>
+<p>In RStudio, select the file and click <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"></path></svg> <svg aria-hidden="true" role="img" viewbox="0 0 320 512" style="height:1em;width:0.62em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"></path></svg> then select <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M125.7 160H176c17.7 0 32 14.3 32 32s-14.3 32-32 32H48c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32s32 14.3 32 32v51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path></svg> Revert…</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb17-2"><a></a><span class="in"># grab the previously committed version</span></span>
+<span id="cb17-2"><a></a><span class="in"># grab the old committed version</span></span>
 <span id="cb17-3"><a></a><span class="in">git checkout -- README.md </span></span>
 <span id="cb17-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h3 id="staged-but-not-committed">2. Staged but not committed</h3>
-<ul>
-<li>In RStudio, uncheck the box by the file, then use the method above.</li>
-</ul>
+<p><span class="secondary">2. Staged but not committed</span></p>
+<p>In RStudio, uncheck the box by the file, then use the method above.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb18-2"><a></a><span class="in"># unstage</span></span>
+<span id="cb18-2"><a></a><span class="in"># first unstage, then same as 1</span></span>
 <span id="cb18-3"><a></a><span class="in">git reset HEAD README.md</span></span>
 <span id="cb18-4"><a></a><span class="in">git checkout -- README.md</span></span>
 <span id="cb18-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column" style="width:50%;">
-<h3 id="committed">3. Committed</h3>
-<ul>
-<li>Not easy to do in RStudio…</li>
-</ul>
+</div>
+<div class="w-50">
+<p><span class="secondary">3. Committed</span></p>
+<p>Not easy to do in RStudio…</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb19-2"><a></a><span class="in"># check the log to see where you made the chg, </span></span>
+<span id="cb19-2"><a></a><span class="in"># check the log to find the chg </span></span>
 <span id="cb19-3"><a></a><span class="in">git log</span></span>
-<span id="cb19-4"><a></a><span class="in"># go one step before that (eg to 32b252)</span></span>
-<span id="cb19-5"><a></a><span class="in"># and grab that earlier version</span></span>
-<span id="cb19-6"><a></a><span class="in">git checkout 32b252 -- README.md</span></span>
-<span id="cb19-7"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-4"><a></a><span class="in"># go one step before that </span></span>
+<span id="cb19-5"><a></a><span class="in"># (e.g., to commit 32b252)</span></span>
+<span id="cb19-6"><a></a><span class="in"># and grab that earlier version</span></span>
+<span id="cb19-7"><a></a><span class="in">git checkout 32b252 -- README.md</span></span>
+<span id="cb19-8"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a></a><span class="in">```{bash}</span></span>
-<span id="cb20-2"><a></a><span class="in"># alternatively</span></span>
-<span id="cb20-3"><a></a><span class="in"># if it happens to also be on another branch</span></span>
+<span id="cb20-2"><a></a><span class="in"># alternatively, if it happens</span></span>
+<span id="cb20-3"><a></a><span class="in"># to also be on another branch</span></span>
 <span id="cb20-4"><a></a><span class="in">git checkout otherbranch -- README.md</span></span>
 <span id="cb20-5"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -948,7 +912,7 @@ resolved or unmodified.</code></pre>
 <section id="recovering-from-things" class="slide level2">
 <h2>Recovering from things</h2>
 <ol type="1">
-<li>Accidentally did work on main, Tried to Push but got refused</li>
+<li>Accidentally did work on main,</li>
 </ol>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a></a><span class="in">```{bash}</span></span>
 <span id="cb21-2"><a></a><span class="in"># make a new branch with everything, but stay on main</span></span>
@@ -970,8 +934,33 @@ resolved or unmodified.</code></pre>
 <li>Anything more complicated, either post to Slack or LMGTFY</li>
 </ol>
 </section>
+<section id="rules-for-hw-2" class="slide level2">
+<h2>Rules for HW 2</h2>
+<ul>
+<li>Each team has their own repo</li>
+<li>Make a PR against <code>main</code> to submit</li>
+<li>Tag me and all the assigned reviewers</li>
+<li>Peer evaluations are done via PR review (also send to Estella)</li>
+<li>YOU must make at <span class="secondary">least 5 commits</span> (fewer will lead to deductions)</li>
+<li>I review your work and merge the PR</li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>☠️☠️ Read all the instructions in the repo! ☠️☠️</p>
+</div>
+</div>
+</div>
+</section>
 <section id="practice-time" class="title-slide slide level1 center">
 <h1>Practice time…</h1>
+<p><a href="https://github.com/dajmcdon/sugary-beverages">dajmcdon/sugary-beverages</a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

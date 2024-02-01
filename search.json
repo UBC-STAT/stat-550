@@ -613,7 +613,7 @@
     "href": "schedule/handouts/reference-books.html",
     "title": "Recommended books",
     "section": "",
-    "text": "These are Prof. Harry Joe’s suggestions for resources on different statistical topics that students might not be exposed to before Stat 550/551.\n\nThe student can also learn about the topic and not just about how an R function works.\nBooks with R in the title are generally not good for learning the theory.\nA book reference with theory and good examples is better than a URL.\n\n\nANOVA for different experimental designs (includes random effects, unbalanced).\n\nStatistical Analysis of Designed Experiments, A C. Tamhane (2009), Wiley.\n\nLogistic regression and diagnostics.\n\nApplied Logistic Regression, 2nd ed, Hosmer and Lemeshow (2000), Wiley.\n\nSurvival or time-to-event data.\n\nStatistical Models and Methods for Lifetime Data, 2nd ed, J.F. Lawless (2003), Wiley.\n\nTime series including multivariate.\n\nTime Series Analysis, Univariate and multivariate methods, 2nd ed., W.W.S. Wei (1990), Addison.\n\nFactor models as part of multivariate statistics.\n\nApplied Multivariate Statistical Analysis, 5th ed, Johnson and Wichern (2002), Prentice Hall (not e-available).\n\nSEM = Structural equation models.\n\nLinear Causal Modeling with Structural Equations, S.A. Mulaik (2009), Chapman&Hall/CRC.\n\nMeta-analysis.\n\nMeta-Analysis of Controlled Clinical Trials, A. Whitehead (2002), Wiley.\n\nNumerical maximum likelihood.\n\nNonlinear Parameter Optimization Using R Tools, J.C. Nash (2014), Wiley.\n\nItem response, validity and reliability of instruments for abstract attributes.\n\nTest Theory: A Unified Treatment, R.D. McDonald (1999), Routledge.\n\nSample size calculation. e.g. non-central t, non-central F etc.,. and general approach.\n\nHaven’t found a good reference with general theory and how to use these distributions in a worked out examples in R.\n\nModification of standard procedures to have clustered data that cannot be considered as iid: easier for estimation, tricky for hypothesis testing.\n\n\n\nJackknife, bootstrap and resampling (tools for preceding item)."
+    "text": "These are Prof. Harry Joe’s suggestions for resources on different statistical topics that students might not be exposed to before Stat 550/551.\n\nThe student can also learn about the topic and not just about how an R function works.\nBooks with R in the title are generally not good for learning the theory.\nA book reference with theory and good examples is better than a URL.\n\n\nANOVA for different experimental designs (includes random effects, unbalanced).\n\nStatistical Analysis of Designed Experiments, A C. Tamhane (2009), Wiley.\n\nLogistic regression and diagnostics.\n\nApplied Logistic Regression, 2nd ed, Hosmer and Lemeshow (2000), Wiley.\n\nSurvival or time-to-event data.\n\nStatistical Models and Methods for Lifetime Data, 2nd ed, J.F. Lawless (2003), Wiley.\n\nTime series including multivariate.\n\nTime Series Analysis, Univariate and multivariate methods, 2nd ed., W.W.S. Wei (1990), Addison.\n\nFactor models as part of multivariate statistics.\n\nApplied Multivariate Statistical Analysis, 5th ed, Johnson and Wichern (2002), Prentice Hall (not e-available).\n\nSEM = Structural equation models.\n\nLinear Causal Modeling with Structural Equations, S.A. Mulaik (2009), Chapman&Hall/CRC.\n\nMeta-analysis.\n\nMeta-Analysis of Controlled Clinical Trials, A. Whitehead (2002), Wiley.\n\nNumerical maximum likelihood.\n\nNonlinear Parameter Optimization Using R Tools, J.C. Nash (2014), Wiley.\n\nItem response, validity and reliability of instruments for abstract attributes.\n\nTest Theory: A Unified Treatment, R.D. McDonald (1999), Routledge.\n\nSample size calculation. e.g. non-central t, non-central F etc.,. and general approach.\n\nStatistical power analysis : a simple and general model for traditional and modern hypothesis tests, 4th edition. Kevin R. Murphy, Brett Myors, Allen Wolach (2014), Routledge.\n\n\n\n\n\nThis book covers many cases. However the principle of sample size calculation can be shown better in a few pages based on examples that show the derivation of the distribution of the test statistic under a point null hypothesis and under a point alternative hypothesis.\n\nSurvey sampling\n\nSampling Design and Analysis, Second Edition. Sharon L. Lohr, CRC 2019.\n\n\nEspecially Chapter 8 Nonresponse; Section 8.3 Callbacks and Two-Phase Sampling.\n\n\n\n\n\nTRC Market Research, Non-Response Bias In Survey Sampling.\n\nMachine learning procedures\n\nElements of Statistical Learning, 2nd edition. Hastie, Tibshirani, and Friedman (2009), Springer."
   },
   {
     "objectID": "schedule/slides/bootstrap.html#section",
@@ -704,14 +704,14 @@
     "href": "schedule/slides/git.html#section",
     "title": "UBC Stat550",
     "section": "Version control",
-    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 01 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/git.html#why-version-control",
     "href": "schedule/slides/git.html#why-version-control",
     "title": "UBC Stat550",
     "section": "Why version control?",
-    "text": "Why version control?\n\n\n\n\n\n\nMuch of this lecture is borrowed/stolen from Colin Rundel and Karl Broman"
+    "text": "Why version control?\n\nMuch of this lecture is based on material from Colin Rundel and Karl Broman"
   },
   {
     "objectID": "schedule/slides/git.html#why-version-control-1",
@@ -725,7 +725,7 @@
     "href": "schedule/slides/git.html#why-git",
     "title": "UBC Stat550",
     "section": "Why Git",
-    "text": "Why Git\n\n\n\nYou could use something like Box or Dropbox\nThese are poor-man’s version control\nGit is much more appropriate\nIt works with large groups\nIt’s very fast\nIt’s much better at fixing mistakes\nTech companies use it (so it’s in your interest to have some experience)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis will hurt, but what doesn’t kill you, makes you stronger."
+    "text": "Why Git\n\n\n\nYou could use something like Box or Dropbox\nThese are poor-man’s version control\nGit is much more appropriate\nIt works with large groups\nIt’s very fast\nIt’s much better at fixing mistakes\nTech companies use it (so it’s in your interest to have some experience)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis will hurt, but what doesn’t kill you, makes you stronger."
   },
   {
     "objectID": "schedule/slides/git.html#overview",
@@ -746,42 +746,35 @@
     "href": "schedule/slides/git.html#typical-workflow",
     "title": "UBC Stat550",
     "section": "Typical workflow",
-    "text": "Typical workflow\n\nDownload a repo from Github\n\n```{bash}\ngit clone https://github.com/stat550-2021/lecture-slides.git\n```\n\nCreate a branch\n\n```{bash}\ngit branch &lt;branchname&gt;\n```\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\n```{bash}\ngit add &lt;name/of/tracked/file&gt;\n```\n\nCommit your changes\n\n```{bash}\ngit commit -m \"Some explanatory message\"\n```\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to Github\n\n```{bash}\ngit push\ngit push -u origin &lt;branchname&gt;\n```"
+    "text": "Typical workflow\n\nDownload a repo from Github\n\n```{bash}\ngit clone https://github.com/stat550-2021/lecture-slides.git\n```\n\nCreate a branch\n\n```{bash}\ngit branch &lt;branchname&gt;\n```\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\n```{bash}\ngit add &lt;name/of/tracked/file&gt;\n```\n\nCommit your changes\n\n```{bash}\ngit commit -m \"Some explanatory message\"\n```\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to GitHub\n\n```{bash}\ngit push\ngit push -u origin &lt;branchname&gt;\n```"
   },
   {
     "objectID": "schedule/slides/git.html#what-should-be-tracked",
     "href": "schedule/slides/git.html#what-should-be-tracked",
     "title": "UBC Stat550",
     "section": "What should be tracked?",
-    "text": "What should be tracked?\n\nDefinitely\ncode, markdown documentation, tex files, bash scripts/makefiles, …\n\nPossibly\nlogs, jupyter notebooks, images (that won’t change), …\n\nQuestionable\nprocessed data, static pdfs, …\n\nDefinitely not\nfull data, continually updated pdfs, other things compiled from source code, …"
+    "text": "What should be tracked?\n\n\nDefinitely\n\ncode, markdown documentation, tex files, bash scripts/makefiles, …\n\n\n\n\nPossibly\n\nlogs, jupyter notebooks, images (that won’t change), …\n\n\n\n\nQuestionable\n\nprocessed data, static pdfs, …\n\n\n\n\nDefinitely not\n\nfull data, continually updated pdfs, other things compiled from source code, …"
   },
   {
     "objectID": "schedule/slides/git.html#what-things-to-track",
     "href": "schedule/slides/git.html#what-things-to-track",
     "title": "UBC Stat550",
     "section": "What things to track",
-    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n```{bash}\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# User-specific files\n.Ruserdata\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n```\n\nShortcut to track everything (use carefully):\n\n```{bash}\ngit add .\n```"
-  },
-  {
-    "objectID": "schedule/slides/git.html#rules",
-    "href": "schedule/slides/git.html#rules",
-    "title": "UBC Stat550",
-    "section": "Rules",
-    "text": "Rules\n\nEach team has their own repo\nMake a PR against main to submit\nPeer evaluations are done via PR review (also send to Estella)\nYOU must make at least 5 commits (fewer will lead to deductions)\nI review your work and merge the PR\n\nProject submissions are done similarly."
+    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n```{bash}\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n```\n\nShortcut to track everything (use carefully):\n\n```{bash}\ngit add .\n```"
   },
   {
     "objectID": "schedule/slides/git.html#whats-a-pr",
     "href": "schedule/slides/git.html#whats-a-pr",
     "title": "UBC Stat550",
     "section": "What’s a PR?",
-    "text": "What’s a PR?\n\nThis exists on Github (not git)\nDemonstration"
+    "text": "What’s a PR?\n\nThis exists on GitHub (not git)\nDemonstration"
   },
   {
     "objectID": "schedule/slides/git.html#some-things-to-be-aware-of",
     "href": "schedule/slides/git.html#some-things-to-be-aware-of",
     "title": "UBC Stat550",
     "section": "Some things to be aware of",
-    "text": "Some things to be aware of\n\nmaster vs main\nIf you think you did something wrong, stop and ask for help\nThere are guardrails in place. But those won’t stop a bulldozer.\nThe hardest part is the initial setup. Then, this should all be rinse-and-repeat.\nThis book is great: Happy Git with R\n\nSee Chapter 6 if you have install problems.\nSee Chapter 10 for credential caching (avoid typing a password all the time)\nSee Chapter 13 if RStudio can’t find git"
+    "text": "Some things to be aware of\n\nmaster vs main\nIf you think you did something wrong, stop and ask for help\nThe hardest part is the initial setup. Then, this should all be rinse-and-repeat.\nThis book is great: Happy Git with R\n\nSee Chapter 6 if you have install problems.\nSee Chapter 9 for credential caching (avoid typing a password all the time)\nSee Chapter 13 if RStudio can’t find git"
   },
   {
     "objectID": "schedule/slides/git.html#the-maindevelopbranch-workflow",
@@ -795,35 +788,35 @@
     "href": "schedule/slides/git.html#protection",
     "title": "UBC Stat550",
     "section": "Protection",
-    "text": "Protection\n\nTypical for your PR to trigger tests to make sure you don’t break things\nTypical for team members or supervisors to review your PR for compliance\n\n\n\n\n\n\n\nTip\n\n\nI suggest you adopt the “production” version for your Team Assignments"
-  },
-  {
-    "objectID": "schedule/slides/git.html#guardrails",
-    "href": "schedule/slides/git.html#guardrails",
-    "title": "UBC Stat550",
-    "section": "Guardrails",
-    "text": "Guardrails\n\nThe .github directory contains interactions with GitHub\n\nActions: On push / PR / other GitHub does something on their server (builds a website, runs tests on code)\nPR templates: Little admonitions when you open a PR\nBranch protection: prevent you from doing stuff\n\nIn this course, I protect main so that you can’t push there\n\n\n\n\n\n\n\nWarning\n\n\nIf you try to push to main, it will give an error like\n```{bash}\nremote: error: GH006: Protected branch update failed for refs/heads/main.\n```\nThe fix is: make a new branch, then push that."
+    "text": "Protection\n\nTypical for your PR to trigger tests to make sure you don’t break things\nTypical for team members or supervisors to review your PR for compliance\n\n\n\n\n\n\n\nTip\n\n\nI suggest (require?) you adopt the “production” version for your HW 2"
   },
   {
     "objectID": "schedule/slides/git.html#operations-in-rstudio",
     "href": "schedule/slides/git.html#operations-in-rstudio",
     "title": "UBC Stat550",
     "section": "Operations in Rstudio",
-    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\n\n\n\n\n\n\nCovers:\n\n\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\n\n\nCommand line versions (of the same)\n```{bash}\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;\n```"
+    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\nCovers:\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\nCommand line versions (of the same)\n```{bash}\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;\n```"
   },
   {
     "objectID": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
     "href": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
     "title": "UBC Stat550",
     "section": "Other useful stuff (but command line only)",
-    "text": "Other useful stuff (but command line only)\n\n\nInitializing\n```{bash}\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\n```\nStaging\n```{bash}\ngit add name/of/file # stage 1 file\ngit add . # stage all\n```\nCommitting\n```{bash}\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \n```\nPushing\n```{bash}\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n```\n\nBranching\n```{bash}\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\n```\nCheck the status\n```{bash}\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs\n```"
+    "text": "Other useful stuff (but command line only)\n\n\nInitializing\n```{bash}\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\n```\nStaging\n```{bash}\ngit add name/of/file # stage 1 file\ngit add . # stage all\n```\nCommitting\n```{bash}\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \n```\nPushing\n```{bash}\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n```\n\n\nBranching\n```{bash}\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\n```\nCheck the status\n```{bash}\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs\n```"
+  },
+  {
+    "objectID": "schedule/slides/git.html#commit-messages",
+    "href": "schedule/slides/git.html#commit-messages",
+    "title": "UBC Stat550",
+    "section": "Commit messages",
+    "text": "Commit messages\n\n\n\n\n\n\n\nWrite meaningful messages. Not fixed stuff or oops? maybe done?\nThese appear in the log and help you determine what you’ve done.\nThink imperative mood: “add cross validation to simulation”\nBest to have each commit “do one thing”\n\n\n\n\nConventions: (see here for details)\n\nfeat: – a new feature is introduced with the changes\nfix: – a bug fix has occurred\nchore: – changes that do not relate to a fix or feature (e.g., updating dependencies)\nrefactor: – refactored code that neither fixes a bug nor adds a feature\ndocs: – updates to documentation such as a the README or other markdown files\nstyle: – changes that do not affect the function of the code\ntest – including new or correcting previous tests\nperf – performance improvements\nci – continuous integration related\n\n```{bash}\ngit commit -m \"feat: add cross validation to simulation, closes #251\"\n```"
   },
   {
     "objectID": "schedule/slides/git.html#conflicts",
     "href": "schedule/slides/git.html#conflicts",
     "title": "UBC Stat550",
     "section": "Conflicts",
-    "text": "Conflicts\n\nSometimes you merge things and “conflicts” happen.\nMeaning that changes on one branch would overwrite changes on a different branch.\n\n\n\n\nThey look like this:\n\nHere are lines that are either unchanged from\nthe common ancestor, or cleanly resolved \nbecause only one side changed.\n\nBut below we have some troubles\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; yours:sample.txt\nConflict resolution is hard;\nlet's go shopping.\n=======\nGit makes conflict resolution easy.\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs:sample.txt\n\nAnd here is another line that is cleanly \nresolved or unmodified.\n\nYou get to decide, do you want to keep\n\nYour changes (above ======)\nTheir changes (below ======)\nBoth.\nNeither.\n\nBut always delete the &lt;&lt;&lt;&lt;&lt;, ======, and &gt;&gt;&gt;&gt;&gt; lines.\nOnce you’re satisfied, committing resolves the conflict."
+    "text": "Conflicts\n\nSometimes you merge things and “conflicts” happen.\nMeaning that changes on one branch would overwrite changes on a different branch.\n\n\n\nThey look like this:\nHere are lines that are either unchanged\nfrom the common ancestor, or cleanly\nresolved because only one side changed.\n\nBut below we have some troubles\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; yours:sample.txt\nConflict resolution is hard;\nlet's go shopping.\n=======\nGit makes conflict resolution easy.\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; theirs:sample.txt\n\nAnd here is another line that is cleanly \nresolved or unmodified.\n\n\nYou decide what to keep\n\nYour changes (above ======)\nTheir changes (below ======)\nBoth.\nNeither.\n\nAlways delete the &lt;&lt;&lt;&lt;&lt;, ======, and &gt;&gt;&gt;&gt;&gt; lines.\nOnce you’re satisfied, commit to resolve the conflict."
   },
   {
     "objectID": "schedule/slides/git.html#some-other-pointers",
@@ -837,14 +830,21 @@
     "href": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
     "title": "UBC Stat550",
     "section": "How to undo in 3 scenarios",
-    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\n\nIn RStudio, select the file and click   then select  Revert…\n\n```{bash}\n# grab the previously committed version\ngit checkout -- README.md \n```\n2. Staged but not committed\n\nIn RStudio, uncheck the box by the file, then use the method above.\n\n```{bash}\n# unstage\ngit reset HEAD README.md\ngit checkout -- README.md\n```\n\n3. Committed\n\nNot easy to do in RStudio…\n\n```{bash}\n# check the log to see where you made the chg, \ngit log\n# go one step before that (eg to 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n```\n\n```{bash}\n# alternatively\n# if it happens to also be on another branch\ngit checkout otherbranch -- README.md\n```"
+    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\nIn RStudio, select the file and click   then select  Revert…\n```{bash}\n# grab the old committed version\ngit checkout -- README.md \n```\n2. Staged but not committed\nIn RStudio, uncheck the box by the file, then use the method above.\n```{bash}\n# first unstage, then same as 1\ngit reset HEAD README.md\ngit checkout -- README.md\n```\n\n\n3. Committed\nNot easy to do in RStudio…\n```{bash}\n# check the log to find the chg \ngit log\n# go one step before that \n# (e.g., to commit 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n```\n\n```{bash}\n# alternatively, if it happens\n# to also be on another branch\ngit checkout otherbranch -- README.md\n```"
   },
   {
     "objectID": "schedule/slides/git.html#recovering-from-things",
     "href": "schedule/slides/git.html#recovering-from-things",
     "title": "UBC Stat550",
     "section": "Recovering from things",
-    "text": "Recovering from things\n\nAccidentally did work on main, Tried to Push but got refused\n\n```{bash}\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n```\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\n```{bash}\ngit checkout main\ngit branch -d badbranch\n```\n\nAnything more complicated, either post to Slack or LMGTFY"
+    "text": "Recovering from things\n\nAccidentally did work on main,\n\n```{bash}\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n```\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\n```{bash}\ngit checkout main\ngit branch -d badbranch\n```\n\nAnything more complicated, either post to Slack or LMGTFY"
+  },
+  {
+    "objectID": "schedule/slides/git.html#rules-for-hw-2",
+    "href": "schedule/slides/git.html#rules-for-hw-2",
+    "title": "UBC Stat550",
+    "section": "Rules for HW 2",
+    "text": "Rules for HW 2\n\nEach team has their own repo\nMake a PR against main to submit\nTag me and all the assigned reviewers\nPeer evaluations are done via PR review (also send to Estella)\nYOU must make at least 5 commits (fewer will lead to deductions)\nI review your work and merge the PR\n\n\n\n\n\n\n\nImportant\n\n\n☠️☠️ Read all the instructions in the repo! ☠️☠️"
   },
   {
     "objectID": "schedule/slides/organization.html#section",
