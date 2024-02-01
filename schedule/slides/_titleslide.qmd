@@ -1,4 +1,4 @@
-## {{< meta lecture >}} {background-image="img/consult.jpeg" background-opacity="0.3"}
+## {{< meta lecture >}} {.large background-image="img/consult.jpeg" background-opacity="0.3"}
 
 [Stat 550]{.secondary}
 
