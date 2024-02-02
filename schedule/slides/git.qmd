@@ -91,27 +91,27 @@ First things first, RStudio and the Terminal
 
 
 1. Download a repo from Github
-```{{bash}}
+```{.bash}
 git clone https://github.com/stat550-2021/lecture-slides.git
 ```
 2. Create a **branch**
-```{{bash}}
+```{.bash}
 git branch <branchname>
 ```
 3. Make changes to your files.
 4. Add your changes to be tracked ("stage" them)
-```{{bash}}
+```{.bash}
 git add <name/of/tracked/file>
 ```
 5. Commit your changes
-```{{bash}}
+```{.bash}
 git commit -m "Some explanatory message"
 ```
 
 **Repeat 3--5 as needed. Once you're satisfied**
 
 * Push to GitHub
-```{{bash}}
+```{.bash}
 git push
 git push -u origin <branchname>
 ```
@@ -151,7 +151,7 @@ Definitely not
 
 * A file called `.gitignore` tells `git` files or types to never track
 
-```{{bash}}
+```{.bash}
 # History files
 .Rhistory
 .Rapp.history
@@ -167,7 +167,7 @@ Definitely not
 
 * Shortcut to track everything (use carefully):
 
-```{{bash}}
+```{.bash}
 git add .
 ```
 
@@ -248,7 +248,7 @@ I suggest (require?) you adopt the "production" version for your HW 2
 
 Command line versions (of the same)
 
-```{{bash}}
+```{.bash}
 git add <name/of/file>
 
 git commit -m "some useful message"
@@ -269,7 +269,7 @@ git checkout -b <name/of/branch>
 ::: flex
 ::: w-50
 Initializing
-```{{bash}}
+```{.bash}
 git config user.name --global "Daniel J. McDonald"
 git config user.email --global "daniel@stat.ubc.ca"
 git config core.editor --global nano 
@@ -278,13 +278,13 @@ git config core.editor --global nano
 
 
 Staging
-```{{bash}}
+```{.bash}
 git add name/of/file # stage 1 file
 git add . # stage all
 ```
 
 Committing
-```{{bash}}
+```{.bash}
 # stage/commit simultaneously
 git commit -am "message" 
 
@@ -293,7 +293,7 @@ git commit
 ```
 
 Pushing
-```{{bash}}
+```{.bash}
 # If branchname doesn't exist
 # on remote, create it and push
 git push -u origin branchname
@@ -302,7 +302,7 @@ git push -u origin branchname
 
 ::: w-50
 Branching
-```{{bash}}
+```{.bash}
 # switch to branchname, error if uncommitted changes
 git checkout branchname 
 # switch to a previous commit
@@ -324,7 +324,7 @@ git branch -v # list all branches
 ```
 
 Check the status
-```{{bash}}
+```{.bash}
 git status
 git remote -v # list remotes
 git log # show recent commits, msgs
@@ -353,7 +353,7 @@ git log # show recent commits, msgs
 * perf – performance improvements
 * ci – continuous integration related
 
-```{{bash}}
+```{.bash}
 git commit -m "feat: add cross validation to simulation, closes #251"
 ```
 
@@ -429,7 +429,7 @@ Once you're satisfied, commit to resolve the conflict.
 [1. Saved but not staged]{.secondary}
 
 In RStudio, select the file and click `r fontawesome::fa("gear", fill="blue")` `r fontawesome::fa("caret-down")` then select `r fontawesome::fa("arrow-rotate-left", fill="red")` Revert...
-```{{bash}}
+```{.bash}
 # grab the old committed version
 git checkout -- README.md 
 ```
@@ -437,7 +437,7 @@ git checkout -- README.md
 [2. Staged but not committed]{.secondary}
 
 In RStudio, uncheck the box by the file, then use the method above.
-```{{bash}}
+```{.bash}
 # first unstage, then same as 1
 git reset HEAD README.md
 git checkout -- README.md
@@ -449,7 +449,7 @@ git checkout -- README.md
 [3. Committed]{.secondary}
 
 Not easy to do in RStudio...
-```{{bash}}
+```{.bash}
 # check the log to find the chg 
 git log
 # go one step before that 
@@ -460,7 +460,7 @@ git checkout 32b252 -- README.md
 
 <br>
 
-```{{bash}}
+```{.bash}
 # alternatively, if it happens
 # to also be on another branch
 git checkout otherbranch -- README.md
@@ -471,7 +471,7 @@ git checkout otherbranch -- README.md
 ## Recovering from things
 
 1. Accidentally did work on main,
-```{{bash}}
+```{.bash}
 # make a new branch with everything, but stay on main
 git branch newbranch
 # find out where to go to
@@ -482,7 +482,7 @@ git checkout newbranch
 ```
 
 2. Made a branch, did lots of work, realized it's trash, and you want to burn it
-```{{bash}}
+```{.bash}
 git checkout main
 git branch -d badbranch
 ```
