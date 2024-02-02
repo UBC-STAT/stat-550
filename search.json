@@ -746,7 +746,7 @@
     "href": "schedule/slides/git.html#typical-workflow",
     "title": "UBC Stat550",
     "section": "Typical workflow",
-    "text": "Typical workflow\n\nDownload a repo from Github\n\n```{bash}\ngit clone https://github.com/stat550-2021/lecture-slides.git\n```\n\nCreate a branch\n\n```{bash}\ngit branch &lt;branchname&gt;\n```\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\n```{bash}\ngit add &lt;name/of/tracked/file&gt;\n```\n\nCommit your changes\n\n```{bash}\ngit commit -m \"Some explanatory message\"\n```\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to GitHub\n\n```{bash}\ngit push\ngit push -u origin &lt;branchname&gt;\n```"
+    "text": "Typical workflow\n\nDownload a repo from Github\n\ngit clone https://github.com/stat550-2021/lecture-slides.git\n\nCreate a branch\n\ngit branch &lt;branchname&gt;\n\nMake changes to your files.\nAdd your changes to be tracked (“stage” them)\n\ngit add &lt;name/of/tracked/file&gt;\n\nCommit your changes\n\ngit commit -m \"Some explanatory message\"\nRepeat 3–5 as needed. Once you’re satisfied\n\nPush to GitHub\n\ngit push\ngit push -u origin &lt;branchname&gt;"
   },
   {
     "objectID": "schedule/slides/git.html#what-should-be-tracked",
@@ -760,7 +760,7 @@
     "href": "schedule/slides/git.html#what-things-to-track",
     "title": "UBC Stat550",
     "section": "What things to track",
-    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n```{bash}\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n```\n\nShortcut to track everything (use carefully):\n\n```{bash}\ngit add .\n```"
+    "text": "What things to track\n\nYou decide what is “versioned”.\nA file called .gitignore tells git files or types to never track\n\n# History files\n.Rhistory\n.Rapp.history\n\n# Session Data files\n.RData\n\n# Compiled junk\n*.o\n*.so\n*.DS_Store\n\nShortcut to track everything (use carefully):\n\ngit add ."
   },
   {
     "objectID": "schedule/slides/git.html#whats-a-pr",
@@ -795,21 +795,21 @@
     "href": "schedule/slides/git.html#operations-in-rstudio",
     "title": "UBC Stat550",
     "section": "Operations in Rstudio",
-    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\nCovers:\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\nCommand line versions (of the same)\n```{bash}\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;\n```"
+    "text": "Operations in Rstudio\n\n\n\nStage\nCommit\nPush\nPull\nCreate a branch\n\nCovers:\n\nEverything to do your HW / Project if you’re careful\nPlus most other things you “want to do”\n\n\n\nCommand line versions (of the same)\ngit add &lt;name/of/file&gt;\n\ngit commit -m \"some useful message\"\n\ngit push\n\ngit pull\n\ngit checkout -b &lt;name/of/branch&gt;"
   },
   {
     "objectID": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
     "href": "schedule/slides/git.html#other-useful-stuff-but-command-line-only",
     "title": "UBC Stat550",
     "section": "Other useful stuff (but command line only)",
-    "text": "Other useful stuff (but command line only)\n\n\nInitializing\n```{bash}\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\n```\nStaging\n```{bash}\ngit add name/of/file # stage 1 file\ngit add . # stage all\n```\nCommitting\n```{bash}\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \n```\nPushing\n```{bash}\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n```\n\n\nBranching\n```{bash}\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\n```\nCheck the status\n```{bash}\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs\n```"
+    "text": "Other useful stuff (but command line only)\n\n\nInitializing\ngit config user.name --global \"Daniel J. McDonald\"\ngit config user.email --global \"daniel@stat.ubc.ca\"\ngit config core.editor --global nano \n# or emacs or ... (default is vim)\nStaging\ngit add name/of/file # stage 1 file\ngit add . # stage all\nCommitting\n# stage/commit simultaneously\ngit commit -am \"message\" \n\n# open editor to write long commit message\ngit commit \nPushing\n# If branchname doesn't exist\n# on remote, create it and push\ngit push -u origin branchname\n\n\nBranching\n# switch to branchname, error if uncommitted changes\ngit checkout branchname \n# switch to a previous commit\ngit checkout aec356\n\n# create a new branch\ngit branch newbranchname\n# create a new branch and check it out\ngit checkout -b newbranchname\n\n# merge changes in branch2 onto branch1\ngit checkout branch1\ngit merge branch2\n\n# grab a file from branch2 and put it on current\ngit checkout branch2 -- name/of/file\n\ngit branch -v # list all branches\nCheck the status\ngit status\ngit remote -v # list remotes\ngit log # show recent commits, msgs"
   },
   {
     "objectID": "schedule/slides/git.html#commit-messages",
     "href": "schedule/slides/git.html#commit-messages",
     "title": "UBC Stat550",
     "section": "Commit messages",
-    "text": "Commit messages\n\n\n\n\n\n\n\nWrite meaningful messages. Not fixed stuff or oops? maybe done?\nThese appear in the log and help you determine what you’ve done.\nThink imperative mood: “add cross validation to simulation”\nBest to have each commit “do one thing”\n\n\n\n\nConventions: (see here for details)\n\nfeat: – a new feature is introduced with the changes\nfix: – a bug fix has occurred\nchore: – changes that do not relate to a fix or feature (e.g., updating dependencies)\nrefactor: – refactored code that neither fixes a bug nor adds a feature\ndocs: – updates to documentation such as a the README or other markdown files\nstyle: – changes that do not affect the function of the code\ntest – including new or correcting previous tests\nperf – performance improvements\nci – continuous integration related\n\n```{bash}\ngit commit -m \"feat: add cross validation to simulation, closes #251\"\n```"
+    "text": "Commit messages\n\n\n\n\n\n\n\nWrite meaningful messages. Not fixed stuff or oops? maybe done?\nThese appear in the log and help you determine what you’ve done.\nThink imperative mood: “add cross validation to simulation”\nBest to have each commit “do one thing”\n\n\n\n\nConventions: (see here for details)\n\nfeat: – a new feature is introduced with the changes\nfix: – a bug fix has occurred\nchore: – changes that do not relate to a fix or feature (e.g., updating dependencies)\nrefactor: – refactored code that neither fixes a bug nor adds a feature\ndocs: – updates to documentation such as a the README or other markdown files\nstyle: – changes that do not affect the function of the code\ntest – including new or correcting previous tests\nperf – performance improvements\nci – continuous integration related\n\ngit commit -m \"feat: add cross validation to simulation, closes #251\""
   },
   {
     "objectID": "schedule/slides/git.html#conflicts",
@@ -830,14 +830,14 @@
     "href": "schedule/slides/git.html#how-to-undo-in-3-scenarios",
     "title": "UBC Stat550",
     "section": "How to undo in 3 scenarios",
-    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\nIn RStudio, select the file and click   then select  Revert…\n```{bash}\n# grab the old committed version\ngit checkout -- README.md \n```\n2. Staged but not committed\nIn RStudio, uncheck the box by the file, then use the method above.\n```{bash}\n# first unstage, then same as 1\ngit reset HEAD README.md\ngit checkout -- README.md\n```\n\n\n3. Committed\nNot easy to do in RStudio…\n```{bash}\n# check the log to find the chg \ngit log\n# go one step before that \n# (e.g., to commit 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n```\n\n```{bash}\n# alternatively, if it happens\n# to also be on another branch\ngit checkout otherbranch -- README.md\n```"
+    "text": "How to undo in 3 scenarios\n\nSuppose we’re concerned about a file named README.md\nOften, git status will give some of these as suggestions\n\n\n\n1. Saved but not staged\nIn RStudio, select the file and click   then select  Revert…\n# grab the old committed version\ngit checkout -- README.md \n2. Staged but not committed\nIn RStudio, uncheck the box by the file, then use the method above.\n# first unstage, then same as 1\ngit reset HEAD README.md\ngit checkout -- README.md\n\n\n3. Committed\nNot easy to do in RStudio…\n# check the log to find the chg \ngit log\n# go one step before that \n# (e.g., to commit 32b252)\n# and grab that earlier version\ngit checkout 32b252 -- README.md\n\n# alternatively, if it happens\n# to also be on another branch\ngit checkout otherbranch -- README.md"
   },
   {
     "objectID": "schedule/slides/git.html#recovering-from-things",
     "href": "schedule/slides/git.html#recovering-from-things",
     "title": "UBC Stat550",
     "section": "Recovering from things",
-    "text": "Recovering from things\n\nAccidentally did work on main,\n\n```{bash}\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n```\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\n```{bash}\ngit checkout main\ngit branch -d badbranch\n```\n\nAnything more complicated, either post to Slack or LMGTFY"
+    "text": "Recovering from things\n\nAccidentally did work on main,\n\n# make a new branch with everything, but stay on main\ngit branch newbranch\n# find out where to go to\ngit log\n# undo everything after ace2193\ngit reset --hard ace2193\ngit checkout newbranch\n\nMade a branch, did lots of work, realized it’s trash, and you want to burn it\n\ngit checkout main\ngit branch -d badbranch\n\nAnything more complicated, either post to Slack or LMGTFY"
   },
   {
     "objectID": "schedule/slides/git.html#rules-for-hw-2",
