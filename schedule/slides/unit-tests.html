@@ -395,10 +395,10 @@
 
 
 <section id="section" class="slide level2 large" data-background-image="img/consult.jpeg" data-background-opacity="0.3">
-<h2>Unit tests</h2>
+<h2>Unit tests and avoiding 🪲🪲</h2>
 <p><span class="secondary">Stat 550</span></p>
 <p><span class="secondary">Daniel J. McDonald</span></p>
-<p>Last modified – 09 January 2024</p>
+<p>Last modified – 06 February 2024</p>
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -472,54 +472,288 @@
 <li><p>So you make a change and maybe or maybe not try some again.</p></li>
 </ul>
 </section>
-<section id="example" class="slide level2">
-<h2>Example:</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>two_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-2"><a></a>grouped_two_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, gr) <span class="fu">as.vector</span>(<span class="fu">tapply</span>(x, gr, two_norm))</span>
-<span id="cb1-3"><a></a>gr_two_norm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, gr) <span class="fu">sum</span>(<span class="fu">grouped_two_norm</span>(x, gr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>There’s a silly bug in the above code.</li>
-</ul>
-<div class="fragment">
-<ul>
-<li><p>At one point, I decided that I didn’t want the <span class="math inline">\(\ell_2\)</span>-norm, I wanted the <strong>squared</strong> <span class="math inline">\(\ell_2\)</span> norm.</p></li>
-<li><p>But now the other two functions are wrong.</p></li>
-</ul>
-<div class="callout callout-note callout-titled callout-style-default">
+<section id="step-1-write-functions" class="slide level2">
+<h2>Step 1 — write functions</h2>
+<div class="callout callout-important callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
-</div>
 <div class="callout-content">
-<p>These functions get used in many other places.</p>
-<p>To make sure I don’t do something dumb ever again, I write <span class="primary">unit tests</span>.</p>
+<p>Write functions.</p>
+<p>Lots of them.</p>
+</div>
+</div>
+</div>
+<p>👍 Functions are testable</p>
+<p>👎 Scripts are not</p>
+<p>It’s easy to alter the arguments and see “what happens”</p>
+<p>There’s less ability to screw up environments.</p>
+<div class="fragment">
+<p>I’m going to mainly describe <code>R</code>, but the logic is very similar (if not the syntax) for <code>python</code>, <code>C++</code>, and <code>Julia</code></p>
+</div>
+</section>
+<section id="understanding-signatures" class="slide level2">
+<h2>Understanding signatures</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">sig</span>(lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fn &lt;- function(formula, data, subset, weights, na.action, method = "qr", model
+  = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, contrasts =
+  NULL, offset, ...)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sig</span>(<span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fn &lt;- function(e1, e2)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">sig</span>(dplyr<span class="sc">::</span>filter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fn &lt;- function(.data, ..., .by = NULL, .preserve = FALSE)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">sig</span>(stats<span class="sc">::</span>filter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fn &lt;- function(x, filter, method = c("convolution", "recursive"), sides = 2,
+  circular = FALSE, init = NULL)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">sig</span>(rnorm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fn &lt;- function(n, mean = 0, sd = 1)</code></pre>
+</div>
+</div>
+</section>
+<section id="these-are-all-the-same" class="slide level2">
+<h2>These are all the same</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb11-2"><a></a><span class="fu">rnorm</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.5855288  0.7094660 -0.1093033</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb13-2"><a></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.5855288  0.7094660 -0.1093033</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb15-2"><a></a><span class="fu">rnorm</span>(<span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.5855288  0.7094660 -0.1093033</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb17-2"><a></a><span class="fu">rnorm</span>(<span class="at">sd =</span> <span class="dv">1</span>, <span class="at">n =</span> <span class="dv">3</span>, <span class="at">mean =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.5855288  0.7094660 -0.1093033</code></pre>
+</div>
+</div>
+<ul>
+<li>Functions can have default values.</li>
+<li>You may, but don’t have to, name the arguments</li>
+<li>If you name them, you can pass them out of order (but you shouldn’t).</li>
+</ul>
+</section>
+<section id="outputs-vs.-side-effects" class="slide level2">
+<h2>Outputs vs.&nbsp;Side effects</h2>
+<div class="flex">
+<div class="w-50">
+<ul>
+<li>Side effects are things a function does, outputs can be assigned to variables</li>
+<li>A good example is the <code>hist</code> function</li>
+<li>You have probably only seen the side effect which is to plot the histogram</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>my_histogram <span class="ot">&lt;-</span> <span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="dv">1000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="unit-tests_files/figure-revealjs/unnamed-chunk-4-1.svg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="w-50">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">str</span>(my_histogram)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 6
+ $ breaks  : num [1:14] -3 -2.5 -2 -1.5 -1 -0.5 0 0.5 1 1.5 ...
+ $ counts  : int [1:13] 4 21 41 83 138 191 191 182 74 43 ...
+ $ density : num [1:13] 0.008 0.042 0.082 0.166 0.276 0.382 0.382 0.364 0.148 0.086 ...
+ $ mids    : num [1:13] -2.75 -2.25 -1.75 -1.25 -0.75 -0.25 0.25 0.75 1.25 1.75 ...
+ $ xname   : chr "rnorm(1000)"
+ $ equidist: logi TRUE
+ - attr(*, "class")= chr "histogram"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">class</span>(my_histogram)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "histogram"</code></pre>
 </div>
 </div>
 </div>
 </div>
 </section>
+<section id="step-2-program-defensively-ensure-behaviour" class="slide level2">
+<h2>Step 2 — program defensively, ensure behaviour</h2>
+<div class="flex">
+<div class="w-50">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb24-2"><a></a>  x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb24-3"><a></a>}</span>
+<span id="cb24-4"><a></a>  </span>
+<span id="cb24-5"><a></a><span class="fu">incrementer</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 3 4 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">incrementer</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in x + 1: non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb30-2"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(x))</span>
+<span id="cb30-3"><a></a>  <span class="fu">return</span>(x <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb30-4"><a></a>}</span>
+<span id="cb30-5"><a></a><span class="fu">incrementer</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in incrementer("a"): is.numeric(x) is not TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="w-50">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb32-2"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb32-3"><a></a>    <span class="fu">stop</span>(<span class="st">"`x` must be numeric"</span>)</span>
+<span id="cb32-4"><a></a>  }</span>
+<span id="cb32-5"><a></a>  x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb32-6"><a></a>}</span>
+<span id="cb32-7"><a></a><span class="fu">incrementer</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in incrementer("a"): `x` must be numeric</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">incrementer</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>) <span class="do">## oops!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb36-2"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) {</span>
+<span id="cb36-3"><a></a>    <span class="fu">stop</span>(<span class="st">"`x` must be numeric"</span>)</span>
+<span id="cb36-4"><a></a>  }</span>
+<span id="cb36-5"><a></a>  x <span class="sc">+</span> inc_by</span>
+<span id="cb36-6"><a></a>}</span>
+<span id="cb36-7"><a></a><span class="fu">incrementer</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="even-better" class="slide level2">
+<h2>Even better</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb38-2"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`x` must be numeric"</span>)</span>
+<span id="cb38-3"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(inc_by)) cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="st">"`inc_by` must be numeric"</span>)</span>
+<span id="cb38-4"><a></a>  x <span class="sc">+</span> inc_by</span>
+<span id="cb38-5"><a></a>}</span>
+<span id="cb38-6"><a></a><span class="fu">incrementer</span>(<span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `incrementer()`:
+! `x` must be numeric</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `incrementer()`:
+! `inc_by` must be numeric</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-keep-track-of-behaviour-with-tests" class="slide level2">
+<h2>Step 3 — Keep track of behaviour with tests</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">library</span>(testthat)</span>
+<span id="cb42-2"><a></a>incrementer <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">inc_by =</span> <span class="dv">1</span>) {</span>
+<span id="cb42-3"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(x)) <span class="fu">stop</span>(<span class="st">"`x` must be numeric"</span>)</span>
+<span id="cb42-4"><a></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(inc_by)) <span class="fu">stop</span>(<span class="st">"`inc_by` must be numeric"</span>)</span>
+<span id="cb42-5"><a></a>  x <span class="sc">+</span> inc_by</span>
+<span id="cb42-6"><a></a>}</span>
+<span id="cb42-7"><a></a><span class="fu">test_that</span>(<span class="st">"incrementer validates arguments"</span>, {</span>
+<span id="cb42-8"><a></a>  <span class="fu">expect_error</span>(<span class="fu">incrementer</span>(<span class="st">"a"</span>))</span>
+<span id="cb42-9"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb42-10"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">incrementer</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">3</span>), <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb42-11"><a></a>  <span class="fu">expect_error</span>(<span class="fu">incrementer</span>(<span class="dv">1</span>, <span class="st">"b"</span>))</span>
+<span id="cb42-12"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb42-13"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>── Failure: incrementer validates arguments ────────────────────────────────────
+incrementer(1:3) not identical to 2:4.
+Objects equal but not identical</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error:
+! Test failed</code></pre>
+</div>
+</div>
+</section>
+<section id="integers-are-trouble" class="slide level2">
+<h2>Integers are trouble</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a><span class="fu">is.integer</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a><span class="fu">is.integer</span>(<span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">expect_identical</span>(<span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span>L), <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb49-2"><a></a><span class="fu">expect_equal</span>(<span class="fu">incrementer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span>), <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section>
+<section id="testing-lingo" class="title-slide slide level1 center">
+<h1>Testing lingo</h1>
+
+</section>
 <section id="unit-testing" class="slide level2">
-<h2>Unit Testing</h2>
+<h2>Unit testing</h2>
 <ul>
 <li><p>A <strong>unit</strong> is a small bit of code (function, class, module, group of classes)</p></li>
 <li><p>A <strong>test</strong> calls the unit with a set of inputs, and checks if we get the expected output.</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">test_that</span>(<span class="st">"group norms are correct"</span>, {</span>
-<span id="cb2-2"><a></a>  asparse <span class="ot">&lt;-</span> .<span class="dv">05</span></span>
-<span id="cb2-3"><a></a>  gr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb2-4"><a></a>  x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">two_norm</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span> , <span class="dv">5</span>)), <span class="fu">sqrt</span>(<span class="dv">50</span>)) <span class="co"># this one will fail</span></span>
-<span id="cb2-6"><a></a>  <span class="fu">expect_equal</span>(</span>
-<span id="cb2-7"><a></a>    <span class="fu">grouped_two_norm</span>(x, gr),</span>
-<span id="cb2-8"><a></a>    <span class="fu">c</span>(<span class="fu">two_norm</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]), <span class="fu">two_norm</span>(x[<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>]), <span class="fu">two_norm</span>(x[<span class="dv">7</span><span class="sc">:</span><span class="dv">11</span>])))</span>
-<span id="cb2-9"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>gcd <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">na.rm =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb50-2"><a></a>  <span class="cf">if</span> (na.rm) x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">is.na</span>(x)]</span>
+<span id="cb50-3"><a></a>  <span class="cf">if</span> (<span class="fu">anyNA</span>(x)) <span class="fu">return</span>(<span class="cn">NA</span>)</span>
+<span id="cb50-4"><a></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(x))</span>
+<span id="cb50-5"><a></a>  <span class="cf">if</span> (<span class="sc">!</span>rlang<span class="sc">::</span><span class="fu">is_integerish</span>(x)) <span class="fu">cli_abort</span>(<span class="st">"`x` must contain only integers."</span>)</span>
+<span id="cb50-6"><a></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">1</span>L) <span class="fu">return</span>(<span class="fu">as.integer</span>(x))</span>
+<span id="cb50-7"><a></a>  x <span class="ot">&lt;-</span> x[x <span class="sc">!=</span> <span class="dv">0</span>]</span>
+<span id="cb50-8"><a></a>  <span class="fu">compute_gcd</span>(x) <span class="co"># dispatch to a C++ function</span></span>
+<span id="cb50-9"><a></a>}</span>
+<span id="cb50-10"><a></a></span>
+<span id="cb50-11"><a></a><span class="fu">test_that</span>(<span class="st">"gcd works"</span>, {</span>
+<span id="cb50-12"><a></a>  <span class="co"># corner cases</span></span>
+<span id="cb50-13"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>)), <span class="cn">NA</span>)</span>
+<span id="cb50-14"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="cn">NA</span>), <span class="cn">TRUE</span>), <span class="dv">1</span>L)</span>
+<span id="cb50-15"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)), <span class="dv">1</span>L)</span>
+<span id="cb50-16"><a></a>  <span class="co"># error</span></span>
+<span id="cb50-17"><a></a>  <span class="fu">expect_error</span>(<span class="fu">gcd</span>(<span class="fl">1.3</span>))</span>
+<span id="cb50-18"><a></a>  <span class="co"># function</span></span>
+<span id="cb50-19"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)), <span class="dv">2</span>L)</span>
+<span id="cb50-20"><a></a>  <span class="fu">expect_identical</span>(<span class="fu">gcd</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>)), <span class="dv">1</span>L)</span>
+<span id="cb50-21"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="unit-testing-1" class="slide level2">
+<h2>Unit testing</h2>
 <p>Unit testing consists of writing tests that are</p>
 <ul>
 <li>focused on a small, low-level piece of code (a unit)</li>
@@ -541,8 +775,8 @@
 <img data-src="http://www.phdcomics.com/comics/archive/phd033114s.gif" class="r-stretch"></section>
 <section id="components-of-a-unit-testing-framework" class="slide level2">
 <h2>Components of a Unit Testing Framework</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<div class="flex">
+<div class="w-70">
 <ul>
 <li>Collection of <strong>Assertions</strong> executed in sequence.</li>
 <li>Executed in a self-contained environment.</li>
@@ -551,24 +785,25 @@
 <p>Each test focuses on a single component.</p>
 <p>Named so that you know what it’s doing.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="do">## See https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life</span></span>
-<span id="cb3-2"><a></a><span class="fu">test_that</span>(<span class="st">"Conway's rules are correct"</span>, {</span>
-<span id="cb3-3"><a></a>    <span class="co"># conway_rules(num_neighbors, alive?)</span></span>
-<span id="cb3-4"><a></a>    <span class="fu">expect_true</span>(<span class="fu">conway_rules</span>(<span class="dv">3</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb3-5"><a></a>    <span class="fu">expect_false</span>(<span class="fu">conway_rules</span>(<span class="dv">4</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb3-6"><a></a>    <span class="fu">expect_true</span>(<span class="fu">conway_rules</span>(<span class="dv">2</span>, <span class="cn">TRUE</span>))</span>
-<span id="cb3-7"><a></a>    ...</span>
-<span id="cb3-8"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="do">## See https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life</span></span>
+<span id="cb51-2"><a></a><span class="fu">test_that</span>(<span class="st">"Conway's rules are correct"</span>, {</span>
+<span id="cb51-3"><a></a>    <span class="co"># conway_rules(num_neighbors, alive?)</span></span>
+<span id="cb51-4"><a></a>    <span class="fu">expect_true</span>(<span class="fu">conway_rules</span>(<span class="dv">3</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb51-5"><a></a>    <span class="fu">expect_false</span>(<span class="fu">conway_rules</span>(<span class="dv">4</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb51-6"><a></a>    <span class="fu">expect_true</span>(<span class="fu">conway_rules</span>(<span class="dv">2</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb51-7"><a></a>    ...</span>
+<span id="cb51-8"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div>
+<div class="w-30">
 <p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif"></p>
 </div>
 </div>
 </section>
 <section id="a-test-suite" class="slide level2">
 <h2>A test suite</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<div class="flex">
+<div class="w-50">
 <ul>
 <li><p>Collection of related tests in a common context.</p></li>
 <li><p>Prepares the environment, cleans up after</p></li>
@@ -576,58 +811,55 @@
 <li><p>Test suites are run and the results reported, particularly failures, in a easy to parse and economical style.</p></li>
 <li><p>For example, Python’s <code>{unittest}</code> can report like this</p></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<pre><code>$ python test/trees_test.py -v
-
-test_crime_counts (__main__.DataTreeTest)
-Ensure Ks are consistent with num_points. ... ok
-test_indices_sorted (__main__.DataTreeTest)
-Ensure all node indices are sorted in increasing order. ... ok
-test_no_bbox_overlap (__main__.DataTreeTest)
-Check that child bounding boxes do not overlap. ... ok
-test_node_counts (__main__.DataTreeTest)
-Ensure that each node's point count is accurate. ... ok
-test_oversized_leaf (__main__.DataTreeTest)
-Don't recurse infinitely on duplicate points. ... ok
-test_split_parity (__main__.DataTreeTest)
-Check that each tree level has the right split axis. ... ok
-test_trange_contained (__main__.DataTreeTest)
-Check that child tranges are contained in parent tranges. ... ok
-test_no_bbox_overlap (__main__.QueryTreeTest)
-Check that child bounding boxes do not overlap. ... ok
-test_node_counts (__main__.QueryTreeTest)
-Ensure that each node's point count is accurate. ... ok
-test_oversized_leaf (__main__.QueryTreeTest)
-Don't recurse infinitely on duplicate points. ... ok
-test_split_parity (__main__.QueryTreeTest)
-Check that each tree level has the right split axis. ... ok
-test_trange_contained (__main__.QueryTreeTest)
-Check that child tranges are contained in parent tranges. ... ok
-
----------------------------------------------------------
-Ran 12 tests in 23.932s</code></pre>
+</div>
+<div class="w-50">
+<div class="sourceCode" id="cb52"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a></a><span class="ex">$</span> python test/trees_test.py <span class="at">-v</span></span>
+<span id="cb52-2"><a></a></span>
+<span id="cb52-3"><a></a><span class="ex">test_crime_counts</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-4"><a></a><span class="ex">Ensure</span> Ks are consistent with num_points. ... ok</span>
+<span id="cb52-5"><a></a><span class="ex">test_indices_sorted</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-6"><a></a><span class="ex">Ensure</span> all node indices are sorted in increasing order. ... ok</span>
+<span id="cb52-7"><a></a><span class="ex">test_no_bbox_overlap</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-8"><a></a><span class="ex">Check</span> that child bounding boxes do not overlap. ... ok</span>
+<span id="cb52-9"><a></a><span class="ex">test_node_counts</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-10"><a></a><span class="ex">Ensure</span> that each node<span class="st">'s point count is accurate. ... ok</span></span>
+<span id="cb52-11"><a></a><span class="st">test_oversized_leaf (__main__.DataTreeTest)</span></span>
+<span id="cb52-12"><a></a><span class="st">Don'</span>t recurse infinitely on duplicate points. ... ok</span>
+<span id="cb52-13"><a></a><span class="ex">test_split_parity</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-14"><a></a><span class="ex">Check</span> that each tree level has the right split axis. ... ok</span>
+<span id="cb52-15"><a></a><span class="ex">test_trange_contained</span> <span class="er">(</span><span class="ex">__main__.DataTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-16"><a></a><span class="ex">Check</span> that child tranges are contained in parent tranges. ... ok</span>
+<span id="cb52-17"><a></a><span class="ex">test_no_bbox_overlap</span> <span class="er">(</span><span class="ex">__main__.QueryTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-18"><a></a><span class="ex">Check</span> that child bounding boxes do not overlap. ... ok</span>
+<span id="cb52-19"><a></a><span class="ex">test_node_counts</span> <span class="er">(</span><span class="ex">__main__.QueryTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-20"><a></a><span class="ex">Ensure</span> that each node<span class="st">'s point count is accurate. ... ok</span></span>
+<span id="cb52-21"><a></a><span class="st">test_oversized_leaf (__main__.QueryTreeTest)</span></span>
+<span id="cb52-22"><a></a><span class="st">Don'</span>t recurse infinitely on duplicate points. ... ok</span>
+<span id="cb52-23"><a></a><span class="ex">test_split_parity</span> <span class="er">(</span><span class="ex">__main__.QueryTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-24"><a></a><span class="ex">Check</span> that each tree level has the right split axis. ... ok</span>
+<span id="cb52-25"><a></a><span class="ex">test_trange_contained</span> <span class="er">(</span><span class="ex">__main__.QueryTreeTest</span><span class="kw">)</span></span>
+<span id="cb52-26"><a></a><span class="ex">Check</span> that child tranges are contained in parent tranges. ... ok</span>
+<span id="cb52-27"><a></a></span>
+<span id="cb52-28"><a></a><span class="ex">---------------------------------------------------------</span></span>
+<span id="cb52-29"><a></a><span class="ex">Ran</span> 12 tests in 23.932s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
 <section id="r-example" class="slide level2">
 <h2><code>R</code> example</h2>
-<pre><code>ℹ Loading sparsegl
-ℹ Testing sparsegl
-✓ | F W S  OK | Context
-✓ |         7 | model_base                                                           
-✓ |         7 | norms                                                                
-⠏ |         0 | predict                                         
-Loading required package: Matrix
-Loaded glmnet 4.1-3
-✓ |        17 | predict [0.4s]                                                       
-✓ |         5 | risk_estimation [0.4s]                                               
-✓ |         5 | sparsegl_comparisons                                                 
-✓ |        18 | sparsegl_params                                                      
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a></a>testthat<span class="sc">::</span><span class="fu">test_local</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"../../../../../../Delphi/smoothqr/"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>✔ | F W  S  OK | Context
 
-══ Results ══════════════════════════════════════════════════════════════════════════
-Duration: 0.9 s
+⠏ |          0 | smooth-rq                                                      
+⠴ |          6 | smooth-rq                                                      
+✔ |         12 | smooth-rq
 
-[ FAIL 0 | WARN 0 | SKIP 0 | PASS 59 ]</code></pre>
+══ Results ═════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 12 ]</code></pre>
+</div>
+</div>
 </section>
 <section id="what-do-i-test" class="slide level2">
 <h2>What do I test?</h2>
@@ -654,13 +886,13 @@ Duration: 0.9 s
 <h2>What do I test?</h2>
 <p>Make sure that incorrect functions won’t pass (or at least, won’t pass them all).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="fu">return</span>(<span class="dv">4</span>)</span>
-<span id="cb6-2"><a></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="fu">return</span>(a <span class="sc">*</span> b)</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="fu">test_that</span>(<span class="st">"Addition is commutative"</span>, {</span>
-<span id="cb6-5"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="fu">add</span>(<span class="dv">3</span>, <span class="dv">1</span>)) <span class="co"># both pass this !!</span></span>
-<span id="cb6-6"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">5</span>), <span class="fu">add</span>(<span class="dv">5</span>, <span class="dv">2</span>)) <span class="co"># neither passes this</span></span>
-<span id="cb6-7"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="fu">return</span>(<span class="dv">4</span>)</span>
+<span id="cb55-2"><a></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="fu">return</span>(a <span class="sc">*</span> b)</span>
+<span id="cb55-3"><a></a></span>
+<span id="cb55-4"><a></a><span class="fu">test_that</span>(<span class="st">"Addition is commutative"</span>, {</span>
+<span id="cb55-5"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="fu">add</span>(<span class="dv">3</span>, <span class="dv">1</span>)) <span class="co"># both pass this !!</span></span>
+<span id="cb55-6"><a></a>  <span class="fu">expect_equal</span>(<span class="fu">add</span>(<span class="dv">2</span>, <span class="dv">5</span>), <span class="fu">add</span>(<span class="dv">5</span>, <span class="dv">2</span>)) <span class="co"># neither passes this</span></span>
+<span id="cb55-7"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -679,72 +911,6 @@ Duration: 0.9 s
 </div>
 </div>
 </section>
-<section id="test-driven-development" class="slide level2">
-<h2>Test-driven development</h2>
-<p>Test Driven Development (TDD) uses a short development cycle for each new feature or component:</p>
-<ol type="1">
-<li><p>Write tests that specify the component’s desired behavior.<br>
-The tests will initially fail because the component does not yet exist.</p></li>
-<li><p>Create the minimal implementation that passes the test.</p></li>
-<li><p>Refactor the code to meet design standards, running the tests with each change to ensure correctness.</p></li>
-</ol>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<h4 id="why-work-this-way">Why work this way?</h4>
-<ul>
-<li><p>Writing the tests may help you realize</p>
-<ol type="a">
-<li>what arguments the function must take,<br>
-</li>
-<li>what other data it needs,<br>
-</li>
-<li>and what kinds of errors it needs to handle.</li>
-</ol></li>
-<li><p>The tests define a specific plan for what the function must do.</p></li>
-<li><p>You will catch bugs at the beginning instead of at the end (or never).</p></li>
-<li><p>Testing is part of design, instead of a lame afterthought you dread doing.</p></li>
-</ul>
-</section>
-<section id="rules-of-thumb" class="slide level2">
-<h2>Rules of thumb</h2>
-<p><span class="secondary">Keep tests in separate files</span></p>
-<p>from the code they test. This makes it easy to run them separately.</p>
-<p><span class="secondary">Give tests names.</span></p>
-<p>Testing frameworks usually let you give the test functions names or descriptions. <code>test_1</code> doesn’t help you at all, but <code>test_tree_insert</code> makes it easy for you to remember what the test is for.</p>
-<p><span class="secondary">Make tests replicable.</span></p>
-<p>If a test involves random data, what do you do when the test fails? You need some way to know what random values it used so you can figure out why the test fails.</p>
-</section>
-<section id="rules-of-thumb-1" class="slide level2">
-<h2>Rules of thumb</h2>
-<p><span class="secondary">Use tests instead of the REPL.</span></p>
-<p>If you’re building a complicated function, write the tests in advance and use them to help you while you write the function. You’ll waste time calling over and over at the REPL.</p>
-<p><span class="secondary">Avoid testing against another’s code/package.</span></p>
-<p>You don’t know the ins and outs of what they do. If they change the code, your tests will fail.</p>
-<p><span class="secondary">Test Units, not main functions.</span></p>
-<p>You should write small functions that do one thing. Test those. Don’t write one huge 1000-line function and try to test that.</p>
-<p><span class="secondary">Avoid random numbers.</span></p>
-<p>Seeds are not always portable.</p>
-</section>
-<section class="slide level2">
-
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><p><code>R</code>, use <code>{testthat}</code>. See the <a href="http://r-pkgs.had.co.nz/tests.html">Testing</a> chapter from Hadley Wickham’s R Packages book.</p></li>
-<li><p><code>python</code> use <code>{pytest}</code>. A bit more user-friendly: <a href="https://docs.pytest.org/en/latest/">pytest</a></p></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
 <section id="assertions" class="slide level2">
 <h2>Assertions</h2>
 <p><span class="secondary">Assertions</span> are things that must be true. Failure means “Quit”.</p>
@@ -753,20 +919,20 @@ The tests will initially fail because the component does not yet exist.</p></li>
 <li>Think: passed in bad arguments.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="kw">def</span> fit(data, ...):</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a>    <span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(max_iterations):</span>
-<span id="cb7-4"><a></a>        <span class="co"># iterative fitting code here</span></span>
-<span id="cb7-5"><a></a>        ...</span>
-<span id="cb7-6"><a></a></span>
-<span id="cb7-7"><a></a>        <span class="co"># Plausibility check</span></span>
-<span id="cb7-8"><a></a>        <span class="cf">assert</span> np.<span class="bu">all</span>(alpha <span class="op">&gt;=</span> <span class="dv">0</span>), <span class="st">"negative alpha"</span></span>
-<span id="cb7-9"><a></a>        <span class="cf">assert</span> np.<span class="bu">all</span>(theta <span class="op">&gt;=</span> <span class="dv">0</span>), <span class="st">"negative theta"</span></span>
-<span id="cb7-10"><a></a>        <span class="cf">assert</span> omega <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive omega"</span></span>
-<span id="cb7-11"><a></a>        <span class="cf">assert</span> eta2 <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive eta2"</span></span>
-<span id="cb7-12"><a></a>        <span class="cf">assert</span> sigma2 <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive sigma2"</span></span>
-<span id="cb7-13"><a></a></span>
-<span id="cb7-14"><a></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a></a><span class="kw">def</span> fit(data, ...):</span>
+<span id="cb56-2"><a></a></span>
+<span id="cb56-3"><a></a>    <span class="cf">for</span> it <span class="kw">in</span> <span class="bu">range</span>(max_iterations):</span>
+<span id="cb56-4"><a></a>        <span class="co"># iterative fitting code here</span></span>
+<span id="cb56-5"><a></a>        ...</span>
+<span id="cb56-6"><a></a></span>
+<span id="cb56-7"><a></a>        <span class="co"># Plausibility check</span></span>
+<span id="cb56-8"><a></a>        <span class="cf">assert</span> np.<span class="bu">all</span>(alpha <span class="op">&gt;=</span> <span class="dv">0</span>), <span class="st">"negative alpha"</span></span>
+<span id="cb56-9"><a></a>        <span class="cf">assert</span> np.<span class="bu">all</span>(theta <span class="op">&gt;=</span> <span class="dv">0</span>), <span class="st">"negative theta"</span></span>
+<span id="cb56-10"><a></a>        <span class="cf">assert</span> omega <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive omega"</span></span>
+<span id="cb56-11"><a></a>        <span class="cf">assert</span> eta2 <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive eta2"</span></span>
+<span id="cb56-12"><a></a>        <span class="cf">assert</span> sigma2 <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">"Nonpositive sigma2"</span></span>
+<span id="cb56-13"><a></a></span>
+<span id="cb56-14"><a></a>    ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The parameters have to be positive. Negative is impossible. No way to recover.</p>
 </section>
@@ -776,7 +942,7 @@ The tests will initially fail because the component does not yet exist.</p></li>
 <ul>
 <li>You could perform some action to work around the error, fix it, or report it to the user.</li>
 </ul>
-<h4 id="example-1">Example:</h4>
+<h4 id="example">Example:</h4>
 <ul>
 <li>I give you directions to my house. You get lost. You could recover.</li>
 <li>Maybe retrace your steps, see if you missed a sign post.</li>
@@ -795,48 +961,135 @@ The tests will initially fail because the component does not yet exist.</p></li>
 <li><p>Run some iterative algorithm. If we haven’t converged, restart from another place.</p></li>
 </ul>
 <p>Code can fix errors without user input. It can’t fix assertions.</p>
+<ul>
+<li>An input must be an integer. So round it, Warn, and proceed. Rather than fail.</li>
+</ul>
 </section>
-<section id="best-practices" class="slide level2">
-<h2>Best practices</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="test-driven-development" class="slide level2">
+<h2>Test-driven development</h2>
+<p>Test Driven Development (TDD) uses a short development cycle for each new feature or component:</p>
+<ol type="1">
+<li><p>Write tests that specify the component’s desired behavior.<br>
+The tests will initially fail because the component does not yet exist.</p></li>
+<li><p>Create the minimal implementation that passes the test.</p></li>
+<li><p>Refactor the code to meet design standards, running the tests with each change to ensure correctness.</p></li>
+</ol>
+</section>
+<section id="why-work-this-way" class="slide level2">
+<h2>Why work this way?</h2>
+<ul>
+<li><p>Writing the tests may help you realize</p>
+<ol type="a">
+<li>what arguments the function must take,<br>
+</li>
+<li>what other data it needs,<br>
+</li>
+<li>and what kinds of errors it needs to handle.</li>
+</ol></li>
+<li><p>The tests define a specific plan for what the function must do.</p></li>
+<li><p>You will catch bugs at the beginning instead of at the end (or never).</p></li>
+<li><p>Testing is part of design, instead of a lame afterthought you dread doing.</p></li>
+</ul>
+</section>
+<section id="rules-of-thumb" class="slide level2">
+<h2>Rules of thumb</h2>
+<dl>
+<dt>Keep tests in separate files</dt>
+<dd>
+from the code they test. This makes it easy to run them separately.
+</dd>
+<dt>Give tests names</dt>
+<dd>
+Testing frameworks usually let you give the test functions names or descriptions. <code>test_1</code> doesn’t help you at all, but <code>test_tree_insert</code> makes it easy for you to remember what the test is for.
+</dd>
+<dt>Make tests replicable</dt>
+<dd>
+If a test involves random data, what do you do when the test fails? You need some way to know what random values it used so you can figure out why the test fails.
+</dd>
+</dl>
+</section>
+<section id="rules-of-thumb-1" class="slide level2">
+<h2>Rules of thumb</h2>
+<dl>
+<dt>Use tests instead of the REPL</dt>
+<dd>
+If you’re building a complicated function, write the tests in advance and use them to help you while you write the function. You’ll waste time calling over and over at the REPL.
+</dd>
+<dt>Avoid testing against another’s code/package</dt>
+<dd>
+You don’t know the ins and outs of what they do. If they change the code, your tests will fail.
+</dd>
+<dt>Test Units, not main functions</dt>
+<dd>
+You should write small functions that do one thing. Test those. Don’t write one huge 1000-line function and try to test that.
+</dd>
+<dt>Avoid random numbers</dt>
+<dd>
+Seeds are not always portable.
+</dd>
+</dl>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p><code>R</code>, use <code>{testthat}</code>. See the <a href="http://r-pkgs.had.co.nz/tests.html">Testing</a> chapter from Hadley Wickham’s R Packages book.</p></li>
+<li><p><code>python</code> use <code>{pytest}</code>. A bit more user-friendly than <code>{unittest}</code>: <a href="https://docs.pytest.org/en/latest/">pytest</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="other-suggestions" class="slide level2">
+<h2>Other suggestions</h2>
+<div class="flex">
+<div class="w-50">
 <p><span class="secondary">Do this</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb8-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(x, <span class="st">" is not positive"</span>)</span>
-<span id="cb8-3"><a></a>}</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb8-6"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">message</span>(x, <span class="st">" is not positive"</span>)</span>
-<span id="cb8-7"><a></a>  <span class="co"># not useful unless we fix it too...</span></span>
-<span id="cb8-8"><a></a>}</span>
-<span id="cb8-9"><a></a></span>
-<span id="cb8-10"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb8-11"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">warning</span>(x, <span class="st">" is not positive"</span>)</span>
-<span id="cb8-12"><a></a>  <span class="co"># not useful unless we fix it too...</span></span>
-<span id="cb8-13"><a></a>}</span>
-<span id="cb8-14"><a></a></span>
-<span id="cb8-15"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb8-16"><a></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb8-17"><a></a>    rlang<span class="sc">::</span><span class="fu">abort</span>(<span class="st">"no data"</span>, <span class="at">class=</span><span class="st">"no_input_data"</span>)</span>
-<span id="cb8-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">stop</span>(x, <span class="st">" is not positive"</span>)</span>
+<span id="cb57-3"><a></a>}</span>
+<span id="cb57-4"><a></a></span>
+<span id="cb57-5"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-6"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">message</span>(x, <span class="st">" is not positive"</span>)</span>
+<span id="cb57-7"><a></a>  <span class="co"># not useful unless we fix it too...</span></span>
+<span id="cb57-8"><a></a>}</span>
+<span id="cb57-9"><a></a></span>
+<span id="cb57-10"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-11"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">warning</span>(x, <span class="st">" is not positive"</span>)</span>
+<span id="cb57-12"><a></a>  <span class="co"># not useful unless we fix it too...</span></span>
+<span id="cb57-13"><a></a>}</span>
+<span id="cb57-14"><a></a></span>
+<span id="cb57-15"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-16"><a></a>  <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb57-17"><a></a>    rlang<span class="sc">::</span><span class="fu">abort</span>(<span class="st">"no data"</span>, <span class="at">class=</span><span class="st">"no_input_data"</span>)</span>
+<span id="cb57-18"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These allow error handling.</p>
-</div><div class="column" style="width:50%;">
+</div>
+<div class="w-50">
 <p><span class="secondary">Don’t do this</span></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb9-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb9-3"><a></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(x, <span class="st">" is not positive"</span>))</span>
-<span id="cb9-4"><a></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
-<span id="cb9-5"><a></a>  }</span>
-<span id="cb9-6"><a></a>  ...</span>
-<span id="cb9-7"><a></a>}</span>
-<span id="cb9-8"><a></a></span>
-<span id="cb9-9"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb9-10"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">cat</span>(<span class="st">"uh oh."</span>)</span>
-<span id="cb9-11"><a></a>  ...</span>
-<span id="cb9-12"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb58-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb58-3"><a></a>    <span class="fu">print</span>(<span class="fu">paste0</span>(x, <span class="st">" is not positive"</span>))</span>
+<span id="cb58-4"><a></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb58-5"><a></a>  }</span>
+<span id="cb58-6"><a></a>  ...</span>
+<span id="cb58-7"><a></a>}</span>
+<span id="cb58-8"><a></a></span>
+<span id="cb58-9"><a></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb58-10"><a></a>  <span class="cf">if</span> (x <span class="sc">&lt;</span> <span class="dv">0</span>) <span class="fu">cat</span>(<span class="st">"uh oh."</span>)</span>
+<span id="cb58-11"><a></a>  ...</span>
+<span id="cb58-12"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Can’t recover.</p>
 <p>Don’t know what went wrong.</p>
@@ -850,6 +1103,329 @@ The tests will initially fail because the component does not yet exist.</p></li>
 <p>but when you run a big simulation that takes 2 weeks,</p>
 <p>you don’t want it to die after 10 days.</p>
 <p>You want it to recover.</p>
+</section></section>
+<section>
+<section id="more-coding-details-if-time." class="title-slide slide level1 center">
+<h1>More coding details, if time.</h1>
+
+</section>
+<section id="classes" class="slide level2">
+<h2>Classes</h2>
+<div class="flex">
+<div class="w-50">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a>tib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb59-2"><a></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb59-3"><a></a>  <span class="at">x2 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb59-4"><a></a>  <span class="at">y =</span> x1 <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x2 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb59-5"><a></a>)</span>
+<span id="cb59-6"><a></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> ., <span class="at">data =</span> tib)</span>
+<span id="cb59-7"><a></a><span class="fu">class</span>(tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">class</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "lm"</code></pre>
+</div>
+</div>
+<p>The class allows for the use of “methods”</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a><span class="fu">print</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ ., data = tib)
+
+Coefficients:
+(Intercept)           x1           x2  
+     0.1216       1.0803       2.1038  </code></pre>
+</div>
+</div>
+</div>
+<div class="w-50">
+<ul>
+<li><p><code>R</code> “knows what to do” when you <code>print()</code> an object of class <code>"lm"</code>.</p></li>
+<li><p><code>print()</code> is called a “generic” function.</p></li>
+<li><p>You can create “methods” that get dispatched.</p></li>
+<li><p>For any generic, <code>R</code> looks for a method for the class.</p></li>
+<li><p>If available, it calls that function.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="viewing-the-dispatch-chain" class="slide level2">
+<h2>Viewing the dispatch chain</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>sloop<span class="sc">::</span><span class="fu">s3_dispatch</span>(<span class="fu">print</span>(incrementer))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=&gt; print.function
+ * print.default</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a>sloop<span class="sc">::</span><span class="fu">s3_dispatch</span>(<span class="fu">print</span>(tib))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   print.tbl_df
+=&gt; print.tbl
+ * print.data.frame
+ * print.default</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a>sloop<span class="sc">::</span><span class="fu">s3_dispatch</span>(<span class="fu">print</span>(mdl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=&gt; print.lm
+ * print.default</code></pre>
+</div>
+</div>
+</section>
+<section id="r-geeky-but-important" class="slide level2">
+<h2>R-Geeky But Important</h2>
+<p>There are <span class="secondary">lots</span> of generic functions in <code>R</code></p>
+<p>Common ones are <code>print()</code>, <code>summary()</code>, and <code>plot()</code>.</p>
+<p>Also, lots of important statistical modelling concepts: <code>residuals()</code> <code>coef()</code></p>
+<p>(In <code>python</code>, these work the opposite way: <code>obj.residuals</code>. The dot after the object accesses methods defined for that type of object. But the dispatch behaviour is less robust.)</p>
+<ul>
+<li><p>The convention is that the specialized function is named <code>method.class()</code>, e.g., <code>summary.lm()</code>.</p></li>
+<li><p>If no specialized function is defined, R will try to use <code>method.default()</code>.</p></li>
+</ul>
+<p>For this reason, <code>R</code> programmers try to avoid <code>.</code> in names of functions or objects.</p>
+</section>
+<section id="annoying-example" class="slide level2">
+<h2>Annoying example</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">print</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ ., data = tib)
+
+Coefficients:
+(Intercept)           x1           x2  
+     0.1216       1.0803       2.1038  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>print.lm <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) <span class="fu">print</span>(<span class="st">"This is an linear model."</span>)</span>
+<span id="cb73-2"><a></a><span class="fu">print</span>(mdl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "This is an linear model."</code></pre>
+</div>
+</div>
+<ul>
+<li>Overwrote the method in the global environment.</li>
+</ul>
+</section>
+<section id="wherefore-methods" class="slide level2">
+<h2>Wherefore methods?</h2>
+<ul>
+<li><p>The advantage is that you don’t have to learn a totally new syntax to grab residuals or plot things</p></li>
+<li><p>You just use <code>residuals(mdl)</code> whether <code>mdl</code> has class <code>lm</code> could have been done two centuries ago, or a Batrachian Emphasis Machine which won’t be invented for another five years.</p></li>
+<li><p>The one draw-back is the help pages for the generic methods tend to be pretty vague</p></li>
+<li><p>Compare <code>?summary</code> with <code>?summary.lm</code>.</p></li>
+</ul>
+</section>
+<section id="different-environments" class="slide level2">
+<h2>Different environments</h2>
+<ul>
+<li><p>These are often tricky, but are very common.</p></li>
+<li><p>Most programming languages have this concept in one way or another.</p></li>
+<li><p>In <code>R</code> code run in the Console produces objects in the “Global environment”</p></li>
+<li><p>You can see what you create in the “Environment” tab.</p></li>
+<li><p>But there’s lots of other stuff.</p></li>
+<li><p>Many packages are automatically loaded at startup, so you have access to the functions and data inside those package Environments.</p></li>
+</ul>
+<p>For example <code>mean()</code>, <code>lm()</code>, <code>plot()</code>, <code>iris</code> (technically <code>iris</code> is lazy-loaded, meaning it’s not in memory until you call it, but it is available)</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<ul>
+<li><p>Other packages require you to load them with <code>library(pkg)</code> before their functions are available.</p></li>
+<li><p>But, you can call those functions by prefixing the package name <code>ggplot2::ggplot()</code>.</p></li>
+<li><p>You can also access functions that the package developer didn’t “export” for use with <code>:::</code> like <code>dplyr:::as_across_fn_call()</code></p></li>
+</ul>
+<aside class="notes">
+<p>That is all about accessing “objects in package environments”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="other-issues-with-environments" class="slide level2">
+<h2>Other issues with environments</h2>
+<p>As one might expect, functions create an environment inside the function.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>z <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb75-2"><a></a>fun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb75-3"><a></a>  z <span class="ot">&lt;-</span> x</span>
+<span id="cb75-4"><a></a>  <span class="fu">print</span>(z)</span>
+<span id="cb75-5"><a></a>  <span class="fu">invisible</span>(z)</span>
+<span id="cb75-6"><a></a>}</span>
+<span id="cb75-7"><a></a><span class="fu">fun</span>(<span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+</div>
+<p>Non-trivial cases are <code>data-masking</code> environments.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a>tib <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),  <span class="at">x2 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),  <span class="at">y =</span> x1 <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> x2)</span>
+<span id="cb77-2"><a></a>mdl <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2, <span class="at">data =</span> tib)</span>
+<span id="cb77-3"><a></a>x2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'x2' not found</code></pre>
+</div>
+</div>
+<ul>
+<li><code>lm()</code> looks “inside” the <code>tib</code> to find <code>y</code> and <code>x2</code></li>
+<li>The data variables are added to the <code>lm()</code> environment</li>
+</ul>
+</section>
+<section id="other-issues-with-environments-1" class="slide level2">
+<h2>Other issues with environments</h2>
+<p><span class="fourth-colour">When Knit, <code>.Rmd</code> files run in their OWN environment.</span></p>
+<p>They are run from top to bottom, with code chunks depending on previous</p>
+<p>This makes them reproducible.</p>
+<p>Jupyter notebooks don’t do this. 😱</p>
+<p>Objects in your local environment are not available in the <code>.Rmd</code></p>
+<p>Objects in the <code>.Rmd</code> are not available locally.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>The most frequent error I see is:</p>
+<ul>
+<li>running chunks individually, 1-by-1, and it works</li>
+<li>Knitting, and it fails</li>
+</ul>
+<p>The reason is almost always that the chunks refer to objects in the Global Environment that don’t exist in the <code>.Rmd</code></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<h3 id="this-error-also-happens-because">This error also happens because:</h3>
+<ul>
+<li><code>library()</code> calls were made globally but not in the <code>.Rmd</code>
+<ul>
+<li>so the packages aren’t loaded</li>
+</ul></li>
+<li>paths to data or other objects are not relative to the <code>.Rmd</code> in your file system
+<ul>
+<li>they must be</li>
+</ul></li>
+<li>Careful organization and relative paths will help to avoid some of these.</li>
+</ul>
+</section></section>
+<section>
+<section id="debugging" class="title-slide slide level1 center">
+<h1>Debugging</h1>
+
+</section>
+<section id="how-to-fix-code" class="slide level2">
+<h2>How to fix code</h2>
+<ul>
+<li>If you’re using a function in a package, start with <code>?function</code> to see the help
+<ul>
+<li>Make sure you’re calling the function correctly.</li>
+<li>Try running the examples.</li>
+<li>paste the error into Google (this is my first step when you ask me)</li>
+<li>Go to the package website if it exists, and browse around</li>
+</ul></li>
+<li>If your <code>.Rmd</code> won’t Knit
+<ul>
+<li>Did you make the mistake on the last slide?</li>
+<li>Did it Knit before? Then the bug is in whatever you added.</li>
+<li>Did you never Knit it? Why not?</li>
+<li>Call <code>rstudioapi::restartSession()</code>, then run the Chunks 1-by-1</li>
+</ul></li>
+</ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p>Adding <code>browser()</code></p>
+<ul>
+<li>Only useful with your own functions.</li>
+<li>Open the script with the function, and add <code>browser()</code> to the code somewhere</li>
+<li>Then call your function.</li>
+<li>The execution will Stop where you added <code>browser()</code> and you’ll have access to the local environment to play around</li>
+</ul>
+</section>
+<section id="reproducible-examples" class="slide level2">
+<h2>Reproducible examples</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question I get uncountably often that I hate:</strong></p>
+</div>
+<div class="callout-content">
+<p>“I ran the code like you had on Slide 39, but it didn’t work.”</p>
+</div>
+</div>
+</div>
+<ul>
+<li>If you want to ask me why the code doesn’t work, you need to show me what’s wrong.</li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Don’t just share a screenshot!</strong></p>
+</div>
+<div class="callout-content">
+<p>Unless you get lucky, I won’t be able to figure it out from that.</p>
+<p>And I can’t copy-paste into Google.</p>
+</div>
+</div>
+</div>
+<p>What you need is a Reproducible Example or <code>reprex</code>. This is a small chunk of code that</p>
+<ol type="1">
+<li>runs in it’s own environment</li>
+<li>and produces the error.</li>
+</ol>
+</section></section>
+<section>
+<section id="section-4" class="title-slide slide level1 center">
+<h1></h1>
+<p>The best way to do this is with the <code>{reprex}</code> package.</p>
+</section>
+<section id="reproducible-examples-how-it-works" class="slide level2 smaller">
+<h2>Reproducible examples, How it works</h2>
+<ol type="1">
+<li><p>Open a new <code>.R</code> script.</p></li>
+<li><p>Paste your buggy code in the file (no need to save)</p></li>
+<li><p>Edit your code to make sure it’s “enough to produce the error” and nothing more. (By rerunning the code a few times.)</p></li>
+<li><p>Copy your code.</p></li>
+<li><p>Call <code>reprex::reprex()</code> from the console. This will run your code in a new environment and show the result in the Viewer tab. Does it create the error you expect?</p></li>
+<li><p>If it creates other errors, that may be the problem. You may fix the bug on your own!</p></li>
+<li><p>If it doesn’t have errors, then your global environment is Farblunget.</p></li>
+<li><p>The Output is now on your clipboard. Share that.</p></li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Because Reprex runs in it’s own environment, it doesn’t have access to any of the libraries you loaded or the stuff in your global environment. You’ll have to load these things in the script. That’s the point</p>
+</div>
+</div>
+</div>
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice</h2>
@@ -860,7 +1436,7 @@ The tests will initially fail because the component does not yet exist.</p></li>
 </ul>
 <h4 id="poisson-likelihood.">Poisson likelihood.</h4>
 <ul>
-<li>Recall the likelihood: <span class="math inline">\(L(\lambda; y_1,\ldots,y_n) = \prod_{i=1}^n \frac{\lambda^{y_i} \exp(-\lambda)}{y_i!}\)</span></li>
+<li>Recall the likelihood: <span class="math inline">\(L(\lambda; y_1,\ldots,y_n) = \prod_{i=1}^n \frac{\lambda^{y_i} \exp(-\lambda)}{y_i!}I(y_i \in 0,1,\ldots)\)</span></li>
 </ul>
 <p><span class="secondary">Goal:</span> find the MLE for <span class="math inline">\(\lambda\)</span> using gradient ascent</p>
 </section>
@@ -879,7 +1455,7 @@ The tests will initially fail because the component does not yet exist.</p></li>
 </ol>
 <p><span class="math display">\[
 \begin{aligned}
-L(\lambda; y_1,\ldots,y_n) &amp;= \prod_{i=1}^n \frac{\lambda^{y_i} \exp(-\lambda)}{y_i!}\\
+L(\lambda; y_1,\ldots,y_n) &amp;= \prod_{i=1}^n \frac{\lambda^{y_i} \exp(-\lambda)}{y_i!}I(y_i \in 0,1,\ldots)\\
 x &amp;\leftarrow x + \gamma f'(x)
 \end{aligned}
 \]</span></p>
@@ -889,7 +1465,7 @@ x &amp;\leftarrow x + \gamma f'(x)
 <p>UBC Stat 550 - 2024</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

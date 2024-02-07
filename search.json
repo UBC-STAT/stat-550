@@ -3,8 +3,8 @@
     "objectID": "schedule/slides/unit-tests.html#section",
     "href": "schedule/slides/unit-tests.html#section",
     "title": "UBC Stat550",
-    "section": "Unit tests",
-    "text": "Unit tests\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Unit tests and avoiding 🪲🪲",
+    "text": "Unit tests and avoiding 🪲🪲\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#i-urge-you-to-consult",
@@ -28,18 +28,74 @@
     "text": "A Common (Interactive) Workflow\n\nWrite a function.\nTry some reasonable values at the REPL to check that it works.\nIf there are problems, maybe insert some print statements, and modify the function.\nRepeat until things seem fine.\n\n(REPL == Read-Eval-Print-Loop, the console, or Jupyter NB)\n\nThis tends to result in lots of bugs.\nLater on, you forget which values you tried, whether they failed, how you fixed them.\nSo you make a change and maybe or maybe not try some again."
   },
   {
-    "objectID": "schedule/slides/unit-tests.html#example",
-    "href": "schedule/slides/unit-tests.html#example",
+    "objectID": "schedule/slides/unit-tests.html#step-1-write-functions",
+    "href": "schedule/slides/unit-tests.html#step-1-write-functions",
     "title": "UBC Stat550",
-    "section": "Example:",
-    "text": "Example:\n\ntwo_norm &lt;- function(x) sum(x^2)\ngrouped_two_norm &lt;- function(x, gr) as.vector(tapply(x, gr, two_norm))\ngr_two_norm &lt;- function(x, gr) sum(grouped_two_norm(x, gr))\n\n\nThere’s a silly bug in the above code.\n\n\n\nAt one point, I decided that I didn’t want the \\(\\ell_2\\)-norm, I wanted the squared \\(\\ell_2\\) norm.\nBut now the other two functions are wrong.\n\n\n\n\n\n\n\nNote\n\n\nThese functions get used in many other places.\nTo make sure I don’t do something dumb ever again, I write unit tests."
+    "section": "Step 1 — write functions",
+    "text": "Step 1 — write functions\n\n\n\n\n\n\nWrite functions.\nLots of them.\n\n\n\n👍 Functions are testable\n👎 Scripts are not\nIt’s easy to alter the arguments and see “what happens”\nThere’s less ability to screw up environments.\n\nI’m going to mainly describe R, but the logic is very similar (if not the syntax) for python, C++, and Julia"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#understanding-signatures",
+    "href": "schedule/slides/unit-tests.html#understanding-signatures",
+    "title": "UBC Stat550",
+    "section": "Understanding signatures",
+    "text": "Understanding signatures\n\nsig(lm)\n\nfn &lt;- function(formula, data, subset, weights, na.action, method = \"qr\", model\n  = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, contrasts =\n  NULL, offset, ...)\n\nsig(`+`)\n\nfn &lt;- function(e1, e2)\n\nsig(dplyr::filter)\n\nfn &lt;- function(.data, ..., .by = NULL, .preserve = FALSE)\n\nsig(stats::filter)\n\nfn &lt;- function(x, filter, method = c(\"convolution\", \"recursive\"), sides = 2,\n  circular = FALSE, init = NULL)\n\nsig(rnorm)\n\nfn &lt;- function(n, mean = 0, sd = 1)"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#these-are-all-the-same",
+    "href": "schedule/slides/unit-tests.html#these-are-all-the-same",
+    "title": "UBC Stat550",
+    "section": "These are all the same",
+    "text": "These are all the same\n\nset.seed(12345)\nrnorm(3)\n\n[1]  0.5855288  0.7094660 -0.1093033\n\nset.seed(12345)\nrnorm(n = 3, mean = 0)\n\n[1]  0.5855288  0.7094660 -0.1093033\n\nset.seed(12345)\nrnorm(3, 0, 1)\n\n[1]  0.5855288  0.7094660 -0.1093033\n\nset.seed(12345)\nrnorm(sd = 1, n = 3, mean = 0)\n\n[1]  0.5855288  0.7094660 -0.1093033\n\n\n\nFunctions can have default values.\nYou may, but don’t have to, name the arguments\nIf you name them, you can pass them out of order (but you shouldn’t)."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#outputs-vs.-side-effects",
+    "href": "schedule/slides/unit-tests.html#outputs-vs.-side-effects",
+    "title": "UBC Stat550",
+    "section": "Outputs vs. Side effects",
+    "text": "Outputs vs. Side effects\n\n\n\nSide effects are things a function does, outputs can be assigned to variables\nA good example is the hist function\nYou have probably only seen the side effect which is to plot the histogram\n\n\nmy_histogram &lt;- hist(rnorm(1000))\n\n\n\n\n\n\n\n\n\n\n\nstr(my_histogram)\n\nList of 6\n $ breaks  : num [1:14] -3 -2.5 -2 -1.5 -1 -0.5 0 0.5 1 1.5 ...\n $ counts  : int [1:13] 4 21 41 83 138 191 191 182 74 43 ...\n $ density : num [1:13] 0.008 0.042 0.082 0.166 0.276 0.382 0.382 0.364 0.148 0.086 ...\n $ mids    : num [1:13] -2.75 -2.25 -1.75 -1.25 -0.75 -0.25 0.25 0.75 1.25 1.75 ...\n $ xname   : chr \"rnorm(1000)\"\n $ equidist: logi TRUE\n - attr(*, \"class\")= chr \"histogram\"\n\nclass(my_histogram)\n\n[1] \"histogram\""
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#step-2-program-defensively-ensure-behaviour",
+    "href": "schedule/slides/unit-tests.html#step-2-program-defensively-ensure-behaviour",
+    "title": "UBC Stat550",
+    "section": "Step 2 — program defensively, ensure behaviour",
+    "text": "Step 2 — program defensively, ensure behaviour\n\n\n\nincrementer &lt;- function(x, inc_by = 1) {\n  x + 1\n}\n  \nincrementer(2)\n\n[1] 3\n\nincrementer(1:4)\n\n[1] 2 3 4 5\n\nincrementer(\"a\")\n\nError in x + 1: non-numeric argument to binary operator\n\n\n\nincrementer &lt;- function(x, inc_by = 1) {\n  stopifnot(is.numeric(x))\n  return(x + 1)\n}\nincrementer(\"a\")\n\nError in incrementer(\"a\"): is.numeric(x) is not TRUE\n\n\n\n\n\nincrementer &lt;- function(x, inc_by = 1) {\n  if (!is.numeric(x)) {\n    stop(\"`x` must be numeric\")\n  }\n  x + 1\n}\nincrementer(\"a\")\n\nError in incrementer(\"a\"): `x` must be numeric\n\nincrementer(2, -3) ## oops!\n\n[1] 3\n\nincrementer &lt;- function(x, inc_by = 1) {\n  if (!is.numeric(x)) {\n    stop(\"`x` must be numeric\")\n  }\n  x + inc_by\n}\nincrementer(2, -3)\n\n[1] -1"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#even-better",
+    "href": "schedule/slides/unit-tests.html#even-better",
+    "title": "UBC Stat550",
+    "section": "Even better",
+    "text": "Even better\n\nincrementer &lt;- function(x, inc_by = 1) {\n  if (!is.numeric(x)) cli::cli_abort(\"`x` must be numeric\")\n  if (!is.numeric(inc_by)) cli::cli_abort(\"`inc_by` must be numeric\")\n  x + inc_by\n}\nincrementer(\"a\")\n\nError in `incrementer()`:\n! `x` must be numeric\n\nincrementer(1:6, \"b\")\n\nError in `incrementer()`:\n! `inc_by` must be numeric"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#step-3-keep-track-of-behaviour-with-tests",
+    "href": "schedule/slides/unit-tests.html#step-3-keep-track-of-behaviour-with-tests",
+    "title": "UBC Stat550",
+    "section": "Step 3 — Keep track of behaviour with tests",
+    "text": "Step 3 — Keep track of behaviour with tests\n\nlibrary(testthat)\nincrementer &lt;- function(x, inc_by = 1) {\n  if (!is.numeric(x)) stop(\"`x` must be numeric\")\n  if (!is.numeric(inc_by)) stop(\"`inc_by` must be numeric\")\n  x + inc_by\n}\ntest_that(\"incrementer validates arguments\", {\n  expect_error(incrementer(\"a\"))\n  expect_equal(incrementer(1:3), 2:4)\n  expect_equal(incrementer(2, -3), -1)\n  expect_error(incrementer(1, \"b\"))\n  expect_identical(incrementer(1:3), 2:4)\n})\n\n── Failure: incrementer validates arguments ────────────────────────────────────\nincrementer(1:3) not identical to 2:4.\nObjects equal but not identical\n\n\nError:\n! Test failed"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#integers-are-trouble",
+    "href": "schedule/slides/unit-tests.html#integers-are-trouble",
+    "title": "UBC Stat550",
+    "section": "Integers are trouble",
+    "text": "Integers are trouble\n\nis.integer(2:4)\n\n[1] TRUE\n\nis.integer(incrementer(1:3))\n\n[1] FALSE\n\nexpect_identical(incrementer(1:3, 1L), 2:4)\nexpect_equal(incrementer(1:3, 1), 2:4)"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#unit-testing",
     "href": "schedule/slides/unit-tests.html#unit-testing",
     "title": "UBC Stat550",
-    "section": "Unit Testing",
-    "text": "Unit Testing\n\nA unit is a small bit of code (function, class, module, group of classes)\nA test calls the unit with a set of inputs, and checks if we get the expected output.\n\n\ntest_that(\"group norms are correct\", {\n  asparse &lt;- .05\n  gr &lt;- c(1, 1, 1, 1, 2, 2, 3, 3, 3, 3, 3)\n  x &lt;- -5:5\n  expect_equal(two_norm(c(-5 , 5)), sqrt(50)) # this one will fail\n  expect_equal(\n    grouped_two_norm(x, gr),\n    c(two_norm(x[1:4]), two_norm(x[5:6]), two_norm(x[7:11])))\n})\n\nUnit testing consists of writing tests that are\n\nfocused on a small, low-level piece of code (a unit)\ntypically written by the programmer with standard tools\nfast to run (so can be run often, i.e. before every commit)."
+    "section": "Unit testing",
+    "text": "Unit testing\n\nA unit is a small bit of code (function, class, module, group of classes)\nA test calls the unit with a set of inputs, and checks if we get the expected output.\n\n\ngcd &lt;- function(x, na.rm = FALSE) {\n  if (na.rm) x &lt;- x[!is.na(x)]\n  if (anyNA(x)) return(NA)\n  stopifnot(is.numeric(x))\n  if (!rlang::is_integerish(x)) cli_abort(\"`x` must contain only integers.\")\n  if (length(x) == 1L) return(as.integer(x))\n  x &lt;- x[x != 0]\n  compute_gcd(x) # dispatch to a C++ function\n}\n\ntest_that(\"gcd works\", {\n  # corner cases\n  expect_identical(gcd(c(1, NA)), NA)\n  expect_identical(gcd(c(1, NA), TRUE), 1L)\n  expect_identical(gcd(c(1, 2, 4)), 1L)\n  # error\n  expect_error(gcd(1.3))\n  # function\n  expect_identical(gcd(c(2, 4, 6)), 2L)\n  expect_identical(gcd(c(2, 3, 7)), 1L)\n})"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#unit-testing-1",
+    "href": "schedule/slides/unit-tests.html#unit-testing-1",
+    "title": "UBC Stat550",
+    "section": "Unit testing",
+    "text": "Unit testing\nUnit testing consists of writing tests that are\n\nfocused on a small, low-level piece of code (a unit)\ntypically written by the programmer with standard tools\nfast to run (so can be run often, i.e. before every commit)."
   },
   {
     "objectID": "schedule/slides/unit-tests.html#unit-testing-benefits",
@@ -60,14 +116,14 @@
     "href": "schedule/slides/unit-tests.html#a-test-suite",
     "title": "UBC Stat550",
     "section": "A test suite",
-    "text": "A test suite\n\n\n\nCollection of related tests in a common context.\nPrepares the environment, cleans up after\n(loads some data, connects to database, necessary library,…)\nTest suites are run and the results reported, particularly failures, in a easy to parse and economical style.\nFor example, Python’s {unittest} can report like this\n\n\n$ python test/trees_test.py -v\n\ntest_crime_counts (__main__.DataTreeTest)\nEnsure Ks are consistent with num_points. ... ok\ntest_indices_sorted (__main__.DataTreeTest)\nEnsure all node indices are sorted in increasing order. ... ok\ntest_no_bbox_overlap (__main__.DataTreeTest)\nCheck that child bounding boxes do not overlap. ... ok\ntest_node_counts (__main__.DataTreeTest)\nEnsure that each node's point count is accurate. ... ok\ntest_oversized_leaf (__main__.DataTreeTest)\nDon't recurse infinitely on duplicate points. ... ok\ntest_split_parity (__main__.DataTreeTest)\nCheck that each tree level has the right split axis. ... ok\ntest_trange_contained (__main__.DataTreeTest)\nCheck that child tranges are contained in parent tranges. ... ok\ntest_no_bbox_overlap (__main__.QueryTreeTest)\nCheck that child bounding boxes do not overlap. ... ok\ntest_node_counts (__main__.QueryTreeTest)\nEnsure that each node's point count is accurate. ... ok\ntest_oversized_leaf (__main__.QueryTreeTest)\nDon't recurse infinitely on duplicate points. ... ok\ntest_split_parity (__main__.QueryTreeTest)\nCheck that each tree level has the right split axis. ... ok\ntest_trange_contained (__main__.QueryTreeTest)\nCheck that child tranges are contained in parent tranges. ... ok\n\n---------------------------------------------------------\nRan 12 tests in 23.932s"
+    "text": "A test suite\n\n\n\nCollection of related tests in a common context.\nPrepares the environment, cleans up after\n(loads some data, connects to database, necessary library,…)\nTest suites are run and the results reported, particularly failures, in a easy to parse and economical style.\nFor example, Python’s {unittest} can report like this\n\n\n\n$ python test/trees_test.py -v\n\ntest_crime_counts (__main__.DataTreeTest)\nEnsure Ks are consistent with num_points. ... ok\ntest_indices_sorted (__main__.DataTreeTest)\nEnsure all node indices are sorted in increasing order. ... ok\ntest_no_bbox_overlap (__main__.DataTreeTest)\nCheck that child bounding boxes do not overlap. ... ok\ntest_node_counts (__main__.DataTreeTest)\nEnsure that each node's point count is accurate. ... ok\ntest_oversized_leaf (__main__.DataTreeTest)\nDon't recurse infinitely on duplicate points. ... ok\ntest_split_parity (__main__.DataTreeTest)\nCheck that each tree level has the right split axis. ... ok\ntest_trange_contained (__main__.DataTreeTest)\nCheck that child tranges are contained in parent tranges. ... ok\ntest_no_bbox_overlap (__main__.QueryTreeTest)\nCheck that child bounding boxes do not overlap. ... ok\ntest_node_counts (__main__.QueryTreeTest)\nEnsure that each node's point count is accurate. ... ok\ntest_oversized_leaf (__main__.QueryTreeTest)\nDon't recurse infinitely on duplicate points. ... ok\ntest_split_parity (__main__.QueryTreeTest)\nCheck that each tree level has the right split axis. ... ok\ntest_trange_contained (__main__.QueryTreeTest)\nCheck that child tranges are contained in parent tranges. ... ok\n\n---------------------------------------------------------\nRan 12 tests in 23.932s"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#r-example",
     "href": "schedule/slides/unit-tests.html#r-example",
     "title": "UBC Stat550",
     "section": "R example",
-    "text": "R example\nℹ Loading sparsegl\nℹ Testing sparsegl\n✓ | F W S  OK | Context\n✓ |         7 | model_base                                                           \n✓ |         7 | norms                                                                \n⠏ |         0 | predict                                         \nLoading required package: Matrix\nLoaded glmnet 4.1-3\n✓ |        17 | predict [0.4s]                                                       \n✓ |         5 | risk_estimation [0.4s]                                               \n✓ |         5 | sparsegl_comparisons                                                 \n✓ |        18 | sparsegl_params                                                      \n\n══ Results ══════════════════════════════════════════════════════════════════════════\nDuration: 0.9 s\n\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 59 ]"
+    "text": "R example\n\ntestthat::test_local(here::here(\"../../../../../../Delphi/smoothqr/\"))\n\n✔ | F W  S  OK | Context\n\n⠏ |          0 | smooth-rq                                                      \n⠴ |          6 | smooth-rq                                                      \n✔ |         12 | smooth-rq\n\n══ Results ═════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 12 ]"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#what-do-i-test",
@@ -82,34 +138,6 @@
     "title": "UBC Stat550",
     "section": "What do I test?",
     "text": "What do I test?\nMake sure that incorrect functions won’t pass (or at least, won’t pass them all).\n\nadd &lt;- function(a, b) return(4)\nadd &lt;- function(a, b) return(a * b)\n\ntest_that(\"Addition is commutative\", {\n  expect_equal(add(1, 3), add(3, 1)) # both pass this !!\n  expect_equal(add(2, 5), add(5, 2)) # neither passes this\n})\n\n\n\n\n\n\n\nTip\n\n\n\nCover all branches.\nMake sure there aren’t branches you don’t expect."
-  },
-  {
-    "objectID": "schedule/slides/unit-tests.html#test-driven-development",
-    "href": "schedule/slides/unit-tests.html#test-driven-development",
-    "title": "UBC Stat550",
-    "section": "Test-driven development",
-    "text": "Test-driven development\nTest Driven Development (TDD) uses a short development cycle for each new feature or component:\n\nWrite tests that specify the component’s desired behavior.\nThe tests will initially fail because the component does not yet exist.\nCreate the minimal implementation that passes the test.\nRefactor the code to meet design standards, running the tests with each change to ensure correctness."
-  },
-  {
-    "objectID": "schedule/slides/unit-tests.html#section-1",
-    "href": "schedule/slides/unit-tests.html#section-1",
-    "title": "UBC Stat550",
-    "section": "",
-    "text": "Why work this way?\n\nWriting the tests may help you realize\n\nwhat arguments the function must take,\n\nwhat other data it needs,\n\nand what kinds of errors it needs to handle.\n\nThe tests define a specific plan for what the function must do.\nYou will catch bugs at the beginning instead of at the end (or never).\nTesting is part of design, instead of a lame afterthought you dread doing."
-  },
-  {
-    "objectID": "schedule/slides/unit-tests.html#rules-of-thumb",
-    "href": "schedule/slides/unit-tests.html#rules-of-thumb",
-    "title": "UBC Stat550",
-    "section": "Rules of thumb",
-    "text": "Rules of thumb\nKeep tests in separate files\nfrom the code they test. This makes it easy to run them separately.\nGive tests names.\nTesting frameworks usually let you give the test functions names or descriptions. test_1 doesn’t help you at all, but test_tree_insert makes it easy for you to remember what the test is for.\nMake tests replicable.\nIf a test involves random data, what do you do when the test fails? You need some way to know what random values it used so you can figure out why the test fails."
-  },
-  {
-    "objectID": "schedule/slides/unit-tests.html#rules-of-thumb-1",
-    "href": "schedule/slides/unit-tests.html#rules-of-thumb-1",
-    "title": "UBC Stat550",
-    "section": "Rules of thumb",
-    "text": "Rules of thumb\nUse tests instead of the REPL.\nIf you’re building a complicated function, write the tests in advance and use them to help you while you write the function. You’ll waste time calling over and over at the REPL.\nAvoid testing against another’s code/package.\nYou don’t know the ins and outs of what they do. If they change the code, your tests will fail.\nTest Units, not main functions.\nYou should write small functions that do one thing. Test those. Don’t write one huge 1000-line function and try to test that.\nAvoid random numbers.\nSeeds are not always portable."
   },
   {
     "objectID": "schedule/slides/unit-tests.html#assertions",
@@ -130,35 +158,161 @@
     "href": "schedule/slides/unit-tests.html#errors-1",
     "title": "UBC Stat550",
     "section": "Errors",
-    "text": "Errors\nCode can also do this. It can try the function and catch errors to recover automatically.\nFor example:\n\nLoad some data from the internet. If the file doesn’t exist, create some.\nRun some iterative algorithm. If we haven’t converged, restart from another place.\n\nCode can fix errors without user input. It can’t fix assertions."
+    "text": "Errors\nCode can also do this. It can try the function and catch errors to recover automatically.\nFor example:\n\nLoad some data from the internet. If the file doesn’t exist, create some.\nRun some iterative algorithm. If we haven’t converged, restart from another place.\n\nCode can fix errors without user input. It can’t fix assertions.\n\nAn input must be an integer. So round it, Warn, and proceed. Rather than fail."
   },
   {
-    "objectID": "schedule/slides/unit-tests.html#best-practices",
-    "href": "schedule/slides/unit-tests.html#best-practices",
+    "objectID": "schedule/slides/unit-tests.html#test-driven-development",
+    "href": "schedule/slides/unit-tests.html#test-driven-development",
     "title": "UBC Stat550",
-    "section": "Best practices",
-    "text": "Best practices\n\n\nDo this\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) stop(x, \" is not positive\")\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) message(x, \" is not positive\")\n  # not useful unless we fix it too...\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) warning(x, \" is not positive\")\n  # not useful unless we fix it too...\n}\n\nfoo &lt;- function(x) {\n  if (length(x) == 0)\n    rlang::abort(\"no data\", class=\"no_input_data\")\n}\n\nThese allow error handling.\n\nDon’t do this\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) {\n    print(paste0(x, \" is not positive\"))\n    return(NULL)\n  }\n  ...\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) cat(\"uh oh.\")\n  ...\n}\n\nCan’t recover.\nDon’t know what went wrong."
+    "section": "Test-driven development",
+    "text": "Test-driven development\nTest Driven Development (TDD) uses a short development cycle for each new feature or component:\n\nWrite tests that specify the component’s desired behavior.\nThe tests will initially fail because the component does not yet exist.\nCreate the minimal implementation that passes the test.\nRefactor the code to meet design standards, running the tests with each change to ensure correctness."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#why-work-this-way",
+    "href": "schedule/slides/unit-tests.html#why-work-this-way",
+    "title": "UBC Stat550",
+    "section": "Why work this way?",
+    "text": "Why work this way?\n\nWriting the tests may help you realize\n\nwhat arguments the function must take,\n\nwhat other data it needs,\n\nand what kinds of errors it needs to handle.\n\nThe tests define a specific plan for what the function must do.\nYou will catch bugs at the beginning instead of at the end (or never).\nTesting is part of design, instead of a lame afterthought you dread doing."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#rules-of-thumb",
+    "href": "schedule/slides/unit-tests.html#rules-of-thumb",
+    "title": "UBC Stat550",
+    "section": "Rules of thumb",
+    "text": "Rules of thumb\n\nKeep tests in separate files\n\nfrom the code they test. This makes it easy to run them separately.\n\nGive tests names\n\nTesting frameworks usually let you give the test functions names or descriptions. test_1 doesn’t help you at all, but test_tree_insert makes it easy for you to remember what the test is for.\n\nMake tests replicable\n\nIf a test involves random data, what do you do when the test fails? You need some way to know what random values it used so you can figure out why the test fails."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#rules-of-thumb-1",
+    "href": "schedule/slides/unit-tests.html#rules-of-thumb-1",
+    "title": "UBC Stat550",
+    "section": "Rules of thumb",
+    "text": "Rules of thumb\n\nUse tests instead of the REPL\n\nIf you’re building a complicated function, write the tests in advance and use them to help you while you write the function. You’ll waste time calling over and over at the REPL.\n\nAvoid testing against another’s code/package\n\nYou don’t know the ins and outs of what they do. If they change the code, your tests will fail.\n\nTest Units, not main functions\n\nYou should write small functions that do one thing. Test those. Don’t write one huge 1000-line function and try to test that.\n\nAvoid random numbers\n\nSeeds are not always portable."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#other-suggestions",
+    "href": "schedule/slides/unit-tests.html#other-suggestions",
+    "title": "UBC Stat550",
+    "section": "Other suggestions",
+    "text": "Other suggestions\n\n\nDo this\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) stop(x, \" is not positive\")\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) message(x, \" is not positive\")\n  # not useful unless we fix it too...\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) warning(x, \" is not positive\")\n  # not useful unless we fix it too...\n}\n\nfoo &lt;- function(x) {\n  if (length(x) == 0)\n    rlang::abort(\"no data\", class=\"no_input_data\")\n}\n\nThese allow error handling.\n\n\nDon’t do this\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) {\n    print(paste0(x, \" is not positive\"))\n    return(NULL)\n  }\n  ...\n}\n\nfoo &lt;- function(x) {\n  if (x &lt; 0) cat(\"uh oh.\")\n  ...\n}\n\nCan’t recover.\nDon’t know what went wrong."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#classes",
+    "href": "schedule/slides/unit-tests.html#classes",
+    "title": "UBC Stat550",
+    "section": "Classes",
+    "text": "Classes\n\n\n\ntib &lt;- tibble(\n  x1 = rnorm(100), \n  x2 = rnorm(100), \n  y = x1 + 2 * x2 + rnorm(100)\n)\nmdl &lt;- lm(y ~ ., data = tib)\nclass(tib)\n\n[1] \"tbl_df\"     \"tbl\"        \"data.frame\"\n\nclass(mdl)\n\n[1] \"lm\"\n\n\nThe class allows for the use of “methods”\n\nprint(mdl)\n\n\nCall:\nlm(formula = y ~ ., data = tib)\n\nCoefficients:\n(Intercept)           x1           x2  \n     0.1216       1.0803       2.1038  \n\n\n\n\n\nR “knows what to do” when you print() an object of class \"lm\".\nprint() is called a “generic” function.\nYou can create “methods” that get dispatched.\nFor any generic, R looks for a method for the class.\nIf available, it calls that function."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#viewing-the-dispatch-chain",
+    "href": "schedule/slides/unit-tests.html#viewing-the-dispatch-chain",
+    "title": "UBC Stat550",
+    "section": "Viewing the dispatch chain",
+    "text": "Viewing the dispatch chain\n\nsloop::s3_dispatch(print(incrementer))\n\n=&gt; print.function\n * print.default\n\nsloop::s3_dispatch(print(tib))\n\n   print.tbl_df\n=&gt; print.tbl\n * print.data.frame\n * print.default\n\nsloop::s3_dispatch(print(mdl))\n\n=&gt; print.lm\n * print.default"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#r-geeky-but-important",
+    "href": "schedule/slides/unit-tests.html#r-geeky-but-important",
+    "title": "UBC Stat550",
+    "section": "R-Geeky But Important",
+    "text": "R-Geeky But Important\nThere are lots of generic functions in R\nCommon ones are print(), summary(), and plot().\nAlso, lots of important statistical modelling concepts: residuals() coef()\n(In python, these work the opposite way: obj.residuals. The dot after the object accesses methods defined for that type of object. But the dispatch behaviour is less robust.)\n\nThe convention is that the specialized function is named method.class(), e.g., summary.lm().\nIf no specialized function is defined, R will try to use method.default().\n\nFor this reason, R programmers try to avoid . in names of functions or objects."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#annoying-example",
+    "href": "schedule/slides/unit-tests.html#annoying-example",
+    "title": "UBC Stat550",
+    "section": "Annoying example",
+    "text": "Annoying example\n\nprint(mdl)\n\n\nCall:\nlm(formula = y ~ ., data = tib)\n\nCoefficients:\n(Intercept)           x1           x2  \n     0.1216       1.0803       2.1038  \n\nprint.lm &lt;- function(x, ...) print(\"This is an linear model.\")\nprint(mdl)\n\n[1] \"This is an linear model.\"\n\n\n\nOverwrote the method in the global environment."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#wherefore-methods",
+    "href": "schedule/slides/unit-tests.html#wherefore-methods",
+    "title": "UBC Stat550",
+    "section": "Wherefore methods?",
+    "text": "Wherefore methods?\n\nThe advantage is that you don’t have to learn a totally new syntax to grab residuals or plot things\nYou just use residuals(mdl) whether mdl has class lm could have been done two centuries ago, or a Batrachian Emphasis Machine which won’t be invented for another five years.\nThe one draw-back is the help pages for the generic methods tend to be pretty vague\nCompare ?summary with ?summary.lm."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#different-environments",
+    "href": "schedule/slides/unit-tests.html#different-environments",
+    "title": "UBC Stat550",
+    "section": "Different environments",
+    "text": "Different environments\n\nThese are often tricky, but are very common.\nMost programming languages have this concept in one way or another.\nIn R code run in the Console produces objects in the “Global environment”\nYou can see what you create in the “Environment” tab.\nBut there’s lots of other stuff.\nMany packages are automatically loaded at startup, so you have access to the functions and data inside those package Environments.\n\nFor example mean(), lm(), plot(), iris (technically iris is lazy-loaded, meaning it’s not in memory until you call it, but it is available)"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#section-1",
+    "href": "schedule/slides/unit-tests.html#section-1",
+    "title": "UBC Stat550",
+    "section": "",
+    "text": "Other packages require you to load them with library(pkg) before their functions are available.\nBut, you can call those functions by prefixing the package name ggplot2::ggplot().\nYou can also access functions that the package developer didn’t “export” for use with ::: like dplyr:::as_across_fn_call()\n\n\nThat is all about accessing “objects in package environments”"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#other-issues-with-environments",
+    "href": "schedule/slides/unit-tests.html#other-issues-with-environments",
+    "title": "UBC Stat550",
+    "section": "Other issues with environments",
+    "text": "Other issues with environments\nAs one might expect, functions create an environment inside the function.\n\nz &lt;- 1\nfun &lt;- function(x) {\n  z &lt;- x\n  print(z)\n  invisible(z)\n}\nfun(14)\n\n[1] 14\n\n\nNon-trivial cases are data-masking environments.\n\ntib &lt;- tibble(x1 = rnorm(100),  x2 = rnorm(100),  y = x1 + 2 * x2)\nmdl &lt;- lm(y ~ x2, data = tib)\nx2\n\nError in eval(expr, envir, enclos): object 'x2' not found\n\n\n\nlm() looks “inside” the tib to find y and x2\nThe data variables are added to the lm() environment"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#other-issues-with-environments-1",
+    "href": "schedule/slides/unit-tests.html#other-issues-with-environments-1",
+    "title": "UBC Stat550",
+    "section": "Other issues with environments",
+    "text": "Other issues with environments\nWhen Knit, .Rmd files run in their OWN environment.\nThey are run from top to bottom, with code chunks depending on previous\nThis makes them reproducible.\nJupyter notebooks don’t do this. 😱\nObjects in your local environment are not available in the .Rmd\nObjects in the .Rmd are not available locally.\n\n\n\n\n\n\nTip\n\n\nThe most frequent error I see is:\n\nrunning chunks individually, 1-by-1, and it works\nKnitting, and it fails\n\nThe reason is almost always that the chunks refer to objects in the Global Environment that don’t exist in the .Rmd"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#section-2",
+    "href": "schedule/slides/unit-tests.html#section-2",
+    "title": "UBC Stat550",
+    "section": "",
+    "text": "This error also happens because:\n\nlibrary() calls were made globally but not in the .Rmd\n\nso the packages aren’t loaded\n\npaths to data or other objects are not relative to the .Rmd in your file system\n\nthey must be\n\nCareful organization and relative paths will help to avoid some of these."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#how-to-fix-code",
+    "href": "schedule/slides/unit-tests.html#how-to-fix-code",
+    "title": "UBC Stat550",
+    "section": "How to fix code",
+    "text": "How to fix code\n\nIf you’re using a function in a package, start with ?function to see the help\n\nMake sure you’re calling the function correctly.\nTry running the examples.\npaste the error into Google (this is my first step when you ask me)\nGo to the package website if it exists, and browse around\n\nIf your .Rmd won’t Knit\n\nDid you make the mistake on the last slide?\nDid it Knit before? Then the bug is in whatever you added.\nDid you never Knit it? Why not?\nCall rstudioapi::restartSession(), then run the Chunks 1-by-1"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#section-3",
+    "href": "schedule/slides/unit-tests.html#section-3",
+    "title": "UBC Stat550",
+    "section": "",
+    "text": "Adding browser()\n\nOnly useful with your own functions.\nOpen the script with the function, and add browser() to the code somewhere\nThen call your function.\nThe execution will Stop where you added browser() and you’ll have access to the local environment to play around"
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#reproducible-examples",
+    "href": "schedule/slides/unit-tests.html#reproducible-examples",
+    "title": "UBC Stat550",
+    "section": "Reproducible examples",
+    "text": "Reproducible examples\n\n\n\n\n\n\nQuestion I get uncountably often that I hate:\n\n\n“I ran the code like you had on Slide 39, but it didn’t work.”\n\n\n\n\nIf you want to ask me why the code doesn’t work, you need to show me what’s wrong.\n\n\n\n\n\n\n\nDon’t just share a screenshot!\n\n\nUnless you get lucky, I won’t be able to figure it out from that.\nAnd I can’t copy-paste into Google.\n\n\n\nWhat you need is a Reproducible Example or reprex. This is a small chunk of code that\n\nruns in it’s own environment\nand produces the error."
+  },
+  {
+    "objectID": "schedule/slides/unit-tests.html#reproducible-examples-how-it-works",
+    "href": "schedule/slides/unit-tests.html#reproducible-examples-how-it-works",
+    "title": "UBC Stat550",
+    "section": "Reproducible examples, How it works",
+    "text": "Reproducible examples, How it works\n\nOpen a new .R script.\nPaste your buggy code in the file (no need to save)\nEdit your code to make sure it’s “enough to produce the error” and nothing more. (By rerunning the code a few times.)\nCopy your code.\nCall reprex::reprex() from the console. This will run your code in a new environment and show the result in the Viewer tab. Does it create the error you expect?\nIf it creates other errors, that may be the problem. You may fix the bug on your own!\nIf it doesn’t have errors, then your global environment is Farblunget.\nThe Output is now on your clipboard. Share that.\n\n\n\n\n\n\n\nNote\n\n\nBecause Reprex runs in it’s own environment, it doesn’t have access to any of the libraries you loaded or the stuff in your global environment. You’ll have to load these things in the script. That’s the point"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#practice",
     "href": "schedule/slides/unit-tests.html#practice",
     "title": "UBC Stat550",
     "section": "Practice",
-    "text": "Practice\nGradient ascent.\n\nSuppose we want to find \\(\\max_x f(x)\\).\nWe repeat the update \\(x \\leftarrow x + \\gamma f'(x)\\) until convergence, for some \\(\\gamma &gt; 0\\).\n\nPoisson likelihood.\n\nRecall the likelihood: \\(L(\\lambda; y_1,\\ldots,y_n) = \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}\\)\n\nGoal: find the MLE for \\(\\lambda\\) using gradient ascent"
+    "text": "Practice\nGradient ascent.\n\nSuppose we want to find \\(\\max_x f(x)\\).\nWe repeat the update \\(x \\leftarrow x + \\gamma f'(x)\\) until convergence, for some \\(\\gamma &gt; 0\\).\n\nPoisson likelihood.\n\nRecall the likelihood: \\(L(\\lambda; y_1,\\ldots,y_n) = \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}I(y_i \\in 0,1,\\ldots)\\)\n\nGoal: find the MLE for \\(\\lambda\\) using gradient ascent"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#deliverables-2-r-scripts",
     "href": "schedule/slides/unit-tests.html#deliverables-2-r-scripts",
     "title": "UBC Stat550",
     "section": "Deliverables, 2 R scripts",
-    "text": "Deliverables, 2 R scripts\n\nA function that evaluates the log likelihood. (think about sufficiency, ignorable constants)\nA function that evaluates the gradient of the log likelihood.\nA function that does the optimization.\n\nShould take in data, the log likelihood and the gradient.\nUse the loglikelihood to determine convergence.\nPass in any other necessary parameters with reasonable defaults.\n\nA collection of tests that make sure your functions work.\n\n\\[\n\\begin{aligned}\nL(\\lambda; y_1,\\ldots,y_n) &= \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}\\\\\nx &\\leftarrow x + \\gamma f'(x)\n\\end{aligned}\n\\]\n\n\n\nUBC Stat 550 - 2024"
+    "text": "Deliverables, 2 R scripts\n\nA function that evaluates the log likelihood. (think about sufficiency, ignorable constants)\nA function that evaluates the gradient of the log likelihood.\nA function that does the optimization.\n\nShould take in data, the log likelihood and the gradient.\nUse the loglikelihood to determine convergence.\nPass in any other necessary parameters with reasonable defaults.\n\nA collection of tests that make sure your functions work.\n\n\\[\n\\begin{aligned}\nL(\\lambda; y_1,\\ldots,y_n) &= \\prod_{i=1}^n \\frac{\\lambda^{y_i} \\exp(-\\lambda)}{y_i!}I(y_i \\in 0,1,\\ldots)\\\\\nx &\\leftarrow x + \\gamma f'(x)\n\\end{aligned}\n\\]\n\n\n\nUBC Stat 550 - 2024"
   },
   {
     "objectID": "schedule/slides/syllabus.html#section",
     "href": "schedule/slides/syllabus.html#section",
     "title": "UBC Stat550",
     "section": "Introduction and Second half pivot",
-    "text": "Introduction and Second half pivot\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Introduction and Second half pivot\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/syllabus.html#about-me",
@@ -228,7 +382,7 @@
     "href": "schedule/slides/pca-intro.html#section",
     "title": "UBC Stat550",
     "section": "Principal components analysis",
-    "text": "Principal components analysis\nStat 550\nDaniel J. McDonald\nLast modified – 30 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Principal components analysis\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/pca-intro.html#representation-learning",
@@ -277,28 +431,28 @@
     "href": "schedule/slides/pca-intro.html#pca-2",
     "title": "UBC Stat550",
     "section": "PCA",
-    "text": "PCA\n\n\nCode\ns &lt;- svd(X)\ntib &lt;- rbind(X, s$u %*% diag(s$d), s$u %*% diag(c(s$d[1], 0)))\ntib &lt;- tibble(\n  x1 = tib[, 1], x2 = tib[, 2],\n  name = rep(1:3, each = 20)\n)\nplotter &lt;- function(set = 1, main = \"original\") {\n  tib |&gt;\n    filter(name == set) |&gt;\n    ggplot(aes(x1, x2)) +\n    geom_point(colour = blue) +\n    coord_cartesian(c(-2, 2), c(-2, 2)) +\n    theme(legend.title = element_blank(), legend.position = \"bottom\") +\n    ggtitle(main)\n}\ncowplot::plot_grid(\n  plotter() + labs(x = bquote(x[1]), y = bquote(x[2])),\n  plotter(2, \"rotated\") +\n    labs(x = bquote((UD)[1] == (XV)[1]), y = bquote((UD)[2] == (XV)[2])),\n  plotter(3, \"rotated+projected\") +\n    labs(x = bquote(U[1] ~ D[1] == (XV)[1]), y = bquote(U[2] ~ D[2] %==% 0)),\n  nrow = 1, axis = \"tb\"\n)"
+    "text": "PCA"
   },
   {
     "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
     "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
     "title": "UBC Stat550",
     "section": "PCA on some pop music data",
-    "text": "PCA on some pop music data\n\n\nCode\nmusic &lt;- Stat406::popmusic_train\nX &lt;- music |&gt; select(danceability:energy, loudness, speechiness:valence)\npca &lt;- prcomp(X, scale = TRUE) ## DON'T USE princomp()\nmusic\n\n\n# A tibble: 1,269 × 15\n   artist      danceability energy   key loudness  mode speechiness acousticness\n   &lt;fct&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;\n 1 Taylor Swi…        0.781  0.357     0   -16.4      1      0.912       0.717  \n 2 Taylor Swi…        0.627  0.266     9   -15.4      1      0.929       0.796  \n 3 Taylor Swi…        0.516  0.917    11    -3.19     0      0.0827      0.0139 \n 4 Taylor Swi…        0.629  0.757     1    -8.37     0      0.0512      0.00384\n 5 Taylor Swi…        0.686  0.705     9   -10.8      1      0.249       0.832  \n 6 Taylor Swi…        0.522  0.691     2    -4.82     1      0.0307      0.00609\n 7 Taylor Swi…        0.31   0.374     6    -8.46     1      0.0275      0.761  \n 8 Taylor Swi…        0.705  0.621     2    -8.09     1      0.0334      0.101  \n 9 Taylor Swi…        0.553  0.604     1    -5.30     0      0.0258      0.202  \n10 Taylor Swi…        0.419  0.908     9    -5.16     1      0.0651      0.00048\n# ℹ 1,259 more rows\n# ℹ 7 more variables: instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,\n#   tempo &lt;dbl&gt;, time_signature &lt;int&gt;, duration_ms &lt;int&gt;, explicit &lt;lgl&gt;"
+    "text": "PCA on some pop music data\n\n\n# A tibble: 1,269 × 15\n   artist      danceability energy   key loudness  mode speechiness acousticness\n   &lt;fct&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;\n 1 Taylor Swi…        0.781  0.357     0   -16.4      1      0.912       0.717  \n 2 Taylor Swi…        0.627  0.266     9   -15.4      1      0.929       0.796  \n 3 Taylor Swi…        0.516  0.917    11    -3.19     0      0.0827      0.0139 \n 4 Taylor Swi…        0.629  0.757     1    -8.37     0      0.0512      0.00384\n 5 Taylor Swi…        0.686  0.705     9   -10.8      1      0.249       0.832  \n 6 Taylor Swi…        0.522  0.691     2    -4.82     1      0.0307      0.00609\n 7 Taylor Swi…        0.31   0.374     6    -8.46     1      0.0275      0.761  \n 8 Taylor Swi…        0.705  0.621     2    -8.09     1      0.0334      0.101  \n 9 Taylor Swi…        0.553  0.604     1    -5.30     0      0.0258      0.202  \n10 Taylor Swi…        0.419  0.908     9    -5.16     1      0.0651      0.00048\n# ℹ 1,259 more rows\n# ℹ 7 more variables: instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,\n#   tempo &lt;dbl&gt;, time_signature &lt;int&gt;, duration_ms &lt;int&gt;, explicit &lt;lgl&gt;"
   },
   {
     "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
     "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
     "title": "UBC Stat550",
     "section": "PCA on some pop music data",
-    "text": "PCA on some pop music data\n\n15 dimensions to 2\ncoloured by artist\n\n\n\nCode\nproj_pca &lt;- predict(pca)[,1:2] |&gt;\n  as_tibble() |&gt;\n  mutate(artist = music$artist)\n#| fig-width: 8\n#| fig-height: 3\ng1 &lt;- ggplot(proj_pca, aes(PC1, PC2, color = artist)) +\n  geom_point() +\n  theme(legend.position = \"none\") +\n  scale_color_viridis_d()\ng2 &lt;- ggplot(\n  tibble(var_explained = pca$sdev^2 / sum(pca$sdev^2), M = 1:ncol(X)),\n  aes(M, var_explained)\n) +\n  geom_point(color = orange) +\n  scale_x_continuous(breaks = 1:10) +\n  geom_segment(aes(xend = M, yend = 0), color = blue)\ncowplot::plot_grid(g1, g2)"
+    "text": "PCA on some pop music data\n\n15 dimensions to 2\ncoloured by artist"
   },
   {
     "objectID": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
     "href": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
     "title": "UBC Stat550",
     "section": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)",
-    "text": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)\n\n\nCode\npca$rotation[, 1:2] |&gt;\n  as_tibble() |&gt;\n  set_names(c(\"Weight 1\", \"Weight 2\")) |&gt;\n  mutate(feature = names(X)) |&gt;\n  pivot_longer(-feature) |&gt;\n  ggplot(aes(value, feature, fill = feature)) +\n  facet_wrap(~name) +\n  geom_col() +\n  theme(legend.position = \"none\", axis.title = element_blank()) +\n  scale_fill_brewer(palette = \"Dark2\") +\n  geom_vline(xintercept = 0)"
+    "text": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)"
   },
   {
     "objectID": "schedule/slides/pca-intro.html#matrix-decompositions",
@@ -326,14 +480,14 @@
     "href": "schedule/slides/pca-intro.html#code-output-to-look-at",
     "title": "UBC Stat550",
     "section": "Code output to look at",
-    "text": "Code output to look at\n\npca &lt;- prcomp(X) # never use `princomp()`\npredict(pca)[,1:2] # the 2D embedding\npca$x[,1:2] # also the 2D embedding\npca$rotation[,1:2] # the weights\npca$sdev^2 / sum(pca$sdev^2) # % variance explained\n\n\n\n\nUBC Stat 550 - 2024"
+    "text": "Code output to look at\n\n\n\nUBC Stat 550 - 2024"
   },
   {
     "objectID": "schedule/slides/grad-school.html#section",
     "href": "schedule/slides/grad-school.html#section",
     "title": "UBC Stat550",
     "section": "Skills for graduate students",
-    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
@@ -375,7 +529,7 @@
     "href": "schedule/slides/cluster-computing.html#section",
     "title": "UBC Stat550",
     "section": "Cluster computing (at UBC)",
-    "text": "Cluster computing (at UBC)\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Cluster computing (at UBC)\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/cluster-computing.html#ubc-hpc",
@@ -620,7 +774,7 @@
     "href": "schedule/slides/bootstrap.html#section",
     "title": "UBC Stat550",
     "section": "The bootstrap",
-    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 30 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/bootstrap.html#in-statistics",
@@ -704,7 +858,7 @@
     "href": "schedule/slides/git.html#section",
     "title": "UBC Stat550",
     "section": "Version control",
-    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 01 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/git.html#why-version-control",
@@ -850,8 +1004,22 @@
     "objectID": "schedule/slides/organization.html#section",
     "href": "schedule/slides/organization.html#section",
     "title": "UBC Stat550",
-    "section": "Organization",
-    "text": "Organization\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Organization and reports",
+    "text": "Organization and reports\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#topics-for-today",
+    "href": "schedule/slides/organization.html#topics-for-today",
+    "title": "UBC Stat550",
+    "section": "Topics for today",
+    "text": "Topics for today\n\nOrganizing your file system\nWriting reports that mix output and text\n(Avoiding buggy code)"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-guiding-theme",
+    "href": "schedule/slides/organization.html#the-guiding-theme",
+    "title": "UBC Stat550",
+    "section": "The guiding theme",
+    "text": "The guiding theme"
   },
   {
     "objectID": "schedule/slides/organization.html#i-urge-you-to-consult",
@@ -861,18 +1029,32 @@
     "text": "I urge you to consult:\nKarl Broman’s Notes"
   },
   {
+    "objectID": "schedule/slides/organization.html#some-guiding-principles",
+    "href": "schedule/slides/organization.html#some-guiding-principles",
+    "title": "UBC Stat550",
+    "section": "Some guiding principles",
+    "text": "Some guiding principles\n\nAvoid naming by date.\n\nYour file system already knows the date.\nSometimes projects take a while.\nYou can add this inside a particular report: Last updated: 2022-01-07\n\nIf you’re going to use a date anywhere, do YYYY-MM-DD or YYYYMMDD not DD-MMM-YY\nThis is a process\nDon’t get tied down\nBut don’t reorganize every time you find a better system\nCustomize to your needs, preferences"
+  },
+  {
     "objectID": "schedule/slides/organization.html#organizing-your-stuff",
     "href": "schedule/slides/organization.html#organizing-your-stuff",
     "title": "UBC Stat550",
     "section": "Organizing your stuff",
-    "text": "Organizing your stuff\n\n\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── FKF\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── ghclass\n│   └── spatio-temporal-exp-fam\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n│   ├── Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website\n\nInside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\n\n\nSeparate raw / processed data\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
+    "text": "Organizing your stuff\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── FKF\n│   └── ghclass\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n|   ├── learning-white-matter\n|   ├── rt-est\n│   ├── zzzz Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#inside-a-project",
+    "href": "schedule/slides/organization.html#inside-a-project",
+    "title": "UBC Stat550",
+    "section": "Inside a project",
+    "text": "Inside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
   },
   {
     "objectID": "schedule/slides/organization.html#basic-principles",
     "href": "schedule/slides/organization.html#basic-principles",
     "title": "UBC Stat550",
     "section": "Basic principles",
-    "text": "Basic principles\n\nDevelop your own system\nPut everything in a common directory\nBe consistent – directory structure; names\nSeparate raw from processed data\nSeparate code from data\nIt should be obvious what code created what files, and what the dependencies are.\nNo hand-editing of data files\nDon’t use spaces in file names\nUse relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/blah\nThe {here} package in R is great for this"
+    "text": "Basic principles\n\nBe consistent – directory structure; names\n\nall project files in 1 directory, not multiples\n\nAlways separate raw from processed data\nAlways separate code from data\nIt should be obvious what code created what files, and what the dependencies are. (MAKEFILE forces this)\nNo hand-editing of data files\nDon’t use spaces in file names\nIn code, use relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/Documents/Work/proj-1/blah\nThe {here} package in R is great for this"
   },
   {
     "objectID": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
@@ -889,53 +1071,60 @@
     "text": "Problem: Collaborators who don’t use GitHub\n\nUse GitHub yourself\nCopy files to/from some shared space\n\nIdeally, in an automated way (Dropbox, S3 Bucket)\nAvoid Word at all costs. Google Docs if needed.\nWord and Git do not mix\nLast resort: Word file in Dropbox. Everything else nicely organized on your end. Rmd file with similar structure to Manuscript that does the analysis.\n\nCommit their changes.\n\n\nOverleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it."
   },
   {
-    "objectID": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
-    "href": "schedule/slides/organization.html#using-rmarkdownquarto-for-most-things",
+    "objectID": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
+    "href": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
     "title": "UBC Stat550",
-    "section": "Using Rmarkdown/Quarto for most things",
-    "text": "Using Rmarkdown/Quarto for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
+    "section": "Using Rmarkdown/Quarto/Jupyter for most things",
+    "text": "Using Rmarkdown/Quarto/Jupyter for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-basics",
-    "href": "schedule/slides/organization.html#the-basics",
+    "objectID": "schedule/slides/organization.html#when-i-begin-a-new-project",
+    "href": "schedule/slides/organization.html#when-i-begin-a-new-project",
     "title": "UBC Stat550",
-    "section": "The basics",
-    "text": "The basics\n1.\nI do all class documents in Rmarkdown/Quarto. Notes, slides, etc. Organized in Github repos:\n├── github-org\n│  ├── admm-cd\n│  ├── class-management\n│  ├── convexity-exercises\n...\n│  └── useful-materials\n├── instructor-private\n│  ├── README.md\n│  └── brief-summary\n└── student-public\n    ├── README.md\n    ├── docs\n    └── lecture-slides"
+    "section": "When I begin a new project",
+    "text": "When I begin a new project\n\nCreate a directory structure\n\ncode/\npapers/\nnotes/ (maybe?)\nREADME.md\ndata/ (maybe?)\n\nWrite scripts in the code/ directory\nTODO items in the README\nUse Rmarkdown/Quarto/Jupyter for reports, render to .pdf"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-basics-1",
-    "href": "schedule/slides/organization.html#the-basics-1",
+    "objectID": "schedule/slides/organization.html#as-the-project-progresses",
+    "href": "schedule/slides/organization.html#as-the-project-progresses",
     "title": "UBC Stat550",
-    "section": "The basics",
-    "text": "The basics\n2.\nWhen working out new code for a project, I use a combination of R package (as I get close to completion) and Rmarkdown.\n\nMany stat journals require reproducible, documented code. An R package is great for this.\nRmarkdown alone lets me document as I go.\n\n3.\nMy students are required to give me reports in Rmarkdown or Google docs (for practice)."
+    "section": "As the project progresses…",
+    "text": "As the project progresses…\nReorganize\n\nSome script files go to a package (thorougly tested), all that remains is for the paper\nThese now load the package and run simulations or analyses (that take a while)\nMaybe add a directory that contains dead-ends (code or text or …)\nAdd manuscript/. I try to go for main.tex and Supplement.Rmd\nSupplement.Rmd runs anything necessary in code/ and creates all figures in the main doc and the supplement. Also generates any online supplementary material\nSometimes, just manuscript/main.Rmd\nSometimes main.tex just inputs intro.tex, methods.tex, etc."
   },
   {
-    "objectID": "schedule/slides/organization.html#for-professional-presentations",
-    "href": "schedule/slides/organization.html#for-professional-presentations",
+    "objectID": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
+    "href": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
     "title": "UBC Stat550",
-    "section": "For professional presentations",
-    "text": "For professional presentations\nI use Rmarkdown + Beamer: Now I use Rmd + Xaringan (see dajmcdon/talk-template)\n```{yaml}\n---\ntitle: \"Statistical approaches to epidemic forecasting\"\nauthor: \"Daniel J. McDonald\"\ndate: \"10 February 2023\"\noutput:\n  xaringan::moon_reader:\n    css: [src/xaringan-themer.css, src/slides-style.css]\n    nature:\n      beforeInit: [\"src/macros.js\", \"https://platform.twitter.com/widgets.js\"]\n      highlightStyle: github\n      highlightLines: true\n      ratio: 16:9\n      slideNumber: true\n      countIncrementalSlides: true\n    seal: false\n---\n```"
+    "section": "The old manuscript (starting in School, persisting too long)",
+    "text": "The old manuscript (starting in School, persisting too long)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nCollaborator wants changes to the simulation. Edit the code. Rerun figure script, doesn’t work. More edits….Finally Recompile.\nReviewer “what if n is bigger”. Hope I can find the right location. But the code isn’t functions. Something breaks …\nEtc, etc."
   },
   {
-    "objectID": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
-    "href": "schedule/slides/organization.html#the-old-presentation-when-i-was-in-grad-school",
+    "objectID": "schedule/slides/organization.html#now",
+    "href": "schedule/slides/organization.html#now",
     "title": "UBC Stat550",
-    "section": "The old presentation (when I was in Grad School)",
-    "text": "The old presentation (when I was in Grad School)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nEtc, etc.\n\nNow:\nCode and Text live in one file. I just recompile."
+    "section": "Now:",
+    "text": "Now:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed"
   },
   {
-    "objectID": "schedule/slides/organization.html#the-old-manuscript",
-    "href": "schedule/slides/organization.html#the-old-manuscript",
+    "objectID": "schedule/slides/organization.html#evolution-of-presentations",
+    "href": "schedule/slides/organization.html#evolution-of-presentations",
     "title": "UBC Stat550",
-    "section": "The old manuscript",
-    "text": "The old manuscript\nSimilar to the old presentation.\nNow:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed\n\n\n\nUBC Stat 550 - 2024"
+    "section": "Evolution of presentations",
+    "text": "Evolution of presentations\n\nLaTeX + Beamer (similar to the manuscript):\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRinse and repeat.\n\nCourse slides in Rmarkdown + Slidy\nSeminars in Rmarkdown + Beamer (with lots of customization)\nSeminars in Rmarkdown + Xaringan\nEverything in Quarto\n\n\n\n\n\n\n\n\nEasy to use.\nEasy to customize (defaults are not great)\nWELL DOCUMENTED"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#takeaways",
+    "href": "schedule/slides/organization.html#takeaways",
+    "title": "UBC Stat550",
+    "section": "Takeaways",
+    "text": "Takeaways\n\n\n\nUBC Stat 550 - 2024"
   },
   {
     "objectID": "schedule/slides/presentations.html#section",
     "href": "schedule/slides/presentations.html#section",
     "title": "UBC Stat550",
     "section": "Giving presentations",
-    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 31 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/presentations.html#structure",
@@ -1138,7 +1327,7 @@
     "href": "schedule/slides/time-series.html#section",
     "title": "UBC Stat550",
     "section": "Time series, a whirlwind",
-    "text": "Time series, a whirlwind\nStat 550\nDaniel J. McDonald\nLast modified – 09 January 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Time series, a whirlwind\nStat 550\nDaniel J. McDonald\nLast modified – 06 February 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
   },
   {
     "objectID": "schedule/slides/time-series.html#the-general-linear-process",
@@ -1173,7 +1362,7 @@
     "href": "schedule/slides/time-series.html#arp-1",
     "title": "UBC Stat550",
     "section": "AR(p)",
-    "text": "AR(p)\n\nThe estimate isn’t that accurate because the residuals (not the \\(\\epsilon\\)’s) are correlated.\n(Usually, you get 1/n convergence, here you don’t.)\nAlso, this isn’t the MLE. The likelihood includes \\(p(y_1)\\), \\(p(y_2 | y_1)\\) which lm() ignored.\nThe Std. Errors are unjustified.\nBut that was easy to do.\nThe correct way is\n\n\narima(y, c(2, 0, 0), include.mean = FALSE)\n\n\nCall:\narima(x = y, order = c(2, 0, 0), include.mean = FALSE)\n\nCoefficients:\n         ar1      ar2\n      0.6686  -0.0485\ns.e.  0.0316   0.0316\n\nsigma^2 estimated as 0.9765:  log likelihood = -1407.34,  aic = 2820.67\n\n\n\nThe resulting estimates and SEs are identical, AFAICS."
+    "text": "AR(p)\n\nThe estimate isn’t that accurate because the residuals (not the \\(\\epsilon\\)’s) are correlated.\n(Usually, you get 1/n convergence, here you don’t.)\nAlso, this isn’t the MLE. The likelihood includes \\(p(y_1)\\), \\(p(y_2 | y_1)\\) which lm() ignored.\nThe Std. Errors are unjustified.\nBut that was easy to do.\nThe correct way is\n\n\n\n\nCall:\narima(x = y, order = c(2, 0, 0), include.mean = FALSE)\n\nCoefficients:\n         ar1      ar2\n      0.6686  -0.0485\ns.e.  0.0316   0.0316\n\nsigma^2 estimated as 0.9765:  log likelihood = -1407.34,  aic = 2820.67\n\n\n\nThe resulting estimates and SEs are identical, AFAICS."
   },
   {
     "objectID": "schedule/slides/time-series.html#maq",
@@ -1264,7 +1453,7 @@
     "href": "schedule/slides/time-series.html#code-or-it-isnt-real-kalman-filter",
     "title": "UBC Stat550",
     "section": "Code or it isn’t real (Kalman Filter)",
-    "text": "Code or it isn’t real (Kalman Filter)\n\n\n\nkalman &lt;- function(y, m0, P0, A, Q, H, R) {\n  n &lt;- length(y)\n  m &lt;- double(n + 1)\n  P &lt;- double(n + 1)\n  m[1] &lt;- m0\n  P[1] &lt;- P0\n  for (k in seq(n)) {\n    mm &lt;- A * m[k]\n    Pm &lt;- A * P[k] * A + Q\n    v &lt;- y[k] - H * mm\n    S &lt;- H * Pm * H + R\n    K &lt;- Pm * H / S\n    m[k + 1] &lt;- mm + K * v\n    P[k + 1] &lt;- Pm - K * S * K\n  }\n  tibble(t = 1:n, m = m[-1], P = P[-1])\n}\n\nset.seed(2022 - 06 - 01)\nx &lt;- double(100)\nfor (k in 2:100) x[k] &lt;- x[k - 1] + rnorm(1)\ny &lt;- x + rnorm(100, sd = 1)\nkf &lt;- kalman(y, 0, 5, 1, 1, 1, 1)\n\n\n\nggplot(bind_cols(kf, x = x, y = y), aes(t)) +\n  geom_ribbon(aes(ymax = m + 2 * P, ymin = m - 2 * P), alpha = .2) +\n  geom_line(aes(y = m, color = \"kf_mean\"), linewidth = 2) +\n  geom_line(aes(y = x, color = \"x\"), linewidth = 2) +\n  geom_point(aes(y = y, color = \"y\"), size = 2) +\n  theme_bw(base_size = 24) +\n  scale_color_manual(\n    name = \"\",\n    breaks = c(\"kf_mean\", \"x\", \"y\"),\n    values = c(kf_mean = primary, x = tertiary, y = secondary)\n  ) +\n  theme(legend.position = \"bottom\", axis.title = element_blank())"
+    "text": "Code or it isn’t real (Kalman Filter)\n\n\n\nkalman &lt;- function(y, m0, P0, A, Q, H, R) {\n  n &lt;- length(y)\n  m &lt;- double(n + 1)\n  P &lt;- double(n + 1)\n  m[1] &lt;- m0\n  P[1] &lt;- P0\n  for (k in seq(n)) {\n    mm &lt;- A * m[k]\n    Pm &lt;- A * P[k] * A + Q\n    v &lt;- y[k] - H * mm\n    S &lt;- H * Pm * H + R\n    K &lt;- Pm * H / S\n    m[k + 1] &lt;- mm + K * v\n    P[k + 1] &lt;- Pm - K * S * K\n  }\n  tibble(t = 1:n, m = m[-1], P = P[-1])\n}\n\nset.seed(2022 - 06 - 01)\nx &lt;- double(100)\nfor (k in 2:100) x[k] &lt;- x[k - 1] + rnorm(1)\ny &lt;- x + rnorm(100, sd = 1)\nkf &lt;- kalman(y, 0, 5, 1, 1, 1, 1)"
   },
   {
     "objectID": "schedule/slides/time-series.html#important-notes",
@@ -1285,7 +1474,7 @@
     "href": "schedule/slides/time-series.html#comparing-the-filter-and-the-smoother",
     "title": "UBC Stat550",
     "section": "Comparing the filter and the smoother",
-    "text": "Comparing the filter and the smoother\n\nSame data, different code (using a package)\n\n\nlibrary(FKF)\nfilt &lt;- fkf(\n  a0 = 0, P0 = matrix(5), dt = matrix(0), ct = matrix(0),\n  Tt = matrix(1), Zt = matrix(1), HHt = matrix(1), GGt = matrix(1),\n  yt = matrix(y, ncol = length(y))\n)\nsmo &lt;- fks(filt)\n\n\ntibble(time = seq_along(x), x = x, filter = c(filt$att), smooth = c(smo$ahatt)) %&gt;%\n  pivot_longer(-time) %&gt;%\n  ggplot(aes(time, value, color = name)) +\n  geom_line(linewidth = 2) +\n  theme_bw(base_size = 24) +\n  scale_color_viridis_d() +\n  theme(\n    legend.position = \"bottom\", axis.title = element_blank(),\n    legend.title = element_blank()\n  )"
+    "text": "Comparing the filter and the smoother\n\nSame data, different code (using a package)\n\n\nlibrary(FKF)\nfilt &lt;- fkf(\n  a0 = 0, P0 = matrix(5), dt = matrix(0), ct = matrix(0),\n  Tt = matrix(1), Zt = matrix(1), HHt = matrix(1), GGt = matrix(1),\n  yt = matrix(y, ncol = length(y))\n)\nsmo &lt;- fks(filt)"
   },
   {
     "objectID": "schedule/slides/time-series.html#what-about-non-linear-andor-non-gaussian",

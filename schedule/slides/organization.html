@@ -395,10 +395,10 @@
 
 
 <section id="section" class="slide level2 large" data-background-image="img/consult.jpeg" data-background-opacity="0.3">
-<h2>Organization</h2>
+<h2>Organization and reports</h2>
 <p><span class="secondary">Stat 550</span></p>
 <p><span class="secondary">Daniel J. McDonald</span></p>
-<p>Last modified – 09 January 2024</p>
+<p>Last modified – 06 February 2024</p>
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -424,62 +424,91 @@
 \newcommand{\V}{\mathbf{V}}
 \]</span></p>
 </section>
+<section id="topics-for-today" class="slide level2">
+<h2>Topics for today</h2>
+<ol type="1">
+<li>Organizing your file system</li>
+<li>Writing reports that mix output and text</li>
+<li>(Avoiding buggy code)</li>
+</ol>
+</section>
+<section id="the-guiding-theme" class="slide level2">
+<h2>The guiding theme</h2>
+
+<img data-src="https://imgs.xkcd.com/comics/is_it_worth_the_time.png" class="center r-stretch"></section>
+<section>
+<section id="organization" class="title-slide slide level1 center" data-background-color="#e98a15">
+<h1>Organization</h1>
+<ul>
+<li>Students come to my office</li>
+<li>All their stuff is on their Desktop</li>
+<li>This is 🤮</li>
+</ul>
+</section>
 <section id="i-urge-you-to-consult" class="slide level2">
 <h2>I urge you to consult:</h2>
 <p><a href="https://kbroman.org/Tools4RR/assets/lectures/06_org_eda_withnotes.pdf">Karl Broman’s Notes</a></p>
 </section>
-<section>
-<section id="before-i-forget-back-up-your-stuff" class="title-slide slide level1 center">
-<h1>Before I forget, BACK UP YOUR STUFF!!</h1>
-
+<section id="some-guiding-principles" class="slide level2">
+<h2>Some guiding principles</h2>
+<ol type="1">
+<li>Avoid naming by date.
+<ul>
+<li>Your file system already knows the date.</li>
+<li>Sometimes projects take a while.</li>
+<li>You can add this inside a particular report: <code>Last updated: 2022-01-07</code></li>
+</ul></li>
+<li>If you’re going to use a date anywhere, do <code>YYYY-MM-DD</code> or <code>YYYYMMDD</code> not <code>DD-MMM-YY</code></li>
+<li>This is a process</li>
+<li>Don’t get tied down</li>
+<li>But don’t reorganize every time you find a better system</li>
+<li>Customize to your needs, preferences</li>
+</ol>
 </section>
 <section id="organizing-your-stuff" class="slide level2">
 <h2>Organizing your stuff</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<pre><code>├── Advising
-│   ├── arash
-│   ├── gian-carlo
-├── CV
-├── Computing
-│   ├── FKF
-│   ├── batchtools.slurm.tmpl
-│   ├── computecanada_notes.md
-│   ├── ghclass
-│   └── spatio-temporal-exp-fam
-├── Grants
-│   ├── B&amp;E JSM 2010
-│   ├── CANSSI RRP 2020
-│   ├── NSERC 2020
-├── LettersofRec
-├── Manuscripts
-│   ├── Old
-├── Referee reports
-├── Talks
-│   ├── JobTalk2020
-│   ├── ubc-stat-covid-talk
-│   └── utoronto-grad-advice
-├── Teaching
-│   ├── stat-406
-│   ├── stat-550
-│   ├── zzzz CMU TA
-│   └── zzzz booth
-└── Website</code></pre>
-</div><div class="column" style="width:50%;">
-<h3 id="inside-a-project">Inside a project</h3>
-<pre><code>.
-├── README.md
-├── Summary of Goals.rtf
-├── cluster_output
-├── code
-├── data
-├── dsges-github.Rproj
-├── manuscript
-└── waldman-triage</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">├──</span> Advising</span>
+<span id="cb1-2"><a></a><span class="ex">│</span>   ├── arash</span>
+<span id="cb1-3"><a></a><span class="ex">│</span>   ├── gian-carlo</span>
+<span id="cb1-4"><a></a><span class="ex">├──</span> CV</span>
+<span id="cb1-5"><a></a><span class="ex">├──</span> Computing</span>
+<span id="cb1-6"><a></a><span class="ex">│</span>   ├── batchtools.slurm.tmpl</span>
+<span id="cb1-7"><a></a><span class="ex">│</span>   ├── computecanada_notes.md</span>
+<span id="cb1-8"><a></a><span class="ex">│</span>   ├── FKF</span>
+<span id="cb1-9"><a></a><span class="ex">│</span>   └── ghclass</span>
+<span id="cb1-10"><a></a><span class="ex">├──</span> Grants</span>
+<span id="cb1-11"><a></a><span class="ex">│</span>   ├── B<span class="kw">&amp;</span><span class="ex">E</span> JSM 2010</span>
+<span id="cb1-12"><a></a><span class="ex">│</span>   ├── CANSSI RRP 2020</span>
+<span id="cb1-13"><a></a><span class="ex">│</span>   ├── NSERC 2020</span>
+<span id="cb1-14"><a></a><span class="ex">├──</span> LettersofRec</span>
+<span id="cb1-15"><a></a><span class="ex">├──</span> Manuscripts</span>
+<span id="cb1-16"><a></a><span class="kw">|</span>   <span class="ex">├──</span> learning-white-matter</span>
+<span id="cb1-17"><a></a><span class="kw">|</span>   <span class="ex">├──</span> rt-est</span>
+<span id="cb1-18"><a></a><span class="ex">│</span>   ├── zzzz Old</span>
+<span id="cb1-19"><a></a><span class="ex">├──</span> Referee reports</span>
+<span id="cb1-20"><a></a><span class="ex">├──</span> Talks</span>
+<span id="cb1-21"><a></a><span class="ex">│</span>   ├── JobTalk2020</span>
+<span id="cb1-22"><a></a><span class="ex">│</span>   ├── ubc-stat-covid-talk</span>
+<span id="cb1-23"><a></a><span class="ex">│</span>   └── utoronto-grad-advice</span>
+<span id="cb1-24"><a></a><span class="ex">├──</span> Teaching</span>
+<span id="cb1-25"><a></a><span class="ex">│</span>   ├── stat-406</span>
+<span id="cb1-26"><a></a><span class="ex">│</span>   ├── stat-550</span>
+<span id="cb1-27"><a></a><span class="ex">│</span>   ├── zzzz CMU TA</span>
+<span id="cb1-28"><a></a><span class="ex">│</span>   └── zzzz booth</span>
+<span id="cb1-29"><a></a><span class="ex">└──</span> Website</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inside-a-project" class="slide level2">
+<h2>Inside a project</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="bu">.</span></span>
+<span id="cb2-2"><a></a><span class="ex">├──</span> README.md</span>
+<span id="cb2-3"><a></a><span class="ex">├──</span> Summary of Goals.rtf</span>
+<span id="cb2-4"><a></a><span class="ex">├──</span> cluster_output</span>
+<span id="cb2-5"><a></a><span class="ex">├──</span> code</span>
+<span id="cb2-6"><a></a><span class="ex">├──</span> data</span>
+<span id="cb2-7"><a></a><span class="ex">├──</span> dsges-github.Rproj</span>
+<span id="cb2-8"><a></a><span class="ex">├──</span> manuscript</span>
+<span id="cb2-9"><a></a><span class="ex">└──</span> waldman-triage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Separate raw / processed data</li>
 <li>Include a README</li>
 <li>Ideally have a MAKEFILE</li>
 <li>Under version control, shared with collaborator</li>
@@ -488,17 +517,18 @@
 <section id="basic-principles" class="slide level2">
 <h2>Basic principles</h2>
 <ul>
-<li>Develop your own system</li>
-<li>Put everything in a common directory</li>
-<li>Be consistent – directory structure; names</li>
-<li>Separate raw from processed data</li>
-<li>Separate code from data</li>
-<li>It should be obvious what code created what files, and what the dependencies are.</li>
-<li><span class="secondary">No hand-editing of data files</span></li>
-<li><span class="secondary">Don’t use spaces in file names</span></li>
-<li>Use relative paths, not absolute paths
+<li>Be consistent – directory structure; names
 <ul>
-<li><code>../blah</code> not <code>~/blah</code> or <code>/users/dajmcdon/blah</code></li>
+<li>all project files in 1 directory, not multiples</li>
+</ul></li>
+<li>Always separate raw from processed data</li>
+<li>Always separate code from data</li>
+<li>It should be obvious what code created what files, and what the dependencies are. (MAKEFILE forces this)</li>
+<li><span class="secondary">No hand-editing of data files</span></li>
+<li>Don’t use spaces in file names</li>
+<li>In code, use relative paths, not absolute paths
+<ul>
+<li><code>../blah</code> not <code>~/blah</code> or <code>/users/dajmcdon/Documents/Work/proj-1/blah</code></li>
 <li>The <code>{here}</code> package in <code>R</code> is great for this</li>
 </ul></li>
 </ul>
@@ -530,9 +560,14 @@
 <div class="fragment">
 <p>Overleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it.</p>
 </div>
+</section></section>
+<section>
+<section id="reports-that-mix-output-and-text" class="title-slide slide level1 center" data-background-color="#e98a15">
+<h1>Reports that mix output and text</h1>
+
 </section>
-<section id="using-rmarkdownquarto-for-most-things" class="slide level2">
-<h2>Using Rmarkdown/Quarto for most things</h2>
+<section id="using-rmarkdownquartojupyter-for-most-things" class="slide level2">
+<h2>Using Rmarkdown/Quarto/Jupyter for most things</h2>
 <h3 id="your-goal-is-to-avoid-at-all-costs">Your goal is to <span class="secondary">Avoid at all costs</span>:</h3>
 <ul>
 <li>“How did I create this plot?”</li>
@@ -546,79 +581,50 @@
 <li>Emily Reiderer <a href="https://emilyriederer.netlify.app/post/rmarkdown-driven-development/">RmdDD</a></li>
 <li>Talk <a href="https://www.slideshare.net/EmilyRiederer/rmarkdown-driven-development-rstudioconf-2020">Slides</a></li>
 </ul>
-</section></section>
-<section>
-<section id="my-workflow" class="title-slide slide level1 center">
-<h1>My workflow</h1>
-
 </section>
-<section id="the-basics" class="slide level2">
-<h2>The basics</h2>
-<h3 id="section-1">1.</h3>
-<p>I do all class documents in Rmarkdown/Quarto. Notes, slides, etc. Organized in Github repos:</p>
-<pre><code>├── github-org
-│  ├── admm-cd
-│  ├── class-management
-│  ├── convexity-exercises
-...
-│  └── useful-materials
-├── instructor-private
-│  ├── README.md
-│  └── brief-summary
-└── student-public
-    ├── README.md
-    ├── docs
-    └── lecture-slides</code></pre>
-</section>
-<section id="the-basics-1" class="slide level2">
-<h2>The basics</h2>
-<h3 id="section-2">2.</h3>
-<p>When working out new code for a project, I use a combination of R package (as I get close to completion) and Rmarkdown.</p>
+<section id="when-i-begin-a-new-project" class="slide level2">
+<h2>When I begin a new project</h2>
+<ol type="1">
+<li>Create a directory structure
 <ul>
-<li>Many stat journals require reproducible, documented code. An R package is great for this.</li>
-<li>Rmarkdown alone lets me document as I go.</li>
+<li><code>code/</code></li>
+<li><code>papers/</code></li>
+<li><code>notes/</code> (maybe?)</li>
+<li><code>README.md</code></li>
+<li><code>data/</code> (maybe?)</li>
+</ul></li>
+<li>Write scripts in the <code>code/</code> directory</li>
+<li>TODO items in the README</li>
+<li>Use Rmarkdown/Quarto/Jupyter for reports, render to <code>.pdf</code></li>
+</ol>
+</section>
+<section id="as-the-project-progresses" class="slide level2">
+<h2>As the project progresses…</h2>
+<p>Reorganize</p>
+<ul>
+<li>Some script files go to a package (thorougly tested), all that remains is for the paper</li>
+<li>These now load the package and run simulations or analyses (that take a while)</li>
+<li>Maybe add a directory that contains dead-ends (code or text or …)</li>
+<li>Add <code>manuscript/</code>. I try to go for <code>main.tex</code> and <code>Supplement.Rmd</code></li>
+<li><code>Supplement.Rmd</code> runs anything necessary in <code>code/</code> and creates all figures in the main doc and the supplement. Also generates any online supplementary material</li>
+<li>Sometimes, just <code>manuscript/main.Rmd</code></li>
+<li>Sometimes <code>main.tex</code> just inputs <code>intro.tex</code>, <code>methods.tex</code>, etc.</li>
 </ul>
-<h3 id="section-3">3.</h3>
-<p>My students are required to give me reports in Rmarkdown or Google docs (for practice).</p>
 </section>
-<section id="for-professional-presentations" class="slide level2">
-<h2>For professional presentations</h2>
-<p><del>I use Rmarkdown + Beamer:</del> Now I use Rmd + Xaringan (see <a href="https://github.com/dajmcdon/talk-template"><code>dajmcdon/talk-template</code></a>)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a></a><span class="in">```{yaml}</span></span>
-<span id="cb4-2"><a></a><span class="in">---</span></span>
-<span id="cb4-3"><a></a><span class="in">title: "Statistical approaches to epidemic forecasting"</span></span>
-<span id="cb4-4"><a></a><span class="in">author: "Daniel J. McDonald"</span></span>
-<span id="cb4-5"><a></a><span class="in">date: "10 February 2023"</span></span>
-<span id="cb4-6"><a></a><span class="in">output:</span></span>
-<span id="cb4-7"><a></a><span class="in">  xaringan::moon_reader:</span></span>
-<span id="cb4-8"><a></a><span class="in">    css: [src/xaringan-themer.css, src/slides-style.css]</span></span>
-<span id="cb4-9"><a></a><span class="in">    nature:</span></span>
-<span id="cb4-10"><a></a><span class="in">      beforeInit: ["src/macros.js", "https://platform.twitter.com/widgets.js"]</span></span>
-<span id="cb4-11"><a></a><span class="in">      highlightStyle: github</span></span>
-<span id="cb4-12"><a></a><span class="in">      highlightLines: true</span></span>
-<span id="cb4-13"><a></a><span class="in">      ratio: 16:9</span></span>
-<span id="cb4-14"><a></a><span class="in">      slideNumber: true</span></span>
-<span id="cb4-15"><a></a><span class="in">      countIncrementalSlides: true</span></span>
-<span id="cb4-16"><a></a><span class="in">    seal: false</span></span>
-<span id="cb4-17"><a></a><span class="in">---</span></span>
-<span id="cb4-18"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="the-old-presentation-when-i-was-in-grad-school" class="slide level2">
-<h2>The old presentation (when I was in Grad School)</h2>
+<section id="the-old-manuscript-starting-in-school-persisting-too-long" class="slide level2">
+<h2>The old manuscript (starting in School, persisting too long)</h2>
 <ol type="1">
 <li>Write lots of LaTeX, <code>R</code> code in separate files</li>
 <li>Need a figure. Run <code>R</code> code, get figure, save as <code>.pdf</code>.</li>
 <li>Recompile LaTeX. Axes are unreadable. Back to <code>R</code>, rerun <code>R</code> code, …</li>
 <li>Recompile LaTeX. Can’t distinguish lines. Back to <code>R</code>, rerun <code>R</code> code, …</li>
+<li>Collaborator wants changes to the simulation. Edit the code. Rerun figure script, doesn’t work. More edits….Finally Recompile.</li>
+<li>Reviewer “what if <code>n</code> is bigger”. Hope I can find the right location. But the code isn’t functions. Something breaks …</li>
 <li>Etc, etc.</li>
 </ol>
-<h3 id="now">Now:</h3>
-<p>Code and Text live in one file. I just recompile.</p>
 </section>
-<section id="the-old-manuscript" class="slide level2">
-<h2>The old manuscript</h2>
-<p>Similar to the old presentation.</p>
-<h3 id="now-1">Now:</h3>
+<section id="now" class="slide level2">
+<h2>Now:</h2>
 <ol type="1">
 <li><code>R</code> package with documented code, available on GitHub.<br>
 </li>
@@ -630,6 +636,38 @@
 </ol>
 <h3 id="the-optimal">The optimal</h3>
 <p>Same as above but with a MAKEFILE to automatically run parts of 1–4 as needed</p>
+</section>
+<section id="evolution-of-presentations" class="slide level2">
+<h2>Evolution of presentations</h2>
+<ol type="1">
+<li>LaTeX + Beamer (similar to the manuscript):
+<ol type="a">
+<li>Write lots of LaTeX, <code>R</code> code in separate files</li>
+<li>Need a figure. Run <code>R</code> code, get figure, save as <code>.pdf</code>.</li>
+<li>Rinse and repeat.</li>
+</ol></li>
+<li>Course slides in Rmarkdown + Slidy</li>
+<li>Seminars in Rmarkdown + Beamer (with lots of customization)</li>
+<li>Seminars in Rmarkdown + Xaringan</li>
+<li>Everything in Quarto</li>
+</ol>
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<ul>
+<li>Easy to use.</li>
+<li>Easy to customize (defaults are not great)</li>
+<li>WELL DOCUMENTED</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
