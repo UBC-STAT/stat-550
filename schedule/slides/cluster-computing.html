@@ -8,7 +8,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.552">
 
   <meta name="author" content="Daniel J. McDonald">
   <title>UBC Stat550</title>
@@ -398,7 +398,7 @@
 <h2>Cluster computing (at UBC)</h2>
 <p><span class="secondary">Stat 550</span></p>
 <p><span class="secondary">Daniel J. McDonald</span></p>
-<p>Last modified – 06 February 2024</p>
+<p>Last modified – 01 April 2024</p>
 <p><span class="math display">\[
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator*{\argmax}{argmax}
@@ -430,7 +430,7 @@
 <ol type="1">
 <li>Department VM</li>
 <li><a href="https://arc.ubc.ca/ubc-arc-sockeye">UBC ARC Sockeye</a></li>
-<li><a href="https://docs.computecanada.ca/wiki/Compute_Canada_Documentation">Compute Canada</a></li>
+<li><a href="https://docs.alliancecan.ca/wiki/Technical_documentation">Digital Research Alliance of Canada</a></li>
 </ol>
 <p>I’ve only used 1 and 3. I mainly use 3.</p>
 <h3 id="accessing">Accessing</h3>
@@ -440,7 +440,6 @@
 <li>Possible you can access without a faculty PI.</li>
 <li>Email your advisor to ask for an account.</li>
 </ol>
-<p>. . .</p>
 <h3 id="the-rest-of-this-will-focus-on-3.">The rest of this will focus on 3.</h3>
 </section>
 <section id="prerequisites" class="slide level2">
@@ -450,14 +449,14 @@
 <ol type="1">
 <li><p>Command line interface (Terminal on Mac)</p></li>
 <li><p>(optional) helpful to have ftp client. (Cyberduck)</p></li>
-<li><p><a href="https://www.globus.org/globus-connect-personal">Globus Connect</a>. File transfer approved by CC.</p></li>
+<li><p><a href="https://www.globus.org/globus-connect-personal">Globus Connect</a>. File transfer approved by DRAC</p></li>
 </ol>
 </div><div class="column" style="width:50%;">
 <p>Useful CL commands</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="bu">cd</span> ~/path/to/directory</span>
 <span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a><span class="fu">cp</span> file/to/copy.txt duplicated/as/copy1.txt</span>
+<span id="cb1-3"><a></a><span class="fu">cp</span> file/to/copy.txt copied/to/copy1.txt</span>
 <span id="cb1-4"><a></a></span>
 <span id="cb1-5"><a></a><span class="fu">rm</span> file/to/delete.txt</span>
 <span id="cb1-6"><a></a></span>
@@ -472,7 +471,7 @@
 <h2>How to connect</h2>
 <p>Login to a system:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="fu">ssh</span> dajmcdon@cedar.computecanada.ca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="fu">ssh</span> dajmcdon@cedar.alliancecan.ca</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Upon login, you’re on a “head” or “login” node.</li>
@@ -497,7 +496,7 @@
 </div>
 <ul>
 <li>Yes, there is overhead to push data over and pull results back.</li>
-<li>But CC/Sockeye is much faster than your machine.</li>
+<li>But DRAC/Sockeye is much faster than your machine.</li>
 <li>And this won’t lock up your laptop for 4 hours while you run the job.</li>
 <li>It’s also a good experience.</li>
 <li>You can log out and leave the job running. Just log back in to see if it’s done (you should <em>always</em> have some idea how long it will take)</li>
@@ -510,10 +509,10 @@
 <li><p>There are no Applications loaded.</p></li>
 <li><p>You must tell the system what you want.</p></li>
 <li><p>The command is <code>module load r</code> or <code>module load sas</code></p></li>
-<li><p>If you find yourself using the same <a href="https://docs.computecanada.ca/wiki/Utiliser_des_modules/en#Module_collections_.28Lmod_only.29">modules</a> all the time:</p></li>
+<li><p>If you find yourself using the same <a href="https://docs.alliancecan.ca/wiki/Utiliser_des_modules/en">modules</a> all the time:</p></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">module</span> load StdEnv/2020 r gurobi python <span class="co"># stuff I use</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a></a><span class="ex">module</span> load StdEnv/2023 r gurobi python <span class="co"># stuff I use</span></span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a><span class="ex">module</span> save my_modules <span class="co"># save loaded modules</span></span>
 <span id="cb3-4"><a></a></span>
@@ -523,19 +522,16 @@
 <section id="running-something-interactively" class="slide level2">
 <h2>Running something interactively</h2>
 <ol type="1">
-<li><p>Login</p></li>
-<li><p>Load modules</p></li>
-<li><p>Request interactive compute</p></li>
+<li>Login</li>
+<li>Load modules</li>
+<li>Request interactive compute</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">salloc</span> <span class="at">--time</span><span class="op">=</span>1:0:0 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--account</span><span class="op">=</span>def-dajmcdon <span class="at">--mem-per-cpu</span><span class="op">=</span>4096M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">salloc</span> <span class="at">--time</span><span class="op">=</span>1:0:0 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--account</span><span class="op">=</span>def-dajmcdon <span class="at">--mem-per-cpu</span><span class="op">=</span>4096M</span>
+<span id="cb4-2"><a></a><span class="co"># allocate 1 hour on 1 cpu with 4Gb RAM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This says:</p>
 <ul>
-<li><p>Allocate 1 hour</p></li>
-<li><p>On 1 CPU</p></li>
-<li><p>For the user <code>def-dajmcdon</code> (that’s me, accounts start with <code>def-</code>)</p></li>
-<li><p>4GB of RAM</p></li>
+<li>For the user <code>def-dajmcdon</code> (that’s me, accounts start with <code>def-</code>)</li>
 </ul>
 <p>Then I would start R</p>
 <div class="cell" data-layout-align="center">
@@ -554,7 +550,9 @@
 <li>Better is likely <a href="http://syzygy.ca/">syzygy</a>.</li>
 </ul>
 <p>Although, syzygy has little memory and little storage, so it won’t do intensive tasks</p>
-<p><em>I think your home dir is limited to 1GB</em></p>
+<blockquote>
+<p>I think your home dir is limited to 1GB</p>
+</blockquote>
 </section>
 <section id="big-memory-jobs" class="slide level2">
 <h2>Big memory jobs</h2>
@@ -575,26 +573,26 @@
 <li>Dataset is about 10GB</li>
 <li>Peak memory usage during analysis is about 24GB</li>
 <li>Can’t do this on my computer</li>
-<li>Want to offload onto CC.ca</li>
+<li>Want to offload onto DRAC</li>
 </ul>
 </div>
 </div>
 </div>
 <ol type="1">
-<li><p>Write a <code>R</code>/<code>python</code> script that does the whole analysis and saves the output.</p></li>
-<li><p>You need to ask CC to run the script for you.</p></li>
+<li><p>Write a <code>R</code> / <code>python</code> script that does the whole analysis and saves the output.</p></li>
+<li><p>You need to ask DRAC to run the script for you.</p></li>
 </ol>
 </section>
 <section id="the-scheduler" class="slide level2">
 <h2>The scheduler</h2>
 <ul>
-<li>While you can log in to CC and “do stuff”</li>
-<li>Resources are limited.</li>
+<li>You <em>can</em> log in to DRAC and “do stuff”</li>
+<li>But resources are limited.</li>
 <li>There’s a process that determines who gets resources when.</li>
 <li>Technically the <code>salloc</code> command we used before requested some resources.</li>
 <li>It may “sit” until the resources you want are available, but probably not long.</li>
 <li>Anything else has to go through the scheduler.</li>
-<li>Compute Canada uses the <code>slurm</code> scheduler</li>
+<li>DRAC uses the <code>slurm</code> scheduler</li>
 </ul>
 </section>
 <section id="example-script" class="slide level2">
@@ -615,7 +613,7 @@
 </div>
 <ul>
 <li>This asks for 10 hours of compute time with 32GB of memory</li>
-<li>The <code>job-name</code>/<code>output</code>/<code>error</code> fields are for convenience.</li>
+<li>The <code>job-name</code> / <code>output</code> / <code>error</code> fields are for convenience.</li>
 <li>If unspecified, I’ll end up with files named things like <code>jobid60607-60650934.out</code></li>
 </ul>
 </section>
@@ -684,23 +682,31 @@
 <span id="cb8-3"><a></a><span class="co">#PBS -m abe</span></span>
 <span id="cb8-4"><a></a><span class="co">#PBS -n ClusterPermute </span></span>
 <span id="cb8-5"><a></a><span class="co">#PBS -j oe </span></span>
-<span id="cb8-6"><a></a></span>
-<span id="cb8-7"><a></a><span class="ex">mpirun</span> <span class="at">-np</span> 64 <span class="at">-machinefile</span> <span class="va">$PBS_NODEFILE</span> R CMD BATCH ClusterPermute.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a></a><span class="ex">mpirun</span> <span class="at">-np</span> 64 <span class="at">-machinefile</span> <span class="va">$PBS_NODEFILE</span> R CMD BATCH ClusterPermute.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p>Torque is a different scheduler. UBC ARC Sockeye uses Torque.</p></li>
-<li><p>Looks much like Slurm.</p></li>
+<li><p>Torque is a different scheduler. UBC ARC Sockeye uses Torque. Looks much like Slurm.</p></li>
 <li><p>Here, <code>ClusterPermute.R</code> uses <code>Rmpi</code> to do “parallel <code>lapply</code>”</p></li>
 <li><p>So I asked for 8 processors on each of 8 nodes.</p></li>
 </ul>
-<div class="fragment">
+</section>
+<section id="example-of-the-bad-parallelism-1" class="slide level2">
+<h2>Example of the bad parallelism</h2>
+<p><span class="secondary">Torque script</span></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a></a><span class="co">#!/bin/bash  </span></span>
+<span id="cb9-2"><a></a><span class="co">#PBS -l nodes=8:ppn=8,walltime=200:00:00</span></span>
+<span id="cb9-3"><a></a><span class="co">#PBS -m abe</span></span>
+<span id="cb9-4"><a></a><span class="co">#PBS -n ClusterPermute </span></span>
+<span id="cb9-5"><a></a><span class="co">#PBS -j oe </span></span>
+<span id="cb9-6"><a></a><span class="ex">mpirun</span> <span class="at">-np</span> 64 <span class="at">-machinefile</span> <span class="va">$PBS_NODEFILE</span> R CMD BATCH ClusterPermute.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><span class="secondary">Problem</span></p>
 <ul>
 <li><p>The scheduler has to find 8 nodes with 8 available processors before this job will start.</p></li>
 <li><p>This often takes a while, sometimes days.</p></li>
-<li><p>But the code doesn’t <em>need</em> all those things to happen <em>at the same time</em> because the jobs don’t interact.</p></li>
+<li><p>But the jobs don’t <em>need</em> those things to happen <em>at the same time</em>.</p></li>
 </ul>
-</div>
 </section>
 <section id="batchtools" class="slide level2">
 <h2><code>{batchtools}</code></h2>
@@ -711,13 +717,13 @@
 <li><p>But that would seem to require writing 64 different <code>slurm</code> scripts</p></li>
 <li><p><code>{batchtools}</code> does this for you, all in <code>R</code></p>
 <ol type="1">
-<li>It automates writing/submitting <code>slurm</code>/<code>torque</code> scripts.</li>
+<li>It automates writing/submitting <code>slurm</code> / <code>torque</code> scripts.</li>
 <li>It automatically stores output, and makes it easy to collect.</li>
 <li>It generates lots of jobs.</li>
 <li>All this from <code>R</code> directly.</li>
 </ol></li>
 </ul>
-<p>It’s easy to port across machines/schedulers.</p>
+<p>It’s easy to port across machines / schedulers.</p>
 <p>I can test parts (or even run) it on my machine without making changes for the cluster.</p>
 </section>
 <section id="setup-batchtools" class="slide level2">
@@ -728,57 +734,60 @@
 <li><p>Create a configuration file which lives in your home directory. You must name it <code>~/.batchtools.conf.R</code>.</p></li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># ~/.batchtools.conf.R</span></span>
-<span id="cb9-2"><a></a>cluster.functions <span class="ot">=</span> <span class="fu">makeClusterFunctionsSlurm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># ~/.batchtools.conf.R</span></span>
+<span id="cb10-2"><a></a>cluster.functions <span class="ot">&lt;-</span> <span class="fu">makeClusterFunctionsSlurm</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="batchtools.slurm.tmpl" class="slide level2">
 <h2><code>~/.batchtools.slurm.tmpl</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="co">#!/bin/bash</span></span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="co">## Job Resource Interface Definition</span></span>
-<span id="cb10-4"><a></a><span class="co">##</span></span>
-<span id="cb10-5"><a></a><span class="co">## ntasks [integer(1)]:       Number of required tasks,</span></span>
-<span id="cb10-6"><a></a><span class="co">##                            Set larger than 1 if you want to further parallelize</span></span>
-<span id="cb10-7"><a></a><span class="co">##                            with MPI within your job.</span></span>
-<span id="cb10-8"><a></a><span class="co">## ncpus [integer(1)]:        Number of required cpus per task,</span></span>
-<span id="cb10-9"><a></a><span class="co">##                            Set larger than 1 if you want to further parallelize</span></span>
-<span id="cb10-10"><a></a><span class="co">##                            with multicore/parallel within each task.</span></span>
-<span id="cb10-11"><a></a><span class="co">## walltime [integer(1)]:     Walltime for this job, in seconds.</span></span>
-<span id="cb10-12"><a></a><span class="co">##                            Must be at least 60 seconds for Slurm to work properly.</span></span>
-<span id="cb10-13"><a></a><span class="co">## memory   [integer(1)]:     Memory in megabytes for each cpu.</span></span>
-<span id="cb10-14"><a></a><span class="co">##                            Must be at least 100 (when I tried lower values my</span></span>
-<span id="cb10-15"><a></a><span class="co">##                            jobs did not start at all).</span></span>
-<span id="cb10-16"><a></a><span class="co">##</span></span>
-<span id="cb10-17"><a></a><span class="co">## Default resources can be set in your .batchtools.conf.R by defining the variable</span></span>
-<span id="cb10-18"><a></a><span class="co">## 'default.resources' as a named list.</span></span>
-<span id="cb10-19"><a></a></span>
-<span id="cb10-20"><a></a><span class="op">&lt;</span>%</span>
-<span id="cb10-21"><a></a><span class="co"># relative paths are not handled well by Slurm</span></span>
-<span id="cb10-22"><a></a><span class="ex">log.file</span> = fs::path_expand<span class="er">(</span><span class="ex">log.file</span><span class="kw">)</span></span>
-<span id="cb10-23"><a></a><span class="ex">-%</span><span class="op">&gt;</span></span>
-<span id="cb10-24"><a></a></span>
-<span id="cb10-25"><a></a><span class="co">#SBATCH --account=def-dajmcdon</span></span>
-<span id="cb10-26"><a></a><span class="co">#SBATCH --mail-user=daniel@stat.ubc.ca</span></span>
-<span id="cb10-27"><a></a><span class="co">#SBATCH --mail-type=ALL</span></span>
-<span id="cb10-28"><a></a><span class="co">#SBATCH --job-name=&lt;%= job.name %&gt;</span></span>
-<span id="cb10-29"><a></a><span class="co">#SBATCH --output=&lt;%= log.file %&gt;</span></span>
-<span id="cb10-30"><a></a><span class="co">#SBATCH --error=&lt;%= log.file %&gt;</span></span>
-<span id="cb10-31"><a></a><span class="co">#SBATCH --time=&lt;%= resources$walltime %&gt;</span></span>
-<span id="cb10-32"><a></a><span class="co">#SBATCH --ntasks=1</span></span>
-<span id="cb10-33"><a></a><span class="co">#SBATCH --cpus-per-task=&lt;%= resources$ncpus %&gt;</span></span>
-<span id="cb10-34"><a></a><span class="co">#SBATCH --mem-per-cpu=&lt;%= resources$memory %&gt;</span></span>
-<span id="cb10-35"><a></a><span class="op">&lt;</span>%= <span class="cf">if</span> <span class="kw">(</span><span class="ex">array.jobs</span><span class="kw">)</span> <span class="ex">sprintf</span><span class="er">(</span><span class="st">"#SBATCH --array=1-%i"</span><span class="ex">,</span> nrow<span class="er">(</span><span class="bu">jobs</span><span class="kw">))</span> <span class="cf">else</span> <span class="st">""</span> %<span class="op">&gt;</span></span>
-<span id="cb10-36"><a></a></span>
-<span id="cb10-37"><a></a><span class="co">## Run R:</span></span>
-<span id="cb10-38"><a></a><span class="co">## we merge R output with stdout from SLURM, which gets then logged via --output option</span></span>
-<span id="cb10-39"><a></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'batchtools::doJobCollection("&lt;%= uri %&gt;")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="co">#!/bin/bash</span></span>
+<span id="cb11-2"><a></a></span>
+<span id="cb11-3"><a></a><span class="co">## Job Resource Interface Definition</span></span>
+<span id="cb11-4"><a></a><span class="co">##</span></span>
+<span id="cb11-5"><a></a><span class="co">## ntasks [integer(1)]:       Number of required tasks,</span></span>
+<span id="cb11-6"><a></a><span class="co">##                            Set larger than 1 if you want to further parallelize</span></span>
+<span id="cb11-7"><a></a><span class="co">##                            with MPI within your job.</span></span>
+<span id="cb11-8"><a></a><span class="co">## ncpus [integer(1)]:        Number of required cpus per task,</span></span>
+<span id="cb11-9"><a></a><span class="co">##                            Set larger than 1 if you want to further parallelize</span></span>
+<span id="cb11-10"><a></a><span class="co">##                            with multicore/parallel within each task.</span></span>
+<span id="cb11-11"><a></a><span class="co">## walltime [integer(1)]:     Walltime for this job, in seconds.</span></span>
+<span id="cb11-12"><a></a><span class="co">##                            Must be at least 60 seconds for Slurm to work properly.</span></span>
+<span id="cb11-13"><a></a><span class="co">## memory   [integer(1)]:     Memory in megabytes for each cpu.</span></span>
+<span id="cb11-14"><a></a><span class="co">##                            Must be at least 100 (when I tried lower values my</span></span>
+<span id="cb11-15"><a></a><span class="co">##                            jobs did not start at all).</span></span>
+<span id="cb11-16"><a></a><span class="co">##</span></span>
+<span id="cb11-17"><a></a><span class="co">## Default resources can be set in your .batchtools.conf.R by defining the variable</span></span>
+<span id="cb11-18"><a></a><span class="co">## 'default.resources' as a named list.</span></span>
+<span id="cb11-19"><a></a></span>
+<span id="cb11-20"><a></a><span class="op">&lt;</span>%</span>
+<span id="cb11-21"><a></a><span class="co"># relative paths are not handled well by Slurm</span></span>
+<span id="cb11-22"><a></a><span class="ex">log.file</span> = fs::path_expand<span class="er">(</span><span class="ex">log.file</span><span class="kw">)</span></span>
+<span id="cb11-23"><a></a><span class="ex">-%</span><span class="op">&gt;</span></span>
+<span id="cb11-24"><a></a></span>
+<span id="cb11-25"><a></a><span class="co">#SBATCH --account=def-dajmcdon</span></span>
+<span id="cb11-26"><a></a><span class="co">#SBATCH --mail-user=daniel@stat.ubc.ca</span></span>
+<span id="cb11-27"><a></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb11-28"><a></a><span class="co">#SBATCH --job-name=&lt;%= job.name %&gt;</span></span>
+<span id="cb11-29"><a></a><span class="co">#SBATCH --output=&lt;%= log.file %&gt;</span></span>
+<span id="cb11-30"><a></a><span class="co">#SBATCH --error=&lt;%= log.file %&gt;</span></span>
+<span id="cb11-31"><a></a><span class="co">#SBATCH --time=&lt;%= resources$walltime %&gt;</span></span>
+<span id="cb11-32"><a></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb11-33"><a></a><span class="co">#SBATCH --cpus-per-task=&lt;%= resources$ncpus %&gt;</span></span>
+<span id="cb11-34"><a></a><span class="co">#SBATCH --mem-per-cpu=&lt;%= resources$memory %&gt;</span></span>
+<span id="cb11-35"><a></a><span class="op">&lt;</span>%= <span class="cf">if</span> <span class="kw">(</span><span class="ex">array.jobs</span><span class="kw">)</span> <span class="ex">sprintf</span><span class="er">(</span><span class="st">"#SBATCH --array=1-%i"</span><span class="ex">,</span> nrow<span class="er">(</span><span class="bu">jobs</span><span class="kw">))</span> <span class="cf">else</span> <span class="st">""</span> %<span class="op">&gt;</span></span>
+<span id="cb11-36"><a></a></span>
+<span id="cb11-37"><a></a><span class="co">## Run R:</span></span>
+<span id="cb11-38"><a></a><span class="co">## we merge R output with stdout from SLURM, which gets then logged via --output option</span></span>
+<span id="cb11-39"><a></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">'batchtools::doJobCollection("&lt;%= uri %&gt;")'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>When I’m ready to run, I’ll call something like:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>batchtools<span class="sc">::</span><span class="fu">submitJobs</span>(job.ids, <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus=</span><span class="dv">1</span>, <span class="at">walltime=</span><span class="st">"24:00:00"</span>, <span class="at">memory=</span><span class="st">"32G"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>batchtools<span class="sc">::</span><span class="fu">submitJobs</span>(</span>
+<span id="cb12-2"><a></a>  job.ids, </span>
+<span id="cb12-3"><a></a>  <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus=</span><span class="dv">1</span>, <span class="at">walltime=</span><span class="st">"24:00:00"</span>, <span class="at">memory=</span><span class="st">"32G"</span>)</span>
+<span id="cb12-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -799,8 +808,8 @@
 <h1>Do it</h1>
 
 </section>
-<section id="example-1-use-genetics-data-to-viral-load" class="slide level2">
-<h2>Example 1: Use genetics data to viral load</h2>
+<section id="example-1-use-genetics-data-to-predict-viral-load" class="slide level2">
+<h2>Example 1: Use genetics data to predict viral load</h2>
 <ul>
 <li><p>An “extra” example in a methods paper to appease reviewers</p></li>
 <li><p>Method is:</p>
@@ -816,50 +825,63 @@
 <li><p>Want to do CV to choose, and then use those on the whole data, describe selected genes.</p></li>
 </ul>
 </section>
-<section id="example-1-use-genetics-data-to-viral-load-1" class="slide level2">
-<h2>Example 1: Use genetics data to viral load</h2>
+<section id="example-1-use-genetics-data-to-predict-viral-load-1" class="slide level2">
+<h2>Example 1: Use genetics data to predict viral load</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">library</span>(batchtools)</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a>reg <span class="ot">&lt;-</span> <span class="fu">makeExperimentRegistry</span>(<span class="st">"spcr-genes"</span>, <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"suffpcr"</span>))</span>
-<span id="cb12-4"><a></a>x <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"suffpcr-covid"</span>, <span class="st">"covid_x.rds"</span>))</span>
-<span id="cb12-5"><a></a>y <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"suffpcr-covid"</span>, <span class="st">"covid_y.rds"</span>))</span>
-<span id="cb12-6"><a></a></span>
-<span id="cb12-7"><a></a>subsample <span class="ot">=</span> <span class="cf">function</span>(data, job, ratio, ...) {</span>
-<span id="cb12-8"><a></a>  n <span class="ot">=</span> <span class="fu">nrow</span>(data<span class="sc">$</span>x)</span>
-<span id="cb12-9"><a></a>  train <span class="ot">=</span> <span class="fu">sample</span>(n, <span class="fu">floor</span>(n <span class="sc">*</span> ratio))</span>
-<span id="cb12-10"><a></a>  test <span class="ot">=</span> <span class="fu">setdiff</span>(<span class="fu">seq_len</span>(n), train)</span>
-<span id="cb12-11"><a></a>  <span class="fu">list</span>(<span class="at">test =</span> test, <span class="at">train =</span> train)</span>
-<span id="cb12-12"><a></a>}</span>
-<span id="cb12-13"><a></a></span>
-<span id="cb12-14"><a></a><span class="fu">addProblem</span>(<span class="st">"cv"</span>, <span class="at">data =</span> <span class="fu">list</span>(<span class="at">x=</span>x, <span class="at">y=</span>y), <span class="at">fun =</span> subsample)</span>
-<span id="cb12-15"><a></a><span class="fu">addProblem</span>(<span class="st">"full"</span>, <span class="at">data =</span> <span class="fu">list</span>(<span class="at">x=</span>x, <span class="at">y=</span>y))</span>
-<span id="cb12-16"><a></a></span>
-<span id="cb12-17"><a></a><span class="fu">addAlgorithm</span>(</span>
-<span id="cb12-18"><a></a>  <span class="st">"spcr_cv"</span>, </span>
-<span id="cb12-19"><a></a>  <span class="at">fun =</span> <span class="cf">function</span>(job, data, instance,...) {</span>
-<span id="cb12-20"><a></a>    fit <span class="ot">&lt;-</span> <span class="fu">suffpcr</span>(data<span class="sc">$</span>x[instance<span class="sc">$</span>train,], data<span class="sc">$</span>y[instance<span class="sc">$</span>train], <span class="at">lambda_min =</span> <span class="dv">0</span>, <span class="at">lambda_max =</span> <span class="dv">1</span>, ...)</span>
-<span id="cb12-21"><a></a>    valid_err <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(</span>
-<span id="cb12-22"><a></a>      (data<span class="sc">$</span>y[instance<span class="sc">$</span>test] <span class="sc">-</span> <span class="fu">as.matrix</span>(<span class="fu">predict</span>(fit, <span class="at">newdata =</span> data<span class="sc">$</span>x[instance<span class="sc">$</span>test,])))<span class="sc">^</span><span class="dv">2</span>, </span>
-<span id="cb12-23"><a></a>      <span class="at">na.rm=</span><span class="cn">TRUE</span></span>
-<span id="cb12-24"><a></a>    )</span>
-<span id="cb12-25"><a></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">fit =</span> fit, <span class="at">valid_err =</span> valid_err))</span>
-<span id="cb12-26"><a></a>  }</span>
-<span id="cb12-27"><a></a>)</span>
-<span id="cb12-28"><a></a></span>
-<span id="cb12-29"><a></a><span class="fu">addAlgorithm</span>(</span>
-<span id="cb12-30"><a></a>  <span class="st">"spcr_full"</span>,</span>
-<span id="cb12-31"><a></a>  <span class="at">fun =</span> <span class="cf">function</span>(job, data, instance,...) <span class="fu">suffpcr</span>(data<span class="sc">$</span>x, data<span class="sc">$</span>y, <span class="at">lambda_max =</span> <span class="dv">1</span>, <span class="at">lambda_min =</span> <span class="dv">0</span>, ...)</span>
-<span id="cb12-32"><a></a>)</span>
-<span id="cb12-33"><a></a></span>
-<span id="cb12-34"><a></a>pdes_cv <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">cv =</span> <span class="fu">data.frame</span>(<span class="at">ratio =</span> .<span class="dv">75</span>))</span>
-<span id="cb12-35"><a></a>pdes_full <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">full =</span> <span class="fu">data.frame</span>())</span>
-<span id="cb12-36"><a></a>ades_cv <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">spcr_cv =</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">15</span>)))</span>
-<span id="cb12-37"><a></a>ades_full <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">spcr_full =</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">15</span>)))</span>
-<span id="cb12-38"><a></a><span class="fu">addExperiments</span>(pdes_cv, ades_cv, <span class="at">repls =</span> <span class="dv">5</span>L)</span>
-<span id="cb12-39"><a></a><span class="fu">addExperiments</span>(pdes_full, ades_full)</span>
-<span id="cb12-40"><a></a></span>
-<span id="cb12-41"><a></a><span class="fu">submitJobs</span>(<span class="fu">findJobs</span>(), <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus =</span> <span class="dv">1</span>, <span class="at">walltime =</span> <span class="st">"8:00:00"</span>, <span class="at">memory =</span> <span class="st">"32G"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">library</span>(batchtools)</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a>reg <span class="ot">&lt;-</span> <span class="fu">makeExperimentRegistry</span>(<span class="st">"spcr-genes"</span>, <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"suffpcr"</span>))</span>
+<span id="cb13-4"><a></a>x <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"suffpcr-covid"</span>, <span class="st">"covid_x.rds"</span>))</span>
+<span id="cb13-5"><a></a>y <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"suffpcr-covid"</span>, <span class="st">"covid_y.rds"</span>))</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a>subsample <span class="ot">=</span> <span class="cf">function</span>(data, job, ratio, ...) {</span>
+<span id="cb13-8"><a></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(data<span class="sc">$</span>x)</span>
+<span id="cb13-9"><a></a>  train <span class="ot">&lt;-</span> <span class="fu">sample</span>(n, <span class="fu">floor</span>(n <span class="sc">*</span> ratio))</span>
+<span id="cb13-10"><a></a>  test <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">seq_len</span>(n), train)</span>
+<span id="cb13-11"><a></a>  <span class="fu">list</span>(<span class="at">test =</span> test, <span class="at">train =</span> train)</span>
+<span id="cb13-12"><a></a>}</span>
+<span id="cb13-13"><a></a></span>
+<span id="cb13-14"><a></a><span class="fu">addProblem</span>(<span class="st">"cv"</span>, <span class="at">data =</span> <span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y), <span class="at">fun =</span> subsample)</span>
+<span id="cb13-15"><a></a><span class="fu">addProblem</span>(<span class="st">"full"</span>, <span class="at">data =</span> <span class="fu">list</span>(<span class="at">x =</span> x, <span class="at">y =</span> y))</span>
+<span id="cb13-16"><a></a></span>
+<span id="cb13-17"><a></a><span class="fu">addAlgorithm</span>(</span>
+<span id="cb13-18"><a></a>  <span class="st">"spcr_cv"</span>,</span>
+<span id="cb13-19"><a></a>  <span class="at">fun =</span> <span class="cf">function</span>(job, data, instance, ...) { <span class="co"># args are required</span></span>
+<span id="cb13-20"><a></a>    fit <span class="ot">&lt;-</span> <span class="fu">suffpcr</span>(</span>
+<span id="cb13-21"><a></a>      data<span class="sc">$</span>x[instance<span class="sc">$</span>train, ], data<span class="sc">$</span>y[instance<span class="sc">$</span>train], </span>
+<span id="cb13-22"><a></a>      <span class="at">lambda_min =</span> <span class="dv">0</span>, <span class="at">lambda_max =</span> <span class="dv">1</span>, ...</span>
+<span id="cb13-23"><a></a>    )</span>
+<span id="cb13-24"><a></a>    valid_err <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(</span>
+<span id="cb13-25"><a></a>      (</span>
+<span id="cb13-26"><a></a>        data<span class="sc">$</span>y[instance<span class="sc">$</span>test] <span class="sc">-</span> </span>
+<span id="cb13-27"><a></a>         <span class="fu">as.matrix</span>(<span class="fu">predict</span>(fit, <span class="at">newdata =</span> data<span class="sc">$</span>x[instance<span class="sc">$</span>test, ]))</span>
+<span id="cb13-28"><a></a>      )<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb13-29"><a></a>      <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-30"><a></a>    )</span>
+<span id="cb13-31"><a></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">fit =</span> fit, <span class="at">valid_err =</span> valid_err))</span>
+<span id="cb13-32"><a></a>  }</span>
+<span id="cb13-33"><a></a>)</span>
+<span id="cb13-34"><a></a></span>
+<span id="cb13-35"><a></a><span class="fu">addAlgorithm</span>(</span>
+<span id="cb13-36"><a></a>  <span class="st">"spcr_full"</span>,</span>
+<span id="cb13-37"><a></a>  <span class="at">fun =</span> <span class="cf">function</span>(job, data, instance, ...) {</span>
+<span id="cb13-38"><a></a>    <span class="fu">suffpcr</span>(data<span class="sc">$</span>x, data<span class="sc">$</span>y, <span class="at">lambda_max =</span> <span class="dv">1</span>, <span class="at">lambda_min =</span> <span class="dv">0</span>, ...)</span>
+<span id="cb13-39"><a></a>  }</span>
+<span id="cb13-40"><a></a>)</span>
+<span id="cb13-41"><a></a></span>
+<span id="cb13-42"><a></a><span class="do">## Experimental design</span></span>
+<span id="cb13-43"><a></a>pdes_cv <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">cv =</span> <span class="fu">data.frame</span>(<span class="at">ratio =</span> .<span class="dv">75</span>))</span>
+<span id="cb13-44"><a></a>pdes_full <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">full =</span> <span class="fu">data.frame</span>())</span>
+<span id="cb13-45"><a></a>ades_cv <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">spcr_cv =</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb13-46"><a></a>ades_full <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">spcr_full =</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">15</span>)))</span>
+<span id="cb13-47"><a></a></span>
+<span id="cb13-48"><a></a><span class="fu">addExperiments</span>(pdes_cv, ades_cv, <span class="at">repls =</span> <span class="dv">5</span>L)</span>
+<span id="cb13-49"><a></a><span class="fu">addExperiments</span>(pdes_full, ades_full)</span>
+<span id="cb13-50"><a></a></span>
+<span id="cb13-51"><a></a><span class="fu">submitJobs</span>(</span>
+<span id="cb13-52"><a></a>  <span class="fu">findJobs</span>(), </span>
+<span id="cb13-53"><a></a>  <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus =</span> <span class="dv">1</span>, <span class="at">walltime =</span> <span class="st">"8:00:00"</span>, <span class="at">memory =</span> <span class="st">"32G"</span>)</span>
+<span id="cb13-54"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>End up with 18 jobs.</p>
 </section>
@@ -876,118 +898,151 @@
 <section id="example-2-predicting-future-covid-cases-1" class="slide level2">
 <h2>Example 2: Predicting future COVID cases</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>fcasters <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>))</span>
-<span id="cb13-2"><a></a><span class="cf">for</span> (fcaster <span class="cf">in</span> fcasters) <span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>, fcaster))</span>
-<span id="cb13-3"><a></a>registry_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"forecast-experiments"</span>)</span>
-<span id="cb13-4"><a></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"common-pars.R"</span>))</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a><span class="co"># Setup the data ----------------------------------------------------</span></span>
-<span id="cb13-7"><a></a>reg <span class="ot">&lt;-</span> <span class="fu">makeExperimentRegistry</span>(</span>
-<span id="cb13-8"><a></a>  registry_path,</span>
-<span id="cb13-9"><a></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"covidcast"</span>),</span>
-<span id="cb13-10"><a></a>  <span class="at">source =</span> <span class="fu">c</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>, fcasters), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"common-pars.R"</span>))</span>
-<span id="cb13-11"><a></a>)</span>
-<span id="cb13-12"><a></a></span>
-<span id="cb13-13"><a></a>grab_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, forecast_date, ...) {</span>
-<span id="cb13-14"><a></a>  dat <span class="ot">&lt;-</span> <span class="fu">covidcast_signals</span>(</span>
-<span id="cb13-15"><a></a>    data_sources, signals, <span class="at">as_of =</span> forecast_date, </span>
-<span id="cb13-16"><a></a>    <span class="at">geo_type =</span> geo_type, <span class="at">start_day =</span> <span class="st">"2020-04-15"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-17"><a></a>    <span class="fu">aggregate_signals</span>(<span class="at">format =</span> <span class="st">"wide"</span>) </span>
-<span id="cb13-18"><a></a>  <span class="fu">names</span>(dat)[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"value"</span>, <span class="st">"num"</span>, <span class="st">"covariate"</span>) <span class="co"># assumes 2 signals</span></span>
-<span id="cb13-19"><a></a>  dat <span class="sc">%&gt;%</span> </span>
-<span id="cb13-20"><a></a>    <span class="fu">filter</span>(<span class="sc">!</span>(geo_value <span class="sc">%in%</span> drop_geos)) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-21"><a></a>    <span class="fu">group_by</span>(geo_value) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-22"><a></a>    <span class="fu">arrange</span>(time_value)</span>
-<span id="cb13-23"><a></a>}</span>
-<span id="cb13-24"><a></a><span class="fu">addProblem</span>(<span class="st">"covidcast_proper"</span>, <span class="at">fun =</span> grab_data, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-25"><a></a></span>
-<span id="cb13-26"><a></a><span class="co"># Algorithm wrappers -----------------------------------------------------</span></span>
-<span id="cb13-27"><a></a>baseline <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-28"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-29"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-30"><a></a>    <span class="fu">group_modify</span>(prob_baseline, ...)</span>
-<span id="cb13-31"><a></a>}</span>
-<span id="cb13-32"><a></a>ar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-33"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-34"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-35"><a></a>    <span class="fu">group_modify</span>(prob_ar, ...)</span>
-<span id="cb13-36"><a></a>}</span>
-<span id="cb13-37"><a></a>qar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-38"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-39"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-40"><a></a>    <span class="fu">group_modify</span>(quant_ar, ...)</span>
-<span id="cb13-41"><a></a>}</span>
-<span id="cb13-42"><a></a>gam <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-43"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-44"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span></span>
-<span id="cb13-45"><a></a>    <span class="fu">group_modify</span>(safe_prob_gam_ar, ...)</span>
-<span id="cb13-46"><a></a>}</span>
-<span id="cb13-47"><a></a>ar_cov <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-48"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-49"><a></a>    <span class="fu">group_modify</span>(prob_ar_cov, ...)</span>
-<span id="cb13-50"><a></a>}</span>
-<span id="cb13-51"><a></a>joint <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-52"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-53"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-54"><a></a>    <span class="fu">joint_ar</span>(...)</span>
-<span id="cb13-55"><a></a>}</span>
-<span id="cb13-56"><a></a>corrected_ar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
-<span id="cb13-57"><a></a>  instance <span class="sc">%&gt;%</span> </span>
-<span id="cb13-58"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, num) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-59"><a></a>    <span class="fu">rename</span>(<span class="at">value =</span> num) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-60"><a></a>    <span class="fu">corrections_single_signal</span>(cparams) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-61"><a></a>    <span class="fu">group_modify</span>(prob_ar, ...)</span>
-<span id="cb13-62"><a></a>}</span>
-<span id="cb13-63"><a></a></span>
-<span id="cb13-64"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"baseline"</span>, baseline)</span>
-<span id="cb13-65"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"ar"</span>, ar)</span>
-<span id="cb13-66"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"qar"</span>, qar)</span>
-<span id="cb13-67"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"gam"</span>, gam)</span>
-<span id="cb13-68"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"ar_cov"</span>, ar_cov)</span>
-<span id="cb13-69"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"joint_ar"</span>, joint)</span>
-<span id="cb13-70"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"corrections"</span>, corrected_ar)</span>
-<span id="cb13-71"><a></a></span>
-<span id="cb13-72"><a></a><span class="co"># Experimental design -----------------------------------------------------</span></span>
-<span id="cb13-73"><a></a>problem_design <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">covidcast_proper =</span> <span class="fu">data.frame</span>(<span class="at">forecast_date =</span> forecast_dates))</span>
-<span id="cb13-74"><a></a>algorithm_design <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb13-75"><a></a>  <span class="at">baseline =</span> <span class="fu">CJ</span>(<span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), <span class="at">ahead =</span> aheads),</span>
-<span id="cb13-76"><a></a>  <span class="at">ar =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-77"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), </span>
-<span id="cb13-78"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
-<span id="cb13-79"><a></a>  ),</span>
-<span id="cb13-80"><a></a>  <span class="at">qar =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-81"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
-<span id="cb13-82"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
-<span id="cb13-83"><a></a>  ),</span>
-<span id="cb13-84"><a></a>  <span class="at">gam =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-85"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
-<span id="cb13-86"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads, <span class="at">df =</span> gam_df</span>
-<span id="cb13-87"><a></a>  ),</span>
-<span id="cb13-88"><a></a>  <span class="at">ar_cov =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-89"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), </span>
-<span id="cb13-90"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
-<span id="cb13-91"><a></a>  ),</span>
-<span id="cb13-92"><a></a>  <span class="at">joint_ar =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-93"><a></a>    <span class="at">train_window =</span> joint_train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(joint_train_windows), </span>
-<span id="cb13-94"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
-<span id="cb13-95"><a></a>  ),</span>
-<span id="cb13-96"><a></a>  <span class="at">corrections =</span> <span class="fu">CJ</span>(</span>
-<span id="cb13-97"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
-<span id="cb13-98"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
-<span id="cb13-99"><a></a>  )</span>
-<span id="cb13-100"><a></a>)</span>
-<span id="cb13-101"><a></a></span>
-<span id="cb13-102"><a></a><span class="fu">addExperiments</span>(problem_design, algorithm_design)</span>
-<span id="cb13-103"><a></a>ids <span class="ot">&lt;-</span> <span class="fu">unwrap</span>(<span class="fu">getJobPars</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-104"><a></a>  <span class="fu">select</span>(job.id, forecast_date) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-105"><a></a>  <span class="fu">mutate</span>(<span class="at">chunk =</span> <span class="fu">as.integer</span>(<span class="fu">as.factor</span>(forecast_date))) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-106"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>forecast_date)</span>
-<span id="cb13-107"><a></a></span>
-<span id="cb13-108"><a></a><span class="do">## ~13000 jobs, we don't want to submit that many since they run fast</span></span>
-<span id="cb13-109"><a></a><span class="do">## Chunk them into groups by forecast_date (to download once for the group)</span></span>
-<span id="cb13-110"><a></a><span class="do">## Results in 68 chunks</span></span>
-<span id="cb13-111"><a></a></span>
-<span id="cb13-112"><a></a><span class="fu">submitJobs</span>(ids, <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus =</span> <span class="dv">1</span>, <span class="at">walltime =</span> <span class="st">"4:00:00"</span>, <span class="at">memory =</span> <span class="st">"16G"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>fcasters <span class="ot">&lt;-</span> <span class="fu">list.files</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>))</span>
+<span id="cb14-2"><a></a><span class="cf">for</span> (fcaster <span class="cf">in</span> fcasters) <span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>, fcaster))</span>
+<span id="cb14-3"><a></a>registry_path <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"forecast-experiments"</span>)</span>
+<span id="cb14-4"><a></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"common-pars.R"</span>))</span>
+<span id="cb14-5"><a></a></span>
+<span id="cb14-6"><a></a><span class="co"># Setup the data ----------------------------------------------------</span></span>
+<span id="cb14-7"><a></a>reg <span class="ot">&lt;-</span> <span class="fu">makeExperimentRegistry</span>(</span>
+<span id="cb14-8"><a></a>  registry_path,</span>
+<span id="cb14-9"><a></a>  <span class="at">packages =</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"covidcast"</span>),</span>
+<span id="cb14-10"><a></a>  <span class="at">source =</span> <span class="fu">c</span>(</span>
+<span id="cb14-11"><a></a>    here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"forecasters"</span>, fcasters), </span>
+<span id="cb14-12"><a></a>    here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"common-pars.R"</span>)</span>
+<span id="cb14-13"><a></a>  )</span>
+<span id="cb14-14"><a></a>)</span>
+<span id="cb14-15"><a></a></span>
+<span id="cb14-16"><a></a>grab_data <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, forecast_date, ...) {</span>
+<span id="cb14-17"><a></a>  dat <span class="ot">&lt;-</span> <span class="fu">covidcast_signals</span>(</span>
+<span id="cb14-18"><a></a>    data_sources, signals, <span class="at">as_of =</span> forecast_date, </span>
+<span id="cb14-19"><a></a>    <span class="at">geo_type =</span> geo_type, <span class="at">start_day =</span> <span class="st">"2020-04-15"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-20"><a></a>    <span class="fu">aggregate_signals</span>(<span class="at">format =</span> <span class="st">"wide"</span>) </span>
+<span id="cb14-21"><a></a>  <span class="fu">names</span>(dat)[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"value"</span>, <span class="st">"num"</span>, <span class="st">"covariate"</span>) <span class="co"># assumes 2 signals</span></span>
+<span id="cb14-22"><a></a>  dat <span class="sc">%&gt;%</span> </span>
+<span id="cb14-23"><a></a>    <span class="fu">filter</span>(<span class="sc">!</span>(geo_value <span class="sc">%in%</span> drop_geos)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-24"><a></a>    <span class="fu">group_by</span>(geo_value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-25"><a></a>    <span class="fu">arrange</span>(time_value)</span>
+<span id="cb14-26"><a></a>}</span>
+<span id="cb14-27"><a></a><span class="fu">addProblem</span>(<span class="st">"covidcast_proper"</span>, <span class="at">fun =</span> grab_data, <span class="at">cache =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-28"><a></a></span>
+<span id="cb14-29"><a></a><span class="co"># Algorithm wrappers -----------------------------------------------------</span></span>
+<span id="cb14-30"><a></a>baseline <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-31"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-32"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-33"><a></a>    <span class="fu">group_modify</span>(prob_baseline, ...)</span>
+<span id="cb14-34"><a></a>}</span>
+<span id="cb14-35"><a></a>ar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-36"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-37"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-38"><a></a>    <span class="fu">group_modify</span>(prob_ar, ...)</span>
+<span id="cb14-39"><a></a>}</span>
+<span id="cb14-40"><a></a>qar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-41"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-42"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-43"><a></a>    <span class="fu">group_modify</span>(quant_ar, ...)</span>
+<span id="cb14-44"><a></a>}</span>
+<span id="cb14-45"><a></a>gam <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-46"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-47"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span></span>
+<span id="cb14-48"><a></a>    <span class="fu">group_modify</span>(safe_prob_gam_ar, ...)</span>
+<span id="cb14-49"><a></a>}</span>
+<span id="cb14-50"><a></a>ar_cov <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-51"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-52"><a></a>    <span class="fu">group_modify</span>(prob_ar_cov, ...)</span>
+<span id="cb14-53"><a></a>}</span>
+<span id="cb14-54"><a></a>joint <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-55"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-56"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, value) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-57"><a></a>    <span class="fu">joint_ar</span>(...)</span>
+<span id="cb14-58"><a></a>}</span>
+<span id="cb14-59"><a></a>corrected_ar <span class="ot">&lt;-</span> <span class="cf">function</span>(data, job, instance, ...) {</span>
+<span id="cb14-60"><a></a>  instance <span class="sc">%&gt;%</span> </span>
+<span id="cb14-61"><a></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(geo_value, time_value, num) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-62"><a></a>    <span class="fu">rename</span>(<span class="at">value =</span> num) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-63"><a></a>    <span class="fu">corrections_single_signal</span>(cparams) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-64"><a></a>    <span class="fu">group_modify</span>(prob_ar, ...)</span>
+<span id="cb14-65"><a></a>}</span>
+<span id="cb14-66"><a></a></span>
+<span id="cb14-67"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"baseline"</span>, baseline)</span>
+<span id="cb14-68"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"ar"</span>, ar)</span>
+<span id="cb14-69"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"qar"</span>, qar)</span>
+<span id="cb14-70"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"gam"</span>, gam)</span>
+<span id="cb14-71"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"ar_cov"</span>, ar_cov)</span>
+<span id="cb14-72"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"joint_ar"</span>, joint)</span>
+<span id="cb14-73"><a></a><span class="fu">addAlgorithm</span>(<span class="st">"corrections"</span>, corrected_ar)</span>
+<span id="cb14-74"><a></a></span>
+<span id="cb14-75"><a></a><span class="co"># Experimental design -----------------------------------------------------</span></span>
+<span id="cb14-76"><a></a>problem_design <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">covidcast_proper =</span> <span class="fu">data.frame</span>(<span class="at">forecast_date =</span> forecast_dates))</span>
+<span id="cb14-77"><a></a>algorithm_design <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb14-78"><a></a>  <span class="at">baseline =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-79"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), <span class="at">ahead =</span> aheads</span>
+<span id="cb14-80"><a></a>  ),</span>
+<span id="cb14-81"><a></a>  <span class="at">ar =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-82"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), </span>
+<span id="cb14-83"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
+<span id="cb14-84"><a></a>  ),</span>
+<span id="cb14-85"><a></a>  <span class="at">qar =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-86"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
+<span id="cb14-87"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
+<span id="cb14-88"><a></a>  ),</span>
+<span id="cb14-89"><a></a>  <span class="at">gam =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-90"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
+<span id="cb14-91"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads, <span class="at">df =</span> gam_df</span>
+<span id="cb14-92"><a></a>  ),</span>
+<span id="cb14-93"><a></a>  <span class="at">ar_cov =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-94"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows), </span>
+<span id="cb14-95"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
+<span id="cb14-96"><a></a>  ),</span>
+<span id="cb14-97"><a></a>  <span class="at">joint_ar =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-98"><a></a>    <span class="at">train_window =</span> joint_train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(joint_train_windows), </span>
+<span id="cb14-99"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
+<span id="cb14-100"><a></a>  ),</span>
+<span id="cb14-101"><a></a>  <span class="at">corrections =</span> <span class="fu">CJ</span>(</span>
+<span id="cb14-102"><a></a>    <span class="at">train_window =</span> train_windows, <span class="at">min_train_window =</span> <span class="fu">min</span>(train_windows),</span>
+<span id="cb14-103"><a></a>    <span class="at">lags =</span> lags_list, <span class="at">ahead =</span> aheads</span>
+<span id="cb14-104"><a></a>  )</span>
+<span id="cb14-105"><a></a>)</span>
+<span id="cb14-106"><a></a></span>
+<span id="cb14-107"><a></a><span class="fu">addExperiments</span>(problem_design, algorithm_design)</span>
+<span id="cb14-108"><a></a>ids <span class="ot">&lt;-</span> <span class="fu">unwrap</span>(<span class="fu">getJobPars</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-109"><a></a>  <span class="fu">select</span>(job.id, forecast_date) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-110"><a></a>  <span class="fu">mutate</span>(<span class="at">chunk =</span> <span class="fu">as.integer</span>(<span class="fu">as.factor</span>(forecast_date))) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-111"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>forecast_date)</span>
+<span id="cb14-112"><a></a></span>
+<span id="cb14-113"><a></a><span class="do">## ~13000 jobs, we don't want to submit that many since they run fast</span></span>
+<span id="cb14-114"><a></a><span class="do">## Chunk them into groups by forecast_date (to download once for the group)</span></span>
+<span id="cb14-115"><a></a><span class="do">## Results in 68 chunks</span></span>
+<span id="cb14-116"><a></a></span>
+<span id="cb14-117"><a></a><span class="fu">submitJobs</span>(</span>
+<span id="cb14-118"><a></a>  ids, </span>
+<span id="cb14-119"><a></a>  <span class="at">resources =</span> <span class="fu">list</span>(<span class="at">ncpus =</span> <span class="dv">1</span>, <span class="at">walltime =</span> <span class="st">"4:00:00"</span>, <span class="at">memory =</span> <span class="st">"16G"</span>)</span>
+<span id="cb14-120"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
+<div class="flex">
+<section id="benefits-of-this-workflow" class="w-50">
+<h3>Benefits of this workflow:</h3>
+<ul>
+<li>Don’t lock up your computer</li>
+<li>Stuff runs much faster</li>
+<li>Can easily scale up to many jobs</li>
+<li>Logs are stored for debugging</li>
+<li>Forces you to think about the <span class="secondary">design</span></li>
+<li>No overhead to store results</li>
+<li>Easy to add more experiments later, adjust parameters, etc.</li>
+</ul>
+</section>
+<section id="costs" class="w-50">
+<h3>Costs:</h3>
+<ul>
+<li>I only know how to do <em>this</em> in <code>R</code></li>
+<li>Overhead of moving between machines</li>
+<li>Some headaches to understand the syntax</li>
+</ul>
+</section>
 </div>
 
 <div class="quarto-auto-generated-content">
@@ -1333,6 +1388,11 @@
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
               // target, if specified
               link.setAttribute("target", "_blank");
               if (link.getAttribute("rel") === null) {
@@ -1378,7 +1438,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
