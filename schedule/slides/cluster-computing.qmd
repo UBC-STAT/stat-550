@@ -15,7 +15,7 @@ metadata-files:
 
 1. Department VM
 1. [UBC ARC Sockeye](https://arc.ubc.ca/ubc-arc-sockeye)
-1. [Compute Canada](https://docs.computecanada.ca/wiki/Compute_Canada_Documentation)
+1. [Digital Research Alliance of Canada](https://docs.alliancecan.ca/wiki/Technical_documentation)
 
 
 I've only used 1 and 3. I mainly use 3.
@@ -29,7 +29,6 @@ As far as I know, access for students requires "faculty" support
 1. Possible you can access without a faculty PI.
 1. Email your advisor to ask for an account.
 
-. . .
 
 ### The rest of this will focus on 3.
 
@@ -43,7 +42,7 @@ As far as I know, access for students requires "faculty" support
 
 2. (optional) helpful to have ftp client. (Cyberduck)
 
-3. [Globus Connect](https://www.globus.org/globus-connect-personal). File transfer approved by CC.
+3. [Globus Connect](https://www.globus.org/globus-connect-personal). File transfer approved by DRAC
 :::
 
 ::: {.column width="50%"}
@@ -52,7 +51,7 @@ Useful CL commands
 ```{bash, eval=FALSE, echo=TRUE}
 cd ~/path/to/directory
 
-cp file/to/copy.txt duplicated/as/copy1.txt
+cp file/to/copy.txt copied/to/copy1.txt
 
 rm file/to/delete.txt
 
@@ -70,7 +69,7 @@ ls -a # list all files
 Login to a system:
 
 ```{bash, eval=FALSE, echo=TRUE}
-ssh dajmcdon@cedar.computecanada.ca
+ssh dajmcdon@cedar.alliancecan.ca
 ```
 
 * Upon login, you're on a "head" or "login" node. 
@@ -85,7 +84,7 @@ If you're doing work for school: run it on one of these machines.
 :::
 
 * Yes, there is overhead to push data over and pull results back.
-* But CC/Sockeye is much faster than your machine.
+* But DRAC/Sockeye is much faster than your machine.
 * And this won't lock up your laptop for 4 hours while you run the job.
 * It's also a good experience.
 * You can log out and leave the job running. Just log back in to see if it's done (you should _always_ have some idea how long it will take)
@@ -101,11 +100,11 @@ If you're doing work for school: run it on one of these machines.
 
 * The command is `module load r` or `module load sas`
 
-* If you find yourself using the same [modules](https://docs.computecanada.ca/wiki/Utiliser_des_modules/en#Module_collections_.28Lmod_only.29) all the time:
+* If you find yourself using the same [modules](https://docs.alliancecan.ca/wiki/Utiliser_des_modules/en) all the time:
 
 
 ```{bash, eval=FALSE, echo=TRUE}
-module load StdEnv/2020 r gurobi python # stuff I use
+module load StdEnv/2023 r gurobi python # stuff I use
 
 module save my_modules # save loaded modules
 
@@ -116,24 +115,15 @@ module restore my_modules # on login, load the usual set
 ## Running something interactively
 
 1. Login
-
 2. Load modules
-
 3. Request interactive compute
 
 ```{bash, eval=FALSE, echo=TRUE}
 salloc --time=1:0:0 --ntasks=1 --account=def-dajmcdon --mem-per-cpu=4096M
+# allocate 1 hour on 1 cpu with 4Gb RAM
 ```
 
-This says: 
-
-* Allocate 1 hour
-
-* On 1 CPU
-
 * For the user `def-dajmcdon` (that's me, accounts start with `def-`)
-
-* 4GB of RAM
 
 Then I would start R
 
@@ -156,7 +146,7 @@ And run whatever I want. If it takes more than an  hour or needs more than 4GB o
 
 Although, syzygy has little memory and little storage, so it won't do intensive tasks 
 
-_I think your home dir is limited to 1GB_
+> I think your home dir is limited to 1GB
 
 
 
@@ -173,23 +163,23 @@ _I think your home dir is limited to 1GB_
 * Dataset is about 10GB
 * Peak memory usage during analysis is about 24GB
 * Can't do this on my computer
-* Want to offload onto CC.ca
+* Want to offload onto DRAC
 :::
 
-1. Write a `R`/`python` script that does the whole analysis and saves the output.
+1. Write a `R` / `python` script that does the whole analysis and saves the output.
 
-2. You need to ask CC to run the script for you.
+2. You need to ask DRAC to run the script for you.
 
 
 ## The scheduler
 
-* While you can log in to CC and "do stuff"
-* Resources are limited.
+* You *can* log in to DRAC and "do stuff"
+* But resources are limited.
 * There's a process that determines who gets resources when.
 * Technically the `salloc` command we used before requested some resources.
 * It may "sit" until the resources you want are available, but probably not long.
 * Anything else has to go through the scheduler.
-* Compute Canada uses the `slurm` scheduler
+* DRAC uses the `slurm` scheduler
 
 
 ## Example script
@@ -210,7 +200,7 @@ Rscript -e 'source("dlbcl-nocv.R")'
 ```
 
 * This asks for 10 hours of compute time with 32GB of memory
-* The `job-name`/`output`/`error` fields are for convenience. 
+* The `job-name` / `output` / `error` fields are for convenience. 
 * If unspecified, I'll end up with files named things like `jobid60607-60650934.out`
 
 
@@ -271,19 +261,28 @@ scancel -t PENDING -u $USER # cancel all your pending jobs
 #PBS -m abe
 #PBS -n ClusterPermute 
 #PBS -j oe 
-
 mpirun -np 64 -machinefile $PBS_NODEFILE R CMD BATCH ClusterPermute.R
 ```
 
-* Torque is a different scheduler. UBC ARC Sockeye uses Torque.
-
-* Looks much like Slurm.
+* Torque is a different scheduler. UBC ARC Sockeye uses Torque. Looks much like Slurm.
 
 * Here, `ClusterPermute.R` uses `Rmpi` to do "parallel `lapply`"
 
 * So I asked for 8 processors on each of 8 nodes.
 
-. . .
+## Example of the bad parallelism
+
+[Torque script]{.secondary}
+
+```{bash, echo=TRUE, eval=FALSE}
+#!/bin/bash  
+#PBS -l nodes=8:ppn=8,walltime=200:00:00
+#PBS -m abe
+#PBS -n ClusterPermute 
+#PBS -j oe 
+mpirun -np 64 -machinefile $PBS_NODEFILE R CMD BATCH ClusterPermute.R
+```
+
 
 [Problem]{.secondary}
 
@@ -291,7 +290,7 @@ mpirun -np 64 -machinefile $PBS_NODEFILE R CMD BATCH ClusterPermute.R
 
 * This often takes a while, sometimes days.
 
-* But the code doesn't *need* all those things to happen *at the same time* because the jobs don't interact.
+* But the jobs don't  *need* those things to happen *at the same time*.
 
 
 ## `{batchtools}`
@@ -303,13 +302,13 @@ mpirun -np 64 -machinefile $PBS_NODEFILE R CMD BATCH ClusterPermute.R
 
 - `{batchtools}` does this for you, all in `R`
 
-    1. It automates writing/submitting `slurm`/`torque` scripts.
+    1. It automates writing/submitting `slurm` / `torque` scripts.
     2. It automatically stores output, and makes it easy to collect.
     3. It generates lots of jobs.
     4. All this from `R` directly.
     
 
-It's easy to port across machines/schedulers.
+It's easy to port across machines / schedulers.
 
 I can test parts (or even run) it on my machine without making changes for the cluster.
 
@@ -324,7 +323,7 @@ I can test parts (or even run) it on my machine without making changes for the c
 
 ```{r, echo=TRUE, eval=FALSE}
 # ~/.batchtools.conf.R
-cluster.functions = makeClusterFunctionsSlurm()
+cluster.functions <- makeClusterFunctionsSlurm()
 ```
 
 
@@ -379,7 +378,10 @@ Rscript -e 'batchtools::doJobCollection("<%= uri %>")'
 When I'm ready to run, I'll call something like:
 
 ```{r, echo=TRUE, eval=FALSE}
-batchtools::submitJobs(job.ids, resources = list(ncpus=1, walltime="24:00:00", memory="32G"))
+batchtools::submitJobs(
+  job.ids, 
+  resources = list(ncpus=1, walltime="24:00:00", memory="32G")
+)
 ```
 
 
@@ -405,7 +407,7 @@ or the
 # Do it {background-color="#e98a15"}
 
 
-## Example 1: Use genetics data to viral load
+## Example 1: Use genetics data to predict viral load
 
 * An "extra" example in a methods paper to appease reviewers
 * Method is: 
@@ -421,7 +423,7 @@ or the
 * Want to do CV to choose, and then use those on the whole data, describe selected genes.
 
 
-## Example 1: Use genetics data to viral load
+## Example 1: Use genetics data to predict viral load
 
 
 ```{r, echo=TRUE, eval=FALSE}
@@ -432,22 +434,28 @@ x <- readRDS(here::here("suffpcr-covid", "covid_x.rds"))
 y <- readRDS(here::here("suffpcr-covid", "covid_y.rds"))
 
 subsample = function(data, job, ratio, ...) {
-  n = nrow(data$x)
-  train = sample(n, floor(n * ratio))
-  test = setdiff(seq_len(n), train)
+  n <- nrow(data$x)
+  train <- sample(n, floor(n * ratio))
+  test <- setdiff(seq_len(n), train)
   list(test = test, train = train)
 }
 
-addProblem("cv", data = list(x=x, y=y), fun = subsample)
-addProblem("full", data = list(x=x, y=y))
+addProblem("cv", data = list(x = x, y = y), fun = subsample)
+addProblem("full", data = list(x = x, y = y))
 
 addAlgorithm(
-  "spcr_cv", 
-  fun = function(job, data, instance,...) {
-    fit <- suffpcr(data$x[instance$train,], data$y[instance$train], lambda_min = 0, lambda_max = 1, ...)
+  "spcr_cv",
+  fun = function(job, data, instance, ...) { # args are required
+    fit <- suffpcr(
+      data$x[instance$train, ], data$y[instance$train], 
+      lambda_min = 0, lambda_max = 1, ...
+    )
     valid_err <- colMeans(
-      (data$y[instance$test] - as.matrix(predict(fit, newdata = data$x[instance$test,])))^2, 
-      na.rm=TRUE
+      (
+        data$y[instance$test] - 
+         as.matrix(predict(fit, newdata = data$x[instance$test, ]))
+      )^2,
+      na.rm = TRUE
     )
     return(list(fit = fit, valid_err = valid_err))
   }
@@ -455,17 +463,24 @@ addAlgorithm(
 
 addAlgorithm(
   "spcr_full",
-  fun = function(job, data, instance,...) suffpcr(data$x, data$y, lambda_max = 1, lambda_min = 0, ...)
+  fun = function(job, data, instance, ...) {
+    suffpcr(data$x, data$y, lambda_max = 1, lambda_min = 0, ...)
+  }
 )
 
+## Experimental design
 pdes_cv <- list(cv = data.frame(ratio = .75))
 pdes_full <- list(full = data.frame())
 ades_cv <- list(spcr_cv = data.frame(d = c(3, 5, 15)))
 ades_full <- list(spcr_full = data.frame(d = c(3, 5, 15)))
+
 addExperiments(pdes_cv, ades_cv, repls = 5L)
 addExperiments(pdes_full, ades_full)
 
-submitJobs(findJobs(), resources = list(ncpus = 1, walltime = "8:00:00", memory = "32G"))
+submitJobs(
+  findJobs(), 
+  resources = list(ncpus = 1, walltime = "8:00:00", memory = "32G")
+)
 ```
 
 
@@ -498,7 +513,10 @@ source(here::here("code", "common-pars.R"))
 reg <- makeExperimentRegistry(
   registry_path,
   packages = c("tidyverse", "covidcast"),
-  source = c(here::here("code", "forecasters", fcasters), here::here("code", "common-pars.R"))
+  source = c(
+    here::here("code", "forecasters", fcasters), 
+    here::here("code", "common-pars.R")
+  )
 )
 
 grab_data <- function(data, job, forecast_date, ...) {
@@ -563,7 +581,9 @@ addAlgorithm("corrections", corrected_ar)
 # Experimental design -----------------------------------------------------
 problem_design <- list(covidcast_proper = data.frame(forecast_date = forecast_dates))
 algorithm_design <- list(
-  baseline = CJ(train_window = train_windows, min_train_window = min(train_windows), ahead = aheads),
+  baseline = CJ(
+    train_window = train_windows, min_train_window = min(train_windows), ahead = aheads
+  ),
   ar = CJ(
     train_window = train_windows, min_train_window = min(train_windows), 
     lags = lags_list, ahead = aheads
@@ -600,6 +620,35 @@ ids <- unwrap(getJobPars()) %>%
 ## Chunk them into groups by forecast_date (to download once for the group)
 ## Results in 68 chunks
 
-submitJobs(ids, resources = list(ncpus = 1, walltime = "4:00:00", memory = "16G"))
+submitJobs(
+  ids, 
+  resources = list(ncpus = 1, walltime = "4:00:00", memory = "16G")
+)
 ```
 
+## Takeaways
+
+::: flex
+::: w-50
+
+### Benefits of this workflow:
+
+* Don't lock up your computer
+* Stuff runs much faster
+* Can easily scale up to many jobs
+* Logs are stored for debugging
+* Forces you to think about the [design]{.secondary}
+* No overhead to store results
+* Easy to add more experiments later, adjust parameters, etc.
+
+:::
+
+::: w-50
+### Costs:
+
+* I only know how to do *this* in `R`
+* Overhead of moving between machines
+* Some headaches to understand the syntax
+
+:::
+:::
