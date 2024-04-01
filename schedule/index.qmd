@@ -35,6 +35,7 @@ knitr::kable(tib)
 * [Bootstrap](slides/bootstrap.qmd)
 * [Time series](slides/time-series.qmd)
 * [Cluster computing](slides/cluster-computing.qmd)
+* [Model selection](slides/models-and-regularization.qmd)
 * [Skills for graduate students](slides/grad-school.qmd)
 
 ## Handouts

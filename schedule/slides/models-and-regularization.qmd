@@ -1,5 +1,5 @@
 ---
-lecture: "Statistical models and regularization"
+lecture: "Statistical models and model selection"
 format: revealjs
 metadata-files: 
   - _metadata.yml
