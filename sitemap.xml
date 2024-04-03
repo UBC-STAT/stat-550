@@ -2,62 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/unit-tests.html</loc>
-    <lastmod>2024-04-01T21:32:22.547Z</lastmod>
+    <lastmod>2024-04-03T15:25:02.592Z</lastmod>
   </url>
   <url>
     <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/syllabus.html</loc>
-    <lastmod>2024-04-01T21:32:22.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/pca-intro.html</loc>
-    <lastmod>2024-04-01T21:32:22.545Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/grad-school.html</loc>
-    <lastmod>2024-04-01T21:32:22.543Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/cluster-computing.html</loc>
-    <lastmod>2024-04-01T21:32:22.526Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/handouts/report-formatting.html</loc>
-    <lastmod>2024-04-01T21:32:22.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/index.html</loc>
-    <lastmod>2024-04-01T21:32:22.524Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/index.html</loc>
-    <lastmod>2024-04-01T21:32:22.522Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/syllabus.html</loc>
-    <lastmod>2024-04-01T21:32:22.548Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/handouts/reference-books.html</loc>
-    <lastmod>2024-04-01T21:32:22.523Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/bootstrap.html</loc>
-    <lastmod>2024-04-01T21:32:22.525Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/git.html</loc>
-    <lastmod>2024-04-01T21:32:22.543Z</lastmod>
-  </url>
-  <url>
-    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/organization.html</loc>
-    <lastmod>2024-04-01T21:32:22.545Z</lastmod>
+    <lastmod>2024-04-03T15:25:02.590Z</lastmod>
   </url>
   <url>
     <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/presentations.html</loc>
-    <lastmod>2024-04-01T21:32:22.545Z</lastmod>
+    <lastmod>2024-04-03T15:25:02.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/organization.html</loc>
+    <lastmod>2024-04-03T15:25:02.588Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/grad-school.html</loc>
+    <lastmod>2024-04-03T15:25:02.586Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/cluster-computing.html</loc>
+    <lastmod>2024-04-03T15:25:02.562Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/handouts/report-formatting.html</loc>
+    <lastmod>2024-04-03T15:25:02.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/index.html</loc>
+    <lastmod>2024-04-03T15:25:02.560Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/index.html</loc>
+    <lastmod>2024-04-03T15:25:02.557Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/syllabus.html</loc>
+    <lastmod>2024-04-03T15:25:02.592Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/handouts/reference-books.html</loc>
+    <lastmod>2024-04-03T15:25:02.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/bootstrap.html</loc>
+    <lastmod>2024-04-03T15:25:02.562Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/git.html</loc>
+    <lastmod>2024-04-03T15:25:02.585Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/model-selection.html</loc>
+    <lastmod>2024-04-03T15:25:02.588Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/pca-intro.html</loc>
+    <lastmod>2024-04-03T15:25:02.589Z</lastmod>
+  </url>
+  <url>
+    <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/regularization-lm.html</loc>
+    <lastmod>2024-04-03T15:25:02.590Z</lastmod>
   </url>
   <url>
     <loc>https://UBC-STAT.github.io/stat-550/schedule/slides/time-series.html</loc>
-    <lastmod>2024-04-01T21:32:22.547Z</lastmod>
+    <lastmod>2024-04-03T15:25:02.592Z</lastmod>
   </url>
 </urlset>

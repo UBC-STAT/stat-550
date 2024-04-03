@@ -4,7 +4,7 @@
     "href": "schedule/slides/unit-tests.html#section",
     "title": "UBC Stat550",
     "section": "Unit tests and avoiding 🪲🪲",
-    "text": "Unit tests and avoiding 🪲🪲\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Unit tests and avoiding 🪲🪲\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#i-urge-you-to-consult",
@@ -123,7 +123,7 @@
     "href": "schedule/slides/unit-tests.html#r-example",
     "title": "UBC Stat550",
     "section": "R example",
-    "text": "R example\n\ntestthat::test_local(here::here(\"../../../../../../Delphi/smoothqr/\"))\n\n✔ | F W  S  OK | Context\n\n⠏ |          0 | smooth-rq                                                      \n✔ |         12 | smooth-rq\n\n══ Results ═════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 12 ]"
+    "text": "R example\n\ntestthat::test_local(here::here(\"../../../../../../Delphi/smoothqr/\"))\n\n✔ | F W  S  OK | Context\n\n⠏ |          0 | smooth-rq                                                      \n⠴ |          6 | smooth-rq                                                      \n✔ |         12 | smooth-rq\n\n══ Results ═════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 12 ]"
   },
   {
     "objectID": "schedule/slides/unit-tests.html#what-do-i-test",
@@ -312,7 +312,7 @@
     "href": "schedule/slides/syllabus.html#section",
     "title": "UBC Stat550",
     "section": "Introduction and Second half pivot",
-    "text": "Introduction and Second half pivot\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Introduction and Second half pivot\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/syllabus.html#about-me",
@@ -378,116 +378,333 @@
     "text": "Getting setup\n\nAdd to Slack Channel: https://ubc-stat.slack.com/archives/C04QUDNJG9X\nGithub account: https://github.com/\nAdd to the Github Org — tell me your account\nRStudio synchronization\n\n\n\n\nUBC Stat 550 - 2024"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#section",
-    "href": "schedule/slides/pca-intro.html#section",
+    "objectID": "schedule/slides/presentations.html#section",
+    "href": "schedule/slides/presentations.html#section",
     "title": "UBC Stat550",
-    "section": "Principal components analysis",
-    "text": "Principal components analysis\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Giving presentations",
+    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#representation-learning",
-    "href": "schedule/slides/pca-intro.html#representation-learning",
+    "objectID": "schedule/slides/presentations.html#structure",
+    "href": "schedule/slides/presentations.html#structure",
     "title": "UBC Stat550",
-    "section": "Representation learning",
-    "text": "Representation learning\nRepresentation learning is the idea that performance of ML methods is highly dependent on the choice of representation\nFor this reason, much of ML is geared towards transforming the data into the relevant features and then using these as inputs\nThis idea is as old as statistics itself, really,\nHowever, the idea is constantly revisited in a variety of fields and contexts\nCommonly, these learned representations capture low-level information like overall shapes\nIt is possible to quantify this intuition for PCA at least\n\n\nGoal\n\nTransform \\(\\mathbf{X}\\in \\R^{n\\times p}\\) into \\(\\mathbf{Z} \\in \\R^{n \\times ?}\\)\n\n\n?-dimension can be bigger (feature creation) or smaller (dimension reduction) than \\(p\\)"
+    "section": "Structure",
+    "text": "Structure\n\nStrategy (applies to papers too)\nDos and don’ts\nPersonal preferences"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#pca",
-    "href": "schedule/slides/pca-intro.html#pca",
+    "objectID": "schedule/slides/presentations.html#genre",
+    "href": "schedule/slides/presentations.html#genre",
     "title": "UBC Stat550",
-    "section": "PCA",
-    "text": "PCA\nPrincipal components analysis (PCA) is a dimension reduction technique\nIt solves various equivalent optimization problems\n(Maximize variance, minimize \\(\\ell_2\\) distortions, find closest subspace of a given rank, \\(\\ldots\\))\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]"
+    "section": "Genre",
+    "text": "Genre\nTalks take many forms (like papers)\n\nDepartment seminar\nShort conference presentation\nClass lecture\n...\n\nCalibrate your talk to the Genre and the Audience\n\n\nA job talk takes much more work than a class presentation\nFor context, after much practice, it takes me about 1 hour per minute of presentation length, depending on the amount of polish.\nMy course lectures take about 4x the target duration.\nGeneral ideas are the same for all styles."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
-    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
+    "objectID": "schedule/slides/presentations.html#audience",
+    "href": "schedule/slides/presentations.html#audience",
     "title": "UBC Stat550",
-    "section": "Lower dimensional embeddings",
-    "text": "Lower dimensional embeddings\nSuppose we have predictors \\(\\x_1\\) and \\(\\x_2\\) (columns / features / measurements)\n\nWe more faithfully preserve the structure of this data by keeping \\(\\x_1\\) and setting \\(\\x_2\\) to zero than the opposite"
+    "section": "Audience",
+    "text": "Audience\n\nThink about who you are talking to\n\nStatisticians?\nStudents?\nPotential employer?\nPeople with PhD’s but in other disciplines?\nYour grandma?\n\nRegardless of the audience, I think of dividing the talk roughly in 3rds."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
-    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
+    "objectID": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
+    "href": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
     "title": "UBC Stat550",
-    "section": "Lower dimensional embeddings",
-    "text": "Lower dimensional embeddings\nAn important feature of the previous example is that \\(\\x_1\\) and \\(\\x_2\\) aren’t correlated\nWhat if they are?\n\nWe lose a lot of structure by setting either \\(\\x_1\\) or \\(\\x_2\\) to zero"
+    "section": "(Your audience for your in-class talk)",
+    "text": "(Your audience for your in-class talk)\n\n2/3 of the time, the client.\nYou’re teaching them this topic.\nThink “someone who took 1 or 2 classes in statistics”\n1/3 of the time, your classmates.\nWhat are the details they need to know that they don’t know?\nThink carefully how to structure for that breakdown."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
-    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
+    "objectID": "schedule/slides/presentations.html#content",
+    "href": "schedule/slides/presentations.html#content",
     "title": "UBC Stat550",
-    "section": "Lower dimensional embeddings",
-    "text": "Lower dimensional embeddings\nThe only difference is the first is a rotation of the second"
+    "section": "Content",
+    "text": "Content\nEach part is a little mini-talk\n\nStarts with the general idea\nDevelops a few details. Strategy: problem/solution or question/answer\nEnds with a takeaway\n\nBut these parts are recalibrated to the audience.\n\nYour Grandma doesn’t want to see math.\nYour employer might, but doesn’t want to hear about \\(\\sigma\\)-fields.\nStatisticians don’t want to see proofs (but might want a sketch).\n..."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#pca-1",
-    "href": "schedule/slides/pca-intro.html#pca-1",
+    "objectID": "schedule/slides/presentations.html#story-structure",
+    "href": "schedule/slides/presentations.html#story-structure",
     "title": "UBC Stat550",
-    "section": "PCA",
-    "text": "PCA\nIf we knew how to rotate our data, then we could more easily retain the structure.\nPCA gives us exactly this rotation\n\nCenter (+scale?) the data matrix \\(\\X\\)\nCompute the SVD of \\(\\X = \\U\\D \\V^\\top\\) (always exists)\nReturn \\(\\U_M\\D_M\\), where \\(\\D_M\\) is the largest \\(M\\) singular values of \\(\\X\\)"
+    "section": "Story structure",
+    "text": "Story structure\n\n\n\n\n\n\nWhat I often see…\n\n\nOnce upon a time, a young MSc student went into the woods of theory and found some trees.\nFirst they looked at one tree, it was oak.\nThen the looked at the next tree, it was maple.\nThen they wondered if trees could talk.\nAfter three months of wandering, they saw a house…\n\n\n\n\n\n\n\n\n\n\nThe attention grabber\n\n\nAxe-wielding woodsman saves student from wolf attack!"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#pca-2",
-    "href": "schedule/slides/pca-intro.html#pca-2",
+    "objectID": "schedule/slides/presentations.html#better-structure",
+    "href": "schedule/slides/presentations.html#better-structure",
     "title": "UBC Stat550",
-    "section": "PCA",
-    "text": "PCA"
+    "section": "Better structure",
+    "text": "Better structure\n\n(Enough details to give the headline.)\nHeadline result.\nHow do we know the result is real. What are the details of computation, inference, methodology.\nDemonstration with empirics."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
-    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
+    "objectID": "schedule/slides/presentations.html#you-should-consider",
+    "href": "schedule/slides/presentations.html#you-should-consider",
     "title": "UBC Stat550",
-    "section": "PCA on some pop music data",
-    "text": "PCA on some pop music data\n\n\n# A tibble: 1,269 × 15\n   artist      danceability energy   key loudness  mode speechiness acousticness\n   &lt;fct&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;\n 1 Taylor Swi…        0.781  0.357     0   -16.4      1      0.912       0.717  \n 2 Taylor Swi…        0.627  0.266     9   -15.4      1      0.929       0.796  \n 3 Taylor Swi…        0.516  0.917    11    -3.19     0      0.0827      0.0139 \n 4 Taylor Swi…        0.629  0.757     1    -8.37     0      0.0512      0.00384\n 5 Taylor Swi…        0.686  0.705     9   -10.8      1      0.249       0.832  \n 6 Taylor Swi…        0.522  0.691     2    -4.82     1      0.0307      0.00609\n 7 Taylor Swi…        0.31   0.374     6    -8.46     1      0.0275      0.761  \n 8 Taylor Swi…        0.705  0.621     2    -8.09     1      0.0334      0.101  \n 9 Taylor Swi…        0.553  0.604     1    -5.30     0      0.0258      0.202  \n10 Taylor Swi…        0.419  0.908     9    -5.16     1      0.0651      0.00048\n# ℹ 1,259 more rows\n# ℹ 7 more variables: instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,\n#   tempo &lt;dbl&gt;, time_signature &lt;int&gt;, duration_ms &lt;int&gt;, explicit &lt;lgl&gt;"
+    "section": "You should consider…",
+    "text": "You should consider…\n\nAttention span diminishes quickly.\nWhat are the 3-5 takeaways?\nHit your main result at the beginning: this is what I can do that I couldn’t before."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
-    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
+    "objectID": "schedule/slides/presentations.html#the-ideal-map",
+    "href": "schedule/slides/presentations.html#the-ideal-map",
     "title": "UBC Stat550",
-    "section": "PCA on some pop music data",
-    "text": "PCA on some pop music data\n\n15 dimensions to 2\ncoloured by artist"
+    "section": "The ideal map",
+    "text": "The ideal map\nMap out what you’ve done.\n\nWhat did you find?\nWhat are the implications?\nWhy does audience care?\nHow do we do it?\n\n\nAvoid wandering in the wilderness:\n\nFirst we did this;\nBut that didn’t work, so we tried …\nBut then we added …\nFinally we got to the beach …\nAnd the water was nice …"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
-    "href": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
+    "objectID": "schedule/slides/presentations.html#words",
+    "href": "schedule/slides/presentations.html#words",
     "title": "UBC Stat550",
-    "section": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)",
-    "text": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)"
+    "section": "Words",
+    "text": "Words\n\n\nToo many words on a slide is bad\n\nBullet points\nToo densely concentrated are bad\nAre bad\nAre hard to focus on\n\n\nEmpty space is your friend\n\nLorem markdownum et moras et ponendi odores, neu magna per! Tyria meo iungitur videt, frigore terras rogis Anienis poteram, dant. His vallem arma corpore vident nunc nivibus avus, dea. Spatium luce certa cupiunt, lina. Amabam opem, Iovis fecundaque et parum.\nAede virum annis audit modo: meus ramis videri: nec quod insidiisque Aonio tenuem, AI. Trames Iason: nocent hortatus lacteus praebita paternos petit, Paridis aptus prius ut origo furiisque. Mercibus sis nullo aliudve Amathunta sufficit ululatibus, praevalidusque segnis et Dryopen."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#matrix-decompositions",
-    "href": "schedule/slides/pca-intro.html#matrix-decompositions",
+    "objectID": "schedule/slides/presentations.html#images",
+    "href": "schedule/slides/presentations.html#images",
     "title": "UBC Stat550",
-    "section": "Matrix decompositions",
-    "text": "Matrix decompositions\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]\nThis is expressed via the SVD: \\(\\X  = \\U\\D\\V^{\\top}\\).\n\n\n\n\n\n\nImportant\n\n\nWe assume throughout that we have centered the data\n\n\n\nThen our new features are\n\\[\\mathbf{Z} = \\X \\V = \\U\\D\\]"
+    "section": "Images",
+    "text": "Images\n\n\nPictures are good\n\nFlow charts are good.\n\nCareful use of colour is good.\n\nSize is good.\n\ntoo much variation is distracting\n\n\n\n\n\nHow long did you stare at the cat?"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#short-svd-aside",
-    "href": "schedule/slides/pca-intro.html#short-svd-aside",
+    "objectID": "schedule/slides/presentations.html#graphics",
+    "href": "schedule/slides/presentations.html#graphics",
     "title": "UBC Stat550",
-    "section": "Short SVD aside",
-    "text": "Short SVD aside\n\nAny \\(n\\times p\\) matrix can be decomposed into \\(\\mathbf{UDV}^\\top\\).\nThis is a computational procedure, like inverting a matrix, svd()\nThese have properties:\n\n\n\\(\\mathbf{U}^\\top \\mathbf{U} = \\mathbf{I}_n\\)\n\\(\\mathbf{V}^\\top \\mathbf{V} = \\mathbf{I}_p\\)\n\\(\\mathbf{D}\\) is diagonal (0 off the diagonal)\n\nMany methods for dimension reduction use the SVD of some matrix."
+    "section": "Graphics",
+    "text": "Graphics\n\n\n\n\n\n\n\n\nImportant\n\n\nDefaults are almost always terrible."
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#why",
-    "href": "schedule/slides/pca-intro.html#why",
+    "objectID": "schedule/slides/presentations.html#issues-with-the-preceding",
+    "href": "schedule/slides/presentations.html#issues-with-the-preceding",
     "title": "UBC Stat550",
-    "section": "Why?",
-    "text": "Why?\n\nGiven \\(\\X\\), find a projection \\(\\mathbf{P}\\) onto \\(\\R^M\\) with \\(M \\leq p\\) that minimizes the reconstruction error \\[\n\\begin{aligned}\n\\min_{\\mathbf{P}} &\\,\\, \\lVert \\mathbf{X} - \\mathbf{X}\\mathbf{P} \\rVert^2_F \\,\\,\\, \\textrm{(sum all the elements)}\\\\\n\\textrm{subject to} &\\,\\, \\textrm{rank}(\\mathbf{P}) = M,\\, \\mathbf{P} = \\mathbf{P}^T,\\, \\mathbf{P} = \\mathbf{P}^2\n\\end{aligned}\n\\] The conditions ensure that \\(\\mathbf{P}\\) is a projection matrix onto \\(M\\) dimensions.\nMaximize the variance explained by an orthogonal transformation \\(\\mathbf{A} \\in \\R^{p\\times M}\\) \\[\n\\begin{aligned}\n\\max_{\\mathbf{A}} &\\,\\, \\textrm{trace}\\left(\\frac{1}{n}\\mathbf{A}^\\top \\X^\\top \\X \\mathbf{A}\\right)\\\\\n\\textrm{subject to} &\\,\\, \\mathbf{A}^\\top\\mathbf{A} = \\mathbf{I}_M\n\\end{aligned}\n\\]\n\n\nIn case one, the minimizer is \\(\\mathbf{P} = \\mathbf{V}_M\\mathbf{V}_M^\\top\\)\nIn case two, the maximizer is \\(\\mathbf{A} = \\mathbf{V}_M\\)."
+    "section": "Issues with the preceding",
+    "text": "Issues with the preceding\n\nColours are awful\nGrey background is distracting\nText size is too small\nLegend position on the side is strange?\nNumbers on the y-axis are nonesense\nWith barchart, y-axis should start at 0.\n.png vs .svg"
   },
   {
-    "objectID": "schedule/slides/pca-intro.html#code-output-to-look-at",
-    "href": "schedule/slides/pca-intro.html#code-output-to-look-at",
+    "objectID": "schedule/slides/presentations.html#graphics-1",
+    "href": "schedule/slides/presentations.html#graphics-1",
     "title": "UBC Stat550",
-    "section": "Code output to look at",
-    "text": "Code output to look at\n\n\n\nUBC Stat 550 - 2024"
+    "section": "Graphics",
+    "text": "Graphics"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#again",
+    "href": "schedule/slides/presentations.html#again",
+    "title": "UBC Stat550",
+    "section": "Again",
+    "text": "Again\n\n\n\n\n\n\n\nTip\n\n\nI like this, but ~10% of men are colour blind (including some faculty in this department)."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#simulation",
+    "href": "schedule/slides/presentations.html#simulation",
+    "title": "UBC Stat550",
+    "section": "Simulation",
+    "text": "Simulation"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#jargon",
+    "href": "schedule/slides/presentations.html#jargon",
+    "title": "UBC Stat550",
+    "section": "Jargon",
+    "text": "Jargon\n\nBe wary of acronyms (MLE, BLUP, RKHS)\nAgain, think of your audience. MLE is fine for any statistician.\nOthers need definitions in words and written on the slide\nSame for math notation \\(\\bar{X},\\ \\mu,\\ \\sigma,\\ \\mathbf{UDV}^\\top\\)\nAnd for applied work e.g. SNP\nBest Linear Unbiased Predictor"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#things-i-hate",
+    "href": "schedule/slides/presentations.html#things-i-hate",
+    "title": "UBC Stat550",
+    "section": "Things I hate",
+    "text": "Things I hate\n Saying “I’m not going to talk about …”  “I’m happy to discuss … later if you’d like”.\n Wiggling your laser pointer at every word. Highlight important things with pretty colours. Use pointer sparingly.\n Playing with your collar, your pockets, your water bottle…\n Staring at your slides …\n Displaying the total number of slides as in 6/85 in the lower right hand corner …\n Running over time. Skipping 6 slides to desperately make the time limit.\n Using the default themes:"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#never-use-tables-of-numbers",
+    "href": "schedule/slides/presentations.html#never-use-tables-of-numbers",
+    "title": "UBC Stat550",
+    "section": "Never use tables of numbers",
+    "text": "Never use tables of numbers\n\nEconomists do this all the time for inexplicable reasons\nI rarely put these in papers either\nIf I’m not going to talk about it, it doesn’t go on the slide\nThere’s no way I’m going to read off the number, certainly not to 4 decimal places\nUse a graph"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#use-graphs-but",
+    "href": "schedule/slides/presentations.html#use-graphs-but",
+    "title": "UBC Stat550",
+    "section": "Use graphs, but",
+    "text": "Use graphs, but\n\nA graph with 3 dots should be a table of 3 numbers.\nBut why do you have only 3 numbers?\nAny table can be a better graph.\n\n\n\n\n\n\n\nAsk yourself:\n\n\nIs this the best way to display the data? Have I summarized too much?"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results",
+    "href": "schedule/slides/presentations.html#example-made-up-simulation-results",
+    "title": "UBC Stat550",
+    "section": "Example: Made up simulation results",
+    "text": "Example: Made up simulation results\nRan 50 simulations."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
+    "href": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
+    "title": "UBC Stat550",
+    "section": "Example: Made up simulation results",
+    "text": "Example: Made up simulation results\nRan 50 simulations."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results-2",
+    "href": "schedule/slides/presentations.html#example-made-up-simulation-results-2",
+    "title": "UBC Stat550",
+    "section": "Example: Made up simulation results",
+    "text": "Example: Made up simulation results\nRan 50 simulations."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#things-you-should-do",
+    "href": "schedule/slides/presentations.html#things-you-should-do",
+    "title": "UBC Stat550",
+    "section": "Things you should do",
+    "text": "Things you should do\n Number your slides\n Have lots of prepared backup slides (details, answers to potential questions, further analysis)\n Practice a lot. Practice in front of others. Practice the beginning more than the rest.\n BE EXCITED. You worked hard on this. All results are cool. Play them up. You did something good and you want to tell everyone about how awesome you are. Own it.\n Take credit. Say “I showed this” not “It can be shown”."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#things-that-are-debatable",
+    "href": "schedule/slides/presentations.html#things-that-are-debatable",
+    "title": "UBC Stat550",
+    "section": "Things that are debatable",
+    "text": "Things that are debatable\n\nMath talks tend to be “chalkboard”\nCS talks tend to be “sales pitch”\nStats is in the middle.\nI lean toward details with elements of salesmanship\nIf I hear your talk, I want to be able to “do” what you created. This is hard without some math.\nThis also colours my decisions about software.\n\n\n\n\n\n\n\n\nNote\n\n\nJeff Bezos banned Powerpoint from Amazon presentations"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#closing-suggestions",
+    "href": "schedule/slides/presentations.html#closing-suggestions",
+    "title": "UBC Stat550",
+    "section": "Closing suggestions",
+    "text": "Closing suggestions\n1. Slow down\n\nGet a bottle of water before the talk.\nDrink it to pause on (pre-planned) key slides.\nThis will help you relax.\nIt will also give the audience a few seconds to get the hard stuff into their head.\n\n2. Cut back\n\nMost of your slides probably have too many words.\nAnd too much “filler” –&gt; Kill the filler"
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#closing-suggestions-1",
+    "href": "schedule/slides/presentations.html#closing-suggestions-1",
+    "title": "UBC Stat550",
+    "section": "Closing suggestions",
+    "text": "Closing suggestions\n3. Try to move\n\nIt’s good to move physically, engage the audience\nTry to make eye contact with the whole room\nRecord yourself once to see if you do anything extraneous\n\n4. Have fun."
+  },
+  {
+    "objectID": "schedule/slides/presentations.html#example-talks",
+    "href": "schedule/slides/presentations.html#example-talks",
+    "title": "UBC Stat550",
+    "section": "Example talks:",
+    "text": "Example talks:\n\nTeaching PCA\nShort research talk about Latent Infections\n\n\n\n\nUBC Stat 550 - 2024"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#section",
+    "href": "schedule/slides/organization.html#section",
+    "title": "UBC Stat550",
+    "section": "Organization and reports",
+    "text": "Organization and reports\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#topics-for-today",
+    "href": "schedule/slides/organization.html#topics-for-today",
+    "title": "UBC Stat550",
+    "section": "Topics for today",
+    "text": "Topics for today\n\nOrganizing your file system\nWriting reports that mix output and text\n(Avoiding buggy code)"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-guiding-theme",
+    "href": "schedule/slides/organization.html#the-guiding-theme",
+    "title": "UBC Stat550",
+    "section": "The guiding theme",
+    "text": "The guiding theme"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "href": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "title": "UBC Stat550",
+    "section": "I urge you to consult:",
+    "text": "I urge you to consult:\nKarl Broman’s Notes"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#some-guiding-principles",
+    "href": "schedule/slides/organization.html#some-guiding-principles",
+    "title": "UBC Stat550",
+    "section": "Some guiding principles",
+    "text": "Some guiding principles\n\nAvoid naming by date.\n\nYour file system already knows the date.\nSometimes projects take a while.\nYou can add this inside a particular report: Last updated: 2022-01-07\n\nIf you’re going to use a date anywhere, do YYYY-MM-DD or YYYYMMDD not DD-MMM-YY\nThis is a process\nDon’t get tied down\nBut don’t reorganize every time you find a better system\nCustomize to your needs, preferences"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#organizing-your-stuff",
+    "href": "schedule/slides/organization.html#organizing-your-stuff",
+    "title": "UBC Stat550",
+    "section": "Organizing your stuff",
+    "text": "Organizing your stuff\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── FKF\n│   └── ghclass\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n|   ├── learning-white-matter\n|   ├── rt-est\n│   ├── zzzz Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#inside-a-project",
+    "href": "schedule/slides/organization.html#inside-a-project",
+    "title": "UBC Stat550",
+    "section": "Inside a project",
+    "text": "Inside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#basic-principles",
+    "href": "schedule/slides/organization.html#basic-principles",
+    "title": "UBC Stat550",
+    "section": "Basic principles",
+    "text": "Basic principles\n\nBe consistent – directory structure; names\n\nall project files in 1 directory, not multiples\n\nAlways separate raw from processed data\nAlways separate code from data\nIt should be obvious what code created what files, and what the dependencies are. (MAKEFILE forces this)\nNo hand-editing of data files\nDon’t use spaces in file names\nIn code, use relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/Documents/Work/proj-1/blah\nThe {here} package in R is great for this"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "href": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "title": "UBC Stat550",
+    "section": "Problem: Coordinating with collaborators",
+    "text": "Problem: Coordinating with collaborators\n\nWhere to put data that multiple people will work with?\nWhere to put intermediate/processed data?\nWhere to indicate the code that created those processed data files?\nHow to divvy up tasks and know who did what?\nNeed to agree on directory structure and file naming conventions\n\nGitHub is (I think) the ideal solution, but not always feasible."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "href": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "title": "UBC Stat550",
+    "section": "Problem: Collaborators who don’t use GitHub",
+    "text": "Problem: Collaborators who don’t use GitHub\n\nUse GitHub yourself\nCopy files to/from some shared space\n\nIdeally, in an automated way (Dropbox, S3 Bucket)\nAvoid Word at all costs. Google Docs if needed.\nWord and Git do not mix\nLast resort: Word file in Dropbox. Everything else nicely organized on your end. Rmd file with similar structure to Manuscript that does the analysis.\n\nCommit their changes.\n\n\nOverleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
+    "href": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
+    "title": "UBC Stat550",
+    "section": "Using Rmarkdown/Quarto/Jupyter for most things",
+    "text": "Using Rmarkdown/Quarto/Jupyter for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#when-i-begin-a-new-project",
+    "href": "schedule/slides/organization.html#when-i-begin-a-new-project",
+    "title": "UBC Stat550",
+    "section": "When I begin a new project",
+    "text": "When I begin a new project\n\nCreate a directory structure\n\ncode/\npapers/\nnotes/ (maybe?)\nREADME.md\ndata/ (maybe?)\n\nWrite scripts in the code/ directory\nTODO items in the README\nUse Rmarkdown/Quarto/Jupyter for reports, render to .pdf"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#as-the-project-progresses",
+    "href": "schedule/slides/organization.html#as-the-project-progresses",
+    "title": "UBC Stat550",
+    "section": "As the project progresses…",
+    "text": "As the project progresses…\nReorganize\n\nSome script files go to a package (thorougly tested), all that remains is for the paper\nThese now load the package and run simulations or analyses (that take a while)\nMaybe add a directory that contains dead-ends (code or text or …)\nAdd manuscript/. I try to go for main.tex and Supplement.Rmd\nSupplement.Rmd runs anything necessary in code/ and creates all figures in the main doc and the supplement. Also generates any online supplementary material\nSometimes, just manuscript/main.Rmd\nSometimes main.tex just inputs intro.tex, methods.tex, etc."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
+    "href": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
+    "title": "UBC Stat550",
+    "section": "The old manuscript (starting in School, persisting too long)",
+    "text": "The old manuscript (starting in School, persisting too long)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nCollaborator wants changes to the simulation. Edit the code. Rerun figure script, doesn’t work. More edits….Finally Recompile.\nReviewer “what if n is bigger”. Hope I can find the right location. But the code isn’t functions. Something breaks …\nEtc, etc."
+  },
+  {
+    "objectID": "schedule/slides/organization.html#now",
+    "href": "schedule/slides/organization.html#now",
+    "title": "UBC Stat550",
+    "section": "Now:",
+    "text": "Now:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#evolution-of-presentations",
+    "href": "schedule/slides/organization.html#evolution-of-presentations",
+    "title": "UBC Stat550",
+    "section": "Evolution of presentations",
+    "text": "Evolution of presentations\n\nLaTeX + Beamer (similar to the manuscript):\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRinse and repeat.\n\nCourse slides in Rmarkdown + Slidy\nSeminars in Rmarkdown + Beamer (with lots of customization)\nSeminars in Rmarkdown + Xaringan\nEverything in Quarto\n\n\n\n\n\n\n\n\nEasy to use.\nEasy to customize (defaults are not great)\nWELL DOCUMENTED"
+  },
+  {
+    "objectID": "schedule/slides/organization.html#takeaways",
+    "href": "schedule/slides/organization.html#takeaways",
+    "title": "UBC Stat550",
+    "section": "Takeaways",
+    "text": "Takeaways\n\n\n\nUBC Stat 550 - 2024"
   },
   {
     "objectID": "schedule/slides/grad-school.html#section",
     "href": "schedule/slides/grad-school.html#section",
     "title": "UBC Stat550",
     "section": "Skills for graduate students",
-    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Skills for graduate students\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/grad-school.html#something-happens-in-graduate-school",
@@ -529,7 +746,7 @@
     "href": "schedule/slides/cluster-computing.html#section",
     "title": "UBC Stat550",
     "section": "Cluster computing (at UBC)",
-    "text": "Cluster computing (at UBC)\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Cluster computing (at UBC)\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/cluster-computing.html#ubc-hpc",
@@ -739,7 +956,7 @@
     "href": "schedule/index.html#lecture-slides",
     "title": " Lecture slides and handouts",
     "section": "Lecture slides",
-    "text": "Lecture slides\n\nGiving presentations\nGit and GitHub\nTips for organization\nUnit tests\nBootstrap\nTime series\nCluster computing\nSkills for graduate students"
+    "text": "Lecture slides\n\nGiving presentations\nGit and GitHub\nTips for organization\nUnit tests\nBootstrap\nTime series\nCluster computing\nModel selection\nRegularized linear models\nSkills for graduate students"
   },
   {
     "objectID": "schedule/index.html#handouts",
@@ -788,7 +1005,7 @@
     "href": "schedule/slides/bootstrap.html#section",
     "title": "UBC Stat550",
     "section": "The bootstrap",
-    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "The bootstrap\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/bootstrap.html#in-statistics",
@@ -872,7 +1089,7 @@
     "href": "schedule/slides/git.html#section",
     "title": "UBC Stat550",
     "section": "Version control",
-    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Version control\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/git.html#why-version-control",
@@ -1015,333 +1232,837 @@
     "text": "Rules for HW 2\n\nEach team has their own repo\nMake a PR against main to submit\nTag me and all the assigned reviewers\nPeer evaluations are done via PR review (also send to Estella)\nYOU must make at least 5 commits (fewer will lead to deductions)\nI review your work and merge the PR\n\n\n\n\n\n\n\nImportant\n\n\n☠️☠️ Read all the instructions in the repo! ☠️☠️"
   },
   {
-    "objectID": "schedule/slides/organization.html#section",
-    "href": "schedule/slides/organization.html#section",
+    "objectID": "schedule/slides/model-selection.html#section",
+    "href": "schedule/slides/model-selection.html#section",
     "title": "UBC Stat550",
-    "section": "Organization and reports",
-    "text": "Organization and reports\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "Statistical models and model selection",
+    "text": "Statistical models and model selection\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
-    "objectID": "schedule/slides/organization.html#topics-for-today",
-    "href": "schedule/slides/organization.html#topics-for-today",
+    "objectID": "schedule/slides/model-selection.html#what-is-a-model",
+    "href": "schedule/slides/model-selection.html#what-is-a-model",
     "title": "UBC Stat550",
-    "section": "Topics for today",
-    "text": "Topics for today\n\nOrganizing your file system\nWriting reports that mix output and text\n(Avoiding buggy code)"
+    "section": "What is a model?",
+    "text": "What is a model?\nIn statistics, “model” has a mathematical meaning.\nDistinct from “algorithm” or “procedure”.\nDefining a model often leads to a procedure/algorithm with good properties.\nSometimes procedure/algorithm \\(\\Rightarrow\\) a specific model.\n\nStatistics (the field) tells me how to understand when different procedures are desirable and the mathematical guarantees that they satisfy.\n\nWhen are certain models appropriate?\n\nOne definition of “Statistical Learning” is the “statistics behind the procedure”."
   },
   {
-    "objectID": "schedule/slides/organization.html#the-guiding-theme",
-    "href": "schedule/slides/organization.html#the-guiding-theme",
+    "objectID": "schedule/slides/model-selection.html#statistical-models-101",
+    "href": "schedule/slides/model-selection.html#statistical-models-101",
     "title": "UBC Stat550",
-    "section": "The guiding theme",
-    "text": "The guiding theme"
+    "section": "Statistical models 101",
+    "text": "Statistical models 101\nWe observe data \\(Z_1,\\ Z_2,\\ \\ldots,\\ Z_n\\) generated by some probability distribution \\(P\\). We want to use the data to learn about \\(P\\).\n\nA statistical model is a set of distributions \\(\\mathcal{P}\\).\n\nSome examples:\n\n\\(\\P = \\{ 0 &lt; p &lt; 1 : P(z=1)=p,\\ P(z=0)=1-p\\}\\).\n\\(\\P = \\{ \\beta \\in \\R^p,\\ \\sigma&gt;0 : Y \\sim N(X^\\top\\beta,\\sigma^2),\\  X\\mbox{ fixed}\\}\\).\n\\(\\P = \\{\\mbox{all CDF's }F\\}\\).\n\\(\\P = \\{\\mbox{all smooth functions } f: \\R^p \\rightarrow \\R : Z_i = (X_i, Y_i),\\ E[Y_i] = f(X_i) \\}\\)"
   },
   {
-    "objectID": "schedule/slides/organization.html#i-urge-you-to-consult",
-    "href": "schedule/slides/organization.html#i-urge-you-to-consult",
+    "objectID": "schedule/slides/model-selection.html#statistical-models",
+    "href": "schedule/slides/model-selection.html#statistical-models",
     "title": "UBC Stat550",
-    "section": "I urge you to consult:",
-    "text": "I urge you to consult:\nKarl Broman’s Notes"
+    "section": "Statistical models",
+    "text": "Statistical models\nWe want to use the data to select a distribution \\(P\\) that probably generated the data.\n\nMy model:\n\\[\n\\P = \\{ P(z=1)=p,\\ P(z=0)=1-p,\\ 0 &lt; p &lt; 1 \\}\n\\]\n\nTo completely characterize \\(P\\), I just need to estimate \\(p\\).\nNeed to assume that \\(P \\in \\P\\).\nThis assumption is mostly empty: need independent, can’t see \\(z=12\\)."
   },
   {
-    "objectID": "schedule/slides/organization.html#some-guiding-principles",
-    "href": "schedule/slides/organization.html#some-guiding-principles",
+    "objectID": "schedule/slides/model-selection.html#statistical-models-1",
+    "href": "schedule/slides/model-selection.html#statistical-models-1",
     "title": "UBC Stat550",
-    "section": "Some guiding principles",
-    "text": "Some guiding principles\n\nAvoid naming by date.\n\nYour file system already knows the date.\nSometimes projects take a while.\nYou can add this inside a particular report: Last updated: 2022-01-07\n\nIf you’re going to use a date anywhere, do YYYY-MM-DD or YYYYMMDD not DD-MMM-YY\nThis is a process\nDon’t get tied down\nBut don’t reorganize every time you find a better system\nCustomize to your needs, preferences"
+    "section": "Statistical models",
+    "text": "Statistical models\nWe observe data \\(Z_i=(Y_i,X_i)\\) generated by some probability distribution \\(P\\). We want to use the data to learn about \\(P\\).\n\nMy model\n\\[\n\\P = \\{ \\beta \\in \\R^p, \\sigma&gt;0 : Y_i \\given X_i=x_i \\sim N(x_i^\\top\\beta,\\ \\sigma^2) \\}.\n\\]\n\nTo completely characterize \\(P\\), I just need to estimate \\(\\beta\\) and \\(\\sigma\\).\nNeed to assume that \\(P\\in\\P\\).\nThis time, I have to assume a lot more: (conditional) Linearity, independence, conditional Gaussian noise, no ignored variables, no collinearity, etc."
   },
   {
-    "objectID": "schedule/slides/organization.html#organizing-your-stuff",
-    "href": "schedule/slides/organization.html#organizing-your-stuff",
+    "objectID": "schedule/slides/model-selection.html#statistical-models-unfamiliar-example",
+    "href": "schedule/slides/model-selection.html#statistical-models-unfamiliar-example",
     "title": "UBC Stat550",
-    "section": "Organizing your stuff",
-    "text": "Organizing your stuff\n├── Advising\n│   ├── arash\n│   ├── gian-carlo\n├── CV\n├── Computing\n│   ├── batchtools.slurm.tmpl\n│   ├── computecanada_notes.md\n│   ├── FKF\n│   └── ghclass\n├── Grants\n│   ├── B&E JSM 2010\n│   ├── CANSSI RRP 2020\n│   ├── NSERC 2020\n├── LettersofRec\n├── Manuscripts\n|   ├── learning-white-matter\n|   ├── rt-est\n│   ├── zzzz Old\n├── Referee reports\n├── Talks\n│   ├── JobTalk2020\n│   ├── ubc-stat-covid-talk\n│   └── utoronto-grad-advice\n├── Teaching\n│   ├── stat-406\n│   ├── stat-550\n│   ├── zzzz CMU TA\n│   └── zzzz booth\n└── Website"
+    "section": "Statistical models, unfamiliar example",
+    "text": "Statistical models, unfamiliar example\nWe observe data \\(Z_i \\in \\R\\) generated by some probability distribution \\(P\\). We want to use the data to learn about \\(P\\).\nMy model\n\\[\n\\P = \\{ Z_i \\textrm{ has a density function } f \\}.\n\\]\n\nTo completely characterize \\(P\\), I need to estimate \\(f\\).\nIn fact, we can’t hope to do this.\n\nRevised Model 1 - \\(\\P=\\{ Z_i \\textrm{ has a density function } f : \\int (f'')^2 dx &lt; M \\}\\)\nRevised Model 2 - \\(\\P=\\{ Z_i \\textrm{ has a density function } f : \\int (f'')^2 dx &lt; K &lt; M \\}\\)\nRevised Model 3 - \\(\\P=\\{ Z_i \\textrm{ has a density function } f : \\int |f'| dx &lt;  M \\}\\)\n\nEach of these suggests different ways of estimating \\(f\\)"
   },
   {
-    "objectID": "schedule/slides/organization.html#inside-a-project",
-    "href": "schedule/slides/organization.html#inside-a-project",
+    "objectID": "schedule/slides/model-selection.html#assumption-lean-regression",
+    "href": "schedule/slides/model-selection.html#assumption-lean-regression",
     "title": "UBC Stat550",
-    "section": "Inside a project",
-    "text": "Inside a project\n.\n├── README.md\n├── Summary of Goals.rtf\n├── cluster_output\n├── code\n├── data\n├── dsges-github.Rproj\n├── manuscript\n└── waldman-triage\n\nInclude a README\nIdeally have a MAKEFILE\nUnder version control, shared with collaborator"
+    "section": "Assumption Lean Regression",
+    "text": "Assumption Lean Regression\nImagine \\(Z = (Y, \\mathbf{X}) \\sim P\\) with \\(Y \\in \\R\\) and \\(\\mathbf{X} = (1, X_1, \\ldots, X_p)^\\top\\).\nWe are interested in the conditional distribution \\(P_{Y|\\mathbf{X}}\\)\nSuppose we think that there is some function of interest which relates \\(Y\\) and \\(X\\).\nLet’s call this function \\(\\mu(\\mathbf{X})\\) for the moment. How do we estimate \\(\\mu\\)? What is \\(\\mu\\)?\n\n\nTo make this precise, we\n\nHave a model \\(\\P\\).\nNeed to define a “good” functional \\(\\mu\\).\nLet’s loosely define “good” as\n\n\nGiven a new (random) \\(Z\\), \\(\\mu(\\mathbf{X})\\) is “close” to \\(Y\\).\n\n\n\nSee Berk et al. Assumption Lean Regression."
   },
   {
-    "objectID": "schedule/slides/organization.html#basic-principles",
-    "href": "schedule/slides/organization.html#basic-principles",
+    "objectID": "schedule/slides/model-selection.html#evaluating-close",
+    "href": "schedule/slides/model-selection.html#evaluating-close",
     "title": "UBC Stat550",
-    "section": "Basic principles",
-    "text": "Basic principles\n\nBe consistent – directory structure; names\n\nall project files in 1 directory, not multiples\n\nAlways separate raw from processed data\nAlways separate code from data\nIt should be obvious what code created what files, and what the dependencies are. (MAKEFILE forces this)\nNo hand-editing of data files\nDon’t use spaces in file names\nIn code, use relative paths, not absolute paths\n\n../blah not ~/blah or /users/dajmcdon/Documents/Work/proj-1/blah\nThe {here} package in R is great for this"
+    "section": "Evaluating “close”",
+    "text": "Evaluating “close”\nWe need more functions.\nChoose some loss function \\(\\ell\\) that measures how close \\(\\mu\\) and \\(Y\\) are.\n\n\n\nSquared-error:\n\\(\\ell(y,\\ \\mu) = (y-\\mu)^2\\)\nAbsolute-error:\n\\(\\ell(y,\\ \\mu) = |y-\\mu|\\)\nZero-One:\n\\(\\ell(y,\\ \\mu) = I(y\\neq\\mu)=\\begin{cases} 0 & y=\\mu\\\\1 & \\mbox{else}\\end{cases}\\)\nCauchy:\n\\(\\ell(y,\\ \\mu) = \\log(1 + (y - \\mu)^2)\\)"
   },
   {
-    "objectID": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
-    "href": "schedule/slides/organization.html#problem-coordinating-with-collaborators",
+    "objectID": "schedule/slides/model-selection.html#start-with-expected-squared-error",
+    "href": "schedule/slides/model-selection.html#start-with-expected-squared-error",
     "title": "UBC Stat550",
-    "section": "Problem: Coordinating with collaborators",
-    "text": "Problem: Coordinating with collaborators\n\nWhere to put data that multiple people will work with?\nWhere to put intermediate/processed data?\nWhere to indicate the code that created those processed data files?\nHow to divvy up tasks and know who did what?\nNeed to agree on directory structure and file naming conventions\n\nGitHub is (I think) the ideal solution, but not always feasible."
+    "section": "Start with (Expected) Squared Error",
+    "text": "Start with (Expected) Squared Error\nLet’s try to minimize the expected squared error (MSE).\nClaim: \\(\\mu(X) = \\Expect{Y\\ \\vert\\ X}\\) minimizes MSE.\nThat is, for any \\(r(X)\\), \\(\\Expect{(Y - \\mu(X))^2} \\leq \\Expect{(Y-r(X))^2}\\).\n\nProof of Claim:\n\\[\\begin{aligned}\n\\Expect{(Y-r(X))^2}\n&= \\Expect{(Y- \\mu(X) + \\mu(X) - r(X))^2}\\\\\n&= \\Expect{(Y- \\mu(X))^2} + \\Expect{(\\mu(X) - r(X))^2} \\\\\n&\\quad +2\\Expect{(Y- \\mu(X))(\\mu(X) - r(X))}\\\\\n&=\\Expect{(Y- \\mu(X))^2} + \\Expect{(\\mu(X) - r(X))^2} \\\\\n&\\quad +2(\\mu(X) - r(X))\\Expect{(Y- \\mu(X))}\\\\\n&=\\Expect{(Y- \\mu(X))^2} + \\Expect{(\\mu(X) - r(X))^2} + 0\\\\\n&\\geq \\Expect{(Y- \\mu(X))^2}\n\\end{aligned}\\]"
   },
   {
-    "objectID": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
-    "href": "schedule/slides/organization.html#problem-collaborators-who-dont-use-github",
+    "objectID": "schedule/slides/model-selection.html#the-regression-function",
+    "href": "schedule/slides/model-selection.html#the-regression-function",
     "title": "UBC Stat550",
-    "section": "Problem: Collaborators who don’t use GitHub",
-    "text": "Problem: Collaborators who don’t use GitHub\n\nUse GitHub yourself\nCopy files to/from some shared space\n\nIdeally, in an automated way (Dropbox, S3 Bucket)\nAvoid Word at all costs. Google Docs if needed.\nWord and Git do not mix\nLast resort: Word file in Dropbox. Everything else nicely organized on your end. Rmd file with similar structure to Manuscript that does the analysis.\n\nCommit their changes.\n\n\nOverleaf has Git built in (paid tier). I don’t like Overleaf. Costs money, the viewer is crap and so is the editor. I suggest you avoid it."
+    "section": "The regression function",
+    "text": "The regression function\nSometimes people call this solution:\n\\[\\mu(X) = \\Expect{Y \\ \\vert\\  X}\\]\nthe regression function. (But don’t forget that it depended on \\(\\ell\\).)\nIf we assume that \\(\\mu(x) = \\Expect{Y \\ \\vert\\  X=x} = x^\\top \\beta\\), then we get back exactly OLS.\n\nBut why should we assume \\(\\mu(x) = x^\\top \\beta\\)?"
   },
   {
-    "objectID": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
-    "href": "schedule/slides/organization.html#using-rmarkdownquartojupyter-for-most-things",
+    "objectID": "schedule/slides/model-selection.html#brief-aside",
+    "href": "schedule/slides/model-selection.html#brief-aside",
     "title": "UBC Stat550",
-    "section": "Using Rmarkdown/Quarto/Jupyter for most things",
-    "text": "Using Rmarkdown/Quarto/Jupyter for most things\nYour goal is to Avoid at all costs:\n\n“How did I create this plot?”\n“Why did I decide to omit those six samples?”\n“Where (on the web) did I find these data?”\n“What was that interesting gene/feature/predictor?”\n\n\nReally useful resource:\n\nEmily Reiderer RmdDD\nTalk Slides"
+    "section": "Brief aside",
+    "text": "Brief aside\nSome notation / terminology\n\n“Hats” on things mean “estimates”, so \\(\\widehat{\\mu}\\) is an estimate of \\(\\mu\\)\nParameters are “properties of the model”, so \\(f_X(x)\\) or \\(\\mu\\) or \\(\\Var{Y}\\)\nRandom variables like \\(X\\), \\(Y\\), \\(Z\\) may eventually become data, \\(x\\), \\(y\\), \\(z\\), once observed.\n“Estimating” means “using observations to estimate parameters”\n“Predicting” means “using observations to predict future data”\nOften, there is a parameter whose estimate will provide a prediction.\n“Non-parametric” means “we don’t assume a parametric form” for the regression function (or density)"
   },
   {
-    "objectID": "schedule/slides/organization.html#when-i-begin-a-new-project",
-    "href": "schedule/slides/organization.html#when-i-begin-a-new-project",
+    "objectID": "schedule/slides/model-selection.html#estimation-vs.-prediction",
+    "href": "schedule/slides/model-selection.html#estimation-vs.-prediction",
     "title": "UBC Stat550",
-    "section": "When I begin a new project",
-    "text": "When I begin a new project\n\nCreate a directory structure\n\ncode/\npapers/\nnotes/ (maybe?)\nREADME.md\ndata/ (maybe?)\n\nWrite scripts in the code/ directory\nTODO items in the README\nUse Rmarkdown/Quarto/Jupyter for reports, render to .pdf"
+    "section": "Estimation vs. Prediction",
+    "text": "Estimation vs. Prediction\n\nIn consulting, you’re usually interested in estimating parameters accurately.\nThis is a departure from machine learning, when you want to predict new data.\nBut to “select a model”, we may have to choose between plausible alternatives.\nThis can be challenging to understand."
   },
   {
-    "objectID": "schedule/slides/organization.html#as-the-project-progresses",
-    "href": "schedule/slides/organization.html#as-the-project-progresses",
+    "objectID": "schedule/slides/model-selection.html#prediction-risk-for-regression",
+    "href": "schedule/slides/model-selection.html#prediction-risk-for-regression",
     "title": "UBC Stat550",
-    "section": "As the project progresses…",
-    "text": "As the project progresses…\nReorganize\n\nSome script files go to a package (thorougly tested), all that remains is for the paper\nThese now load the package and run simulations or analyses (that take a while)\nMaybe add a directory that contains dead-ends (code or text or …)\nAdd manuscript/. I try to go for main.tex and Supplement.Rmd\nSupplement.Rmd runs anything necessary in code/ and creates all figures in the main doc and the supplement. Also generates any online supplementary material\nSometimes, just manuscript/main.Rmd\nSometimes main.tex just inputs intro.tex, methods.tex, etc."
+    "section": "Prediction risk for regression",
+    "text": "Prediction risk for regression\nGiven the training data \\(\\mathcal{D}\\), we want to predict some independent test data \\(Z = (X,Y)\\)\nThis means forming a \\(\\hat f\\), which is a function of both the range of \\(X\\) and the training data \\(\\mathcal{D}\\), which provides predictions \\(\\hat Y = \\hat f(X)\\).\nThe quality of this prediction is measured via the prediction risk \\[R(\\hat{f}) = \\Expect{(Y - \\hat{f}(X))^2}.\\]\nWe know that the regression function, \\(\\mu(X) = \\mathbb{E}[Y \\mid X]\\), is the best possible predictor."
   },
   {
-    "objectID": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
-    "href": "schedule/slides/organization.html#the-old-manuscript-starting-in-school-persisting-too-long",
+    "objectID": "schedule/slides/model-selection.html#model-selection-and-tuning-parameters",
+    "href": "schedule/slides/model-selection.html#model-selection-and-tuning-parameters",
     "title": "UBC Stat550",
-    "section": "The old manuscript (starting in School, persisting too long)",
-    "text": "The old manuscript (starting in School, persisting too long)\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRecompile LaTeX. Axes are unreadable. Back to R, rerun R code, …\nRecompile LaTeX. Can’t distinguish lines. Back to R, rerun R code, …\nCollaborator wants changes to the simulation. Edit the code. Rerun figure script, doesn’t work. More edits….Finally Recompile.\nReviewer “what if n is bigger”. Hope I can find the right location. But the code isn’t functions. Something breaks …\nEtc, etc."
+    "section": "Model selection and tuning parameters",
+    "text": "Model selection and tuning parameters\n\nOften “model selection” means “choosing a set of predictors/variables”\n\nE.g. Lasso performs model selection by setting many \\(\\widehat\\beta=0\\)\n\n“Model selection” really means &gt; making any necessary decisions to arrive at a final model\nSometimes this means “choosing predictors”\nIt could also mean “selecting a tuning parameter”\nOr “deciding whether to use LASSO or Ridge” (and picking tuning parameters)\nModel selection means “choose \\(\\mathcal{P}\\)”"
   },
   {
-    "objectID": "schedule/slides/organization.html#now",
-    "href": "schedule/slides/organization.html#now",
+    "objectID": "schedule/slides/model-selection.html#my-pet-peeve",
+    "href": "schedule/slides/model-selection.html#my-pet-peeve",
     "title": "UBC Stat550",
-    "section": "Now:",
-    "text": "Now:\n\nR package with documented code, available on GitHub.\n\nOne script to run the analysis, one to gather the results.\n\nOne .Rmd file to take in the results, do preprocessing, generate all figures.\n\nLaTeX file on Journal style.\n\nThe optimal\nSame as above but with a MAKEFILE to automatically run parts of 1–4 as needed"
+    "section": "My pet peeve",
+    "text": "My pet peeve\n\nOften people talk about “using LASSO” or “using an SVM”\nThis isn’t quite right.\nLASSO is a regularized procedure that depends on \\(\\lambda\\)\nTo “use LASSO”, you must pick a particular \\(\\lambda\\)\nDifferent ways to pick \\(\\lambda\\) (today’s topic) produce different final estimators\nThus we should say “I used LASSO + CV” or “I used Ridge + GCV”\nProbably also indicate “how” (I used the CV minimum.)"
   },
   {
-    "objectID": "schedule/slides/organization.html#evolution-of-presentations",
-    "href": "schedule/slides/organization.html#evolution-of-presentations",
+    "objectID": "schedule/slides/model-selection.html#bias-and-variance",
+    "href": "schedule/slides/model-selection.html#bias-and-variance",
     "title": "UBC Stat550",
-    "section": "Evolution of presentations",
-    "text": "Evolution of presentations\n\nLaTeX + Beamer (similar to the manuscript):\n\nWrite lots of LaTeX, R code in separate files\nNeed a figure. Run R code, get figure, save as .pdf.\nRinse and repeat.\n\nCourse slides in Rmarkdown + Slidy\nSeminars in Rmarkdown + Beamer (with lots of customization)\nSeminars in Rmarkdown + Xaringan\nEverything in Quarto\n\n\n\n\n\n\n\n\nEasy to use.\nEasy to customize (defaults are not great)\nWELL DOCUMENTED"
+    "section": "Bias and variance",
+    "text": "Bias and variance\nRecall that \\(\\mathcal{D}\\) is the training data.\n\\[R_n(f) := \\Expect{L(Y,f(X))} = \\Expect{\\Expect{L(Y,f(X)) \\given \\mathcal{D}}}\\]\n\nNote the difference between \\(R_n(f)\\;\\;\\textrm{and}\\;\\;\\Expect{L(Y,f(X)) \\given \\mathcal{D}}\\)\nIf you use \\(\\mathcal{D}\\) to choose \\(f\\), then these are different.\nIf you use \\(\\mathcal{D}\\) to choose \\(f\\), then both depend on how much data you have seen."
   },
   {
-    "objectID": "schedule/slides/organization.html#takeaways",
-    "href": "schedule/slides/organization.html#takeaways",
+    "objectID": "schedule/slides/model-selection.html#risk-estimates",
+    "href": "schedule/slides/model-selection.html#risk-estimates",
     "title": "UBC Stat550",
-    "section": "Takeaways",
-    "text": "Takeaways\n\n\n\nUBC Stat 550 - 2024"
+    "section": "Risk estimates",
+    "text": "Risk estimates\n\n(Hastie, Tibshirani, and Friedman 2009)\nWe can use risk estimates for 2 different goals\n\n\nChoosing between different potential models.\nCharacterizing the out-of-sample performance of the chosen model.\n\n\nI am not generally aware of other methods of accomplishing (1)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#section",
-    "href": "schedule/slides/presentations.html#section",
+    "objectID": "schedule/slides/model-selection.html#a-model-selection-picture",
+    "href": "schedule/slides/model-selection.html#a-model-selection-picture",
     "title": "UBC Stat550",
-    "section": "Giving presentations",
-    "text": "Giving presentations\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "section": "A model selection picture",
+    "text": "A model selection picture\n\n(Hastie, Tibshirani, and Friedman 2009)"
   },
   {
-    "objectID": "schedule/slides/presentations.html#structure",
-    "href": "schedule/slides/presentations.html#structure",
+    "objectID": "schedule/slides/model-selection.html#why",
+    "href": "schedule/slides/model-selection.html#why",
     "title": "UBC Stat550",
-    "section": "Structure",
-    "text": "Structure\n\nStrategy (applies to papers too)\nDos and don’ts\nPersonal preferences"
+    "section": "Why?",
+    "text": "Why?\nWe want to do model selection for at least three reasons:\n\nPrediction accuracy\n\nCan essentially always be improved by introducing some bias\n\nInterpretation\n\nA large number of features can sometimes be reduced to an interpretable subset\n\nComputation\n\nA large \\(p\\) can create a huge computational bottleneck."
   },
   {
-    "objectID": "schedule/slides/presentations.html#genre",
-    "href": "schedule/slides/presentations.html#genre",
+    "objectID": "schedule/slides/model-selection.html#things-you-shouldnt-do",
+    "href": "schedule/slides/model-selection.html#things-you-shouldnt-do",
     "title": "UBC Stat550",
-    "section": "Genre",
-    "text": "Genre\nTalks take many forms (like papers)\n\nDepartment seminar\nShort conference presentation\nClass lecture\n...\n\nCalibrate your talk to the Genre and the Audience\n\n\nA job talk takes much more work than a class presentation\nFor context, after much practice, it takes me about 1 hour per minute of presentation length, depending on the amount of polish.\nMy course lectures take about 4x the target duration.\nGeneral ideas are the same for all styles."
+    "section": "Things you shouldn’t do",
+    "text": "Things you shouldn’t do\n\nEstimate \\(R_n\\) with \\(\\widehat{R}_n(f) = \\sum_{i=1}^n L(Y_i,\\widehat{f}(X_i))\\).\nThrow away variables with small \\(p\\)-values.\nUse \\(F\\)-tests\nCompare the log-likelihood between different models\n\n\nThese last two can occasionally be ok, but aren’t in general. You should investigate the assumptions that are implicit in them."
   },
   {
-    "objectID": "schedule/slides/presentations.html#audience",
-    "href": "schedule/slides/presentations.html#audience",
+    "objectID": "schedule/slides/model-selection.html#unbiased-risk-estimation",
+    "href": "schedule/slides/model-selection.html#unbiased-risk-estimation",
     "title": "UBC Stat550",
-    "section": "Audience",
-    "text": "Audience\n\nThink about who you are talking to\n\nStatisticians?\nStudents?\nPotential employer?\nPeople with PhD’s but in other disciplines?\nYour grandma?\n\nRegardless of the audience, I think of dividing the talk roughly in 3rds."
+    "section": "Unbiased risk estimation",
+    "text": "Unbiased risk estimation\n\nIt is very hard (impossible?) to estimate \\(R_n\\).\nInstead we focus on\n\n\\[\\overline{R}_n(f) = \\E_{Y_1,\\ldots,Y_n}\\left[\\E_{Y^0}\\left[\\frac{1}{n}\\sum_{i=1}^n L(Y^0_i,\\hat{f}(x_i))\\given \\mathcal{D}\\right]\\right].\\]\n\nThe difference is that \\(\\overline{R}_n(f)\\) averages over the observed \\(x_i\\) rather than taking the expected value over the distribution of \\(X\\).\nIn the “fixed design” setting, these are equal."
   },
   {
-    "objectID": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
-    "href": "schedule/slides/presentations.html#your-audience-for-your-in-class-talk",
+    "objectID": "schedule/slides/model-selection.html#unbiased-risk-estimation-1",
+    "href": "schedule/slides/model-selection.html#unbiased-risk-estimation-1",
     "title": "UBC Stat550",
-    "section": "(Your audience for your in-class talk)",
-    "text": "(Your audience for your in-class talk)\n\n2/3 of the time, the client.\nYou’re teaching them this topic.\nThink “someone who took 1 or 2 classes in statistics”\n1/3 of the time, your classmates.\nWhat are the details they need to know that they don’t know?\nThink carefully how to structure for that breakdown."
+    "section": "Unbiased risk estimation",
+    "text": "Unbiased risk estimation\nFor many \\(L\\) and some predictor \\(\\hat{f}\\), one can show\n\\[\\overline{R}_n(\\hat{f}) = \\Expect{\\hat{R}_n(\\hat{f})} + \\frac{2}{n} \\sum_{i=1}^n \\Cov{Y_i}{\\hat{f}(x_i)}.\\]\nThis suggests estimating \\(\\overline{R}_n(\\hat{f})\\) with\n\\[\\hat{R}_{\\textrm{gic}} := \\hat{R}_n(\\hat{f}) + \\textrm{pen}.\\]\nIf \\(\\Expect{\\textrm{pen}} = \\frac{2}{n}\\sum_{i=1}^n \\Cov{Y_i}{\\hat{f}(x_i)}\\), we have an unbiased estimator of \\(\\overline{R}_n(\\hat{f})\\)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#content",
-    "href": "schedule/slides/presentations.html#content",
+    "objectID": "schedule/slides/model-selection.html#normal-means-model",
+    "href": "schedule/slides/model-selection.html#normal-means-model",
     "title": "UBC Stat550",
-    "section": "Content",
-    "text": "Content\nEach part is a little mini-talk\n\nStarts with the general idea\nDevelops a few details. Strategy: problem/solution or question/answer\nEnds with a takeaway\n\nBut these parts are recalibrated to the audience.\n\nYour Grandma doesn’t want to see math.\nYour employer might, but doesn’t want to hear about \\(\\sigma\\)-fields.\nStatisticians don’t want to see proofs (but might want a sketch).\n..."
+    "section": "Normal means model",
+    "text": "Normal means model\nSuppose we observe the following data:\n\\[Y_i = \\beta_i + \\epsilon_i, \\quad\\quad i=1,\\ldots,n\\]\nwhere \\(\\epsilon_i\\overset{iid}{\\sim} \\mbox{N}(0,1)\\).\nWe want to estimate \\[\\boldsymbol{\\beta} = (\\beta_1,\\ldots,\\beta_n).\\]\nThe usual estimator (MLE) is \\[\\widehat{\\boldsymbol{\\beta}}^{MLE} = (Y_1,\\ldots,Y_n).\\]\nThis estimator has lots of nice properties: consistent, unbiased, UMVUE, (asymptotic) normality…"
   },
   {
-    "objectID": "schedule/slides/presentations.html#story-structure",
-    "href": "schedule/slides/presentations.html#story-structure",
+    "objectID": "schedule/slides/model-selection.html#mles-are-bad",
+    "href": "schedule/slides/model-selection.html#mles-are-bad",
     "title": "UBC Stat550",
-    "section": "Story structure",
-    "text": "Story structure\n\n\n\n\n\n\nWhat I often see…\n\n\nOnce upon a time, a young MSc student went into the woods of theory and found some trees.\nFirst they looked at one tree, it was oak.\nThen the looked at the next tree, it was maple.\nThen they wondered if trees could talk.\nAfter three months of wandering, they saw a house…\n\n\n\n\n\n\n\n\n\n\nThe attention grabber\n\n\nAxe-wielding woodsman saves student from wolf attack!"
+    "section": "MLEs are bad",
+    "text": "MLEs are bad\nBut, the standard estimator STINKS! It’s a bad estimator.\nIt has no bias, but big variance.\n\\[R_n(\\widehat{\\boldsymbol{\\beta}}^{MLE}) = \\mbox{bias}^2 + \\mbox{var} = 0\n+ n\\cdot 1= n\\]\nWhat if we use a biased estimator?\nConsider the following estimator instead: \\[\\widehat{\\beta}_i^S = \\begin{cases} Y_i & i \\in S\\\\ 0 & \\mbox{else}. \\end{cases}\\]\nHere \\(S \\subseteq \\{1,\\ldots,n\\}\\)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#better-structure",
-    "href": "schedule/slides/presentations.html#better-structure",
+    "objectID": "schedule/slides/model-selection.html#biased-normal-means",
+    "href": "schedule/slides/model-selection.html#biased-normal-means",
     "title": "UBC Stat550",
-    "section": "Better structure",
-    "text": "Better structure\n\n(Enough details to give the headline.)\nHeadline result.\nHow do we know the result is real. What are the details of computation, inference, methodology.\nDemonstration with empirics."
+    "section": "Biased normal means",
+    "text": "Biased normal means\nWhat is the risk of this estimator?\n\\[\nR_n(\\widehat{\\boldsymbol{\\beta}}^S) = \\sum_{i\\not\\in S} \\beta_i^2 + |S|.\n\\]\nIn other words, if some \\(|\\beta_i| &lt; 1\\), then don’t bother estimating them!\nIn general, introduced parameters like \\(S\\) will be called tuning parameters.\nOf course we don’t know which \\(|\\beta_i| &lt; 1\\).\nBut we could try to estimate \\(R_n(\\widehat{\\boldsymbol{\\beta}}^S)\\), and choose \\(S\\) to minimize our estimate."
   },
   {
-    "objectID": "schedule/slides/presentations.html#you-should-consider",
-    "href": "schedule/slides/presentations.html#you-should-consider",
+    "objectID": "schedule/slides/model-selection.html#dangers-of-using-the-training-error",
+    "href": "schedule/slides/model-selection.html#dangers-of-using-the-training-error",
     "title": "UBC Stat550",
-    "section": "You should consider…",
-    "text": "You should consider…\n\nAttention span diminishes quickly.\nWhat are the 3-5 takeaways?\nHit your main result at the beginning: this is what I can do that I couldn’t before."
+    "section": "Dangers of using the training error",
+    "text": "Dangers of using the training error\nAlthough\n\\[\\widehat{R}_n(\\widehat{\\boldsymbol{\\beta}})  \\approx R_n(\\widehat{\\boldsymbol{\\beta}}),\\] this approximation can be very bad. In fact:\n\nTraining Error\n\n\\(\\widehat{R}_n(\\widehat{\\boldsymbol{\\beta}}^{MLE}) = 0\\)\n\nRisk\n\n\\(R_n(\\widehat{\\boldsymbol{\\beta}}^{MLE}) = n\\)\n\n\nIn this case, the optimism of the training error is \\(n\\)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#the-ideal-map",
-    "href": "schedule/slides/presentations.html#the-ideal-map",
+    "objectID": "schedule/slides/model-selection.html#normal-means",
+    "href": "schedule/slides/model-selection.html#normal-means",
     "title": "UBC Stat550",
-    "section": "The ideal map",
-    "text": "The ideal map\nMap out what you’ve done.\n\nWhat did you find?\nWhat are the implications?\nWhy does audience care?\nHow do we do it?\n\n\nAvoid wandering in the wilderness:\n\nFirst we did this;\nBut that didn’t work, so we tried …\nBut then we added …\nFinally we got to the beach …\nAnd the water was nice …"
+    "section": "Normal means",
+    "text": "Normal means\nWhat about \\(\\widehat{\\boldsymbol{\\beta}}^S\\)?\n\\[\\widehat{R}_n(\\widehat{\\boldsymbol{\\beta}}^S) = \\sum_{i=1}^n (\\widehat{\\beta_i}-\n  Y_i)^2 = \\sum_{i \\notin S} Y_i^2 %+ |S|\\sigma^2\\]\nWell \\[\\E\\left[\\widehat{R}_n(\\widehat{\\boldsymbol{\\beta}}^S)\\right] =\n  R_n(\\widehat{\\boldsymbol{\\beta}}^S) - 2|S| +n.\\]\nSo I can choose \\(S\\) by minimizing \\(\\widehat{R}_n(\\widehat{\\boldsymbol{\\beta}}^S) + 2|S|\\).\n\\[\\mbox{Estimate of Risk} = \\mbox{training error} + \\mbox{penalty}.\\]\nThe penalty term corrects for the optimism."
   },
   {
-    "objectID": "schedule/slides/presentations.html#words",
-    "href": "schedule/slides/presentations.html#words",
+    "objectID": "schedule/slides/model-selection.html#pen-in-the-nice-cases",
+    "href": "schedule/slides/model-selection.html#pen-in-the-nice-cases",
     "title": "UBC Stat550",
-    "section": "Words",
-    "text": "Words\n\n\nToo many words on a slide is bad\n\nBullet points\nToo densely concentrated are bad\nAre bad\nAre hard to focus on\n\n\nEmpty space is your friend\n\nLorem markdownum et moras et ponendi odores, neu magna per! Tyria meo iungitur videt, frigore terras rogis Anienis poteram, dant. His vallem arma corpore vident nunc nivibus avus, dea. Spatium luce certa cupiunt, lina. Amabam opem, Iovis fecundaque et parum.\nAede virum annis audit modo: meus ramis videri: nec quod insidiisque Aonio tenuem, AI. Trames Iason: nocent hortatus lacteus praebita paternos petit, Paridis aptus prius ut origo furiisque. Mercibus sis nullo aliudve Amathunta sufficit ululatibus, praevalidusque segnis et Dryopen."
+    "section": "pen() in the nice cases",
+    "text": "pen() in the nice cases\nResult:\nSuppose \\(\\hat{f}(x_i) = HY\\) for some matrix \\(H\\), and \\(Y_i\\)’s are IID. Then\n\\[\\frac{2}{n} \\sum_{i=1}^n \\Cov{Y_i}{\\hat{f}(x_i)} = \\frac{2}{n} \\sum_{i=1}^n H_{ii} \\Cov{Y_i}{Y_i} = \\frac{2\\Var{Y}}{n} \\tr{H}.\\]\n\nSuch estimators are called “linear smoothers”.\nObvious extension to the heteroskedastic case.\nWe call \\(\\frac{1}{\\Var{Y}}\\sum_{i=1}^n \\Cov{Y_i}{\\hat{f}(x_i)}\\) the degrees of freedom of \\(\\hat{f}\\).\nLinear smoothers are ubiquitous\nExamples: OLS, ridge regression, KNN, dictionary regression, smoothing splines, kernel regression, etc."
   },
   {
-    "objectID": "schedule/slides/presentations.html#images",
-    "href": "schedule/slides/presentations.html#images",
+    "objectID": "schedule/slides/model-selection.html#examples-of-df",
+    "href": "schedule/slides/model-selection.html#examples-of-df",
     "title": "UBC Stat550",
-    "section": "Images",
-    "text": "Images\n\n\nPictures are good\n\nFlow charts are good.\n\nCareful use of colour is good.\n\nSize is good.\n\ntoo much variation is distracting\n\n\n\n\n\nHow long did you stare at the cat?"
+    "section": "Examples of DF",
+    "text": "Examples of DF\n\nOLS\n\n\\[H = X^\\top (X^\\top X)^{-1} X^\\top \\Rightarrow \\tr{H} = \\textrm{rank}(X) = p\\]\n\nRidge (decompose \\(X=UDV^\\top\\))\n\n\\[H = X^\\top (X^\\top X + \\lambda I_p)^{-1} X^\\top \\Rightarrow \\tr{H} = \\sum_{i=1}^p \\frac{d_i^2}{d_i^2 + \\lambda} &lt; \\min\\{p,n\\}\\]\n\nKNN \\(\\textrm{df} = n/K\\) (each point is it’s own nearest neighbor, it gets weight \\(1/K\\))"
   },
   {
-    "objectID": "schedule/slides/presentations.html#graphics",
-    "href": "schedule/slides/presentations.html#graphics",
+    "objectID": "schedule/slides/model-selection.html#finding-risk-estimators",
+    "href": "schedule/slides/model-selection.html#finding-risk-estimators",
     "title": "UBC Stat550",
-    "section": "Graphics",
-    "text": "Graphics\n\n\n\n\n\n\n\n\nImportant\n\n\nDefaults are almost always terrible."
+    "section": "Finding risk estimators",
+    "text": "Finding risk estimators\nThis isn’t the way everyone introduces/conceptualizes prediction risk.\nFor me, thinking of \\(\\hat{R}_n\\) as overly optimistic and correcting for that optimism is conceptually appealing\nAn alternative approach is to discuss information criteria.\nIn this case one forms a (pseudo)-metric on probability measures."
   },
   {
-    "objectID": "schedule/slides/presentations.html#issues-with-the-preceding",
-    "href": "schedule/slides/presentations.html#issues-with-the-preceding",
+    "objectID": "schedule/slides/model-selection.html#kullbackleibler",
+    "href": "schedule/slides/model-selection.html#kullbackleibler",
     "title": "UBC Stat550",
-    "section": "Issues with the preceding",
-    "text": "Issues with the preceding\n\nColours are awful\nGrey background is distracting\nText size is too small\nLegend position on the side is strange?\nNumbers on the y-axis are nonesense\nWith barchart, y-axis should start at 0.\n.png vs .svg"
+    "section": "Kullback–Leibler",
+    "text": "Kullback–Leibler\nSuppose we have data \\(Y\\) that comes from the probability density function \\(f\\).\nWhat happens if we use the probability density function \\(g\\) instead?\n\nExample\n\nSuppose \\(Y \\sim N(\\mu,\\sigma^2) =: f\\). We want to predict a new \\(Y_*\\), but we model it as \\(Y_* \\sim N(\\mu_*,\\sigma^2) =: g\\)\n\n\nHow far away are we? We can either compare \\(\\mu\\) to \\(\\mu_*\\) or \\(Y\\) to \\(Y^*\\).\nOr, we can compute how far \\(f\\) is from \\(g\\).\nWe need a notion of distance."
   },
   {
-    "objectID": "schedule/slides/presentations.html#graphics-1",
-    "href": "schedule/slides/presentations.html#graphics-1",
+    "objectID": "schedule/slides/model-selection.html#kullbackleibler-1",
+    "href": "schedule/slides/model-selection.html#kullbackleibler-1",
     "title": "UBC Stat550",
-    "section": "Graphics",
-    "text": "Graphics"
+    "section": "Kullback–Leibler",
+    "text": "Kullback–Leibler\nKullback–Leibler divergence (or discrepancy)\n\\[\\begin{aligned}\nKL(f\\;\\Vert\\; g) & = \\int \\log\\left( \\frac{f(y)}{g(y)} \\right)f(y) dy \\\\\n& \\propto\n-\\int \\log (g(y)) f(y) dy \\qquad \\textrm{(ignore term without $g$)}\\\\\n& =\n-\\mathbb{E}_f [\\log (g(Y))] \\end{aligned}\\]\n\nMeasures the loss incurred by (incorrectly) using \\(g\\) instead of \\(f\\).\nKL is not symmetric: \\(KL(f\\;\\Vert\\; g) \\neq KL(g\\;\\Vert\\; f)\\), so it’s not a distance, but it is non-negative and satisfies the triangle inequality.\nUsually, \\(f,\\ g\\) will depend on some parameters, call them \\(\\theta\\)"
   },
   {
-    "objectID": "schedule/slides/presentations.html#again",
-    "href": "schedule/slides/presentations.html#again",
+    "objectID": "schedule/slides/model-selection.html#kl-example",
+    "href": "schedule/slides/model-selection.html#kl-example",
     "title": "UBC Stat550",
-    "section": "Again",
-    "text": "Again\n\n\n\n\n\n\n\nTip\n\n\nI like this, but ~10% of men are colour blind (including some faculty in this department)."
+    "section": "KL example",
+    "text": "KL example\n\nIn regression, we can specify \\(f = N(X^{\\top} \\beta_*, \\sigma^2)\\)\nfor a fixed (true) \\(\\beta_*\\),\nlet \\(g_\\theta = N(X^{\\top}\\beta,\\sigma^2)\\) over all \\(\\theta = (\\beta,\\sigma^2) \\in \\mathbb{R}^p\\times\\mathbb{R}^+\\)\n\\(KL(f,g_\\theta) = -\\mathbb{E}_f [\\log (g_\\theta(Y))]\\), we want to minimize this over \\(\\theta\\).\nBut \\(f\\) is unknown, so we minimize \\(-\\log (g_\\theta(Y))\\) instead.\nThis is the maximum likelihood value \\[\\hat{\\theta}_{ML} = \\argmax_\\theta g_\\theta(Y)\\]\nWe don’t actually need to assume things about a true model nor have it be nested in the alternative models to make this work."
   },
   {
-    "objectID": "schedule/slides/presentations.html#simulation",
-    "href": "schedule/slides/presentations.html#simulation",
+    "objectID": "schedule/slides/model-selection.html#operationalizing",
+    "href": "schedule/slides/model-selection.html#operationalizing",
     "title": "UBC Stat550",
-    "section": "Simulation",
-    "text": "Simulation"
+    "section": "Operationalizing",
+    "text": "Operationalizing\n\nNow, to get an operational characterization of the KL divergence at the ML solution \\[-\\mathbb{E}_f [\\log (g_{\\hat\\theta_{ML}}(Y))]\\] we need an approximation (don’t know \\(f\\), still).\n\n\nResult\n\nIf you maximize the likelihood for a finite dimensional parameter vector \\(\\theta\\) of length \\(p\\), then as \\(n\\rightarrow \\infty\\), \\[-\\mathbb{E}_f [\\log (g_{\\hat\\theta_{ML}}(Y))] = -\\log (g_{\\hat\\theta_{ML}}(Y)) + p.\\]\n\n\n\nThis is AIC (originally “an information criterion”, now “Akaike’s information criterion”)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#jargon",
-    "href": "schedule/slides/presentations.html#jargon",
+    "objectID": "schedule/slides/model-selection.html#aic-warnings",
+    "href": "schedule/slides/model-selection.html#aic-warnings",
     "title": "UBC Stat550",
-    "section": "Jargon",
-    "text": "Jargon\n\nBe wary of acronyms (MLE, BLUP, RKHS)\nAgain, think of your audience. MLE is fine for any statistician.\nOthers need definitions in words and written on the slide\nSame for math notation \\(\\bar{X},\\ \\mu,\\ \\sigma,\\ \\mathbf{UDV}^\\top\\)\nAnd for applied work e.g. SNP\nBest Linear Unbiased Predictor"
+    "section": "AIC warnings",
+    "text": "AIC warnings\n\nChoose the model with smallest AIC\nOften multiplied by 2 “for historical reasons”.\nSometimes by \\(-2\\) “to be extra annoying”.\nYour estimator for \\(\\theta\\) needs to be the MLE. (or the asymptotics may be wrong)\n\\(p\\) includes all estimated parameters."
   },
   {
-    "objectID": "schedule/slides/presentations.html#things-i-hate",
-    "href": "schedule/slides/presentations.html#things-i-hate",
+    "objectID": "schedule/slides/model-selection.html#back-to-the-ols-example",
+    "href": "schedule/slides/model-selection.html#back-to-the-ols-example",
     "title": "UBC Stat550",
-    "section": "Things I hate",
-    "text": "Things I hate\n Saying “I’m not going to talk about …”  “I’m happy to discuss … later if you’d like”.\n Wiggling your laser pointer at every word. Highlight important things with pretty colours. Use pointer sparingly.\n Playing with your collar, your pockets, your water bottle…\n Staring at your slides …\n Displaying the total number of slides as in 6/85 in the lower right hand corner …\n Running over time. Skipping 6 slides to desperately make the time limit.\n Using the default themes:"
+    "section": "Back to the OLS example",
+    "text": "Back to the OLS example\nSuppose \\(Y\\) comes from the standard normal linear regression model with known variance \\(\\sigma^2\\).\n\\[\n\\begin{aligned}\n-\\log(g_{\\hat{\\theta}}) &\\propto \\log(\\sigma^2) + \\frac{1}{2\\sigma^2}\\sum_{i=1}^n (y_i - x_i^\\top \\hat{\\beta}_{MLE})^2\\\\ \\Rightarrow AIC &= 2\\frac{n}{2\\sigma^2}\\hat{R}_n + 2p = \\hat{R}_n + \\frac{2\\sigma^2}{n} p.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "schedule/slides/presentations.html#never-use-tables-of-numbers",
-    "href": "schedule/slides/presentations.html#never-use-tables-of-numbers",
+    "objectID": "schedule/slides/model-selection.html#back-to-the-ols-example-1",
+    "href": "schedule/slides/model-selection.html#back-to-the-ols-example-1",
     "title": "UBC Stat550",
-    "section": "Never use tables of numbers",
-    "text": "Never use tables of numbers\n\nEconomists do this all the time for inexplicable reasons\nI rarely put these in papers either\nIf I’m not going to talk about it, it doesn’t go on the slide\nThere’s no way I’m going to read off the number, certainly not to 4 decimal places\nUse a graph"
+    "section": "Back to the OLS example",
+    "text": "Back to the OLS example\nSuppose \\(Y\\) comes from the standard normal linear regression model with unknown variance \\(\\sigma^2\\).\nNote that \\(\\hat{\\sigma}_{MLE}^2 = \\frac{1}{n} \\sum_{i=1}^n (y_i-x_i^\\top\\hat{\\beta}_{MLE})^2\\).\n\\[\n\\begin{aligned}\n-\\log(g_{\\hat{\\theta}}) &\\propto \\frac{n}{2}\\log(\\hat{\\sigma}^2) + \\frac{1}{2\\hat{\\sigma^2}}\\sum_{i=1}^n (y_i - x_i^\\top \\hat{\\beta}_{MLE})^2\\\\ \\Rightarrow AIC &\\propto 2 n\\log(\\hat{\\sigma}^2)/2 + 2(p+1) \\propto \\log(\\hat{R}_n) + \\frac{2(p+1)}{n}.\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "schedule/slides/presentations.html#use-graphs-but",
-    "href": "schedule/slides/presentations.html#use-graphs-but",
+    "objectID": "schedule/slides/model-selection.html#mallows-cp",
+    "href": "schedule/slides/model-selection.html#mallows-cp",
     "title": "UBC Stat550",
-    "section": "Use graphs, but",
-    "text": "Use graphs, but\n\nA graph with 3 dots should be a table of 3 numbers.\nBut why do you have only 3 numbers?\nAny table can be a better graph.\n\n\n\n\n\n\n\nAsk yourself:\n\n\nIs this the best way to display the data? Have I summarized too much?"
+    "section": "Mallow’s Cp",
+    "text": "Mallow’s Cp\n\nDefined for linear regression.\nNo likelihood assumptions.\nVariance is known\n\n\\[C_p = \\hat{R}_n + 2\\sigma^2 \\frac{\\textrm{df}}{n} = AIC\\]"
   },
   {
-    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results",
-    "href": "schedule/slides/presentations.html#example-made-up-simulation-results",
+    "objectID": "schedule/slides/model-selection.html#bayes-factor",
+    "href": "schedule/slides/model-selection.html#bayes-factor",
     "title": "UBC Stat550",
-    "section": "Example: Made up simulation results",
-    "text": "Example: Made up simulation results\nRan 50 simulations."
+    "section": "Bayes factor",
+    "text": "Bayes factor\nFor Bayesian Analysis, we want the posterior. Suppose we have two models A and B.\n\\[\n\\begin{aligned}\nP(B\\given \\mathcal{D}) &= \\frac{P(\\mathcal{D}\\given B)P(B)}{P(\\mathcal{D})}\n\\propto P(\\mathcal{D}\\given B)P(B)\\\\\nP(A\\given \\mathcal{D}) &= \\frac{P(\\mathcal{D}\\given A)P(A)}{P(\\mathcal{D})}\n\\propto P(\\mathcal{D}\\given A)P(A)\n\\end{aligned}\n\\] We assume that \\(P(A) = P(B)\\). Then to compare, \\[\n\\frac{P(B\\given \\mathcal{D})}{P(A\\given \\mathcal{D})} = \\frac{P(\\mathcal{D}\\given B)}  {P(\\mathcal{D}\\given A)}.\n\\]\n\nCalled the Bayes Factor.\nThis is the ratio of marginal likelihoods under the different models."
   },
   {
-    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
-    "href": "schedule/slides/presentations.html#example-made-up-simulation-results-1",
+    "objectID": "schedule/slides/model-selection.html#bayes-factor-1",
+    "href": "schedule/slides/model-selection.html#bayes-factor-1",
     "title": "UBC Stat550",
-    "section": "Example: Made up simulation results",
-    "text": "Example: Made up simulation results\nRan 50 simulations."
+    "section": "Bayes Factor",
+    "text": "Bayes Factor\n\nNot easy to calculate generally. ()\nUse the Laplace approximation, some simplifications, assumptions:\n\n\\[\\log P(\\mathcal{D}\\given B) = \\log P(\\mathcal{D} \\given \\hat{\\theta},\\ B) -\\frac{p\\log(n)}{2} + O(1)\n\\]\n\nMultiply through by \\(-2\\): \\[\nBIC = -\\log (g_\\theta(Y)) + p\\log(n) = \\log(\\hat{R}_n) + \\frac{p\\log(n)}{n}\n\\]\nAlso called Schwarz IC. Compare to AIC (variance unknown case)"
   },
   {
-    "objectID": "schedule/slides/presentations.html#example-made-up-simulation-results-2",
-    "href": "schedule/slides/presentations.html#example-made-up-simulation-results-2",
+    "objectID": "schedule/slides/model-selection.html#sure",
+    "href": "schedule/slides/model-selection.html#sure",
     "title": "UBC Stat550",
-    "section": "Example: Made up simulation results",
-    "text": "Example: Made up simulation results\nRan 50 simulations."
+    "section": "SURE",
+    "text": "SURE\n\\[\\hat{R}_{gic} := \\hat{R}_n(\\hat{f}) + \\textrm{pen}.\\]\nIf \\(\\Expect{\\textrm{pen}} = \\frac{2}{n}\\sum_{i=1}^n \\Cov{Y_i}{\\hat{f}(x_i)}\\), we have an unbiased estimator of \\(\\overline{R}_n(\\hat{f})\\).\n\nResult (Stein’s Lemma)\n\nSuppose \\(Y_i\\sim N(\\mu_i,\\sigma^2)\\) and suppose \\(f\\) is weakly differentiable. Then\n\n\n\\[\\frac{1}{\\sigma^2} \\sum_{i=1}^n\\Cov{Y_i}{\\hat{f}_i(Y)} = \\Expect{\\sum_{i=1}^n \\frac{\\partial f_i}{\\partial y_i} \\hat{f}(Y)}.\\]\n\nNote: Here I’m writing \\(\\hat{f}\\) as a function of \\(Y\\) rather than \\(x\\)."
   },
   {
-    "objectID": "schedule/slides/presentations.html#things-you-should-do",
-    "href": "schedule/slides/presentations.html#things-you-should-do",
+    "objectID": "schedule/slides/model-selection.html#sure-1",
+    "href": "schedule/slides/model-selection.html#sure-1",
     "title": "UBC Stat550",
-    "section": "Things you should do",
-    "text": "Things you should do\n Number your slides\n Have lots of prepared backup slides (details, answers to potential questions, further analysis)\n Practice a lot. Practice in front of others. Practice the beginning more than the rest.\n BE EXCITED. You worked hard on this. All results are cool. Play them up. You did something good and you want to tell everyone about how awesome you are. Own it.\n Take credit. Say “I showed this” not “It can be shown”."
+    "section": "SURE",
+    "text": "SURE\n\nThis gives “Stein’s Unbiased Risk Estimator”\n\n\\[SURE = \\hat{R}_n(\\hat{f}) + 2\\sigma^2 \\sum_{i=1}^n \\frac{\\partial f_i}{\\partial y_i} \\hat{f}(Y) - n\\sigma^2.\\]\n\nIf \\(f(Y) = HY\\) is linear, we’re back to AIC (variance known case)\nIf \\(\\sigma^2\\) is unknown, may not be unbiased anymore. May not care."
   },
   {
-    "objectID": "schedule/slides/presentations.html#things-that-are-debatable",
-    "href": "schedule/slides/presentations.html#things-that-are-debatable",
+    "objectID": "schedule/slides/model-selection.html#intuition-for-cv",
+    "href": "schedule/slides/model-selection.html#intuition-for-cv",
     "title": "UBC Stat550",
-    "section": "Things that are debatable",
-    "text": "Things that are debatable\n\nMath talks tend to be “chalkboard”\nCS talks tend to be “sales pitch”\nStats is in the middle.\nI lean toward details with elements of salesmanship\nIf I hear your talk, I want to be able to “do” what you created. This is hard without some math.\nThis also colours my decisions about software.\n\n\n\n\n\n\n\n\nNote\n\n\nJeff Bezos banned Powerpoint from Amazon presentations"
+    "section": "Intuition for CV",
+    "text": "Intuition for CV\nOne reason that \\(\\widehat{R}_n(\\widehat{f})\\) is bad is that we are using the same data to pick \\(\\widehat{f}\\) AND to estimate \\(R_n\\).\n“Validation set” fixes this, but holds out a particular, fixed block of data we pretend mimics the “test data”\nWhat if we set aside one observation, say the first one \\((y_1, x_1)\\).\nWe estimate \\(\\widehat{f}^{(1)}\\) without using the first observation.\nThen we test our prediction:\n\\[\\widetilde{R}_1(\\widehat{f}^{(1)}) = (y_1 -\\widehat{f}^{(1)}(x_1))^2.\\]\n(why the notation \\(\\widetilde{R}_1\\)? Because we’re estimating the risk with 1 observation. )"
   },
   {
-    "objectID": "schedule/slides/presentations.html#closing-suggestions",
-    "href": "schedule/slides/presentations.html#closing-suggestions",
+    "objectID": "schedule/slides/model-selection.html#keep-going",
+    "href": "schedule/slides/model-selection.html#keep-going",
     "title": "UBC Stat550",
-    "section": "Closing suggestions",
-    "text": "Closing suggestions\n1. Slow down\n\nGet a bottle of water before the talk.\nDrink it to pause on (pre-planned) key slides.\nThis will help you relax.\nIt will also give the audience a few seconds to get the hard stuff into their head.\n\n2. Cut back\n\nMost of your slides probably have too many words.\nAnd too much “filler” –&gt; Kill the filler"
+    "section": "Keep going",
+    "text": "Keep going\nBut that was only one data point \\((y_1, x_1)\\). Why stop there?\nDo the same with \\((y_2, x_2)\\)! Get an estimate \\(\\widehat{f}^{(2)}\\) without using it, then\n\\[\\widetilde{R}_1(\\widehat{f}^{(2)}) = (y_2 -\\widehat{f}^{(2)}(x_2))^2.\\]\nWe can keep doing this until we try it for every data point.\nAnd then average them! (Averages are good)\n\\[\\mbox{LOO-CV} = \\frac{1}{n}\\sum_{i=1}^n \\widetilde{R}_1(\\widehat{f}^{(i)}) = \\frac{1}{n}\\sum_{i=1}^n\n(y_i - \\widehat{f}^{(i)}(x_i))^2\\]\nThis is leave-one-out cross validation"
   },
   {
-    "objectID": "schedule/slides/presentations.html#closing-suggestions-1",
-    "href": "schedule/slides/presentations.html#closing-suggestions-1",
+    "objectID": "schedule/slides/model-selection.html#problems-with-loo-cv",
+    "href": "schedule/slides/model-selection.html#problems-with-loo-cv",
     "title": "UBC Stat550",
-    "section": "Closing suggestions",
-    "text": "Closing suggestions\n3. Try to move\n\nIt’s good to move physically, engage the audience\nTry to make eye contact with the whole room\nRecord yourself once to see if you do anything extraneous\n\n4. Have fun."
+    "section": "Problems with LOO-CV",
+    "text": "Problems with LOO-CV\n🤮 Each held out set is small \\((n=1)\\). Therefore, the variance of the Squared Error of each prediction is high.\n🤮 The training sets overlap. This is bad.\n\nUsually, averaging reduces variance: \\(\\Var{\\overline{X}} = \\frac{1}{n^2}\\sum_{i=1}^n \\Var{X_i} = \\frac{1}{n}\\Var{X_1}.\\)\nBut only if the variables are independent. If not, then \\(\\Var{\\overline{X}} = \\frac{1}{n^2}\\Var{ \\sum_{i=1}^n X_i} = \\frac{1}{n}\\Var{X_1} + \\frac{1}{n^2}\\sum_{i\\neq j} \\Cov{X_i}{X_j}.\\)\nSince the training sets overlap a lot, that covariance can be pretty big.\n\n🤮 We have to estimate this model \\(n\\) times.\n🎉 Bias is low because we used almost all the data to fit the model: \\(E[\\mbox{LOO-CV}] = R_{n-1}\\)"
   },
   {
-    "objectID": "schedule/slides/presentations.html#example-talks",
-    "href": "schedule/slides/presentations.html#example-talks",
+    "objectID": "schedule/slides/model-selection.html#k-fold-cv",
+    "href": "schedule/slides/model-selection.html#k-fold-cv",
     "title": "UBC Stat550",
-    "section": "Example talks:",
-    "text": "Example talks:\n\nTeaching PCA\nShort research talk about Latent Infections\n\n\n\n\nUBC Stat 550 - 2024"
+    "section": "K-fold CV",
+    "text": "K-fold CV\n\n\nTo alleviate some of these problems, people usually use \\(K\\)-fold cross validation.\nThe idea of \\(K\\)-fold is\n\nDivide the data into \\(K\\) groups.\nLeave a group out and estimate with the rest.\nTest on the held-out group. Calculate an average risk over these \\(\\sim n/K\\) data.\nRepeat for all \\(K\\) groups.\nAverage the average risks.\n\n\n\n🎉 Less overlap, smaller covariance.\n🎉 Larger hold-out sets, smaller variance.\n🎉 Less computations (only need to estimate \\(K\\) times)\n🤮 LOO-CV is (nearly) unbiased for \\(R_n\\)\n🤮 K-fold CV is unbiased for \\(R_{n(1-1/K)}\\)\nThe risk depends on how much data you use to estimate the model. \\(R_n\\) depends on \\(n\\)."
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#comparison",
+    "href": "schedule/slides/model-selection.html#comparison",
+    "title": "UBC Stat550",
+    "section": "Comparison",
+    "text": "Comparison\n\nLOO-CV and AIC are asymptotically equivalent \\(p&lt;n\\), (Stone 1977)\nProperties of AIC/BIC in high dimensions are not well understood.\nIn low dimensions, AIC is minimax optimal for the prediction risk (Yang and Barron 1998)\nCV is consistent for the prediction risk (Dudoit and Laan 2005)\nBoth tend to over-select predictors (unproven, except empirically)\nBIC asymptotically selects the correct linear model in low dimensions (Shao 1997) and in high dimensions (Wang, Li, and Leng 2009)"
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#comparison-1",
+    "href": "schedule/slides/model-selection.html#comparison-1",
+    "title": "UBC Stat550",
+    "section": "Comparison",
+    "text": "Comparison\n\nIn linear regression, it is impossible for a model selection criterion to be minimax optimal and select the correct model asymptotically (Yang 2005)\nIn high dimensions, if the variance is unknown, the “known” variance form of AIC/BIC is disastrous.\nConclusion: your choice of risk estimator impacts results. Thus,\n\nIf you want to select models, you might pick BIC\nIf you want good predictions, you might use CV\nIt’s possible LASSO + CV(1se) picks models better than LASSO + CV(min)"
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#some-other-lessons",
+    "href": "schedule/slides/model-selection.html#some-other-lessons",
+    "title": "UBC Stat550",
+    "section": "Some other lessons",
+    "text": "Some other lessons\n\nThe unknown variance form of AIC fails in high dimensions because you can drive RSS to zero.\nYou need to use a high-dimensional variance estimator instead (Homrighausen and McDonald 2018)\nLASSO + CV “works” in high dimensions (not LOO, but no one uses it anyway)\nUnder very strong conditions it selects the right model at the right rate.\nUnder weaker conditions, it achieves (nearly) minimax optimal prediction risk. (Homrighausen and McDonald 2013, 2014, 2017)"
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#what-if-we-dont-want-to-choose",
+    "href": "schedule/slides/model-selection.html#what-if-we-dont-want-to-choose",
+    "title": "UBC Stat550",
+    "section": "What if we don’t want to choose?",
+    "text": "What if we don’t want to choose?\n\nChoose a risk estimator \\(\\hat{R}\\)\nCalculate weights \\(p_i = \\exp\\left\\{-\\hat{R}(\\textrm{Model}_i)\\right\\}\\)\nCreate final estimator \\(\\hat{f} = \\sum_{\\textrm{models}} \\frac{p_i}{\\sum p_i} \\hat{f}_i\\).\n\n\nIf \\(\\hat{R}\\) is BIC, this is (poor-man’s) Bayesian Model Averaging."
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#bayesian-model-averaging",
+    "href": "schedule/slides/model-selection.html#bayesian-model-averaging",
+    "title": "UBC Stat550",
+    "section": "Bayesian Model Averaging",
+    "text": "Bayesian Model Averaging\n\nReal BMA integrates over the models: \\[P(f \\given \\mathcal{D}) = \\int P(f \\given M_i, \\mathcal{D}) P(M_i \\given \\mathcal{D}) dM\\]\nAveraging + Sparsity is pretty hard.\nInteresting open problem: how can we combine LASSO models over the path?\nIssue with MA: \\(e^{-BIC}\\) can be tiny for all but a few models. You’re not averaging anymore."
+  },
+  {
+    "objectID": "schedule/slides/model-selection.html#references",
+    "href": "schedule/slides/model-selection.html#references",
+    "title": "UBC Stat550",
+    "section": "References",
+    "text": "References\n\n\n\nUBC Stat 550 - 2024\n\n\n\n\nDudoit, Sandrine, and Mark J. van der Laan. 2005. “Asymptotics of Cross-Validation Risk Estimation in Estimator Selection and Performance Assessment.” Statistical Methodology, 131–54.\n\n\nHastie, T., R. Tibshirani, and J. Friedman. 2009. The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer Verlag.\n\n\nHomrighausen, Darren, and Daniel J. McDonald. 2013. “The Lasso, Persistence, and Cross-Validation.” In Proceedings of the \\(30^{th}\\) International Conference on Machine Learning (ICML), edited by Sanjoy Dasgupta and David McAllester, 28:1031–39. PMLR.\n\n\n———. 2014. “Leave-One-Out Cross-Validation Is Risk Consistent for Lasso.” Machine Learning 97 (1-2): 65–78.\n\n\n———. 2017. “Risk Consistency of Cross-Validation for Lasso-Type Procedures.” Statistica Sinica 27 (3): 1017–36.\n\n\n———. 2018. “A Study on Tuning Parameter Selection for the High-Dimensional Lasso.” Journal of Statistical Computation and Simulation 88: 2865–92.\n\n\nShao, Jun. 1997. “An Asymptotic Theory for Linear Model Selection.” Statistica Sinica 7 (2): 221–42.\n\n\nStone, M. 1977. “Asymptotics for and Against Cross-Validation.” Biometrika 64 (1): 29–35.\n\n\nWang, Hansheng, Bo Li, and Chenlei Leng. 2009. “Shrinkage Tuning Parameter Selection with a Diverging Number of Parameters.” Journal of the Royal Statistical Society: Series B (Statistical Methodology) 71 (3): 671–83.\n\n\nYang, Yuhong. 2005. “Can the Strengths of AIC and BIC Be Shared? A Conflict Between Model Indentification and Regression Estimation.” Biometrika 92 (4): 937–50.\n\n\nYang, Yuhong, and Andrew Barron. 1998. “An Asymptotic Property of Model Selection Criteria.” IEEE Transactions on Information Theory 44: 95–116."
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#section",
+    "href": "schedule/slides/pca-intro.html#section",
+    "title": "UBC Stat550",
+    "section": "Principal components analysis",
+    "text": "Principal components analysis\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#representation-learning",
+    "href": "schedule/slides/pca-intro.html#representation-learning",
+    "title": "UBC Stat550",
+    "section": "Representation learning",
+    "text": "Representation learning\nRepresentation learning is the idea that performance of ML methods is highly dependent on the choice of representation\nFor this reason, much of ML is geared towards transforming the data into the relevant features and then using these as inputs\nThis idea is as old as statistics itself, really,\nHowever, the idea is constantly revisited in a variety of fields and contexts\nCommonly, these learned representations capture low-level information like overall shapes\nIt is possible to quantify this intuition for PCA at least\n\n\nGoal\n\nTransform \\(\\mathbf{X}\\in \\R^{n\\times p}\\) into \\(\\mathbf{Z} \\in \\R^{n \\times ?}\\)\n\n\n?-dimension can be bigger (feature creation) or smaller (dimension reduction) than \\(p\\)"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#pca",
+    "href": "schedule/slides/pca-intro.html#pca",
+    "title": "UBC Stat550",
+    "section": "PCA",
+    "text": "PCA\nPrincipal components analysis (PCA) is a dimension reduction technique\nIt solves various equivalent optimization problems\n(Maximize variance, minimize \\(\\ell_2\\) distortions, find closest subspace of a given rank, \\(\\ldots\\))\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings",
+    "title": "UBC Stat550",
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nSuppose we have predictors \\(\\x_1\\) and \\(\\x_2\\) (columns / features / measurements)\n\nWe more faithfully preserve the structure of this data by keeping \\(\\x_1\\) and setting \\(\\x_2\\) to zero than the opposite"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-1",
+    "title": "UBC Stat550",
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nAn important feature of the previous example is that \\(\\x_1\\) and \\(\\x_2\\) aren’t correlated\nWhat if they are?\n\nWe lose a lot of structure by setting either \\(\\x_1\\) or \\(\\x_2\\) to zero"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
+    "href": "schedule/slides/pca-intro.html#lower-dimensional-embeddings-2",
+    "title": "UBC Stat550",
+    "section": "Lower dimensional embeddings",
+    "text": "Lower dimensional embeddings\nThe only difference is the first is a rotation of the second"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#pca-1",
+    "href": "schedule/slides/pca-intro.html#pca-1",
+    "title": "UBC Stat550",
+    "section": "PCA",
+    "text": "PCA\nIf we knew how to rotate our data, then we could more easily retain the structure.\nPCA gives us exactly this rotation\n\nCenter (+scale?) the data matrix \\(\\X\\)\nCompute the SVD of \\(\\X = \\U\\D \\V^\\top\\) (always exists)\nReturn \\(\\U_M\\D_M\\), where \\(\\D_M\\) is the largest \\(M\\) singular values of \\(\\X\\)"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#pca-2",
+    "href": "schedule/slides/pca-intro.html#pca-2",
+    "title": "UBC Stat550",
+    "section": "PCA",
+    "text": "PCA"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
+    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data",
+    "title": "UBC Stat550",
+    "section": "PCA on some pop music data",
+    "text": "PCA on some pop music data\n\n\n# A tibble: 1,269 × 15\n   artist      danceability energy   key loudness  mode speechiness acousticness\n   &lt;fct&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt; &lt;int&gt;       &lt;dbl&gt;        &lt;dbl&gt;\n 1 Taylor Swi…        0.781  0.357     0   -16.4      1      0.912       0.717  \n 2 Taylor Swi…        0.627  0.266     9   -15.4      1      0.929       0.796  \n 3 Taylor Swi…        0.516  0.917    11    -3.19     0      0.0827      0.0139 \n 4 Taylor Swi…        0.629  0.757     1    -8.37     0      0.0512      0.00384\n 5 Taylor Swi…        0.686  0.705     9   -10.8      1      0.249       0.832  \n 6 Taylor Swi…        0.522  0.691     2    -4.82     1      0.0307      0.00609\n 7 Taylor Swi…        0.31   0.374     6    -8.46     1      0.0275      0.761  \n 8 Taylor Swi…        0.705  0.621     2    -8.09     1      0.0334      0.101  \n 9 Taylor Swi…        0.553  0.604     1    -5.30     0      0.0258      0.202  \n10 Taylor Swi…        0.419  0.908     9    -5.16     1      0.0651      0.00048\n# ℹ 1,259 more rows\n# ℹ 7 more variables: instrumentalness &lt;dbl&gt;, liveness &lt;dbl&gt;, valence &lt;dbl&gt;,\n#   tempo &lt;dbl&gt;, time_signature &lt;int&gt;, duration_ms &lt;int&gt;, explicit &lt;lgl&gt;"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
+    "href": "schedule/slides/pca-intro.html#pca-on-some-pop-music-data-1",
+    "title": "UBC Stat550",
+    "section": "PCA on some pop music data",
+    "text": "PCA on some pop music data\n\n15 dimensions to 2\ncoloured by artist"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
+    "href": "schedule/slides/pca-intro.html#plotting-the-weights-alpha_j-j12",
+    "title": "UBC Stat550",
+    "section": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)",
+    "text": "Plotting the weights, \\(\\alpha_j,\\ j=1,2\\)"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#matrix-decompositions",
+    "href": "schedule/slides/pca-intro.html#matrix-decompositions",
+    "title": "UBC Stat550",
+    "section": "Matrix decompositions",
+    "text": "Matrix decompositions\nAt its core, we are finding linear combinations of the original (centered) data \\[z_{ij} = \\alpha_j^{\\top} x_i\\]\nThis is expressed via the SVD: \\(\\X  = \\U\\D\\V^{\\top}\\).\n\n\n\n\n\n\nImportant\n\n\nWe assume throughout that we have centered the data\n\n\n\nThen our new features are\n\\[\\mathbf{Z} = \\X \\V = \\U\\D\\]"
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#short-svd-aside",
+    "href": "schedule/slides/pca-intro.html#short-svd-aside",
+    "title": "UBC Stat550",
+    "section": "Short SVD aside",
+    "text": "Short SVD aside\n\nAny \\(n\\times p\\) matrix can be decomposed into \\(\\mathbf{UDV}^\\top\\).\nThis is a computational procedure, like inverting a matrix, svd()\nThese have properties:\n\n\n\\(\\mathbf{U}^\\top \\mathbf{U} = \\mathbf{I}_n\\)\n\\(\\mathbf{V}^\\top \\mathbf{V} = \\mathbf{I}_p\\)\n\\(\\mathbf{D}\\) is diagonal (0 off the diagonal)\n\nMany methods for dimension reduction use the SVD of some matrix."
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#why",
+    "href": "schedule/slides/pca-intro.html#why",
+    "title": "UBC Stat550",
+    "section": "Why?",
+    "text": "Why?\n\nGiven \\(\\X\\), find a projection \\(\\mathbf{P}\\) onto \\(\\R^M\\) with \\(M \\leq p\\) that minimizes the reconstruction error \\[\n\\begin{aligned}\n\\min_{\\mathbf{P}} &\\,\\, \\lVert \\mathbf{X} - \\mathbf{X}\\mathbf{P} \\rVert^2_F \\,\\,\\, \\textrm{(sum all the elements)}\\\\\n\\textrm{subject to} &\\,\\, \\textrm{rank}(\\mathbf{P}) = M,\\, \\mathbf{P} = \\mathbf{P}^T,\\, \\mathbf{P} = \\mathbf{P}^2\n\\end{aligned}\n\\] The conditions ensure that \\(\\mathbf{P}\\) is a projection matrix onto \\(M\\) dimensions.\nMaximize the variance explained by an orthogonal transformation \\(\\mathbf{A} \\in \\R^{p\\times M}\\) \\[\n\\begin{aligned}\n\\max_{\\mathbf{A}} &\\,\\, \\textrm{trace}\\left(\\frac{1}{n}\\mathbf{A}^\\top \\X^\\top \\X \\mathbf{A}\\right)\\\\\n\\textrm{subject to} &\\,\\, \\mathbf{A}^\\top\\mathbf{A} = \\mathbf{I}_M\n\\end{aligned}\n\\]\n\n\nIn case one, the minimizer is \\(\\mathbf{P} = \\mathbf{V}_M\\mathbf{V}_M^\\top\\)\nIn case two, the maximizer is \\(\\mathbf{A} = \\mathbf{V}_M\\)."
+  },
+  {
+    "objectID": "schedule/slides/pca-intro.html#code-output-to-look-at",
+    "href": "schedule/slides/pca-intro.html#code-output-to-look-at",
+    "title": "UBC Stat550",
+    "section": "Code output to look at",
+    "text": "Code output to look at\n\n\n\nUBC Stat 550 - 2024"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#section",
+    "href": "schedule/slides/regularization-lm.html#section",
+    "title": "UBC Stat550",
+    "section": "Linear models, selection, regularization, and inference",
+    "text": "Linear models, selection, regularization, and inference\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#recap",
+    "href": "schedule/slides/regularization-lm.html#recap",
+    "title": "UBC Stat550",
+    "section": "Recap",
+    "text": "Recap\nModel Selection means select a family of distributions for your data.\nIdeally, we’d do this by comparing the \\(R_n\\) for one family with that for another.\nWe’d use whichever has smaller \\(R_n\\).\nBut \\(R_n\\) depends on the truth, so we estimate it with \\(\\widehat{R}\\).\nThen we use whichever has smaller \\(\\widehat{R}\\)."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#example",
+    "href": "schedule/slides/regularization-lm.html#example",
+    "title": "UBC Stat550",
+    "section": "Example",
+    "text": "Example\nThe truth:\n\ndat &lt;- tibble(\n  x1 = rnorm(100), \n  x2 = rnorm(100),\n  y = 3 + x1 - 5 * x2 + sin(x1 * x2 / (2 * pi)) + rnorm(100, sd = 5)\n)\n\nModel 1: \\(y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\epsilon_i\\), \\(\\quad\\epsilon_i \\overset{iid}{\\sim} N(0, \\sigma^2)\\)\nModel 2: y ~ x1 + x2 + x1*x2 (what’s the math version?)\nModel 3: y ~ x2 + sin(x1 * x2)"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#fit-each-model-and-estimate-r_n",
+    "href": "schedule/slides/regularization-lm.html#fit-each-model-and-estimate-r_n",
+    "title": "UBC Stat550",
+    "section": "Fit each model and estimate \\(R_n\\)",
+    "text": "Fit each model and estimate \\(R_n\\)\n\nlist(\"y ~ x1 + x2\", \"y ~ x1 * x2\", \"y ~ x2 + sin(x1*x2)\") |&gt;\n  map(~ {\n    fits &lt;- lm(as.formula(.x), data = dat)\n    tibble(\n      R2 = summary(fits)$r.sq,\n      training_error = mean(residuals(fits)^2),\n      loocv = mean( (residuals(fits) / (1 - hatvalues(fits)))^2 ),\n      AIC = AIC(fits),\n      BIC = BIC(fits)\n    )\n  }) |&gt; list_rbind()\n\n# A tibble: 3 × 5\n     R2 training_error loocv   AIC   BIC\n  &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 0.589           21.3  22.9  598.  608.\n2 0.595           21.0  23.4  598.  611.\n3 0.586           21.4  23.0  598.  609."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#model-selection-vs.-variable-selection",
+    "href": "schedule/slides/regularization-lm.html#model-selection-vs.-variable-selection",
+    "title": "UBC Stat550",
+    "section": "Model Selection vs. Variable Selection",
+    "text": "Model Selection vs. Variable Selection\nModel selection is very comprehensive\nYou choose a full statistical model (probability distribution) that will be hypothesized to have generated the data.\nVariable selection is a subset of this. It means\n\nchoosing which predictors to include in a predictive model\n\nEliminating a predictor, means removing it from the model.\nSome procedures automatically search predictors, and eliminate some.\nWe call this variable selection. But the procedure is implicitly selecting a model as well.\nMaking this all the more complicated, with lots of effort, we can map procedures/algorithms to larger classes of probability models, and analyze them."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#selecting-variables-predictors-with-linear-methods",
+    "href": "schedule/slides/regularization-lm.html#selecting-variables-predictors-with-linear-methods",
+    "title": "UBC Stat550",
+    "section": "Selecting variables / predictors with linear methods",
+    "text": "Selecting variables / predictors with linear methods\nSuppose we have a pile of predictors.\nWe estimate models with different subsets of predictors and use CV / Cp / AIC / BIC to decide which is preferred.\nSometimes you might have a few plausible subsets. Easy enough to choose with our criterion.\nSometimes you might just have a bunch of predictors, then what do you do?"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#best-subsets",
+    "href": "schedule/slides/regularization-lm.html#best-subsets",
+    "title": "UBC Stat550",
+    "section": "Best subsets",
+    "text": "Best subsets\nIf we imagine that only a few predictors are relevant, we could solve\n\\[\\min_{\\beta\\in\\R^p} \\frac{1}{2n}\\norm{Y-\\X\\beta}_2^2 + \\lambda\\norm{\\beta}_0\\]\nThe \\(\\ell_0\\)-norm counts the number of non-zero coefficients.\nThis may or may not be a good thing to do.\nIt is computationally infeasible if \\(p\\) is more than about 20.\nTechnically NP-hard (you must find the error of each of the \\(2^p\\) models)\nThough see (Bertsimas, King, and Mazumder 2016) for a method of solving reasonably large cases via mixed integer programming."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#greedy-methods",
+    "href": "schedule/slides/regularization-lm.html#greedy-methods",
+    "title": "UBC Stat550",
+    "section": "Greedy methods",
+    "text": "Greedy methods\nBecause this is an NP-hard problem, we fall back on greedy algorithms.\nAll are implemented by the regsubsets function in the leaps package.\n\nAll subsets\n\nestimate model based on every possible subset of size \\(|\\mathcal{S}| \\leq \\min\\{n, p\\}\\), use one with lowest risk estimate\n\nForward selection\n\nstart with \\(\\mathcal{S}=\\varnothing\\), add predictors greedily\n\nBackward selection\n\nstart with \\(\\mathcal{S}=\\{1,\\ldots,p\\}\\), remove greedily\n\nHybrid\n\ncombine forward and backward smartly"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#section-1",
+    "href": "schedule/slides/regularization-lm.html#section-1",
+    "title": "UBC Stat550",
+    "section": "",
+    "text": "Note\n\n\nWithin each procedure, we’re comparing nested models."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#costs-and-benefits",
+    "href": "schedule/slides/regularization-lm.html#costs-and-benefits",
+    "title": "UBC Stat550",
+    "section": "Costs and benefits",
+    "text": "Costs and benefits\n\nAll subsets\n\n👍 estimates each subset\n💣 takes \\(2^p\\) model fits when \\(p&lt;n\\). If \\(p=50\\), this is about \\(10^{15}\\) models.\n\nForward selection\n\n👍 computationally feasible\n💣 ignores some models, correlated predictors means bad performance\n\nBackward selection\n\n👍 computationally feasible\n💣 ignores some models, correlated predictors means bad performance\n💣 doesn’t work if \\(p&gt;n\\)\n\nHybrid\n\n👍 visits more models than forward/backward\n💣 slower"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#synthetic-example",
+    "href": "schedule/slides/regularization-lm.html#synthetic-example",
+    "title": "UBC Stat550",
+    "section": "Synthetic example",
+    "text": "Synthetic example\n\nset.seed(2024 - 550)\nn &lt;- 550\ndf &lt;- tibble( \n  x1 = rnorm(n),\n  x2 = rnorm(n, mean = 2, sd = 1),\n  x3 = rexp(n, rate = 1),\n  x4 = x2 + rnorm(n, sd = .1), # correlated with x2\n  x5 = x1 + rnorm(n, sd = .1), # correlated with x1\n  x6 = x1 - x2 + rnorm(n, sd = .1), # correlated with x2 and x1 (and others)\n  x7 = x1 + x3 + rnorm(n, sd = .1), # correlated with x1 and x3 (and others)\n  y = x1 * 3 + x2 / 3 + rnorm(n, sd = 2.2) # function of x1 and x2 only\n)\n\n\\(\\mathbf{x}_1\\) and \\(\\mathbf{x}_2\\) are the true predictors\nBut the rest are correlated with them"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#full-model",
+    "href": "schedule/slides/regularization-lm.html#full-model",
+    "title": "UBC Stat550",
+    "section": "Full model",
+    "text": "Full model\n\nfull &lt;- lm(y ~ ., data = df)\nsummary(full)\n\n\nCall:\nlm(formula = y ~ ., data = df)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-6.120 -1.386 -0.060  1.417  6.536 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)   \n(Intercept) -0.17176    0.21823  -0.787  0.43158   \nx1           4.94560    1.62872   3.036  0.00251 **\nx2           1.88209    1.34057   1.404  0.16091   \nx3           0.10755    0.90835   0.118  0.90579   \nx4          -1.51043    0.97746  -1.545  0.12287   \nx5          -1.79872    0.94961  -1.894  0.05874 . \nx6          -0.08277    0.92535  -0.089  0.92876   \nx7          -0.05477    0.90159  -0.061  0.95159   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.176 on 542 degrees of freedom\nMultiple R-squared:  0.6538,    Adjusted R-squared:  0.6494 \nF-statistic: 146.2 on 7 and 542 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#true-model",
+    "href": "schedule/slides/regularization-lm.html#true-model",
+    "title": "UBC Stat550",
+    "section": "True model",
+    "text": "True model\n\ntruth &lt;- lm(y ~ x1 + x2, data = df)\nsummary(truth)\n\n\nCall:\nlm(formula = y ~ x1 + x2, data = df)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.0630 -1.4199 -0.0654  1.3871  6.7382 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -0.12389    0.20060  -0.618    0.537    \nx1           2.99853    0.09434  31.783  &lt; 2e-16 ***\nx2           0.44614    0.09257   4.820 1.87e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 2.179 on 547 degrees of freedom\nMultiple R-squared:  0.6498,    Adjusted R-squared:  0.6485 \nF-statistic: 507.5 on 2 and 547 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#all-subsets",
+    "href": "schedule/slides/regularization-lm.html#all-subsets",
+    "title": "UBC Stat550",
+    "section": "All subsets",
+    "text": "All subsets\n\nlibrary(leaps)\ntrythemall &lt;- regsubsets(y ~ ., data = df)\nsummary(trythemall)\n\nSubset selection object\nCall: regsubsets.formula(y ~ ., data = df)\n7 Variables  (and intercept)\n   Forced in Forced out\nx1     FALSE      FALSE\nx2     FALSE      FALSE\nx3     FALSE      FALSE\nx4     FALSE      FALSE\nx5     FALSE      FALSE\nx6     FALSE      FALSE\nx7     FALSE      FALSE\n1 subsets of each size up to 7\nSelection Algorithm: exhaustive\n         x1  x2  x3  x4  x5  x6  x7 \n1  ( 1 ) \"*\" \" \" \" \" \" \" \" \" \" \" \" \"\n2  ( 1 ) \"*\" \"*\" \" \" \" \" \" \" \" \" \" \"\n3  ( 1 ) \"*\" \"*\" \" \" \" \" \"*\" \" \" \" \"\n4  ( 1 ) \"*\" \"*\" \" \" \"*\" \"*\" \" \" \" \"\n5  ( 1 ) \"*\" \"*\" \"*\" \"*\" \"*\" \" \" \" \"\n6  ( 1 ) \"*\" \"*\" \"*\" \"*\" \"*\" \"*\" \" \"\n7  ( 1 ) \"*\" \"*\" \"*\" \"*\" \"*\" \"*\" \"*\""
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#bic-and-cp",
+    "href": "schedule/slides/regularization-lm.html#bic-and-cp",
+    "title": "UBC Stat550",
+    "section": "BIC and Cp",
+    "text": "BIC and Cp"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#theory",
+    "href": "schedule/slides/regularization-lm.html#theory",
+    "title": "UBC Stat550",
+    "section": "Theory",
+    "text": "Theory\nThis result is due to Foster and George (1994).\n\nIf the truth is linear.\n\\(\\lambda = C\\sigma^2\\log p.\\)\n\\(\\norm{\\beta_*}_0 = s\\)\n\n\\[\\frac{\\Expect{\\norm{\\X\\beta_*-\\X\\hat\\beta}_2^2}/n}{s\\sigma^2/n} \\leq 4\\log p + 2 + o(1).\\]\n\\[\\inf_{\\hat\\beta}\\sup_{\\X,\\beta_*} \\frac{\\Expect{\\norm{\\X\\beta_*-\\X\\hat\\beta}_2^2}/n}{s\\sigma^2/n} \\geq 2\\log p - o(\\log p).\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#section-2",
+    "href": "schedule/slides/regularization-lm.html#section-2",
+    "title": "UBC Stat550",
+    "section": "",
+    "text": "Important\n\n\n\neven if we could compute the subset selection estimator at scale, it’s not clear that we would want to\n(Many people assume that we would.)\ntheory provides an understanding of the performance of various estimators under typically idealized conditions"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#regularization-1",
+    "href": "schedule/slides/regularization-lm.html#regularization-1",
+    "title": "UBC Stat550",
+    "section": "Regularization",
+    "text": "Regularization\n\nAnother way to control bias and variance is through regularization or shrinkage.\nRather than selecting a few predictors that seem reasonable, maybe trying a few combinations, use them all.\nBut, make your estimates of \\(\\beta\\) “smaller”"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#brief-aside-on-optimization",
+    "href": "schedule/slides/regularization-lm.html#brief-aside-on-optimization",
+    "title": "UBC Stat550",
+    "section": "Brief aside on optimization",
+    "text": "Brief aside on optimization\n\nAn optimization problem has 2 components:\n\nThe “Objective function”: e.g. \\(\\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2\\).\nThe “constraint”: e.g. “fewer than 5 non-zero entries in \\(\\beta\\)”.\n\nA constrained minimization problem is written\n\n\\[\\min_\\beta f(\\beta)\\;\\; \\mbox{ subject to }\\;\\; C(\\beta)\\]\n\n\\(f(\\beta)\\) is the objective function\n\\(C(\\beta)\\) is the constraint"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression-constrained-version",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression-constrained-version",
+    "title": "UBC Stat550",
+    "section": "Ridge regression (constrained version)",
+    "text": "Ridge regression (constrained version)\nOne way to do this for regression is to solve (say): \\[\n\\minimize_\\beta \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2\n\\quad \\st \\sum_j \\beta^2_j &lt; s\n\\] for some \\(s&gt;0\\).\n\nThis is called “ridge regression”.\nWrite the minimizer as \\(\\hat{\\beta}_s\\).\n\n\nCompare this to ordinary least squares:\n\\[\n\\minimize_\\beta \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2\n\\quad \\st \\beta \\in \\R^p\n\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#geometry-of-ridge-regression-contours",
+    "href": "schedule/slides/regularization-lm.html#geometry-of-ridge-regression-contours",
+    "title": "UBC Stat550",
+    "section": "Geometry of ridge regression (contours)",
+    "text": "Geometry of ridge regression (contours)"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#reminder-of-norms-we-should-remember",
+    "href": "schedule/slides/regularization-lm.html#reminder-of-norms-we-should-remember",
+    "title": "UBC Stat550",
+    "section": "Reminder of norms we should remember",
+    "text": "Reminder of norms we should remember\n\n\\(\\ell_q\\)-norm\n\n\\(\\left(\\sum_{j=1}^p |z_j|^q\\right)^{1/q}\\)\n\n\\(\\ell_1\\)-norm (special case)\n\n\\(\\sum_{j=1}^p |z_j|\\)\n\n\\(\\ell_0\\)-norm\n\n\\(\\sum_{j=1}^p I(z_j \\neq 0 ) = \\lvert \\{j : z_j \\neq 0 \\}\\rvert\\)\n\n\\(\\ell_\\infty\\)-norm\n\n\\(\\max_{1\\leq j \\leq p} |z_j|\\)\n\n\n\n\nRecall what a norm is: https://en.wikipedia.org/wiki/Norm_(mathematics)"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression",
+    "title": "UBC Stat550",
+    "section": "Ridge regression",
+    "text": "Ridge regression\nAn equivalent way to write\n\\[\\hat\\beta_s = \\argmin_{ \\Vert \\beta \\Vert_2^2 \\leq s} \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2\\]\nis in the Lagrangian form\n\\[\\hat\\beta_\\lambda = \\argmin_{ \\beta} \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2 + \\frac{\\lambda}{2} \\Vert \\beta \\Vert_2^2.\\]\nFor every \\(\\lambda\\) there is a unique \\(s\\) (and vice versa) that makes\n\\[\\hat\\beta_s = \\hat\\beta_\\lambda\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression-1",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression-1",
+    "title": "UBC Stat550",
+    "section": "Ridge regression",
+    "text": "Ridge regression\n\\(\\hat\\beta_s = \\argmin_{ \\Vert \\beta \\Vert_2^2 \\leq s} \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2\\)\n\\(\\hat\\beta_\\lambda = \\argmin_{ \\beta} \\frac{1}{2n}\\sum_i (y_i-x^\\top_i \\beta)^2 + \\frac{\\lambda}{2} \\Vert \\beta \\Vert_2^2.\\)\nObserve:\n\n\\(\\lambda = 0\\) (or \\(s = \\infty\\)) makes \\(\\hat\\beta_\\lambda = \\hat\\beta_{ols}\\)\nAny \\(\\lambda &gt; 0\\) (or \\(s &lt;\\infty\\)) penalizes larger values of \\(\\beta\\), effectively shrinking them.\n\n\\(\\lambda\\) and \\(s\\) are known as tuning parameters"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#example-data",
+    "href": "schedule/slides/regularization-lm.html#example-data",
+    "title": "UBC Stat550",
+    "section": "Example data",
+    "text": "Example data\nprostate data from [ESL]\n\n\n# A tibble: 97 × 10\n   lcavol lweight   age   lbph   svi   lcp gleason pgg45   lpsa train\n    &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;   &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;lgl&gt;\n 1 -0.580    2.77    50 -1.39      0 -1.39       6     0 -0.431 TRUE \n 2 -0.994    3.32    58 -1.39      0 -1.39       6     0 -0.163 TRUE \n 3 -0.511    2.69    74 -1.39      0 -1.39       7    20 -0.163 TRUE \n 4 -1.20     3.28    58 -1.39      0 -1.39       6     0 -0.163 TRUE \n 5  0.751    3.43    62 -1.39      0 -1.39       6     0  0.372 TRUE \n 6 -1.05     3.23    50 -1.39      0 -1.39       6     0  0.765 TRUE \n 7  0.737    3.47    64  0.615     0 -1.39       6     0  0.765 FALSE\n 8  0.693    3.54    58  1.54      0 -1.39       6     0  0.854 TRUE \n 9 -0.777    3.54    47 -1.39      0 -1.39       6     0  1.05  FALSE\n10  0.223    3.24    63 -1.39      0 -1.39       6     0  1.05  FALSE\n# ℹ 87 more rows\n\n\n\nUse lpsa as response."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression-path",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression-path",
+    "title": "UBC Stat550",
+    "section": "Ridge regression path",
+    "text": "Ridge regression path\n\nY &lt;- prostate$lpsa\nX &lt;- model.matrix(~ ., data = prostate |&gt; dplyr::select(-train, -lpsa))\nlibrary(glmnet)\nridge &lt;- glmnet(x = X, y = Y, alpha = 0, lambda.min.ratio = .00001)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel selection here:\n\nmeans choose some \\(\\lambda\\)\nA value of \\(\\lambda\\) is a vertical line.\nThis graphic is a “path” or “coefficient trace”\nCoefficients for varying \\(\\lambda\\)"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#solving-the-minimization",
+    "href": "schedule/slides/regularization-lm.html#solving-the-minimization",
+    "title": "UBC Stat550",
+    "section": "Solving the minimization",
+    "text": "Solving the minimization\n\nOne nice thing about ridge regression is that it has a closed-form solution (like OLS)\n\n\\[\\hat\\beta_\\lambda = (\\X^\\top\\X + \\lambda \\mathbf{I})^{-1}\\X^\\top \\y\\]\n\nThis is easy to calculate in R for any \\(\\lambda\\).\nHowever, computations and interpretation are simplified if we examine the Singular Value Decomposition of \\(\\X = \\mathbf{UDV}^\\top\\).\nRecall: any matrix has an SVD.\nHere \\(\\mathbf{D}\\) is diagonal and \\(\\mathbf{U}\\) and \\(\\mathbf{V}\\) are orthonormal: \\(\\mathbf{U}^\\top\\mathbf{U} = \\mathbf{I}\\)."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#solving-the-minization",
+    "href": "schedule/slides/regularization-lm.html#solving-the-minization",
+    "title": "UBC Stat550",
+    "section": "Solving the minization",
+    "text": "Solving the minization\n\\[\\hat\\beta_\\lambda = (\\X^\\top\\X + \\lambda \\mathbf{I})^{-1}\\X^\\top \\y\\]\n\nNote that \\(\\mathbf{X}^\\top\\mathbf{X} = \\mathbf{VDU}^\\top\\mathbf{UDV}^\\top = \\mathbf{V}\\mathbf{D}^2\\mathbf{V}^\\top\\).\nThen,\n\n\\[\\hat\\beta_\\lambda = (\\X^\\top \\X + \\lambda \\mathbf{I})^{-1}\\X^\\top \\y = (\\mathbf{VD}^2\\mathbf{V}^\\top + \\lambda \\mathbf{I})^{-1}\\mathbf{VDU}^\\top \\y\n= \\mathbf{V}(\\mathbf{D}^2+\\lambda \\mathbf{I})^{-1} \\mathbf{DU}^\\top \\y.\\]\n\nFor computations, now we only need to invert \\(\\mathbf{D}\\)."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#comparing-with-ols",
+    "href": "schedule/slides/regularization-lm.html#comparing-with-ols",
+    "title": "UBC Stat550",
+    "section": "Comparing with OLS",
+    "text": "Comparing with OLS\n\n\\(\\mathbf{D}\\) is a diagonal matrix\n\n\\[\\hat\\beta_{ols} = (\\X^\\top\\X)^{-1}\\X^\\top \\y = (\\mathbf{VD}^2\\mathbf{V}^\\top)^{-1}\\mathbf{VDU}^\\top \\y = \\mathbf{V}\\color{red}{\\mathbf{D}^{-2}\\mathbf{D}}\\mathbf{U}^\\top \\y = \\mathbf{V}\\color{red}{\\mathbf{D}^{-1}}\\mathbf{U}^\\top \\y\\]\n\\[\\hat\\beta_\\lambda = (\\X^\\top \\X + \\lambda \\mathbf{I})^{-1}\\X^\\top \\y = \\mathbf{V}\\color{red}{(\\mathbf{D}^2+\\lambda \\mathbf{I})^{-1}} \\mathbf{DU}^\\top \\y.\\]\n\nNotice that \\(\\hat\\beta_{ols}\\) depends on \\(d_j/d_j^2\\) while \\(\\hat\\beta_\\lambda\\) depends on \\(d_j/(d_j^2 + \\lambda)\\).\nRidge regression makes the coefficients smaller relative to OLS.\nBut if \\(\\X\\) has small singular values, ridge regression compensates with \\(\\lambda\\) in the denominator."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression-and-multicollinearity",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression-and-multicollinearity",
+    "title": "UBC Stat550",
+    "section": "Ridge regression and multicollinearity",
+    "text": "Ridge regression and multicollinearity\nMulticollinearity: a linear combination of predictor variables is nearly equal to another predictor variable."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#multicollinearity-questions",
+    "href": "schedule/slides/regularization-lm.html#multicollinearity-questions",
+    "title": "UBC Stat550",
+    "section": "Multicollinearity questions",
+    "text": "Multicollinearity questions\n\nCan I test cor(x1, x2) == 0 to determine if these are collinear?\nWhat plots or summaries can I look at?\nIf multivariate regression or logistic regression is applied on a data set with many explanatory variables, what in the regression output might indicate potential multicollinearity?\nIs there a test or diagnostic procedure for multicollinearity?\n\n\n\nNo. \nCorrelation matrix of continuous \\(x\\).\nLarge standard errors, estimated coefficients with opposite sign. NA estimates. Removing vars brings down SEs without much change in fit.\nBig VIF summary(lm(xj ~ . - xj - y))$r.sq"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#multicollinearity-thoughts",
+    "href": "schedule/slides/regularization-lm.html#multicollinearity-thoughts",
+    "title": "UBC Stat550",
+    "section": "Multicollinearity thoughts",
+    "text": "Multicollinearity thoughts\nSome comments:\n\nA better phrase: \\(\\X\\) is ill-conditioned\nAKA “(numerically) rank-deficient”.\n\\(\\X = \\mathbf{U D V}^\\top\\) ill-conditioned \\(\\Longleftrightarrow\\) some elements of \\(\\mathbf{D} \\approx 0\\)\n\\(\\hat\\beta_{ols}= \\mathbf{V D}^{-1} \\mathbf{U}^\\top \\y\\). Small entries of \\(\\mathbf{D}\\) \\(\\Longleftrightarrow\\) huge elements of \\(\\mathbf{D}^{-1}\\)\nMeans huge variance: \\(\\Var{\\hat\\beta_{ols}} =  \\sigma^2(\\X^\\top \\X)^{-1} = \\sigma^2 \\mathbf{V D}^{-2} \\mathbf{V}^\\top\\)\nIf you’re doing prediction, this is a purely computational concern."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-regression-and-ill-posed-x",
+    "href": "schedule/slides/regularization-lm.html#ridge-regression-and-ill-posed-x",
+    "title": "UBC Stat550",
+    "section": "Ridge regression and ill-posed \\(\\X\\)",
+    "text": "Ridge regression and ill-posed \\(\\X\\)\nRidge Regression fixes this problem by preventing the division by a near-zero number\n\nConclusion\n\n\\((\\X^{\\top}\\X)^{-1}\\) can be really unstable, while \\((\\X^{\\top}\\X + \\lambda \\mathbf{I})^{-1}\\) is not.\n\nAside\n\nEngineering approach to solving linear systems is to always do this with small \\(\\lambda\\). The thinking is about the numerics rather than the statistics.\n\n\nWhich \\(\\lambda\\) to use?\n\nComputational\n\nUse CV and pick the \\(\\lambda\\) that makes this smallest.\n\nIntuition (bias)\n\nAs \\(\\lambda\\rightarrow\\infty\\), bias ⬆\n\nIntuition (variance)\n\nAs \\(\\lambda\\rightarrow\\infty\\), variance ⬇\n\n\nYou should think about why."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#can-we-get-the-best-of-both-worlds",
+    "href": "schedule/slides/regularization-lm.html#can-we-get-the-best-of-both-worlds",
+    "title": "UBC Stat550",
+    "section": "Can we get the best of both worlds?",
+    "text": "Can we get the best of both worlds?\nTo recap:\n\nDeciding which predictors to include, adding quadratic terms, or interactions is model selection (more precisely variable selection within a linear model).\nRidge regression provides regularization, which trades off bias and variance and also stabilizes multicollinearity.\nIf the LM is true,\n\nOLS is unbiased, but Variance depends on \\(\\mathbf{D}^{-2}\\). Can be big.\nRidge is biased (can you find the bias?). But Variance is smaller than OLS.\n\nRidge regression does not perform variable selection.\nBut picking \\(\\lambda=3.7\\) and thereby deciding to predict with \\(\\widehat{\\beta}^R_{3.7}\\) is model selection."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#can-we-get-the-best-of-both-worlds-1",
+    "href": "schedule/slides/regularization-lm.html#can-we-get-the-best-of-both-worlds-1",
+    "title": "UBC Stat550",
+    "section": "Can we get the best of both worlds?",
+    "text": "Can we get the best of both worlds?\n\nRidge regression\n\n\\(\\minimize \\frac{1}{2n}\\Vert\\y-\\X\\beta\\Vert_2^2 \\ \\st\\ \\snorm{\\beta}_2^2 \\leq s\\)\n\nBest (in-sample) linear regression model of size \\(s\\)\n\n\\(\\minimize \\frac{1}{2n}\\snorm{\\y-\\X\\beta}_2^2 \\ \\st\\ \\snorm{\\beta}_0 \\leq s\\)\n\n\n\\(||\\beta||_0\\) is the number of nonzero elements in \\(\\beta\\)\nFinding the best in-sample linear model (of size \\(s\\), among these predictors) is a nonconvex optimization problem (In fact, it is NP-hard)\nRidge regression is convex (easy to solve), but doesn’t do variable selection\nCan we somehow “interpolate” to get both?\nNote: selecting \\(\\lambda\\) is still model selection, but we’ve included all the variables."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-theory",
+    "href": "schedule/slides/regularization-lm.html#ridge-theory",
+    "title": "UBC Stat550",
+    "section": "Ridge theory",
+    "text": "Ridge theory\nRecalling that \\(\\beta^\\top_*x\\) is the best linear approximation to \\(f_*(x)\\)\nIf \\(\\norm{x}_\\infty&lt; r\\), (Hsu, Kakade, and Zhang 2014), \\[R(\\hat\\beta_\\lambda) - R(\\beta_*) \\leq \\left(1+ O\\left(\\frac{1+r^2/\\lambda}{n}\\right)\\right)\n\\frac{\\lambda\\norm{\\beta_*}_2^2}{2} + \\frac{\\sigma^2\\tr{\\Sigma}}{2n\\lambda}\\]\nOptimizing over \\(\\lambda\\), and setting \\(B=\\norm{\\beta_*}\\) gives\n\\[R(\\hat\\beta_\\lambda) - R(\\beta_*) \\leq \\sqrt{\\frac{\\sigma^2r^2B^2}{n}\\left(1+O(1/n)\\right)} +\nO\\left(\\frac{r^2B^2}{n}\\right)\\]\n\\[\\inf_{\\hat\\beta}\\sup_{\\beta_*} R(\\hat\\beta) - R(\\beta_*) \\geq C\\sqrt{\\frac{\\sigma^2r^2B^2}{n}}\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ridge-theory-1",
+    "href": "schedule/slides/regularization-lm.html#ridge-theory-1",
+    "title": "UBC Stat550",
+    "section": "Ridge theory",
+    "text": "Ridge theory\nWe call this behavior rate minimax: essential meaning, \\[R(\\hat\\beta) - R(\\beta_*) = O\\left(\\inf_{\\hat\\beta}\\sup_{\\beta_*} R(\\hat\\beta) - R(\\beta_*)\\right)\\]\nIn this setting, Ridge regression does as well as we could hope, up to constants."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#bayes-interpretation",
+    "href": "schedule/slides/regularization-lm.html#bayes-interpretation",
+    "title": "UBC Stat550",
+    "section": "Bayes interpretation",
+    "text": "Bayes interpretation\nIf\n\n\\(Y=X'\\beta + \\epsilon\\),\n\\(\\epsilon\\sim N(0,\\sigma^2)\\)\n\\(\\beta\\sim N(0,\\tau^2 I_p)\\),\n\nThen, the posterior mean (median, mode) is the ridge estimator with \\(\\lambda=\\sigma^2/\\tau^2\\)."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#geometry",
+    "href": "schedule/slides/regularization-lm.html#geometry",
+    "title": "UBC Stat550",
+    "section": "Geometry",
+    "text": "Geometry\n\n\nCode\nlibrary(mvtnorm)\nnormBall &lt;- function(q = 1, len = 1000) {\n  tg &lt;- seq(0, 2 * pi, length = len)\n  out &lt;- data.frame(x = cos(tg)) %&gt;%\n    mutate(b = (1 - abs(x)^q)^(1 / q), bm = -b) %&gt;%\n    gather(key = \"lab\", value = \"y\", -x)\n  out$lab &lt;- paste0('\"||\" * beta * \"||\"', \"[\", signif(q, 2), \"]\")\n  return(out)\n}\n\nellipseData &lt;- function(n = 100, xlim = c(-2, 3), ylim = c(-2, 3),\n                        mean = c(1, 1), Sigma = matrix(c(1, 0, 0, .5), 2)) {\n  df &lt;- expand.grid(\n    x = seq(xlim[1], xlim[2], length.out = n),\n    y = seq(ylim[1], ylim[2], length.out = n)\n  )\n  df$z &lt;- dmvnorm(df, mean, Sigma)\n  df\n}\n\nlballmax &lt;- function(ed, q = 1, tol = 1e-6) {\n  ed &lt;- filter(ed, x &gt; 0, y &gt; 0)\n  for (i in 1:20) {\n    ff &lt;- abs((ed$x^q + ed$y^q)^(1 / q) - 1) &lt; tol\n    if (sum(ff) &gt; 0) break\n    tol &lt;- 2 * tol\n  }\n  best &lt;- ed[ff, ]\n  best[which.max(best$z), ]\n}\n\nnb &lt;- normBall(1)\ned &lt;- ellipseData()\nbols &lt;- data.frame(x = 1, y = 1)\nbhat &lt;- lballmax(ed, 1)\nggplot(nb, aes(x, y)) +\n  geom_path(colour = red) +\n  geom_contour(mapping = aes(z = z), colour = blue, data = ed, bins = 7) +\n  geom_vline(xintercept = 0) +\n  geom_hline(yintercept = 0) +\n  geom_point(data = bols) +\n  coord_equal(xlim = c(-2, 2), ylim = c(-2, 2)) +\n  theme_bw(base_family = \"\", base_size = 24) +\n  geom_label(\n    data = bols, mapping = aes(label = bquote(\"hat(beta)[ols]\")), parse = TRUE,\n    nudge_x = .3, nudge_y = .3\n  ) +\n  geom_point(data = bhat) +\n  xlab(bquote(beta[1])) +\n  ylab(bquote(beta[2])) +\n  geom_label(\n    data = bhat, mapping = aes(label = bquote(\"hat(beta)[s]^L\")), parse = TRUE,\n    nudge_x = -.4, nudge_y = -.4\n  )"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#ell_1-regularized-regression",
+    "href": "schedule/slides/regularization-lm.html#ell_1-regularized-regression",
+    "title": "UBC Stat550",
+    "section": "\\(\\ell_1\\)-regularized regression",
+    "text": "\\(\\ell_1\\)-regularized regression\nKnown as\n\n“lasso”\n“basis pursuit”\n\nThe estimator satisfies\n\\[\\hat\\beta_s = \\argmin_{ \\snorm{\\beta}_1 \\leq s}  \\frac{1}{2n}\\snorm{\\y-\\X\\beta}_2^2\\]\nIn its corresponding Lagrangian dual form:\n\\[\\hat\\beta_\\lambda = \\argmin_{\\beta} \\frac{1}{2n}\\snorm{\\y-\\X\\beta}_2^2 + \\lambda \\snorm{\\beta}_1\\]"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#lasso-1",
+    "href": "schedule/slides/regularization-lm.html#lasso-1",
+    "title": "UBC Stat550",
+    "section": "Lasso",
+    "text": "Lasso\nWhile the ridge solution can be easily computed\n\\[\\argmin_{\\beta} \\frac 1n \\snorm{\\y-\\X\\beta}_2^2 + \\lambda \\snorm{\\beta}_2^2 = (\\X^{\\top}\\X + \\lambda \\mathbf{I})^{-1} \\X^{\\top}\\y\\]\nthe lasso solution\n\\[\\argmin_{\\beta} \\frac 1n\\snorm{\\y-\\X\\beta}_2^2 + \\lambda \\snorm{\\beta}_1 = \\; ??\\]\ndoesn’t have a closed-form solution.\nHowever, because the optimization problem is convex, there exist efficient algorithms for computing it\n\n\nThe best are Iterative Soft Thresholding or Coordinate Descent. Gradient Descent doesn’t work very well in practice."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#coefficient-path-ridge-vs-lasso",
+    "href": "schedule/slides/regularization-lm.html#coefficient-path-ridge-vs-lasso",
+    "title": "UBC Stat550",
+    "section": "Coefficient path: ridge vs lasso",
+    "text": "Coefficient path: ridge vs lasso\n\n\nCode\nlibrary(glmnet)\ndata(prostate, package = \"ElemStatLearn\")\nX &lt;- prostate |&gt; dplyr::select(-train, -lpsa) |&gt;  as.matrix()\nY &lt;- prostate$lpsa\nlasso &lt;- glmnet(x = X, y = Y) # alpha = 1 by default\nridge &lt;- glmnet(x = X, y = Y, alpha = 0)\nop &lt;- par()"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#additional-intuition-for-why-lasso-selects-variables",
+    "href": "schedule/slides/regularization-lm.html#additional-intuition-for-why-lasso-selects-variables",
+    "title": "UBC Stat550",
+    "section": "Additional intuition for why Lasso selects variables",
+    "text": "Additional intuition for why Lasso selects variables\nSuppose, for a particular \\(\\lambda\\), I have solutions for \\(\\widehat{\\beta}_k\\), \\(k = 1,\\ldots,j-1, j+1,\\ldots,p\\).\nLet \\(\\widehat{\\y}_{-j} = \\X_{-j}\\widehat{\\beta}_{-j}\\), and assume WLOG \\(\\overline{\\X}_k = 0\\), \\(\\X_k^\\top\\X_k = 1\\ \\forall k\\)\nOne can show that:\n\\[\n\\widehat{\\beta}_j = S\\left(\\mathbf{X}^\\top_j(\\y - \\widehat{\\y}_{-j}),\\ \\lambda\\right).\n\\]\n\\[\nS(z, \\gamma) = \\textrm{sign}(z)(|z| - \\gamma)_+ = \\begin{cases} z - \\gamma & z &gt; \\gamma\\\\\nz + \\gamma & z &lt; -\\gamma \\\\ 0 & |z| \\leq \\gamma \\end{cases}\n\\]\n\nIterating over this is called coordinate descent and gives the solution\n\n\n\n\nIf I were told all the other coefficient estimates.\nThen to find this one, I’d shrink when the gradient is big, or set to 0 if it gets too small.\n\n\n\nSee for example, https://doi.org/10.18637/jss.v033.i01"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#glmnet-version-same-procedure-for-lasso-or-ridge",
+    "href": "schedule/slides/regularization-lm.html#glmnet-version-same-procedure-for-lasso-or-ridge",
+    "title": "UBC Stat550",
+    "section": "{glmnet} version (same procedure for lasso or ridge)",
+    "text": "{glmnet} version (same procedure for lasso or ridge)\n\nlasso &lt;- cv.glmnet(X, Y) # estimate full model and CV no good reason to call glmnet() itself\n# 2. Look at the CV curve. If the dashed lines are at the boundaries, redo and adjust lambda\nlambda_min &lt;- lasso$lambda.min # the value, not the location (or use lasso$lambda.1se)\ncoeffs &lt;- coefficients(lasso, s = \"lambda.min\") # s can be string or a number\npreds &lt;- predict(lasso, newx = X, s = \"lambda.1se\") # must supply `newx`\n\n\n\\(\\widehat{R}_{CV}\\) is an estimator of \\(R_n\\), it has bias and variance\nBecause we did CV, we actually have 10 \\(\\widehat{R}\\) values, 1 per split.\nCalculate the mean (that’s what we’ve been using), but what about SE?"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#other-flavours",
+    "href": "schedule/slides/regularization-lm.html#other-flavours",
+    "title": "UBC Stat550",
+    "section": "Other flavours",
+    "text": "Other flavours\n\nThe elastic net\n\ngenerally used for correlated variables that combines a ridge/lasso penalty. Use glmnet(..., alpha = a) (0 &lt; a &lt; 1).\n\nGrouped lasso\n\nwhere variables are included or excluded in groups. Required for factors (1-hot encoding)\n\nRelaxed lasso\n\nTakes the estimated model from lasso and fits the full least squares solution on the selected covariates (less bias, more variance). Use glmnet(..., relax = TRUE).\n\nDantzig selector\n\na slightly modified version of the lasso"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#lasso-cinematic-universe",
+    "href": "schedule/slides/regularization-lm.html#lasso-cinematic-universe",
+    "title": "UBC Stat550",
+    "section": "Lasso cinematic universe",
+    "text": "Lasso cinematic universe\n\n\n\nSCAD\n\na non-convex version of lasso that adds a more severe variable selection penalty\n\n\\(\\sqrt{\\textrm{lasso}}\\)\n\nclaims to be tuning parameter free (but isn’t). Uses \\(\\Vert\\cdot\\Vert_2\\) instead of \\(\\Vert\\cdot\\Vert_1\\) for the loss.\n\nGeneralized lasso\n\nAdds various additional matrices to the penalty term (e.g. \\(\\Vert D\\beta\\Vert_1\\)).\n\nArbitrary combinations\n\ncombine the above penalties in your favourite combinations"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#warnings-on-regularized-regression",
+    "href": "schedule/slides/regularization-lm.html#warnings-on-regularized-regression",
+    "title": "UBC Stat550",
+    "section": "Warnings on regularized regression",
+    "text": "Warnings on regularized regression\n\nThis isn’t a method unless you say how to choose \\(\\lambda\\).\nThe intercept is never penalized. Adds an extra degree-of-freedom.\nPredictor scaling is very important.\nDiscrete predictors need groupings.\nCentering the predictors may be necessary\n(These all work with other likelihoods.)\n\n\nSoftware handles most of these automatically, but not always. (No Lasso with factor predictors.)"
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#lasso-theory-under-strong-conditions",
+    "href": "schedule/slides/regularization-lm.html#lasso-theory-under-strong-conditions",
+    "title": "UBC Stat550",
+    "section": "Lasso theory under strong conditions",
+    "text": "Lasso theory under strong conditions\nSupport recovery: (Wainwright 2009), see also (Meinshausen and Bühlmann 2006; Zhao and Yu 2006)\n\nThe truth is linear.\n\\(\\norm{\\X'_{S^c}\\X_S (\\X'_S\\X_S)^{-1}}_\\infty &lt; 1-\\epsilon.\\)\n\\(\\lambda_{\\min} (\\X'_S\\X_S) \\geq C_{\\min} &gt; 0\\).\nThe columns of \\(\\X\\) have 2-norm \\(n\\).\nThe noise is iid Normal.\n\\(\\lambda_n\\) satisfies \\(\\frac{n\\lambda^2}{\\log(p-s)} \\rightarrow \\infty\\).\n\\(\\min_j \\{ |\\beta_j| : j \\in S\\} \\geq \\rho_n &gt; 0\\) and \\[\\rho_n^{-1} \\left( \\sqrt{\\frac{\\log s}{n}}+ \\lambda_n\\norm{(\\X'_S\\X_S)^{-1}}_\\infty \\right)\\rightarrow 0\\]\n\nThen, \\(P(\\textrm{supp}(\\hat\\beta_\\lambda) = \\textrm{supp}(\\beta_*))\\rightarrow 1\\)."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#lasso-theory-under-strong-conditions-1",
+    "href": "schedule/slides/regularization-lm.html#lasso-theory-under-strong-conditions-1",
+    "title": "UBC Stat550",
+    "section": "Lasso theory under strong conditions",
+    "text": "Lasso theory under strong conditions\nEstimation consistency: (Negahban et al. 2012) also (Meinshausen and Yu 2009)\n\nThe truth is linear.\n\\(\\exists \\kappa\\) such that for all vectors \\(\\theta\\in\\R^p\\) that satisfy \\(\\norm{\\theta_{S^C}}_1 \\leq 3\\norm{\\theta_S}_1\\), we have \\(\\norm{X\\theta}_2^2/n \\geq \\kappa\\norm{\\theta}_2^2\\) (Compatibility)\nThe columns of \\(\\X\\) have 2-norm \\(n\\).\nThe noise is iid sub-Gaussian.\n\\(\\lambda_n &gt;4\\sigma \\sqrt{\\log (p)/n}\\).\n\nThen, with probability at least \\(1-c\\exp(-c'n\\lambda_n^2)\\),\n\\[\\norm{\\hat\\beta_\\lambda-\\beta_*}_2^2 \\leq \\frac{64\\sigma^2}{\\kappa^2}\\frac{s\\log p}{n}.\\]\n\n\n\n\n\n\nImportant\n\n\nThese conditions are very strong, uncheckable in practice, unlikely to be true for real datasets. But theory of this type is the standard for these procedures."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#lasso-under-weak-no-conditions",
+    "href": "schedule/slides/regularization-lm.html#lasso-under-weak-no-conditions",
+    "title": "UBC Stat550",
+    "section": "Lasso under weak / no conditions",
+    "text": "Lasso under weak / no conditions\nIf \\(Y\\) and \\(X\\) are bounded by \\(B\\), then with probability at least \\(1-\\delta^2\\), \\[R_n(\\hat\\beta_\\lambda) - R_n(\\beta_*) \\leq \\sqrt{\\frac{16(t+1)^4B^2}{n}\\log\\left(\\frac{\\sqrt{2}p}{\\delta}\\right)}.\\]\nThis is a simple version of a result in (Greenshtein and Ritov 2004).\nNote that it applies to the constrained version.\n(Bartlett, Mendelson, and Neeman 2012) derives the same rate for the Lagrangian version\nAgain, this rate is (nearly) optimal: \\[c\\sqrt{\\frac{s}{n}} &lt; R_n(\\hat\\beta_\\lambda) - R_n(\\beta_*) &lt; C\\sqrt{\\frac{s\\log p}{n}}.\\]\n\\(\\log p\\) is the penalty you pay for selection."
+  },
+  {
+    "objectID": "schedule/slides/regularization-lm.html#references",
+    "href": "schedule/slides/regularization-lm.html#references",
+    "title": "UBC Stat550",
+    "section": "References",
+    "text": "References\n\n\n\nUBC Stat 550 - 2024\n\n\n\n\nBartlett, Peter L., Shahar Mendelson, and Joseph Neeman. 2012. “\\(\\ell_1\\)-Regularized Linear Regression: Persistence and Oracle Inequalities.” Probability Theory and Related Fields 154 (1-2): 193–224.\n\n\nBertsimas, Dimitris, Angela King, and Rahul Mazumder. 2016. “Best Subset Selection via a Modern Optimization Lens.” Annals of Statistics 44: 813–52.\n\n\nFoster, Dean P., and Edward I. George. 1994. “The Risk Inflation Criterion for Multiple Regression.” Annals of Statistics 22 (4): 1947–75.\n\n\nGreenshtein, Eitan, and Ya’acov Ritov. 2004. “Persistence in High-Dimensional Linear Predictor Selection and the Virtue of Overparametrization.” Bernoulli 10 (6): 971–88.\n\n\nHsu, Daniel, Sham M Kakade, and Tong Zhang. 2014. “Random Design Analysis of Ridge Regression.” Foundations of Computational Mathematics 14 (3): 569–600.\n\n\nMeinshausen, Nicolai, and Peter Bühlmann. 2006. “High-Dimensional Graphs and Variable Selection with the Lasso.” The Annals of Statistics 34 (3): 1436–62.\n\n\nMeinshausen, Nicolai, and Bin Yu. 2009. “Lasso-Type Recovery of Sparse Representations for High-Dimensional Data.” The Annals of Statistics 37 (1): 246–70.\n\n\nNegahban, Sahand, Pradeep Ravikumar, Martin J Wainwright, and Bin Yu. 2012. “A Unified Framework for High-Dimensional Analysis of \\(M\\)-Estimators with Decomposable Regularizers.” Statistical Science 27: 538–337.\n\n\nWainwright, Martin J. 2009. “Sharp Thresholds for High-Dimensional and Noisy Sparsity Recovery Using \\(\\ell_1\\)-Constrained Quadratic Programming (Lasso).” IEEE Transactions on Information Theory 55 (5): 2183–2202.\n\n\nZhao, Peng, and Bin Yu. 2006. “On Model Selection Consistency of Lasso.” The Journal of Machine Learning Research 7: 2541–63."
   },
   {
     "objectID": "schedule/slides/time-series.html#section",
     "href": "schedule/slides/time-series.html#section",
     "title": "UBC Stat550",
     "section": "Time series, a whirlwind",
-    "text": "Time series, a whirlwind\nStat 550\nDaniel J. McDonald\nLast modified – 01 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\]"
+    "text": "Time series, a whirlwind\nStat 550\nDaniel J. McDonald\nLast modified – 03 April 2024\n\\[\n\\DeclareMathOperator*{\\argmin}{argmin}\n\\DeclareMathOperator*{\\argmax}{argmax}\n\\DeclareMathOperator*{\\minimize}{minimize}\n\\DeclareMathOperator*{\\maximize}{maximize}\n\\DeclareMathOperator*{\\find}{find}\n\\DeclareMathOperator{\\st}{subject\\,\\,to}\n\\newcommand{\\E}{E}\n\\newcommand{\\Expect}[1]{\\E\\left[ #1 \\right]}\n\\newcommand{\\Var}[1]{\\mathrm{Var}\\left[ #1 \\right]}\n\\newcommand{\\Cov}[2]{\\mathrm{Cov}\\left[#1,\\ #2\\right]}\n\\newcommand{\\given}{\\mid}\n\\newcommand{\\X}{\\mathbf{X}}\n\\newcommand{\\x}{\\mathbf{x}}\n\\newcommand{\\y}{\\mathbf{y}}\n\\newcommand{\\P}{\\mathcal{P}}\n\\newcommand{\\R}{\\mathbb{R}}\n\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}\n\\newcommand{\\snorm}[1]{\\lVert #1 \\rVert}\n\\newcommand{\\tr}[1]{\\mbox{tr}(#1)}\n\\newcommand{\\U}{\\mathbf{U}}\n\\newcommand{\\D}{\\mathbf{D}}\n\\newcommand{\\V}{\\mathbf{V}}\n\\renewcommand{\\hat}{\\widehat}\n\\]"
   },
   {
     "objectID": "schedule/slides/time-series.html#the-general-linear-process",
