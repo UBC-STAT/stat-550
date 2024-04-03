@@ -1,0 +1,966 @@
+---
+lecture: "Linear models, selection, regularization, and inference"
+format: revealjs
+metadata-files: 
+  - _metadata.yml
+bibliography: refs.bib
+---
+
+{{< include _titleslide.qmd >}}
+
+## Recap
+
+Model Selection means [select a family of distributions for your data]{.secondary}.
+
+Ideally, we'd do this by comparing the $R_n$ for one family with that for
+another.
+
+We'd use whichever has smaller $R_n$.
+
+But $R_n$ depends on the truth, so we estimate it with $\widehat{R}$.
+
+Then we use whichever has smaller $\widehat{R}$.
+
+## Example
+
+The truth:
+```{r}
+#| echo: true
+dat <- tibble(
+  x1 = rnorm(100), 
+  x2 = rnorm(100),
+  y = 3 + x1 - 5 * x2 + sin(x1 * x2 / (2 * pi)) + rnorm(100, sd = 5)
+)
+```
+
+Model 1: $y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \epsilon_i$, $\quad\epsilon_i \overset{iid}{\sim} N(0, \sigma^2)$
+
+Model 2: `y ~ x1 + x2 + x1*x2` (what's the math version?)
+
+Model 3: `y ~ x2 + sin(x1 * x2)`
+
+
+## Fit each model and estimate $R_n$
+
+```{r}
+#| echo: true
+list("y ~ x1 + x2", "y ~ x1 * x2", "y ~ x2 + sin(x1*x2)") |>
+  map(~ {
+    fits <- lm(as.formula(.x), data = dat)
+    tibble(
+      R2 = summary(fits)$r.sq,
+      training_error = mean(residuals(fits)^2),
+      loocv = mean( (residuals(fits) / (1 - hatvalues(fits)))^2 ),
+      AIC = AIC(fits),
+      BIC = BIC(fits)
+    )
+  }) |> list_rbind()
+```
+
+# Greedy selection
+
+::: {.callout-note}
+I'm doing everything for linear models, but applies to generalized linear models.
+:::
+
+## Model Selection vs. Variable Selection
+
+Model selection is very comprehensive
+
+You choose a full statistical model (probability distribution) that will be hypothesized to have generated the data.
+
+Variable selection is a subset of this. It means 
+
+> choosing which predictors to include in a predictive model
+
+Eliminating a predictor, means removing it from the model.
+
+Some [procedures]{.hand} automatically search predictors, and eliminate some.
+
+We call this variable selection. But the procedure is implicitly selecting a model
+as well.
+
+
+Making this all the more complicated, with lots of effort, we can map procedures/algorithms to larger classes of probability models, and analyze them.
+
+## Selecting variables / predictors with linear methods
+
+
+Suppose we have a pile of predictors.
+
+We estimate models with different subsets of predictors and use CV / Cp / AIC 
+/ BIC to decide which is preferred.
+
+Sometimes you might have a few plausible subsets. Easy enough to choose with our criterion.
+
+Sometimes you might just have a bunch of predictors, then what do you do?
+
+## Best subsets
+
+If we imagine that only a few predictors are relevant, we could solve
+
+$$\min_{\beta\in\R^p} \frac{1}{2n}\norm{Y-\X\beta}_2^2 + \lambda\norm{\beta}_0$$
+
+
+The $\ell_0$-norm counts the number of non-zero coefficients.
+
+This may or may not be a good thing to do.
+
+It is computationally infeasible if $p$ is more than about 20.
+
+Technically NP-hard (you must find the error of each of the $2^p$ models)
+
+Though see [@BertsimasKing2016] for a method of solving reasonably large cases via mixed integer programming.
+
+## Greedy methods
+
+Because this is an NP-hard problem, we fall back on greedy algorithms.
+
+All are implemented by the `regsubsets` function in the `leaps` package. 
+
+All subsets
+: estimate model based on every possible subset of size $|\mathcal{S}| \leq \min\{n, p\}$, use one with 
+lowest risk estimate
+
+Forward selection
+: start with $\mathcal{S}=\varnothing$, add predictors greedily
+
+Backward selection
+: start with $\mathcal{S}=\{1,\ldots,p\}$, remove greedily
+
+Hybrid
+: combine forward and backward smartly
+
+##
+
+::: {.callout-note}
+Within each procedure, we're comparing _nested_ models.
+:::
+
+
+## Costs and benefits
+
+
+All subsets
+: 👍 estimates each subset  
+💣 takes $2^p$ model fits when $p<n$. If $p=50$, this is about $10^{15}$ models. 
+
+Forward selection
+: 👍 computationally feasible  
+💣 ignores some models, correlated predictors means bad performance
+
+Backward selection
+: 👍 computationally feasible  
+💣 ignores some models, correlated predictors means bad performance  
+💣 doesn't work if $p>n$
+
+Hybrid
+: 👍 visits more models than forward/backward  
+💣 slower
+
+
+## Synthetic example
+
+```{r data-setup}
+#| echo: true
+set.seed(2024 - 550)
+n <- 550
+df <- tibble( 
+  x1 = rnorm(n),
+  x2 = rnorm(n, mean = 2, sd = 1),
+  x3 = rexp(n, rate = 1),
+  x4 = x2 + rnorm(n, sd = .1), # correlated with x2
+  x5 = x1 + rnorm(n, sd = .1), # correlated with x1
+  x6 = x1 - x2 + rnorm(n, sd = .1), # correlated with x2 and x1 (and others)
+  x7 = x1 + x3 + rnorm(n, sd = .1), # correlated with x1 and x3 (and others)
+  y = x1 * 3 + x2 / 3 + rnorm(n, sd = 2.2) # function of x1 and x2 only
+)
+```
+
+$\mathbf{x}_1$ and $\mathbf{x}_2$ are the true predictors
+
+But the rest are correlated with them
+
+
+## Full model
+
+```{r full-model}
+#| echo: true
+full <- lm(y ~ ., data = df)
+summary(full)
+```
+
+
+## True model
+
+```{r true-model}
+#| echo: true
+truth <- lm(y ~ x1 + x2, data = df)
+summary(truth)
+```
+
+
+## All subsets
+
+```{r try-them-all}
+#| echo: true
+library(leaps)
+trythemall <- regsubsets(y ~ ., data = df)
+summary(trythemall)
+```
+
+
+## BIC and Cp
+
+```{r more-all-subsets1}
+#| fig-height: 6
+#| fig-width: 10
+tibble(
+  BIC = summary(trythemall)$bic, 
+  Cp = summary(trythemall)$cp,
+  size = 1:7
+) |>
+  pivot_longer(-size) |>
+  ggplot(aes(size, value, colour = name)) + 
+  geom_point() + 
+  geom_line() + 
+  facet_wrap(~name, scales = "free_y") + 
+  ylab("") + xlab("# of predictors") +
+  scale_colour_manual(
+    values = c(blue, orange), 
+    guide = "none"
+  )
+```
+
+## Theory
+
+This result is due to @FosterGeorge1994.
+
+1. If the truth is linear.
+2. $\lambda = C\sigma^2\log p.$
+3. $\norm{\beta_*}_0 = s$
+
+$$\frac{\Expect{\norm{\X\beta_*-\X\hat\beta}_2^2}/n}{s\sigma^2/n} \leq 4\log p + 2 + o(1).$$
+
+
+$$\inf_{\hat\beta}\sup_{\X,\beta_*} \frac{\Expect{\norm{\X\beta_*-\X\hat\beta}_2^2}/n}{s\sigma^2/n} \geq 2\log p - o(\log p).$$
+
+
+##
+
+::: {.callout-important}
+
+- even if we could compute the subset selection estimator at scale, it’s not clear that we would want to
+- (Many people assume that we would.) 
+- theory provides an understanding of the performance of various estimators under typically idealized conditions
+
+:::
+
+
+
+# Regularization
+
+## Regularization
+
+
+* Another way to control bias and variance is through [regularization]{.secondary} or
+[shrinkage]{.secondary}.  
+
+
+* Rather than selecting a few predictors that seem reasonable, maybe trying a few combinations, use them all.
+
+
+* But, make your estimates of $\beta$ "smaller"
+
+
+
+## Brief aside on optimization
+
+* An optimization problem has 2 components:
+
+    1. The "Objective function": e.g. $\frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2$.
+    2. The "constraint": e.g. "fewer than 5 non-zero entries in $\beta$".
+    
+* A constrained minimization problem is written
+
+
+$$\min_\beta f(\beta)\;\; \mbox{ subject to }\;\; C(\beta)$$
+
+* $f(\beta)$ is the objective function
+* $C(\beta)$ is the constraint
+
+
+## Ridge regression (constrained version)
+
+One way to do this for regression is to solve (say):
+$$
+\minimize_\beta \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2
+\quad \st \sum_j \beta^2_j < s
+$$
+for some $s>0$.
+
+* This is called "ridge regression".
+* Write the minimizer as $\hat{\beta}_s$.
+
+. . .
+
+Compare this to ordinary least squares:
+
+$$
+\minimize_\beta \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2 
+\quad \st \beta \in \R^p
+$$
+
+
+
+## Geometry of ridge regression (contours)
+
+```{r plotting-functions}
+#| code-fold: true
+#| fig-width: 6
+#| fig-height: 6
+library(mvtnorm)
+norm_ball <- function(q = 1, len = 1000) {
+  tg <- seq(0, 2 * pi, length = len)
+  out <- tibble(x = cos(tg), b = (1 - abs(x)^q)^(1 / q), bm = -b) |>
+    pivot_longer(-x, values_to = "y")
+  out$lab <- paste0('"||" * beta * "||"', "[", signif(q, 2), "]")
+  return(out)
+}
+
+ellipse_data <- function(
+  n = 75, xlim = c(-2, 3), ylim = c(-2, 3),
+  mean = c(1, 1), Sigma = matrix(c(1, 0, 0, .5), 2)) {
+  expand_grid(
+    x = seq(xlim[1], xlim[2], length.out = n),
+    y = seq(ylim[1], ylim[2], length.out = n)) |>
+    rowwise() |>
+    mutate(z = dmvnorm(c(x, y), mean, Sigma))
+}
+
+lballmax <- function(ed, q = 1, tol = 1e-6, niter = 20) {
+  ed <- filter(ed, x > 0, y > 0)
+  feasible <- (ed$x^q + ed$y^q)^(1 / q) <= 1
+  best <- ed[feasible, ]
+  best[which.max(best$z), ]
+}
+
+
+nb <- norm_ball(2)
+ed <- ellipse_data()
+bols <- data.frame(x = 1, y = 1)
+bhat <- lballmax(ed, 2)
+ggplot(nb, aes(x, y)) +
+  geom_path(colour = red) +
+  geom_contour(mapping = aes(z = z), colour = blue, data = ed, bins = 7) +
+  geom_vline(xintercept = 0) +
+  geom_hline(yintercept = 0) +
+  geom_point(data = bols) +
+  coord_equal() +
+  geom_label(
+    data = bols,
+    mapping = aes(label = bquote("hat(beta)[ols]")),
+    parse = TRUE, 
+    nudge_x = .3, nudge_y = .3
+  ) +
+  geom_point(data = bhat) +
+  xlab(bquote(beta[1])) +
+  ylab(bquote(beta[2])) +
+  theme_bw(base_size = 24) +
+  geom_label(
+    data = bhat,
+    mapping = aes(label = bquote("hat(beta)[s]")),
+    parse = TRUE,
+    nudge_x = -.2, nudge_y = -.2
+  )
+```
+
+
+## Reminder of norms we should remember
+
+$\ell_q$-norm
+: $\left(\sum_{j=1}^p |z_j|^q\right)^{1/q}$
+
+$\ell_1$-norm (special case)
+: $\sum_{j=1}^p |z_j|$
+
+$\ell_0$-norm
+: $\sum_{j=1}^p I(z_j \neq 0 ) = \lvert \{j : z_j \neq 0 \}\rvert$
+
+$\ell_\infty$-norm
+: $\max_{1\leq j \leq p} |z_j|$
+
+::: aside
+Recall what a norm is: <https://en.wikipedia.org/wiki/Norm_(mathematics)>
+:::
+
+
+## Ridge regression
+
+An equivalent way to write
+
+$$\hat\beta_s = \argmin_{ \Vert \beta \Vert_2^2 \leq s} \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2$$
+
+
+is in the [Lagrangian]{.secondary} form
+
+
+$$\hat\beta_\lambda = \argmin_{ \beta} \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2 + \frac{\lambda}{2} \Vert \beta \Vert_2^2.$$
+
+
+
+
+For every $\lambda$ there is a unique $s$ (and vice versa) that makes 
+
+$$\hat\beta_s = \hat\beta_\lambda$$
+
+## Ridge regression
+
+$\hat\beta_s = \argmin_{ \Vert \beta \Vert_2^2 \leq s} \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2$
+
+$\hat\beta_\lambda = \argmin_{ \beta} \frac{1}{2n}\sum_i (y_i-x^\top_i \beta)^2 + \frac{\lambda}{2} \Vert \beta \Vert_2^2.$
+
+Observe:
+
+* $\lambda = 0$ (or $s = \infty$) makes $\hat\beta_\lambda = \hat\beta_{ols}$
+* Any $\lambda > 0$ (or $s <\infty$)  penalizes larger values of $\beta$, effectively shrinking them.
+
+
+$\lambda$ and $s$ are known as [tuning parameters]{.secondary}
+
+
+
+
+## Example data
+
+`prostate` data from [ESL]
+
+```{r load-prostate}
+data(prostate, package = "ElemStatLearn")
+prostate |> as_tibble()
+```
+
+::: notes
+
+Use `lpsa` as response.
+
+:::
+
+
+## Ridge regression path
+
+
+```{r process-prostate, echo=TRUE, dev="svg", message=FALSE,warning=FALSE, fig.height = 4, fig.width=8, fig.align='center'}
+Y <- prostate$lpsa
+X <- model.matrix(~ ., data = prostate |> dplyr::select(-train, -lpsa))
+library(glmnet)
+ridge <- glmnet(x = X, y = Y, alpha = 0, lambda.min.ratio = .00001)
+```
+
+::: flex
+::: w-60
+```{r}
+#| out-width: "100%"
+#| fig-width: 8
+#| fig-height: 5
+plot(ridge, xvar = "lambda", lwd = 3)
+```
+
+:::
+::: w-35
+
+Model selection here: 
+
+* means [choose]{.secondary} some $\lambda$ 
+
+* A value of $\lambda$ is a vertical line.
+
+* This graphic is a "path" or "coefficient trace"
+
+* Coefficients for varying $\lambda$
+:::
+:::
+
+
+## Solving the minimization
+
+* One nice thing about ridge regression is that it has a closed-form solution (like OLS)
+
+
+$$\hat\beta_\lambda = (\X^\top\X + \lambda \mathbf{I})^{-1}\X^\top \y$$
+
+* This is easy to calculate in `R` for any $\lambda$.
+
+* However, computations and interpretation are simplified if we examine the 
+[Singular Value Decomposition]{.secondary} of $\X = \mathbf{UDV}^\top$.
+
+* Recall: any matrix has an SVD.
+
+* Here $\mathbf{D}$ is diagonal and $\mathbf{U}$ and $\mathbf{V}$ are orthonormal: $\mathbf{U}^\top\mathbf{U} = \mathbf{I}$.
+
+## Solving the minization
+
+$$\hat\beta_\lambda = (\X^\top\X + \lambda \mathbf{I})^{-1}\X^\top \y$$
+
+* Note that $\mathbf{X}^\top\mathbf{X} = \mathbf{VDU}^\top\mathbf{UDV}^\top = \mathbf{V}\mathbf{D}^2\mathbf{V}^\top$.
+
+
+* Then,
+
+
+$$\hat\beta_\lambda = (\X^\top \X + \lambda \mathbf{I})^{-1}\X^\top \y = (\mathbf{VD}^2\mathbf{V}^\top + \lambda \mathbf{I})^{-1}\mathbf{VDU}^\top \y
+= \mathbf{V}(\mathbf{D}^2+\lambda \mathbf{I})^{-1} \mathbf{DU}^\top \y.$$
+
+* For computations, now we only need to invert $\mathbf{D}$.
+
+
+## Comparing with OLS
+
+
+* $\mathbf{D}$ is a diagonal matrix
+
+$$\hat\beta_{ols} = (\X^\top\X)^{-1}\X^\top \y = (\mathbf{VD}^2\mathbf{V}^\top)^{-1}\mathbf{VDU}^\top \y = \mathbf{V}\color{red}{\mathbf{D}^{-2}\mathbf{D}}\mathbf{U}^\top \y = \mathbf{V}\color{red}{\mathbf{D}^{-1}}\mathbf{U}^\top \y$$
+
+$$\hat\beta_\lambda = (\X^\top \X + \lambda \mathbf{I})^{-1}\X^\top \y = \mathbf{V}\color{red}{(\mathbf{D}^2+\lambda \mathbf{I})^{-1}} \mathbf{DU}^\top \y.$$
+
+
+* Notice that $\hat\beta_{ols}$ depends on $d_j/d_j^2$ while $\hat\beta_\lambda$ depends on $d_j/(d_j^2 + \lambda)$.
+
+* Ridge regression makes the coefficients smaller relative to OLS.
+
+* But if $\X$ has small singular values, ridge regression compensates with $\lambda$ in the denominator.
+
+# Multicollinearity
+
+## Ridge regression and multicollinearity
+
+[Multicollinearity:]{.secondary} a linear combination of predictor variables is nearly equal to another predictor variable. 
+
+## Multicollinearity questions
+
+1. Can I test `cor(x1, x2) == 0` to determine if these are collinear?
+2. What plots or summaries can I look at?
+3. If multivariate regression or logistic regression is applied on a data set with many explanatory variables, what in the regression output might indicate potential multicollinearity?
+4. Is there a test or diagnostic procedure for multicollinearity? 
+
+
+::: notes
+1. No. 
+2. Correlation matrix of continuous $x$. 
+3. Large standard errors, estimated coefficients with opposite sign. `NA` estimates. Removing vars brings down SEs without much change in fit.
+4. Big VIF `summary(lm(xj ~ . - xj - y))$r.sq`
+:::
+
+
+
+## Multicollinearity thoughts
+
+Some comments:
+
+* A better phrase: $\X$ is ill-conditioned
+
+* AKA "(numerically) rank-deficient".
+
+* $\X = \mathbf{U D V}^\top$ ill-conditioned $\Longleftrightarrow$ some elements of $\mathbf{D} \approx 0$
+
+* $\hat\beta_{ols}= \mathbf{V D}^{-1} \mathbf{U}^\top \y$. Small entries of $\mathbf{D}$ $\Longleftrightarrow$ huge elements of $\mathbf{D}^{-1}$
+
+* Means huge variance: $\Var{\hat\beta_{ols}} =  \sigma^2(\X^\top \X)^{-1} = \sigma^2 \mathbf{V D}^{-2} \mathbf{V}^\top$
+
+* If you're doing prediction, this is a purely computational concern.
+
+
+## Ridge regression and ill-posed $\X$
+
+
+Ridge Regression fixes this problem by preventing the division by a near-zero number
+
+Conclusion
+: $(\X^{\top}\X)^{-1}$ can be really unstable, while $(\X^{\top}\X + \lambda \mathbf{I})^{-1}$ is not.
+
+Aside
+: Engineering approach to solving linear systems is to always do this with small $\lambda$. The thinking is about the numerics rather than the statistics.
+
+### Which $\lambda$ to use?
+
+Computational
+: Use CV and pick the $\lambda$ that makes this smallest.
+
+Intuition (bias)
+: As $\lambda\rightarrow\infty$, bias ⬆
+
+Intuition (variance)
+: As $\lambda\rightarrow\infty$, variance ⬇
+
+You should think about why.
+
+
+
+## Can we get the best of both worlds?
+
+To recap:
+
+* Deciding which predictors to include, adding quadratic terms, or interactions is [model selection]{.secondary} (more precisely variable selection within a linear model).
+
+* Ridge regression provides regularization, which trades off bias and variance and also stabilizes multicollinearity.  
+
+* If the LM is **true**, 
+    1. OLS is unbiased, but Variance depends on $\mathbf{D}^{-2}$. Can be big.
+    2. Ridge is biased (can you find the bias?). But Variance is smaller than OLS.
+
+* Ridge regression does not perform variable selection.
+
+* But [picking]{.hand} $\lambda=3.7$ and thereby [deciding]{.hand} to predict with $\widehat{\beta}^R_{3.7}$ is [model selection]{.secondary}.
+
+
+
+## Can we get the best of both worlds?
+
+Ridge regression 
+: $\minimize \frac{1}{2n}\Vert\y-\X\beta\Vert_2^2 \ \st\ \snorm{\beta}_2^2 \leq s$ 
+
+Best (in-sample) linear regression model of size $s$
+: $\minimize \frac{1}{2n}\snorm{\y-\X\beta}_2^2 \ \st\ \snorm{\beta}_0 \leq s$
+
+
+$||\beta||_0$ is the number of nonzero elements in $\beta$
+
+Finding the best in-sample linear model (of size $s$, among these predictors) is a nonconvex optimization problem (In fact, it is NP-hard)
+
+Ridge regression is convex (easy to solve), but doesn't do __variable__ selection
+
+Can we somehow "interpolate" to get both?
+
+
+Note: selecting $\lambda$ is still __model__ selection, but we've included __all__ the variables.
+
+
+## Ridge theory
+
+Recalling that $\beta^\top_*x$ is the best linear approximation to $f_*(x)$
+
+If $\norm{x}_\infty< r$,  [@HsuKakade2014],
+$$R(\hat\beta_\lambda) - R(\beta_*) \leq \left(1+ O\left(\frac{1+r^2/\lambda}{n}\right)\right)
+\frac{\lambda\norm{\beta_*}_2^2}{2} + \frac{\sigma^2\tr{\Sigma}}{2n\lambda}$$
+
+
+Optimizing over $\lambda$, and setting $B=\norm{\beta_*}$ gives
+
+$$R(\hat\beta_\lambda) - R(\beta_*) \leq \sqrt{\frac{\sigma^2r^2B^2}{n}\left(1+O(1/n)\right)} + 
+O\left(\frac{r^2B^2}{n}\right)$$
+
+
+$$\inf_{\hat\beta}\sup_{\beta_*} R(\hat\beta) - R(\beta_*) \geq C\sqrt{\frac{\sigma^2r^2B^2}{n}}$$
+
+## Ridge theory
+
+We call this behavior _rate minimax_: essential meaning, 
+$$R(\hat\beta) - R(\beta_*) = O\left(\inf_{\hat\beta}\sup_{\beta_*} R(\hat\beta) - R(\beta_*)\right)$$
+
+In this setting, Ridge regression does as well as we could hope, up to constants.
+
+## Bayes interpretation
+
+If 
+
+1. $Y=X'\beta + \epsilon$, 
+2. $\epsilon\sim N(0,\sigma^2)$ 
+3. $\beta\sim N(0,\tau^2 I_p)$,
+
+Then, the posterior mean (median, mode) is the ridge estimator with $\lambda=\sigma^2/\tau^2$.
+
+
+# Lasso
+
+## Geometry
+
+```{r ball-plotting-functions}
+#| echo: true
+#| code-fold: true
+#| fig-width: 12
+#| fig-height: 6
+library(mvtnorm)
+normBall <- function(q = 1, len = 1000) {
+  tg <- seq(0, 2 * pi, length = len)
+  out <- data.frame(x = cos(tg)) %>%
+    mutate(b = (1 - abs(x)^q)^(1 / q), bm = -b) %>%
+    gather(key = "lab", value = "y", -x)
+  out$lab <- paste0('"||" * beta * "||"', "[", signif(q, 2), "]")
+  return(out)
+}
+
+ellipseData <- function(n = 100, xlim = c(-2, 3), ylim = c(-2, 3),
+                        mean = c(1, 1), Sigma = matrix(c(1, 0, 0, .5), 2)) {
+  df <- expand.grid(
+    x = seq(xlim[1], xlim[2], length.out = n),
+    y = seq(ylim[1], ylim[2], length.out = n)
+  )
+  df$z <- dmvnorm(df, mean, Sigma)
+  df
+}
+
+lballmax <- function(ed, q = 1, tol = 1e-6) {
+  ed <- filter(ed, x > 0, y > 0)
+  for (i in 1:20) {
+    ff <- abs((ed$x^q + ed$y^q)^(1 / q) - 1) < tol
+    if (sum(ff) > 0) break
+    tol <- 2 * tol
+  }
+  best <- ed[ff, ]
+  best[which.max(best$z), ]
+}
+
+nb <- normBall(1)
+ed <- ellipseData()
+bols <- data.frame(x = 1, y = 1)
+bhat <- lballmax(ed, 1)
+ggplot(nb, aes(x, y)) +
+  geom_path(colour = red) +
+  geom_contour(mapping = aes(z = z), colour = blue, data = ed, bins = 7) +
+  geom_vline(xintercept = 0) +
+  geom_hline(yintercept = 0) +
+  geom_point(data = bols) +
+  coord_equal(xlim = c(-2, 2), ylim = c(-2, 2)) +
+  theme_bw(base_family = "", base_size = 24) +
+  geom_label(
+    data = bols, mapping = aes(label = bquote("hat(beta)[ols]")), parse = TRUE,
+    nudge_x = .3, nudge_y = .3
+  ) +
+  geom_point(data = bhat) +
+  xlab(bquote(beta[1])) +
+  ylab(bquote(beta[2])) +
+  geom_label(
+    data = bhat, mapping = aes(label = bquote("hat(beta)[s]^L")), parse = TRUE,
+    nudge_x = -.4, nudge_y = -.4
+  )
+```
+
+## $\ell_1$-regularized regression
+
+Known as 
+
+* "lasso"
+* "basis pursuit"
+
+The estimator satisfies
+
+$$\hat\beta_s = \argmin_{ \snorm{\beta}_1 \leq s}  \frac{1}{2n}\snorm{\y-\X\beta}_2^2$$
+
+
+In its corresponding Lagrangian dual form:
+
+$$\hat\beta_\lambda = \argmin_{\beta} \frac{1}{2n}\snorm{\y-\X\beta}_2^2 + \lambda \snorm{\beta}_1$$
+
+
+## Lasso
+
+While the ridge solution can be easily computed 
+
+$$\argmin_{\beta} \frac 1n \snorm{\y-\X\beta}_2^2 + \lambda \snorm{\beta}_2^2 = (\X^{\top}\X + \lambda \mathbf{I})^{-1} \X^{\top}\y$$
+
+
+the lasso solution
+
+
+$$\argmin_{\beta} \frac 1n\snorm{\y-\X\beta}_2^2 + \lambda \snorm{\beta}_1 = \; ??$$
+
+doesn't have a closed-form solution.
+
+
+However, because the optimization problem is convex, there exist efficient algorithms for computing it
+
+::: aside
+The best are Iterative Soft Thresholding or Coordinate Descent. Gradient Descent doesn't work very well in practice.
+:::
+
+
+## Coefficient path: ridge vs lasso
+
+
+```{r ridge-v-lasso}
+#| code-fold: true
+#| echo: true
+library(glmnet)
+data(prostate, package = "ElemStatLearn")
+X <- prostate |> dplyr::select(-train, -lpsa) |>  as.matrix()
+Y <- prostate$lpsa
+lasso <- glmnet(x = X, y = Y) # alpha = 1 by default
+ridge <- glmnet(x = X, y = Y, alpha = 0)
+op <- par()
+```
+
+```{r}
+par(mfrow = c(1, 2), mar = c(5, 3, 5, .1))
+plot(lasso, main = "Lasso")
+plot(ridge, main = "Ridge")
+```
+
+## Additional intuition for why Lasso selects variables
+
+Suppose, for a particular $\lambda$, I have solutions for $\widehat{\beta}_k$, $k = 1,\ldots,j-1, j+1,\ldots,p$.
+
+Let $\widehat{\y}_{-j} = \X_{-j}\widehat{\beta}_{-j}$, and assume WLOG $\overline{\X}_k = 0$, $\X_k^\top\X_k = 1\ \forall k$
+
+One can show that:
+
+$$
+\widehat{\beta}_j = S\left(\mathbf{X}^\top_j(\y - \widehat{\y}_{-j}),\ \lambda\right).
+$$
+
+$$
+S(z, \gamma) = \textrm{sign}(z)(|z| - \gamma)_+ = \begin{cases} z - \gamma & z > \gamma\\
+z + \gamma & z < -\gamma \\ 0 & |z| \leq \gamma \end{cases}
+$$
+
+* Iterating over this is called [coordinate descent]{.secondary} and gives the solution
+
+::: aside
+See for example, <https://doi.org/10.18637/jss.v033.i01>
+:::
+
+
+::: notes
+* If I were told all the other coefficient estimates.
+* Then to find this one, I'd shrink when the gradient is big, or set to 0 if it
+gets too small.
+:::
+
+## `{glmnet}` version (same procedure for lasso or ridge)
+
+```{r}
+#| echo: true
+#| code-line-numbers: 1|2|3|4|5|
+lasso <- cv.glmnet(X, Y) # estimate full model and CV no good reason to call glmnet() itself
+# 2. Look at the CV curve. If the dashed lines are at the boundaries, redo and adjust lambda
+lambda_min <- lasso$lambda.min # the value, not the location (or use lasso$lambda.1se)
+coeffs <- coefficients(lasso, s = "lambda.min") # s can be string or a number
+preds <- predict(lasso, newx = X, s = "lambda.1se") # must supply `newx`
+```
+
+* $\widehat{R}_{CV}$ is an estimator of $R_n$, it has bias and variance
+* Because we did CV, we actually have 10 $\widehat{R}$ values, 1 per split.
+* Calculate the mean (that's what we've been using), but what about SE?
+
+##
+
+```{r}
+par(mfrow = c(1, 2), mar = c(5, 3, 3, 0))
+plot(lasso) # a plot method for the cv fit
+plot(lasso$glmnet.fit) # the glmnet.fit == glmnet(X,Y)
+abline(v = colSums(abs(coef(lasso$glmnet.fit)[-1, drop(lasso$index)])), lty = 2)
+```
+
+```{r, include=FALSE}
+par(op)
+```
+
+## Other flavours
+
+The elastic net
+: generally used for correlated variables that
+combines a ridge/lasso penalty.  Use `glmnet(..., alpha = a)` (0 < `a` < 1). 
+
+Grouped lasso
+: where variables are included or excluded in groups. Required for factors (1-hot encoding)
+
+Relaxed lasso
+: Takes the estimated model from lasso and fits the full least squares solution on the selected covariates (less bias, more variance). Use `glmnet(..., relax = TRUE)`.
+
+Dantzig selector
+: a slightly modified version of the lasso
+
+## Lasso cinematic universe
+
+::: flex
+::: w-60
+
+SCAD
+: a non-convex version of lasso that adds a more severe variable selection penalty
+
+$\sqrt{\textrm{lasso}}$
+: claims to be tuning parameter free (but isn't).  Uses $\Vert\cdot\Vert_2$
+instead of $\Vert\cdot\Vert_1$ for the loss.
+
+Generalized lasso
+: Adds various additional matrices to the penalty term (e.g. $\Vert D\beta\Vert_1$).  
+
+Arbitrary combinations
+: combine the above penalties in your favourite combinations
+:::
+
+::: w-40
+
+![](https://sportshub.cbsistatic.com/i/2022/08/10/d348f903-585f-4aa6-aebc-d05173761065/brett-goldstein-hercules.jpg)
+
+:::
+:::
+
+## Warnings on regularized regression
+
+1. This isn't a method unless you say how to choose $\lambda$.
+1. The intercept is never penalized. Adds an extra degree-of-freedom.
+1. Predictor scaling is [very]{.secondary} important.
+1. Discrete predictors need groupings.
+1. Centering the predictors may be necessary
+1. (These all work with other likelihoods.)
+
+. . .
+
+Software handles most of these automatically, but not always. (No Lasso with factor predictors.)
+
+## Lasso theory under strong conditions {.smaller}
+
+[Support recovery:]{.tertiary} [@Wainwright2009], see also [@MeinshausenBuhlmann2006; @ZhaoYu2006]
+
+1. The truth is linear.
+2. $\norm{\X'_{S^c}\X_S (\X'_S\X_S)^{-1}}_\infty < 1-\epsilon.$
+3. $\lambda_{\min} (\X'_S\X_S) \geq C_{\min} > 0$.
+4. The columns of $\X$ have 2-norm $n$.
+5. The noise is iid Normal.
+6. $\lambda_n$ satisfies $\frac{n\lambda^2}{\log(p-s)} \rightarrow \infty$.
+7. $\min_j \{ |\beta_j| : j \in S\} \geq \rho_n > 0$ and 
+$$\rho_n^{-1} \left( \sqrt{\frac{\log s}{n}}+ \lambda_n\norm{(\X'_S\X_S)^{-1}}_\infty \right)\rightarrow 0$$
+
+
+Then, $P(\textrm{supp}(\hat\beta_\lambda) = \textrm{supp}(\beta_*))\rightarrow 1$.
+
+## Lasso theory under strong conditions {.smaller}
+
+[Estimation consistency:]{.tertiary} [@negahban2010unified] also [@MeinshausenYu2009]
+
+1. The truth is linear.
+2. $\exists \kappa$ such that for all vectors $\theta\in\R^p$ that satisfy 
+$\norm{\theta_{S^C}}_1 \leq 3\norm{\theta_S}_1$, we have $\norm{X\theta}_2^2/n \geq \kappa\norm{\theta}_2^2$ (Compatibility)
+3. The columns of $\X$ have 2-norm $n$.
+4. The noise is iid sub-Gaussian.
+5. $\lambda_n >4\sigma \sqrt{\log (p)/n}$.
+
+Then, with probability at least $1-c\exp(-c'n\lambda_n^2)$,  
+$$\norm{\hat\beta_\lambda-\beta_*}_2^2 \leq \frac{64\sigma^2}{\kappa^2}\frac{s\log p}{n}.$$
+
+::: {.callout-important}
+These conditions are very strong, uncheckable in practice, unlikely to be true for real datasets. But theory of this type is the standard for these procedures.
+:::
+
+## Lasso under weak / no conditions
+
+If $Y$ and $X$ are bounded by $B$, then with probability at least $1-\delta^2$,
+$$R_n(\hat\beta_\lambda) - R_n(\beta_*) \leq \sqrt{\frac{16(t+1)^4B^2}{n}\log\left(\frac{\sqrt{2}p}{\delta}\right)}.$$
+
+
+This is a simple version of a result in [@GreenshteinRitov2004].
+
+Note that it applies to the constrained version.
+
+[@bartlett2012] derives the same rate for the Lagrangian version
+
+Again, this rate is (nearly) optimal:
+$$c\sqrt{\frac{s}{n}} < R_n(\hat\beta_\lambda) - R_n(\beta_*) < C\sqrt{\frac{s\log p}{n}}.$$
+
+
+$\log p$ is the penalty you pay for selection.
+
+
+
+
+## References

@@ -3,7 +3,7 @@ lecture: "Statistical models and model selection"
 format: revealjs
 metadata-files: 
   - _metadata.yml
-bibliography: booth-refs.bib
+bibliography: refs.bib
 ---
 
 {{< include _titleslide.qmd >}}
